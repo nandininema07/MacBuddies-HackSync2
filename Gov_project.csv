@@ -1,0 +1,1001 @@
+project_id,project_name,budget,contractor_name,location_latitude,location_longitude,project_type,expected_completion_date,current_status,is_verified
+81aff446-34ba-4e97-9a41-ccc031a9a94d,EXISTING ROAD TO 2-LANE WITH PAVED (Oct-2024) (244.91),2070000000,MP Jal Nigam,26.204475,88.577151,sanitation,2025-06-22,Ongoing,True
+34736dae-74ce-4c71-afdb-322b2d4f2f9b,521 (East Central Railway [ECR] - I) Bihar 0 0,1054100000000,DFCCIL,36.735078,74.743483,roads,2026-10-26,Delayed,True
+22047199-0c09-439e-9b84-ccbe23b4c639,ROAD FROM KM 0.00 - KM 4.265 OF (Dec-2022) (N.A.),19220000000,HUDCO,22.086353,88.882463,public_works,2027-01-11,Ongoing,True
+bafd5529-8c1b-4ccc-82e4-2bb2d24d85ca,"Strengthening Airport Terminal in Chennai District, Assam",10550000000,MoHUA,12.494487,81.882077,public_works,2025-05-04,Ongoing,True
+bca12137-b135-4812-8771-7047a4237f02,"Expansion of Airport Terminal Stretch at Delhi, Assam",26990000000,MoHUA,19.045376,83.612163,public_works,2028-10-01,Ongoing,True
+5b16f76b-d040-4974-bffb-2a36439d26ee,(AHMEDABAD BYPASS). {3/2027} {961.67},501730000000,RVNL,29.087297,79.472565,roads,2026-05-31,Ongoing,True
+b1e7cb64-f39d-47e8-81f0-b3d26052c25a,606 (Central Railway) Maharashtra 288.08 17,356900000000,MRVC,17.098512,77.082024,roads,2029-04-21,Completed,True
+f46ea45c-5852-4bb7-9873-94f71bb2992f,"Upgradation of District Hospital System at Bhopal, Andhra Pradesh",15940000000,HUDCO,27.269893,92.392304,public_works,2029-02-19,Ongoing,True
+461ac859-0143-4f1f-b95a-456216b830b5,"Upgradation of Bypass Road System at Coimbatore, Telangana",24760000000,MRVC,18.538213,96.79452,roads,2027-06-23,Delayed,True
+3a2e9e81-1afb-42cf-bc70-0ae081cec9b4,"EXPRESSWAY (PHASE-II PKG-XV) (Feb-2026) (2,714.95)",569710000000,DFCCIL,16.321412,89.843544,roads,2027-05-06,Ongoing,True
+f1baf80c-498b-47cb-bbf5-65f96f0683bc,"Construction Bus Terminal for Dhanbad Municipal Area, Gujarat",19940000000,AAI,14.232314,78.429735,public_works,2028-02-13,Delayed,True
+3140f5eb-47e3-406a-9cde-ad627ce1bab5,C/o Construction of 200 bedded [Up-gradable to 300 bedded] ESI Hospital at Surat,17830000000,AAI,33.833363,74.215415,public_works,2029-03-29,Completed,True
+05542eca-8ed1-4a83-8ce2-31eb865690a2,"Expansion Storm Water Drainage System in Cuttack District, Maharashtra",6340000000,KUIDFC,32.68822,83.125986,sanitation,2029-03-13,Ongoing,True
+43cea22a-efd4-43f7-803e-908d8756e5b5,"Expansion of Bypass Road Corridor at Kanpur, Gujarat",12960000000,State PWD,12.309729,83.047513,roads,2026-04-01,Near Completion,True
+24d2c96f-68dd-4cab-a169-c9e2f420002f,"Grass-root Terminal at Mirzapur, Uttar Pradesh",28200000000,State PWD,19.21512,85.977399,public_works,2029-09-09,Near Completion,False
+8f41bca5-1dc5-4493-9d5f-7fbcfe50e944,"Development of Fecal Sludge Treatment Plant Stretch at Cuttack, Gujarat",3500000000,Urban Local Body,33.569157,74.178241,sanitation,2027-02-07,Delayed,True
+b154c6de-14a6-4bc8-a961-12eb1fc404ca,"Development of Bypass Road between Lucknow and Chennai, Punjab",285640000000,BMRCL,19.793035,93.726936,roads,2025-10-19,Ongoing,False
+3b26cae3-89fd-4269-ac0f-a7e2cd45be09,Paradip-Numaligarh Crude Oil Pipeline [PNCPL] & Crude Oil Import Terminal,27190000000,NBCC,24.534794,76.978532,public_works,2026-05-19,Completed,True
+75b5bca0-3d7a-46fd-a326-70579b8eda25,"Strengthening of Water Supply Scheme Stretch at Cuttack, Jharkhand",6190000000,MP Jal Nigam,14.315951,89.263829,sanitation,2027-12-14,Ongoing,False
+793537be-01d0-47f5-9d1b-006739ad2dbf,254 (Gujarat Metro Rail Corporation Limited [GMRCL]) Gujarat 8040.59 73,151170000000,NCRTC,9.077076,82.391102,roads,2029-09-22,Ongoing,True
+193a8b13-886b-48d8-88db-400a4678616a,535 (Indian Railway Construction International Limited [IRCON]) Chhattisgarh 2624.33 94,661950000000,NCRTC,18.066175,72.747994,roads,2027-07-17,Near Completion,False
+f8f8ed60-869b-4254-b53b-9e3a1a5a0ae2,"Expansion National Highway for Noida Municipal Area, Uttar Pradesh",901560000000,RVNL,19.405718,84.150065,roads,2027-02-22,Near Completion,True
+74bd2d15-f1cc-49ad-a938-90afc2c4d5f1,"Strengthening Flyover in Vadodara District, Tamil Nadu",872110000000,MRVC,8.296969,96.810544,roads,2026-08-12,Ongoing,True
+5c45046a-8631-4aff-9f70-fdd6cb0bfb58,"Expansion State Highway in Mumbai District, Uttar Pradesh",12270000000,BMRCL,17.417012,75.146923,roads,2025-01-17,Ongoing,True
+bf0ae7be-11d3-490c-b3db-228da800f29e,"Expansion of Urban Arterial Road Stretch at Cuttack, Tamil Nadu",374110000000,RVNL,16.024783,86.055171,roads,2026-12-23,Ongoing,False
+4c6ea796-0b21-4178-a073-f7ae90b5d260,"Rehabilitation Underground Drainage System in Nagpur District, Karnataka",6650000000,CPHEEO,18.138023,89.593322,sanitation,2026-02-23,Ongoing,True
+4cfce578-7114-49cb-a6cc-f188f93ec89f,"Expansion Urban Arterial Road in Nagpur District, Chhattisgarh",539850000000,MRVC,30.704741,76.869807,roads,2029-10-29,Ongoing,True
+30882072-ab78-43df-af73-b15fb2d32567,(Northen Railway [NR]) (05/1985) (12/2027) (2018),40450000000,DFCCIL,12.555161,74.85598,roads,2026-04-29,Delayed,True
+e9ff797f-5a8c-451c-97d1-eae5fad1ea21,"Rehabilitation Interchange for Gwalior Municipal Area, Telangana",129770000000,RVNL,32.693214,74.693593,roads,2029-12-24,Ongoing,True
+50834ea7-d345-4b9a-991b-86e14fd63c5f,"Expansion Ring Road in Gwalior District, Andhra Pradesh",865270000000,State PWD,31.652247,89.816067,roads,2029-05-03,Ongoing,True
+2c12ae63-58e9-4db1-9af4-8968d5b5df90,"Construction of Expressway System at Bhubaneswar, Karnataka",671530000000,BMRCL,36.675526,89.364906,roads,2027-08-21,Ongoing,True
+e009d27e-2ce1-44a1-a671-2671e9dcb8f4,"Rehabilitation Fecal Sludge Treatment Plant for Mysuru Municipal Area, Maharashtra",2160000000,State Jal Nigam,20.357415,74.370914,sanitation,2029-11-30,Ongoing,True
+1be5a64e-0b5c-4980-854e-30536aeb98fb,"Upgradation Flyover for Pune Municipal Area, Jharkhand",516730000000,NCRTC,12.1073,95.085274,roads,2026-12-03,Completed,False
+8fc71557-8a63-4cfc-9320-2bda37bd1b07,"Modernization of Storm Water Drainage System between Ranchi and Ghaziabad, West Bengal",1710000000,CPHEEO,13.133393,79.66331,sanitation,2026-02-06,Ongoing,True
+56c4e959-4572-4363-8a55-c0e669770061,"Development University Campus in Chennai District, Punjab",46050000000,AAI,12.35255,83.714283,public_works,2026-03-03,Completed,True
+3aad16b8-1791-4eac-9f8b-8fa9b6e12cdf,"Development of Sewerage Network Corridor at Patna, Karnataka",4380000000,State Jal Nigam,35.842367,74.563404,sanitation,2026-08-23,Completed,True
+254298a5-d565-4128-a5ea-3b8b5c06e12b,ROAD TRANSPORT AND,15360000000,MoHUA,13.101953,83.713765,public_works,2026-05-28,Delayed,True
+34d283c8-6b0c-48a8-b59c-ff1d219cecb6,"Development of Bypass Road between Surat and Gaya, Kerala",939400000000,NHAI,32.949505,87.782637,roads,2027-12-25,Completed,True
+b3380f8f-687e-45dc-b5ea-2432ef40febe,"Upgradation University Campus in Vadodara District, Kerala",44440000000,HUDCO,20.064424,92.938954,public_works,2028-11-19,Ongoing,True
+4adf6340-e004-41a9-834a-6906fbf37306,"Upgradation of Public Administrative Building between Gaya and Ahmedabad, Gujarat",14290000000,MoHUA,12.945765,75.459981,public_works,2025-07-23,Ongoing,True
+68d391e5-c89e-4693-bab1-53b939d4f334,TRANSPORT BASANWAHI OF NH 130 CD FROM (N.A.) (N.A.),35330000000,State PWD,8.717329,91.091583,public_works,2027-02-11,Completed,True
+4482c1c4-812b-4e13-8bd1-cc36c17dadf7,"Upgradation of Water Supply Scheme Project at Bhubaneswar, Maharashtra",4580000000,KUIDFC,24.374757,96.331874,sanitation,2026-11-04,Near Completion,False
+9753efa2-f41d-4e23-b84a-cb0f5b4bc0a9,"Upgradation of Bypass Road between Lucknow and Noida, Maharashtra",440430000000,MRVC,20.05888,79.145642,roads,2026-01-17,Near Completion,True
+f3954013-fa0f-4be2-9276-4713efc1dd32,"Construction of Service Road Corridor at Raipur, Punjab",1038230000000,NHAI,17.944763,71.275056,roads,2025-12-30,Near Completion,True
+a69122d4-de72-4b0a-844e-624529411e66,"Expansion of Storm Water Drainage System Project at Cuttack, Chhattisgarh",3730000000,MP Jal Nigam,31.084986,93.19594,sanitation,2025-10-04,Ongoing,True
+15974746-251f-4d5a-bb27-e10d85de6490,"Modernization of Water Supply Scheme Section at Bengaluru, Chhattisgarh",5170000000,AMRUT Mission,18.069558,89.89615,sanitation,2026-05-12,Ongoing,True
+0d45d590-b05f-4d1f-a6b3-82ef531b101d,"Upgradation of Fecal Sludge Treatment Plant between Pune and Udaipur, Assam",7580000000,KUIDFC,14.55644,85.22296,sanitation,2025-05-23,Delayed,True
+512a150e-8fd9-4827-ada1-67ec4d58fedc,"Upgradation of Underground Drainage System Corridor at Chennai, Haryana",6710000000,UP Jal Nigam,35.61692,68.60843,sanitation,2027-08-02,Near Completion,True
+16eba670-6672-4091-8960-def3c844e29c,"Upgradation of Interchange System at Jaipur, Rajasthan",947590000000,NHAI,23.750897,90.033436,roads,2028-04-27,Near Completion,True
+5a6a716a-43ca-4ac2-a868-76a5addbd25c,706 (East Coast Railway [ECoR] - II) Odisha 421.59 58,1118010000000,CMRL,31.743519,95.262044,roads,2028-03-23,Near Completion,True
+5bc4bbed-42b3-4b8e-8554-6a56a3000fd9,"Rehabilitation Judicial Complex for Ranchi Municipal Area, Karnataka",37960000000,AAI,17.482149,77.208394,public_works,2026-07-14,Delayed,True
+caf410a6-2acf-415f-9ab2-6191c998b264,"Strengthening of District Hospital Project at Ahmedabad, Maharashtra",10220000000,NBCC,31.397205,92.464455,public_works,2028-09-25,Ongoing,False
+247b4ae4-c28b-46ca-bcb4-f552a2d6e6cb,"Modernization Underground Drainage System for Delhi Municipal Area, Tamil Nadu",5400000000,MP Jal Nigam,30.561223,86.653459,sanitation,2026-09-01,Ongoing,True
+1e3d808a-fecc-4de2-b3f6-fad6d94f9c38,SECTION OF NH-06 (PKG-I) {6/2024} {219.33},972910000000,BMRCL,15.541467,92.499377,roads,2027-03-06,Near Completion,True
+c5ad07a8-a8c5-4988-8edd-8ebe35164c02,Baranagar-Barrackpore and Dakshineshwar- Construction of Metro Railway,969440000000,DFCCIL,22.020623,79.198029,roads,2025-10-22,Near Completion,True
+0d07ff0e-2675-4af0-8b35-5a2423649b0c,"Construction of Sewerage Network Stretch at Delhi, Madhya Pradesh",4550000000,State Jal Nigam,34.751927,84.847732,sanitation,2025-10-22,Ongoing,True
+6de3362a-49a1-49f1-a3bb-288c8a5050ac,(Agency Name) of Commissioning (Revised) Expenditure Progress,319470000000,CMRL,18.612219,91.493073,roads,2025-06-15,Near Completion,True
+f0bad914-caea-46e7-aaea-6f6950d86b6d,"Rehabilitation Bypass Road for Vijayawada Municipal Area, Chhattisgarh",681790000000,NHAI,9.214842,78.899353,roads,2028-10-16,Delayed,True
+ee3bdf94-6086-4f96-9965-16847caba46e,"Rehabilitation Public Administrative Building in Gaya District, West Bengal",48230000000,State PWD,36.795673,70.543513,public_works,2025-04-17,Ongoing,True
+2bbe1989-2853-4f27-a047-7748130ed4ab,"Construction Fecal Sludge Treatment Plant in Nagpur District, Tamil Nadu",2980000000,AMRUT Mission,27.021682,72.782023,sanitation,2026-04-14,Completed,True
+bdf229cf-3ac2-4cd0-8564-50097ee7feb5,"Upgradation Judicial Complex for Lucknow Municipal Area, Maharashtra",36720000000,AAI,32.584138,96.696213,public_works,2025-04-17,Delayed,True
+3cd9ff79-aaf1-42a5-a86d-277a453aab73,"Rehabilitation Judicial Complex in Ghaziabad District, Gujarat",25270000000,State PWD,26.800532,71.193864,public_works,2029-09-11,Completed,True
+b446603d-9b4c-4434-a43a-ed537462c775,"Strengthening of Storm Water Drainage System Phase-II at Chennai, Andhra Pradesh",1880000000,AMRUT Mission,13.633501,81.385434,sanitation,2025-09-13,Ongoing,True
+a5c2354a-96bf-4c80-a427-42aa6d357b2d,"Construction of Service Road Package at Nagpur, Uttar Pradesh",564750000000,NHAI,20.734325,76.627081,roads,2029-07-14,Completed,True
+64c74e5b-253c-4fc5-bfb0-666a515d9740,"Upgradation Flyover in Cuttack District, Telangana",191690000000,RVNL,27.028766,68.714886,roads,2029-07-13,Delayed,False
+aaa92ede-7d85-4e75-97c3-2af9778653d5,AND HASSAN BYPASS WITH (Sep-2020) (602.09),187060000000,CMRL,28.223567,82.281592,roads,2025-02-11,Ongoing,False
+3198f65a-3aa3-4523-a18a-ff4d9e97ef98,"Construction of Bypass Road Phase-II at Noida, Assam",1187980000000,DFCCIL,8.339655,75.534544,roads,2029-05-15,Near Completion,True
+c66f28df-e524-4b25-94f6-fbfab224643f,"Rehabilitation of Government Office Complex between Guwahati and Dhanbad, Maharashtra",43720000000,AAI,28.517871,95.671786,public_works,2029-08-24,Completed,True
+e2125bd0-9ebc-4141-ba9a-004f42ac6758,"Rehabilitation Government Office Complex for Amritsar Municipal Area, Rajasthan",37000000000,MoHUA,11.662273,78.557031,public_works,2026-03-25,Ongoing,True
+ff8afb8f-d8ab-4916-8068-09c247048de2,HIGHWAY AND AT-GRADE (N.A.) (185.00),424080000000,NHSRCL,27.954052,73.138154,roads,2028-09-20,Completed,True
+bbab7267-81e9-4fc9-ae3f-2a04661f7212,Development of New Civil Enclave at Bagdogra Airport,25440000000,State PWD,31.963297,94.528167,public_works,2025-10-27,Ongoing,True
+94b1002a-dd15-434e-af28-af526cece34b,"Upgradation of Sewage Treatment Plant between Guwahati and Kochi, Telangana",7700000000,KUIDFC,36.650402,82.158692,sanitation,2025-11-25,Ongoing,True
+855e4719-629d-491a-b5d9-91c733cb9465,"Strengthening of Service Road between Guwahati and Bhopal, Jharkhand",627410000000,BMRCL,33.558648,85.753794,roads,2028-11-20,Ongoing,True
+092e1e35-cb39-4d3b-8be2-9a6a4d5987d6,"Construction Bus Terminal in Lucknow District, Tamil Nadu",10620000000,HUDCO,31.597989,95.998382,public_works,2029-08-02,Ongoing,True
+4c7b6cb2-f29a-4739-af30-13f08b037171,"Strengthening Government Office Complex in Surat District, Andhra Pradesh",48170000000,State PWD,35.077419,71.28351,public_works,2028-08-25,Completed,True
+b2bed4b6-5d00-44c2-9df0-c8532ddfdfa7,"Strengthening Expressway for Visakhapatnam Municipal Area, Rajasthan",262690000000,MRVC,16.699314,80.388576,roads,2029-06-28,Near Completion,True
+e7aa7907-8dbb-4615-aabe-1de8722f789b,Redevelopment of New Delhi Railway Station and construction of associated,834300000000,NCRTC,13.898602,95.68011,roads,2025-07-18,Delayed,False
+d618f409-e23a-4237-bcbb-bf4b814ae858,"Expansion of Interchange between Nagpur and Ahmedabad, Madhya Pradesh",267190000000,NCRTC,27.619975,73.971001,roads,2028-11-20,Near Completion,False
+82bb5738-9fcb-403d-ac5a-b303b617131f,"Construction of Storm Water Drainage System Project at Vadodara, Madhya Pradesh",3550000000,KUIDFC,26.185248,69.999031,sanitation,2026-07-17,Ongoing,True
+6c729119-e1ff-4fd9-bf32-cca62013bdcb,"Development of Expressway Project at Ranchi, Gujarat",598560000000,NHAI,8.306133,73.954672,roads,2027-12-04,Ongoing,True
+2f0c02e3-1fde-471b-954d-d2bd4726f481,"Modernization Flyover in Ludhiana District, Telangana",125300000000,RVNL,31.543233,69.721825,roads,2025-12-23,Delayed,True
+6815863e-0dcd-4ce5-9dbc-f3cbe3b863cc,13 CONSTRUCTION OF MAJOR BRIDGE ACROSS MANJRA 188.69 08/2023,108220000000,State PWD,28.26627,89.652873,roads,2027-05-27,Ongoing,False
+7f91863b-b49a-441b-a3fb-9f33302e8adb,"Strengthening of Expressway Corridor at Jamshedpur, Haryana",1165040000000,MRVC,21.657002,78.99831,roads,2027-01-12,Near Completion,True
+0ddd7126-9566-4ac3-9e40-4710fc9a83d8,"Upgradation of Airport Terminal Corridor at Indore, Bihar",29950000000,AAI,24.260581,86.708466,public_works,2029-11-27,Near Completion,True
+1a5c7187-1f44-4b8c-8bb2-82f0844ffc1e,592 (South Western Railway [SWR] - II) Karnataka 729.34 35,319960000000,RVNL,12.954514,79.347412,roads,2025-03-21,Delayed,True
+1f3f6b46-f3be-44f2-87c2-570e516ccae2,"Upgradation Underground Drainage System for Ghaziabad Municipal Area, Telangana",4250000000,UP Jal Nigam,24.312302,79.242649,sanitation,2026-07-28,Ongoing,True
+c35d875b-7318-45cc-a1fd-ee37468424ba,"Development of Underground Drainage System Phase-II at Pune, Maharashtra",2970000000,CPHEEO,23.422143,93.372065,sanitation,2029-01-20,Near Completion,True
+bc61edb9-a2a1-4c2b-9dda-cb58d12c4860,"Construction Interchange for Jamshedpur Municipal Area, Madhya Pradesh",376220000000,NHSRCL,10.669426,73.85982,roads,2025-11-17,Near Completion,True
+44ed8779-0df7-4672-965b-0b2d1ef088bb,"Expansion Sports Complex in Ranchi District, West Bengal",8720000000,AAI,35.891904,90.32358,public_works,2025-09-17,Ongoing,True
+e660fbdf-d2f0-4126-9504-53d32a8245d7,"Expansion Sports Complex for Guwahati Municipal Area, Punjab",19600000000,MoHUA,26.812522,77.983964,public_works,2026-03-16,Near Completion,True
+cc02e1f9-defc-4a7a-944a-edf325096417,"Expansion of National Highway between Gaya and Visakhapatnam, Karnataka",1073140000000,DFCCIL,11.388743,96.166598,roads,2027-09-26,Delayed,True
+a997bcdb-4817-4850-9947-704fa1a43639,"Modernization Fecal Sludge Treatment Plant in Visakhapatnam District, Haryana",3940000000,CPHEEO,9.550869,83.257377,sanitation,2025-07-13,Ongoing,True
+5f015223-ce45-40a7-94ee-ba494de6a775,"Modernization Flyover in Vadodara District, Telangana",197720000000,State PWD,14.795022,74.643588,roads,2026-04-20,Delayed,False
+45e19651-39de-46c2-9058-0a6d0e5f0c57,"Modernization of National Highway between Bengaluru and Mumbai, Chhattisgarh",168930000000,RVNL,25.506665,93.685936,roads,2027-06-11,Ongoing,True
+1ae355f1-2ffd-4db0-8823-42789a04e8a8,"Construction Fecal Sludge Treatment Plant for Ghaziabad Municipal Area, Punjab",6050000000,KUIDFC,10.182611,76.897977,sanitation,2028-06-07,Ongoing,True
+3b7e891d-3db4-4421-ace0-0a3c9524503c,"Expansion of Underground Drainage System between Kanpur and Jamshedpur, Karnataka",7450000000,State Jal Nigam,17.524431,72.954004,sanitation,2027-11-21,Delayed,False
+e774efa0-9496-4c73-a99e-284c31bbf3ee,BETWEEN END OF MORAN BYPASS (N.A.) (N.A.),821230000000,NHAI,22.212211,78.145091,roads,2027-09-01,Ongoing,True
+f5e43b07-e5d3-47ac-ac25-a7812de16869,"AND NH-119D (PKG-III) {12/2025} {1,358.00}",6230000000,AMRUT Mission,20.350673,85.470365,sanitation,2025-11-17,Ongoing,True
+ffe81e0e-8341-40b4-8c14-9e22a4d58b6c,"Setting up of LPG Plant with Rail Unloading Facility at Hathua, Dist. Gopalganj, Bihar",862420000000,RVNL,27.050877,87.524354,roads,2026-03-12,Near Completion,True
+86ed25e1-6f3b-4efc-8cd3-cf215391fc7c,"Modernization Flyover in Bengaluru District, Uttar Pradesh",548460000000,NHAI,28.737321,91.706571,roads,2027-05-30,Ongoing,True
+9044c292-6a61-4306-a829-806eaf8f6612,"Expansion Expressway for Patna Municipal Area, Rajasthan",855970000000,State PWD,13.696771,88.683998,roads,2025-10-06,Ongoing,True
+5eebddbe-6ffd-4a12-a4e8-cc6a98aba745,"Rehabilitation Storm Water Drainage System for Thiruvananthapuram Municipal Area, Kerala",3710000000,State Jal Nigam,10.399169,81.125033,sanitation,2028-02-11,Near Completion,True
+b3594cfb-96a6-4746-9df3-38af9c77dd96,"Modernization of Sewerage Network between Bhubaneswar and Howrah, Chhattisgarh",1840000000,UP Jal Nigam,23.285843,72.566588,sanitation,2029-11-11,Near Completion,False
+50a518d5-b9d8-47e3-8b34-86a7f7ce68e2,"Strengthening Urban Arterial Road in Gaya District, Andhra Pradesh",1185680000000,BMRCL,18.63105,73.664537,roads,2025-10-17,Ongoing,True
+baa0ea0e-9b26-4f97-9e39-90a1a48653b8,"Expansion Sports Complex for Vadodara Municipal Area, Andhra Pradesh",7440000000,AAI,12.982308,73.575595,public_works,2025-05-24,Ongoing,True
+25da5c64-89a5-4f2a-95dc-a684b7d2d873,"Development of National Highway between Visakhapatnam and Jaipur, Telangana",651670000000,DFCCIL,21.01211,68.074795,roads,2026-01-30,Ongoing,True
+749c4ebd-1743-4ee4-b70d-cc99e97c5ea5,"Expansion of Expressway between Kolkata and Noida, Telangana",260620000000,CMRL,26.184476,74.472657,roads,2026-09-02,Completed,True
+e1e1ffe3-abe1-43ce-a74c-8cc3f40d2a03,"Expansion of Bus Terminal between Patna and Indore, Andhra Pradesh",31090000000,CPWD,22.389229,76.998261,public_works,2029-03-24,Ongoing,True
+450b0026-0f6d-4d20-882f-365af7f64dda,OF HIGHER CAMPUS FOR INDIAN INSTITUTE OF (N.A.) (N.A.),4780000000,NBCC,23.819914,78.198024,public_works,2028-07-22,Ongoing,True
+2823c42c-d17b-4b27-8fed-d7151932d697,582 (East Central Railway [ECR] - I) Jharkhand 108.89 70,812470000000,NCRTC,29.492023,68.928819,roads,2028-07-15,Ongoing,True
+31d7d1d2-3f1c-4c18-aabc-d83d40bd9aee,"Upgradation of Bus Terminal Phase-I at Patna, Assam",23000000000,NBCC,23.068257,84.256557,public_works,2028-03-30,Completed,True
+0312b8e6-d600-47a0-a4b4-4f75c5b0c6ac,ROAD FROM KM 0.00 TO KM 18.600 OF (Feb-2024) (302.02),106420000000,State PWD,19.386884,76.052868,roads,2029-04-12,Delayed,True
+d53dad48-a14f-47e3-92ae-2cfed1dcda15,"Strengthening State Highway in Vijayawada District, West Bengal",196570000000,State PWD,26.582774,85.937318,roads,2027-08-27,Near Completion,True
+5de654bc-ac3f-45ab-a120-28fe3bea99af,19 CONSTUCTION/UPGRADATION OF EXISTING HIGHWAY 242.97 06/2022,819920000000,NHAI,12.263478,78.988997,roads,2026-04-09,Ongoing,True
+98d76404-0f37-4b66-a391-ad1da14a9b16,"Development State Highway for Vadodara Municipal Area, Tamil Nadu",1015880000000,NHSRCL,18.806934,72.633197,roads,2026-05-31,Ongoing,True
+45b93fa4-fb0b-4f8d-94d7-58f98529b933,"Expansion of Expressway between Warangal and Dhanbad, Jharkhand",850030000000,NCRTC,34.065106,93.791818,roads,2025-04-05,Completed,False
+2cf2c5fa-a9de-4017-a80c-e3f12763d49b,"Development of Airport Terminal Package at Mumbai, Gujarat",17450000000,MoHUA,17.505713,91.169765,public_works,2027-10-30,Completed,True
+ad714171-16b7-40fe-ab74-9efd6f910d88,"Expansion of National Highway Phase-II at Lucknow, West Bengal",1060520000000,State PWD,22.616138,93.215718,roads,2029-05-05,Completed,True
+89dbdc8e-c4b9-4d0a-be2d-4dee23c99305,"Construction Expressway for Gwalior Municipal Area, Maharashtra",255090000000,RVNL,27.316754,78.393025,roads,2025-08-26,Ongoing,False
+b0fa548f-64bd-45e2-ac24-0bff392ff47d,"Modernization Service Road for Indore Municipal Area, Haryana",165100000000,NCRTC,24.796173,93.385225,roads,2025-10-11,Ongoing,True
+b3c0421c-a371-4a67-8b24-32faa4020eeb,"Expansion Convention Centre in Patna District, Chhattisgarh",5220000000,CPWD,24.126944,79.608266,public_works,2028-01-29,Delayed,False
+65d7481b-dde8-4c0d-8053-eb1394933a5a,"Modernization Fecal Sludge Treatment Plant in Noida District, Rajasthan",2530000000,MP Jal Nigam,14.323425,79.129921,sanitation,2028-02-24,Delayed,True
+9efbfc07-e08f-4f45-8865-d6f32acff847,"Upgradation District Hospital for Udaipur Municipal Area, Haryana",35170000000,State PWD,28.602411,82.258339,public_works,2027-09-23,Ongoing,True
+0c366697-bad5-44c9-a6c4-81e81b600a10,"Rehabilitation Storm Water Drainage System for Hyderabad Municipal Area, Chhattisgarh",4710000000,CPHEEO,32.87001,83.960298,sanitation,2029-01-13,Ongoing,False
+6a81acdd-bbbe-4eab-bff5-e967ed13a8f8,"Strengthening of State Highway between Mumbai and Ranchi, Haryana",462720000000,RVNL,32.758861,95.978819,roads,2028-12-12,Ongoing,True
+2e528126-b8b4-4155-994a-933f4cef4746,"Expansion of Public Administrative Building Phase-I at Surat, Tamil Nadu",8200000000,NBCC,12.476114,84.921873,public_works,2025-03-11,Near Completion,True
+d485438e-f832-46aa-b95a-6dff59ce078d,"Rehabilitation of State Highway between Hyderabad and Bengaluru, Telangana",1134840000000,DFCCIL,27.373684,95.900642,roads,2025-10-17,Near Completion,True
+dc4895b1-ee0d-4961-9739-a3c5110e9b33,"Modernization Underground Drainage System for Gwalior Municipal Area, Rajasthan",3040000000,KUIDFC,13.879677,81.115694,sanitation,2025-09-13,Ongoing,False
+c547ad5f-a45d-4712-8798-0a57d7b04bad,(Airport Authority of India [AAI]) (02/2024) (02/2026) (322.45),9940000000,State PWD,10.784094,74.600904,public_works,2028-12-17,Ongoing,False
+7c553b9e-e16d-4553-b0b7-efd6603147de,(Maharashtra Metro Rail Corporation Limited [MMRCL]) (07/2025) (-) (3626.24),539690000000,CMRL,26.486883,79.39427,roads,2028-01-17,Ongoing,False
+326d2559-05a5-4e05-9b30-527f388bafb0,723 (North Western Railway [NWR]) Rajasthan 393.06 99,363950000000,NHSRCL,28.19467,89.253046,roads,2027-12-29,Completed,False
+34a98d2a-1aff-433d-93e2-a3469a332aff,"Construction Sewage Treatment Plant in Visakhapatnam District, Karnataka",7270000000,MP Jal Nigam,14.047551,69.626885,sanitation,2027-11-29,Ongoing,True
+edb23252-a354-468c-a707-192150704754,HIGHWAY NH-27 OF U.P BORDER - {12/2025} {381.80},633840000000,RVNL,9.226196,85.868083,roads,2025-12-11,Near Completion,True
+e67da565-4b4a-49be-97ea-51127e7e28e9,RINGROAD BYPASS SRINAGAR CITY (Oct-2025) (N.A.),330790000000,BMRCL,28.54602,95.398437,roads,2029-03-30,Ongoing,True
+81562f14-2ec0-427f-8943-9d796e072af9,Belagavi Improvement in Sewerage System Project,7570000000,State Jal Nigam,8.458064,69.994757,sanitation,2029-04-11,Ongoing,True
+09b18774-8b79-4fea-8bd5-e212b1f5be84,"Strengthening Government Office Complex for Delhi Municipal Area, Chhattisgarh",36790000000,AAI,10.564503,88.668918,public_works,2029-04-01,Ongoing,False
+017a8a6d-2462-4391-93ee-7956dba7d894,"690 (North Central Railway) (Madhya Pradesh, 2456.1 62",1165960000000,NCRTC,36.642006,83.704773,roads,2028-05-21,Delayed,True
+6b1cfcfc-0e65-4601-b877-b7336526edfb,"Expansion Judicial Complex in Thiruvananthapuram District, Tamil Nadu",36160000000,MoHUA,18.387231,86.265972,public_works,2027-02-07,Near Completion,False
+a5a4681b-f5e7-4e74-9bc0-a9b1ab32257b,"Construction of Water Supply Scheme Phase-I at Mumbai, Madhya Pradesh",2340000000,CPHEEO,27.712798,81.337609,sanitation,2029-10-21,Delayed,False
+e11bb1d5-6c18-4e4d-a291-08f8b34ee92b,"Upgradation of University Campus System at Surat, Telangana",33750000000,HUDCO,35.446445,76.993385,public_works,2028-10-10,Completed,True
+20988214-62ab-4a85-8894-a52f30c5edc1,"Strengthening Airport Terminal for Gaya Municipal Area, Odisha",40550000000,HUDCO,35.180259,90.280757,public_works,2028-11-10,Ongoing,True
+a7de9b4f-8f87-4be8-bcd9-ec7ba903a27e,"Development of Ring Road between Chennai and Patna, West Bengal",381450000000,BMRCL,30.966856,79.101023,roads,2026-05-29,Near Completion,True
+3e558cb0-2845-479d-b01e-1a1beba4c95e,"Rehabilitation State Highway for Guwahati Municipal Area, Jharkhand",1096390000000,NHSRCL,18.049686,72.02982,roads,2029-07-08,Ongoing,True
+554bd6e8-149d-45fd-914c-1b9141ef0f54,"Construction Bypass Road in Pune District, Maharashtra",431800000000,RVNL,11.207558,88.966462,roads,2025-12-21,Near Completion,False
+8b1e9dec-17e4-44b9-8492-d5316833efba,"Expansion of Water Supply Scheme between Mumbai and Gaya, Maharashtra",5760000000,State Jal Nigam,30.450125,71.574779,sanitation,2025-05-20,Near Completion,True
+641e3ecd-91de-48f7-b0b2-463c6f07cde9,"Construction of Judicial Complex Project at Chennai, Andhra Pradesh",6650000000,NBCC,10.669959,89.248028,public_works,2028-05-19,Near Completion,False
+5094070f-e036-4371-9561-b105315a5bb0,"Rehabilitation Ring Road for Thiruvananthapuram Municipal Area, Chhattisgarh",202870000000,DFCCIL,33.349597,91.371855,roads,2025-10-10,Ongoing,False
+661a2641-21fb-4255-b71b-551360ddbb1d,"Construction Airport Terminal in Ludhiana District, Karnataka",49640000000,MoHUA,31.800455,68.38206,public_works,2025-08-20,Completed,True
+f9239884-a456-462f-9308-0c7c59bd0fa1,"Expansion of Bus Terminal between Raipur and Cuttack, West Bengal",36600000000,AAI,14.251933,91.102839,public_works,2028-04-28,Delayed,True
+f2ec73d0-9250-4b5c-969d-6d6a41e10880,"Rehabilitation Expressway in Thiruvananthapuram District, Gujarat",1073750000000,RVNL,31.681147,80.407343,roads,2029-04-17,Completed,True
+59530020-eb62-4110-a046-fa8a306f4256,504 (South Central Railway [SCR] - II) Andhra Pradesh 18 25,921410000000,State PWD,18.598313,93.672363,roads,2028-05-29,Ongoing,True
+9d3c19eb-928e-404d-87e9-28b2ab32ecd1,"Strengthening Sewage Treatment Plant for Thiruvananthapuram Municipal Area, Odisha",5890000000,MP Jal Nigam,12.678104,84.852564,sanitation,2029-07-21,Completed,False
+174aa99a-7389-4f39-ad09-bc16955fe8c3,Provision of 4G based Mobile Services in Uncovered Villages and National Highways,583350000000,NHAI,15.531112,75.755849,roads,2025-11-29,Ongoing,True
+d960fe81-d411-4fa5-af1d-412867e2a7b4,24/7 water supply under AMRUT for Davanagere,1780000000,State Jal Nigam,15.281134,82.012699,sanitation,2028-01-20,Ongoing,True
+c1175c6f-b5f1-49d8-99a8-03f61d6483cb,"Expansion Flyover for Ahmedabad Municipal Area, Bihar",317450000000,State PWD,28.30883,72.709023,roads,2029-02-13,Near Completion,True
+6102d1e2-5d33-421c-b6a0-79099bf6421d,711 (East Coast Railway [ECoR] - II) Odisha 0 0,219020000000,RVNL,19.40171,93.006306,roads,2026-08-02,Ongoing,True
+8a1ece59-cba1-4312-829a-ac5e5f0944a9,"Construction Urban Arterial Road in Jodhpur District, Jharkhand",470790000000,DFCCIL,25.615173,84.938673,roads,2026-03-09,Ongoing,True
+6559cbf9-d7a5-416e-b8b0-2c417342b4e4,"Development Sewage Treatment Plant for Vijayawada Municipal Area, Maharashtra",2160000000,CPHEEO,12.298428,90.280196,sanitation,2028-08-17,Near Completion,True
+9c8d3a7e-9aa7-418f-a2d6-3dc4804e1a13,Lodhma - Piska - Link Line bypassing Hatia/Ranchi with Y connection,1024670000000,NHSRCL,25.582505,68.994764,roads,2025-03-25,Near Completion,False
+2ec451b0-b110-4108-81f9-829d05d71da8,40.00 OF BC ROAD KOTTIGEHARA {3/2022} {159.70},2330000000,Urban Local Body,28.920106,72.245539,sanitation,2027-08-05,Ongoing,True
+9dc0b3aa-a10a-4a88-973a-18fe4cba8b7a,"Strengthening of Expressway Phase-I at Cuttack, Chhattisgarh",1128170000000,DFCCIL,33.491274,87.132478,roads,2026-02-17,Ongoing,False
+f4e414f1-c3a4-43b5-8809-567a633c9c45,"Modernization of Sewage Treatment Plant between Hyderabad and Lucknow, West Bengal",3510000000,CPHEEO,17.189254,72.852486,sanitation,2026-06-04,Delayed,False
+441d1388-ce3e-4c03-a8fd-04f266eed13b,"Upgradation Judicial Complex in Guwahati District, Gujarat",31430000000,AAI,18.529322,91.191176,public_works,2027-03-01,Ongoing,True
+44adbd0e-725c-4314-acb6-0475695c46c6,"Construction Airport Terminal for Indore Municipal Area, Gujarat",36930000000,CPWD,16.464006,95.636286,public_works,2027-06-16,Delayed,True
+5dc89542-69e7-4d91-8330-70ce479ca8e1,"Strengthening University Campus for Hyderabad Municipal Area, Bihar",12510000000,NBCC,28.377783,93.959904,public_works,2025-03-20,Ongoing,True
+2abd6d84-d2a3-44aa-860c-ef4b684f4716,"Construction Sports Complex in Raipur District, Maharashtra",49680000000,CPWD,24.881954,89.691339,public_works,2026-12-03,Ongoing,False
+91490182-0191-441f-a879-761511b7074b,"Construction of Underground Drainage System Phase-I at Raipur, Gujarat",4210000000,Urban Local Body,32.109721,84.697628,sanitation,2028-04-23,Ongoing,True
+9ce057f5-ca2d-485c-998f-cda7b309c9c5,"Upgradation of Bypass Road Stretch at Hyderabad, Haryana",721480000000,MRVC,22.092568,93.662456,roads,2027-02-04,Ongoing,False
+ba72ebda-e899-4b03-ba3e-00a9f5439659,ROAD FROM TAMENGLONG TO MAHUR {8/2025} {890.33},429490000000,CMRL,22.902731,88.041127,roads,2027-06-27,Ongoing,True
+9a47dd68-d6d8-4323-bb9a-0d0f540f0861,"Rehabilitation of Sewerage Network Package at Gwalior, Rajasthan",3630000000,Urban Local Body,15.561289,95.727363,sanitation,2028-07-08,Ongoing,True
+73e96418-716b-4f17-b6a7-c5b306fcb704,"Development of District Hospital between Noida and Warangal, Assam",11610000000,AAI,11.286162,92.206177,public_works,2028-02-28,Delayed,True
+f9d14a18-9f74-4a55-96e3-af270e53dd0f,"Upgradation of Sports Complex between Amritsar and Bhopal, Jharkhand",3950000000,State PWD,8.473721,68.041478,public_works,2025-12-07,Near Completion,True
+e6847a3b-313f-4d64-9aa0-7d6c1e87b098,"Rehabilitation Bypass Road for Nagpur Municipal Area, Telangana",17550000000,MRVC,9.108606,84.906724,roads,2026-06-22,Near Completion,True
+c3a3418c-a4ff-462f-98d1-ff0dd84793e6,5.400 OF NH-40/DESIGN KM.0.000) TO (N.A.) (N.A.),1580000000,MRVC,33.833961,71.691929,roads,2026-09-03,Near Completion,True
+d3289e2a-0468-4ad6-ac07-78d94c49bab8,"Modernization Flyover in Nagpur District, Tamil Nadu",929620000000,BMRCL,23.870411,73.067378,roads,2028-06-08,Completed,True
+ef13bf78-ffe8-464b-8d1e-e7c9c694d363,"Rehabilitation Water Supply Scheme for Howrah Municipal Area, Uttar Pradesh",7790000000,AMRUT Mission,27.365211,89.801867,sanitation,2029-11-16,Ongoing,True
+fac9f059-a94d-4b44-b6a0-65fb8cd988cd,"Modernization of Urban Arterial Road between Amritsar and Jodhpur, Telangana",829330000000,RVNL,35.296284,81.782125,roads,2026-01-23,Near Completion,True
+ad5da4a5-3ec6-4266-ab4d-ebee6f75e5a1,"Rehabilitation Ring Road for Jamshedpur Municipal Area, Madhya Pradesh",515670000000,State PWD,24.086601,74.76823,roads,2028-11-19,Ongoing,True
+91630ec0-8bfe-4590-a53c-a0fac7a5df3d,"Rehabilitation Fecal Sludge Treatment Plant for Gaya Municipal Area, Haryana",3950000000,CPHEEO,11.353246,82.444848,sanitation,2028-02-24,Ongoing,True
+31b7667b-d78c-4437-a3c2-13e4b6220297,"Construction of National Highway between Mysuru and Delhi, Punjab",115290000000,CMRL,27.508529,72.827637,roads,2025-08-06,Delayed,True
+5d9f4f3e-e60c-4a92-b2e0-8a830d279685,"669 (North Western Railway [NWR]) (Gujarat, 2037.04 17",629340000000,CMRL,17.273296,70.370252,roads,2028-02-08,Completed,True
+22263e07-2e57-4252-8b9f-e6c785554a2a,"Development of Sports Complex Corridor at Thiruvananthapuram, Kerala",41120000000,NBCC,8.444505,93.719638,public_works,2026-11-08,Delayed,True
+fc473427-b563-47c7-af73-588ca4e11893,"Modernization of Flyover Phase-I at Kanpur, Karnataka",1036810000000,MRVC,33.859421,94.751505,roads,2026-11-04,Near Completion,True
+31d5d588-3a25-4614-a80b-d178071e218d,"Rehabilitation of Ring Road between Delhi and Udaipur, Haryana",993090000000,State PWD,11.342819,80.643055,roads,2029-07-05,Ongoing,True
+f6d00daa-2d79-40ee-a9ba-e58cfe9ff4dd,"Expansion Bypass Road for Ranchi Municipal Area, Kerala",706870000000,State PWD,13.945774,92.67494,roads,2029-07-28,Delayed,True
+aa73d840-cd3c-43fa-a0ff-cbc978f70ec1,PRADESH FIELD AIRPORT AT HOLLONGI (Jul-2025) (732.00),15830000000,NBCC,22.492262,93.708099,public_works,2028-04-26,Ongoing,True
+7b801a02-997d-4f60-b184-ae9eb44d182f,"Expansion of Service Road Section at Thiruvananthapuram, Rajasthan",200610000000,RVNL,14.544788,92.518359,roads,2029-04-24,Near Completion,True
+9214f294-010e-414f-84f1-b84699cdd706,"Construction State Highway for Cuttack Municipal Area, Maharashtra",966170000000,BMRCL,17.050198,70.617012,roads,2029-09-27,Near Completion,False
+50afabc2-4cb6-48da-80ea-31083088c83f,140.470 KM. OF NH-8E (PKG- III) {5/2025} {485.75},5540000000,UP Jal Nigam,33.869541,73.756853,sanitation,2028-03-27,Delayed,True
+fce5b1be-1753-4072-859b-0471431cfd99,"Rehabilitation Convention Centre in Thiruvananthapuram District, Karnataka",20480000000,NBCC,28.328939,89.110293,public_works,2026-05-03,Near Completion,True
+3b500be1-24a1-4f49-971f-912c0c818345,"Rehabilitation Expressway in Udaipur District, Chhattisgarh",687700000000,State PWD,33.143931,81.39514,roads,2027-05-24,Ongoing,True
+c964b433-e9a6-421d-b40c-06271c189de8,"Development of Interchange between Mumbai and Coimbatore, Telangana",212480000000,DFCCIL,28.714369,92.516289,roads,2027-05-02,Ongoing,True
+b2adb0f6-8592-427d-b777-4f83e48672e4,"Development Service Road for Mysuru Municipal Area, Rajasthan",1135890000000,MRVC,16.798464,93.091793,roads,2029-12-19,Completed,True
+8a75028a-2239-4392-99bf-256d9a98b47d,517 (Central Organisation for Railway Electrification [CORE]) Assam 391.73 89,1080510000000,State PWD,22.962301,71.58041,roads,2027-06-11,Completed,True
+cbfb27fe-cc97-41b9-9050-e82489a81ee9,"Modernization Bypass Road in Udaipur District, Uttar Pradesh",203980000000,MRVC,29.170701,69.24219,roads,2025-03-13,Near Completion,True
+85d3a81c-325a-4595-a9b7-62702829e314,"Modernization of Expressway Project at Warangal, Tamil Nadu",967940000000,MRVC,9.338201,82.805361,roads,2025-04-20,Ongoing,True
+df70901e-370d-4c33-a90f-bd0fa6cb19a5,Sivok-Rangpo New Rail Line,402370000000,DFCCIL,34.001837,87.514716,roads,2027-08-28,Ongoing,True
+19e16aab-9f2c-4df0-9368-72a6300d1dc0,"Development Convention Centre for Howrah Municipal Area, Odisha",37270000000,CPWD,16.547531,68.955852,public_works,2026-10-30,Completed,True
+55173f53-354c-476a-8168-80aa82db59b2,(South Central Railway [SCR] - II) (03/2025) (-) (1595.55),1199010000000,CMRL,16.747221,72.637466,roads,2025-01-18,Near Completion,True
+39acfdd1-9cd3-4251-a7f2-5b58dc056846,Construction of New Integrated Terminal Building and associated works including,20260000000,MoHUA,23.023868,92.959182,public_works,2027-11-28,Ongoing,True
+e43e92f1-ece9-45b5-97ae-25e85eec6f4c,Kanpur Metro Rail Project,1094580000000,NHSRCL,29.076051,81.522096,roads,2027-02-12,Ongoing,True
+1ddaa3b5-152f-4f7c-9bc8-6880cbad2c8a,720 (North Western Railway [NWR]) Rajasthan 0 0,1128610000000,RVNL,22.707567,89.232409,roads,2025-03-08,Ongoing,True
+04b02cc5-efcf-4fe5-86e5-b007cdefc255,"EXISTING GUWAHATI TERMINAL, (Sep-2026) (N.A.)",34780000000,NBCC,29.576011,69.36738,public_works,2025-09-09,Ongoing,True
+eb73bc70-6b05-4e52-b9ef-459bc6ccd8ef,"Upgradation University Campus for Bengaluru Municipal Area, Chhattisgarh",26710000000,AAI,16.082096,93.912129,public_works,2028-10-05,Ongoing,True
+9dd5b351-1f4c-48a5-824a-61db67f7d8fd,"Strengthening of Road Over Bridge Project at Mumbai, Chhattisgarh",1061240000000,CMRL,19.4529,90.414128,roads,2027-08-30,Near Completion,True
+23978cfa-1eb8-45dc-965e-e9db93b6a1fd,"Strengthening of Judicial Complex between Lucknow and Mumbai, Kerala",43460000000,MoHUA,17.628887,90.342987,public_works,2027-07-02,Near Completion,True
+8ce61ff4-4f06-40f0-b1cd-149215efaf5b,Construction of Additional Tankages and Allied Facilities at JNPT Terminal,11810000000,NBCC,17.130303,88.289484,public_works,2025-05-29,Near Completion,True
+941f24b4-c9b6-4fca-b809-9091fc580dd6,"Modernization Sewerage Network in Kolkata District, Telangana",3940000000,Urban Local Body,21.011715,88.996679,sanitation,2027-06-29,Completed,True
+526632bc-f360-4a87-80b8-22dddf8eaa9d,"Upgradation of Flyover Phase-II at Indore, Madhya Pradesh",458450000000,RVNL,25.163173,90.856679,roads,2026-06-22,Ongoing,True
+c8f601f9-6a6d-4850-9472-d1938d3dcde6,"Upgradation National Highway in Mumbai District, Uttar Pradesh",1820000000,DFCCIL,8.757556,68.855393,roads,2025-12-19,Delayed,True
+c1ddd81d-df84-4972-bc9b-4953e06e8bc2,"PROJECT (KM 0.00 TO KM 70.2) OF NH- (N.A.) (2,523.86)",1174420000000,CMRL,26.291863,80.951677,roads,2025-07-19,Completed,True
+a2403385-1db9-41b3-b845-9f705a751775,"Rehabilitation Ring Road in Amritsar District, West Bengal",951460000000,DFCCIL,29.451558,86.490924,roads,2028-06-13,Delayed,True
+627b1431-d58e-4973-a34d-c64b652a76a9,"Construction of Public Administrative Building Section at Delhi, Punjab",15430000000,HUDCO,36.233472,90.735895,public_works,2029-04-09,Near Completion,True
+617480c2-6e8a-4311-bc29-4d36ba8c3950,"Modernization Flyover in Visakhapatnam District, Chhattisgarh",1024270000000,State PWD,9.705602,81.244717,roads,2028-11-23,Ongoing,False
+a2570040-793d-4687-a215-0c1bb99c9fe0,HIGHWAYS (N24002222),1073230000000,MRVC,28.22384,69.863575,roads,2028-12-20,Delayed,False
+06353e1f-8ed7-4eb5-904d-142af7232c9a,"Strengthening Expressway in Jamshedpur District, Karnataka",435340000000,NHAI,25.342695,71.394473,roads,2027-01-05,Delayed,False
+28bfb370-ce70-47eb-89fa-77eb6e181aa0,Ahmednagar - Beed - Parli - Vaijnath New Broad Gauge Line Railway Project [261.3,414500000000,NHSRCL,11.132898,80.192807,roads,2025-12-14,Ongoing,True
+d66bf7a7-75e3-4177-841b-522857ebac2c,"INTERNATIONAL AIRPORT FROM DND {3/2026} {2,898.00}",36270000000,HUDCO,22.743837,69.890222,public_works,2027-11-04,Ongoing,False
+8c981764-28de-4e84-857e-12c4fda59b4f,452 (PMSSY AND Institute of NATIONAL Importance) 1354.55 2,21290000000,CPWD,29.467534,96.237592,public_works,2026-01-15,Near Completion,False
+c2ca710d-4925-4630-b67a-26573390e981,"Upgradation Storm Water Drainage System in Raipur District, Bihar",5690000000,State Jal Nigam,27.813813,82.963631,sanitation,2029-07-31,Completed,True
+ba5f60fb-dd0e-4137-87e8-933cf907e87d,"Strengthening Fecal Sludge Treatment Plant in Ranchi District, Bihar",1960000000,UP Jal Nigam,16.440934,89.736715,sanitation,2027-10-15,Ongoing,True
+44b337b7-4c08-4362-b961-390c632a2037,PCMC To Nigdi- Extension Of North South Corridor Of Phase-1,1125330000000,DFCCIL,28.50041,81.333712,roads,2027-11-13,Ongoing,False
+1c33be14-7181-475a-bd8a-bf743be37944,"Rehabilitation of Ring Road Project at Bhubaneswar, Tamil Nadu",1117900000000,CMRL,9.762489,84.136827,roads,2027-12-21,Ongoing,True
+21935058-4f47-4c3e-b785-b99e7ea85978,"Development Convention Centre for Nagpur Municipal Area, Chhattisgarh",5070000000,State PWD,10.10944,74.713268,public_works,2026-10-22,Ongoing,True
+f57377a8-b18b-4880-a888-436acb5a9694,/ EXTRA DOSE CABLE BRIDGE ON (N.A.) (N.A.),662710000000,CMRL,34.964596,84.6855,roads,2027-10-10,Ongoing,True
+46711fca-a0c6-4490-9b07-17dae5e45eda,DMRTS Phase - IV [3 Priority Corridors],348360000000,DFCCIL,24.469674,84.957891,roads,2025-10-09,Ongoing,True
+04f4009a-4b4c-45e1-9929-62d2c9d2c669,472 (Deendayal Port Trust [DPT]) Gujarat 186.47 90,40790000000,MoHUA,25.065902,85.562977,public_works,2025-04-28,Delayed,True
+d239c230-29fe-43da-9f64-103b4bde632a,"Construction Sewage Treatment Plant in Vadodara District, Gujarat",6380000000,AMRUT Mission,22.071505,96.567901,sanitation,2026-10-19,Completed,False
+7da79f4b-f843-4297-ba07-6c2fe75e80e6,"CAMPUS IIT JAMMU (PHASE 1C) (Apr-2025) (1,144.68)",25760000000,CPWD,11.581678,90.092551,public_works,2025-12-02,Ongoing,False
+0f8b7abc-f930-42af-9d2d-292e0987e49a,"Strengthening Storm Water Drainage System in Ghaziabad District, Madhya Pradesh",3010000000,State Jal Nigam,20.657999,85.255562,sanitation,2027-01-19,Ongoing,True
+bf774d33-b8ef-4b75-bd13-a2957fe0c731,(East Coast Railway [ECoR] - II) (07/2022) (01/2025) (168.32),787760000000,DFCCIL,28.208661,83.802755,roads,2027-02-18,Ongoing,True
+020da69e-632b-40c5-83c0-45ce77da5fa2,"Strengthening Water Supply Scheme in Jaipur District, Odisha",7030000000,AMRUT Mission,28.616905,81.259681,sanitation,2027-06-03,Delayed,True
+2e707b55-3a88-4ad5-9310-92c7b4dae0cc,529 (East Central Railway [ECR] - I) Bihar 380.73 85,662200000000,NHAI,13.103068,70.714685,roads,2025-02-09,Near Completion,False
+ec271ebf-9e8b-4e4f-bf46-3b984948517a,"670 (North Western Railway [NWR]) (Gujarat, 363.31 13",943750000000,MRVC,33.001025,73.523699,roads,2026-05-29,Delayed,True
+c2269ac0-470c-4614-befd-d03eebae542f,"Rehabilitation of Ring Road between Bengaluru and Pune, Karnataka",248990000000,BMRCL,27.146083,89.204873,roads,2028-05-03,Ongoing,True
+93f1714b-7bf7-4885-bc61-732c4eccfc29,Mumbai–Ahmedabad High Speed Rail Project,229660000000,NHSRCL,29.549572,88.545739,roads,2028-01-07,Ongoing,True
+c521f23c-eeb7-4c2d-ba3a-b73e0d6c202a,ROAD TO 2 LANE WITH PAVED SHOULDER FROM KM,126630000000,NHAI,27.61545,93.79742,roads,2029-10-30,Completed,True
+a070b57d-d7d3-4cc1-b474-af6e30f91481,"Development Underground Drainage System in Ghaziabad District, Tamil Nadu",3680000000,MP Jal Nigam,11.351225,79.946855,sanitation,2028-06-07,Ongoing,False
+76308613-a128-45c7-a6db-b15780ec1bb6,"Construction of Flyover Phase-I at Bhubaneswar, Madhya Pradesh",429780000000,RVNL,35.31692,80.975659,roads,2025-07-07,Completed,True
+c7a8c3b8-b7cf-414f-9096-ee91dfa49b6c,"Construction of Public Administrative Building System at Pune, Karnataka",10820000000,MoHUA,32.99812,77.158869,public_works,2028-01-04,Near Completion,True
+15fc616c-a46b-4be7-8c95-f86b79c9df3f,"Strengthening Sewage Treatment Plant for Cuttack Municipal Area, Punjab",4780000000,UP Jal Nigam,16.40033,71.603384,sanitation,2025-10-25,Ongoing,False
+c6e52492-959f-4f99-8d00-dc09e8d6f4b0,(Mumbai Port Trust [MPT]) (01/2022) (12/2027) (693),33620000000,MoHUA,11.681184,72.979308,public_works,2026-09-09,Ongoing,True
+68514e55-18ca-49da-a187-f29fbdf4a3e5,NH-130CD ROAD FROM KM 396.800 TO (Jul-2024) (N.A.),9340000000,MoHUA,28.805545,91.096188,public_works,2028-01-23,Ongoing,True
+81b9baf6-cb34-47c9-a71d-6bec6b998253,KM 70.15 TO KM 121.025 OF NH-80 (N.A.) (N.A.),616800000000,BMRCL,24.235411,78.169019,roads,2026-07-25,Near Completion,True
+14b881fa-d430-4e7d-9f34-6bcc62fb4d19,BUILDING OF CRPF AT LODHI ROAD (N.A.) (N.A.),3900000000,AMRUT Mission,16.766051,80.059437,sanitation,2025-03-09,Near Completion,False
+e72988c2-b009-4ea8-9eca-fa189508326a,"Rehabilitation Expressway for Vijayawada Municipal Area, Bihar",876290000000,RVNL,34.825748,76.32133,roads,2029-05-24,Ongoing,True
+9b16381f-16f6-4676-b430-ce8394e6a955,"Modernization of Sewerage Network between Guwahati and Udaipur, Rajasthan",2520000000,Urban Local Body,28.024107,95.668351,sanitation,2027-04-18,Ongoing,True
+37760b07-9bfb-4ef2-b8d0-2cc5504f6c26,"641 (South Central Railway [SCR] - II) (Andhra Pradesh, 75.78 1",624460000000,NHAI,33.293271,68.796323,roads,2027-12-08,Ongoing,True
+b8149396-a93b-4b1f-98dd-47e42f4f49ce,"Expansion Sports Complex for Jodhpur Municipal Area, West Bengal",36870000000,State PWD,24.411482,95.881948,public_works,2026-10-14,Ongoing,True
+640266e4-253d-40bf-8364-0a3dbfe62582,"Development National Highway in Udaipur District, Jharkhand",183190000000,RVNL,8.991926,94.099492,roads,2029-02-15,Near Completion,True
+42eb1876-55f0-4a86-b07f-0cf16215ae78,"Expansion of Convention Centre between Vijayawada and Cuttack, Telangana",24830000000,NBCC,36.61449,87.66041,public_works,2025-08-29,Ongoing,True
+926a0c5d-ee85-47e4-88af-471f74bc72c1,"Upgradation of Road Over Bridge Project at Vadodara, Odisha",425270000000,NCRTC,14.936294,84.370059,roads,2028-07-01,Near Completion,True
+5141c0d0-ad82-455f-bcb5-c962e9d0b56e,"Grass Root Rail-fed Depot at Sekerkote, Agartala as resitement of existing",384690000000,DFCCIL,10.349429,87.087693,roads,2027-06-30,Ongoing,True
+f0789992-2e55-4473-97c7-ae6a63d5576e,"Construction of Sports Complex between Delhi and Jodhpur, Chhattisgarh",2090000000,NBCC,9.275814,84.180611,public_works,2026-05-27,Ongoing,True
+a8e921b3-6d67-47a8-9a51-8152d24054c5,"Expansion Road Over Bridge for Ahmedabad Municipal Area, Maharashtra",1150930000000,State PWD,12.727022,75.41837,roads,2026-05-08,Ongoing,True
+5d971785-83b4-4ece-b57f-de589513716d,"Indian Oil Technology Development and Deployment Centre at R&D Campus-II,",36460000000,AAI,19.452862,70.927873,public_works,2028-09-04,Ongoing,True
+0d6edef0-b201-4b9a-824e-d906304d9752,"Strengthening Sewage Treatment Plant for Lucknow Municipal Area, Kerala",3910000000,UP Jal Nigam,25.641965,79.452998,sanitation,2027-04-14,Completed,True
+e8d32a63-d47c-419a-946b-8b300c780b5a,"Expansion of Expressway Phase-II at Kolkata, Haryana",1143260000000,State PWD,11.161396,78.072052,roads,2028-06-17,Ongoing,False
+7fa92a67-e866-4978-9b8a-3f9d9c5aba73,"Strengthening Storm Water Drainage System in Coimbatore District, Odisha",6630000000,KUIDFC,16.30377,90.540469,sanitation,2026-12-05,Near Completion,True
+9660b38e-a3eb-4df2-ac08-d979356867c3,"Strengthening of Storm Water Drainage System Package at Chennai, Telangana",5650000000,Urban Local Body,28.172446,95.814898,sanitation,2025-02-19,Near Completion,True
+cf18c920-9320-44aa-abb9-2e1b8c10262f,(Western Railway (WR) - II) (07/2025) (10/2027) (437.21),144010000000,NHAI,13.893873,82.923978,roads,2029-12-18,Completed,True
+b9537e25-5788-499b-87df-62cb15329295,"Modernization of Underground Drainage System between Delhi and Jodhpur, Assam",3740000000,AMRUT Mission,30.462157,91.268835,sanitation,2027-09-20,Ongoing,True
+ecdaedd7-9799-4fe8-bc8e-2295b08ebe32,"Expansion Sewerage Network for Ludhiana Municipal Area, Andhra Pradesh",5930000000,AMRUT Mission,34.603479,90.385473,sanitation,2028-12-13,Ongoing,False
+7797b4c0-a2a2-4b5d-93d5-6bce4b40c461,1 (Adani Airport Holdings Limited) Uttar Pradesh (03/2026) 3112.57,2020000000,AAI,29.38003,79.886965,public_works,2028-01-29,Delayed,True
+0b8bf95d-a0c7-406a-9485-5bf22cf9c3f3,"Strengthening of Fecal Sludge Treatment Plant Project at Hyderabad, Jharkhand",5530000000,UP Jal Nigam,8.069253,79.745869,sanitation,2026-02-26,Near Completion,True
+f58b88c9-c03b-4555-bc2c-54c65b9489e1,713 (Railway) Punjab 134.48 50,635000000000,NHAI,36.335821,73.756484,roads,2028-09-30,Completed,True
+1ece2b04-b606-40ce-b9ad-d2e30f6c3716,Phase B of Construction of Permanent Campus of IIT Palakkad,11760000000,MoHUA,25.685641,77.024204,public_works,2026-03-24,Ongoing,True
+6794d3a8-0aba-4c9a-a5eb-dddab9042ee7,Western Dedicated Freight Corridor,568740000000,NCRTC,25.948218,96.945973,roads,2029-05-26,Ongoing,False
+1614f0e3-3506-43c7-9f3f-e21009304848,"Upgradation Underground Drainage System for Howrah Municipal Area, Haryana",2840000000,AMRUT Mission,11.171212,78.321541,sanitation,2026-02-28,Ongoing,False
+a6bcfc2b-afbb-477b-bdd6-b971d7bbe982,SHOULDER FROM NEW ROLEP BRIDGE AT {3/2026} {478.79},54810000000,RVNL,20.749771,71.874712,roads,2026-04-14,Completed,False
+fefa8703-db6c-423a-8bf9-13f655ec3330,"Strengthening Bypass Road for Noida Municipal Area, Tamil Nadu",282210000000,NHSRCL,29.531202,76.542242,roads,2028-03-23,Delayed,True
+66373a14-4e14-4604-98ae-09ca5833429c,"Construction of Bus Terminal Project at Thiruvananthapuram, Tamil Nadu",23590000000,CPWD,9.764106,82.69917,public_works,2027-12-23,Delayed,True
+264329a0-4122-407f-9df4-b28eb85963aa,"Strengthening National Highway for Visakhapatnam Municipal Area, Karnataka",1011550000000,NHAI,32.978444,68.074565,roads,2027-03-29,Ongoing,False
+a8659934-b6b0-4955-84e3-5db9e50092cd,(PMSSY AND Institute of NATIONAL Importance) (09/2025) (-) (-),29820000000,State PWD,26.775531,81.320105,public_works,2027-12-03,Ongoing,True
+4cf70ea9-362c-41e0-b51f-b1cb92fc5386,IISc Bangalore Hostel Infrastructure Project,907630000000,NCRTC,9.706369,80.077577,roads,2029-10-15,Ongoing,True
+52f38fa2-3ada-4ec8-b59b-ac0a1936e6a0,"Expansion Storm Water Drainage System in Ludhiana District, Kerala",1830000000,Urban Local Body,35.944896,73.392187,sanitation,2029-02-01,Ongoing,True
+8dc47152-277a-4c5d-9bce-be65dec52b57,"Strengthening Bus Terminal for Ludhiana Municipal Area, Bihar",32890000000,HUDCO,13.095553,75.673313,public_works,2027-12-11,Ongoing,True
+d03f68af-80bb-4bd6-ba49-4c3b9d8f9153,Ludhiana- Killa Raipur Railway Doubling Project,544960000000,BMRCL,10.487455,87.422759,roads,2029-09-01,Near Completion,True
+e4aeae99-5463-4e3f-bfd4-dee0c9b5a1e2,"ROAD TILL NANGLOI - NAJAFGARH {8/2025} {1,894.96}",3500000000,MP Jal Nigam,21.896823,93.041854,sanitation,2025-12-24,Ongoing,True
+014e7391-f42d-4bc1-8bae-0f4cfd137812,"Construction of Ring Road between Lucknow and Nagpur, Odisha",90740000000,NCRTC,33.147815,74.476416,roads,2027-05-21,Ongoing,True
+4c9456e6-6483-4fa5-a48c-5bb331e870d0,"642 (South Central Railway [SCR] - II) (Andhra Pradesh, 14.49 0",673570000000,MRVC,18.228755,77.189692,roads,2025-04-25,Delayed,True
+c8d46cc5-3f7c-484f-922c-1c73051592fe,"Upgradation of Government Office Complex between Surat and Guwahati, Chhattisgarh",23270000000,AAI,32.896255,90.690635,public_works,2027-12-11,Delayed,True
+6c4844f9-e2b4-4faf-a294-0ddc33c025b4,"Strengthening Service Road in Lucknow District, Odisha",1191970000000,NHSRCL,24.492094,70.442535,roads,2029-12-23,Ongoing,True
+f29487ec-6fa2-45b6-ac63-cdf920c73568,"Development of Convention Centre Phase-I at Kochi, Gujarat",39940000000,NBCC,25.798197,87.897875,public_works,2029-04-13,Near Completion,True
+d30ce201-1352-4daf-8bcc-c3f92d7bd40a,"Modernization of Urban Arterial Road Section at Visakhapatnam, Kerala",589180000000,NCRTC,35.632394,81.210876,roads,2029-12-09,Completed,True
+adafea70-2d34-453a-89f9-8c16b4fdc26f,"Upgradation Urban Arterial Road for Guwahati Municipal Area, Chhattisgarh",495580000000,NHAI,22.666151,68.859548,roads,2027-12-20,Delayed,True
+1bba5f40-39a4-4aff-81de-c0a8ebea724e,"VADODARA KIM EXPRESSWAY FROM (May-2025) (1,738.03)",938860000000,NHAI,21.201072,85.057065,roads,2029-01-24,Completed,False
+68bf5dff-3bf7-486c-a93f-c1588ff3e207,"Construction State Highway for Bhubaneswar Municipal Area, Haryana",996680000000,DFCCIL,21.290171,79.573037,roads,2029-03-05,Ongoing,True
+0f9eddc6-e38c-45b7-855a-c8520631ec17,"Modernization of Water Supply Scheme Package at Ludhiana, Punjab",3600000000,KUIDFC,22.267674,95.302259,sanitation,2026-07-01,Ongoing,True
+119e035b-40b6-4e2f-b2fc-4cb6d4fb8f21,"TRANSPORT SECTION INCLUDING FLYOVER AT (Nov-2025) (1,687.31)",26520000000,MoHUA,30.956763,70.647096,public_works,2027-10-23,Near Completion,False
+48d572a0-cd9b-439b-b5de-03f69deff67f,Rishikesh–Karnaprayag New Rail Line Project,177330000000,NHAI,23.586719,84.954819,roads,2027-02-04,Ongoing,True
+be40def8-e122-4064-b552-698490edf998,"Strengthening District Hospital in Kolkata District, Jharkhand",12920000000,HUDCO,18.49345,84.79832,public_works,2029-06-23,Near Completion,True
+5386308e-caef-4825-b93c-06214ffe02fd,"Construction of Sewerage Network between Dhanbad and Ghaziabad, Jharkhand",4800000000,KUIDFC,24.346074,86.835866,sanitation,2029-01-13,Ongoing,True
+02306c56-d2db-4837-9c82-ba8c168536a3,"Modernization of University Campus Section at Amritsar, Maharashtra",34960000000,HUDCO,19.143246,88.695125,public_works,2029-12-05,Near Completion,True
+85329ea5-9dd1-4417-8b20-2a671aff7c02,Sakri -Hasanpur [via Harnagar - Kusheshwar Asthan] New Railway line,944410000000,CMRL,27.841645,87.647852,roads,2027-09-12,Ongoing,True
+f9d3e297-847b-4137-8fcc-d3b030562a2d,"Strengthening of District Hospital Section at Gwalior, Rajasthan",35370000000,MoHUA,29.591037,68.286723,public_works,2028-03-25,Ongoing,True
+845f7ed7-1323-4158-88fb-433e99be65c1,"Development Sports Complex in Ghaziabad District, Telangana",28160000000,State PWD,33.667584,86.67325,public_works,2028-03-24,Near Completion,True
+b1ad2d2e-9da5-408c-b3a0-c49367ebd2b1,"Development of District Hospital between Ghaziabad and Ranchi, Gujarat",10250000000,State PWD,11.304453,83.634287,public_works,2027-01-11,Ongoing,False
+a93b7844-1222-45c6-9b24-f4fcff730357,"Strengthening of Convention Centre Phase-I at Ahmedabad, Madhya Pradesh",23850000000,AAI,25.942341,95.453992,public_works,2026-11-05,Ongoing,True
+ed1eb7b8-419a-491e-95fe-e35490919122,BELEKERI PORT ROAD LINK RD. AND {12/2025} {440.16},3510000000,State PWD,21.872512,91.743235,public_works,2026-01-05,Ongoing,False
+682e7966-0633-4072-a958-850471e5c851,"Strengthening Bypass Road in Bhopal District, Maharashtra",993950000000,NHAI,15.467187,94.467644,roads,2026-08-28,Delayed,False
+5cd01635-2025-43d1-827d-7ab96e0881e5,"Construction Sports Complex for Visakhapatnam Municipal Area, Assam",13100000000,AAI,35.745701,80.34326,public_works,2026-05-26,Ongoing,True
+b018486b-d1ab-4661-a833-079521a80416,(Airport Authority of India [AAI]) (08/2023) (10/2025) (274.38),45220000000,HUDCO,17.776002,72.021116,public_works,2028-07-27,Ongoing,True
+e5d66092-c684-4f4c-abb2-86fe3fc98b75,"Strengthening of Urban Arterial Road Phase-I at Patna, Jharkhand",389520000000,BMRCL,29.539306,89.041124,roads,2028-09-20,Ongoing,True
+c009264f-79bc-42ae-af8b-c83a22388a06,Laying of POL Pipelines in Common Corridor for proposed grass root terminal at,763100000000,State PWD,27.818087,75.10269,roads,2026-06-06,Near Completion,True
+d5ded6bf-e00c-4e38-881c-ce28f615177f,"Strengthening of Expressway Project at Jodhpur, Bihar",1179310000000,NCRTC,22.075615,89.79158,roads,2027-09-05,Delayed,True
+028238f8-8067-4832-96b4-1059db17bdc2,"Rehabilitation Airport Terminal for Hyderabad Municipal Area, Kerala",14610000000,HUDCO,32.886122,91.718557,public_works,2028-09-25,Ongoing,True
+b5a49650-3b36-46ad-9bab-293f459147b4,"Construction of State Highway Package at Pune, Tamil Nadu",592180000000,CMRL,22.147041,76.134172,roads,2025-06-12,Near Completion,True
+8f046ff2-c64f-4130-8e9c-00102c630fd8,"Upgradation Sewage Treatment Plant for Gaya Municipal Area, Uttar Pradesh",6440000000,KUIDFC,19.40058,96.74275,sanitation,2026-01-29,Ongoing,True
+da1bf65b-67f1-4a95-b22d-25a774a8a25c,"Rehabilitation of University Campus Section at Ranchi, West Bengal",34840000000,CPWD,18.77032,78.652329,public_works,2027-05-03,Ongoing,True
+f09ca837-f647-43ab-917b-1214d4f2ce3a,"Strengthening Service Road in Amritsar District, Rajasthan",836220000000,RVNL,23.176466,79.709659,roads,2025-01-10,Near Completion,True
+06ecb5b5-4ef1-4ff3-9a40-b3407ea13591,"Construction District Hospital for Lucknow Municipal Area, Kerala",29130000000,State PWD,24.540731,91.660052,public_works,2026-05-08,Near Completion,False
+2868359d-0774-4c01-a27a-c9fc42129c26,"Development National Highway for Raipur Municipal Area, Gujarat",720570000000,NHAI,20.747918,77.770035,roads,2026-01-23,Delayed,True
+630e31dd-6ca4-4525-b5b5-227742069298,"Expansion of Expressway Corridor at Mysuru, Telangana",330400000000,NHSRCL,28.205735,83.570038,roads,2028-05-06,Ongoing,True
+2501cb62-bc51-4260-8d82-89674df01798,"Development of Bypass Road Phase-II at Jodhpur, Chhattisgarh",393620000000,BMRCL,19.8156,72.364497,roads,2026-09-04,Completed,True
+692ad8de-11bf-4b22-a1d7-2c9e45ef8099,"Strengthening Airport Terminal in Jaipur District, Telangana",43850000000,MoHUA,10.915907,72.833313,public_works,2025-04-10,Ongoing,True
+d88bbd26-c0ea-4da7-abb4-293981c57396,"Development Road Over Bridge for Mumbai Municipal Area, Jharkhand",280760000000,BMRCL,29.4285,72.722751,roads,2027-08-04,Near Completion,True
+08befdb8-2f0b-4323-8ee2-5e85c685af84,(Western Railway) (03/2023) (12/2026) (311),24280000000,State PWD,16.601477,79.0306,roads,2028-06-24,Ongoing,True
+0b2a14b1-2d78-4f3a-b8d0-303db77309d2,ROAD FROM TAMENGLONG TO {8/2025} {904.04},6110000000,UP Jal Nigam,35.519921,90.062081,sanitation,2025-01-16,Delayed,True
+5351c22d-26cf-406b-ab6e-2e711a5f2752,Jogbani-Biratnagar New Rail Line project,1108130000000,NHAI,22.701036,92.765479,roads,2025-06-23,Near Completion,True
+f655f010-d583-48f2-ad60-b23bba26f752,"Strengthening Bus Terminal for Kochi Municipal Area, Andhra Pradesh",48900000000,CPWD,16.929677,96.196154,public_works,2028-11-20,Ongoing,True
+4b75f93d-a6b1-4d5b-8ab5-c35eef799a40,Jeypore-Malkanagiri New Railway Line Project,749830000000,State PWD,15.65996,95.147703,roads,2027-10-05,Delayed,True
+87634596-4762-4e56-88b8-af2600b34d4e,"Strengthening of Sewerage Network System at Thiruvananthapuram, Karnataka",6850000000,KUIDFC,9.327922,91.373582,sanitation,2025-10-17,Ongoing,True
+246eacba-6270-475c-93fb-561d970c80da,"Upgradation of Sewage Treatment Plant Project at Ahmedabad, Andhra Pradesh",2960000000,MP Jal Nigam,11.858998,95.714849,sanitation,2028-09-08,Ongoing,True
+381eac2c-b886-4e1e-b81c-7dc8a900c2f8,"Rehabilitation of Convention Centre Project at Ranchi, Madhya Pradesh",41450000000,MoHUA,28.508529,93.509092,public_works,2028-07-10,Ongoing,True
+78b5c082-05f9-4633-b841-7ef54e14c43a,"Upgradation Flyover for Indore Municipal Area, West Bengal",554740000000,State PWD,28.969009,95.914539,roads,2026-01-13,Ongoing,False
+e45b4d1d-ee81-49bc-884f-4160974ab621,622 (Central Railway) Maharashtra 2874.47 92,182540000000,MRVC,16.033622,86.565026,roads,2027-06-20,Ongoing,True
+8af8f96a-34b3-4b89-b9bf-67aeea52d11a,"Development Sewerage Network in Kochi District, Odisha",5400000000,UP Jal Nigam,18.111901,76.555903,sanitation,2027-08-11,Near Completion,True
+11657889-402b-48a4-90e6-4b555e7b97fc,TERMINAL AND KRIBHCO TERMINAL (N.A.) (N.A.),16600000000,AAI,30.913423,80.330256,public_works,2027-07-24,Ongoing,True
+3ac2732f-a7d6-4903-9246-e39ce8be213d,262 (Maharashtra Metro Rail Corporation Limited [MMRCL]) Maharashtra 167.3 28,84140000000,RVNL,8.328679,80.79418,roads,2029-12-24,Delayed,True
+f49746dd-ce43-4463-84cd-db673d2fa0e7,"Upgradation of Ring Road Corridor at Jamshedpur, West Bengal",490220000000,State PWD,18.709034,79.894608,roads,2027-12-04,Ongoing,True
+cc75b9a6-7069-4a37-b32f-e2728ed0b7d3,"Rehabilitation of Water Supply Scheme between Vadodara and Thiruvananthapuram, Bihar",3140000000,CPHEEO,9.87599,81.169202,sanitation,2029-09-22,Near Completion,True
+99371285-11b0-47b2-995c-8fdef7ce4e14,"Upgradation Water Supply Scheme for Vadodara Municipal Area, Jharkhand",2640000000,State Jal Nigam,14.737208,77.557396,sanitation,2028-04-09,Delayed,True
+a0b6c458-a27f-4391-9be4-0152c53de8ed,"Upgradation of Storm Water Drainage System between Bhubaneswar and Kanpur, Rajasthan",7880000000,KUIDFC,25.762082,72.831625,sanitation,2026-01-23,Ongoing,True
+f4e0d403-e897-477c-bc12-f9cafbe4afad,"695 (Eastern Railway [ER] - I) Pradesh, West 193.39 8",534780000000,NHSRCL,19.861959,94.133092,roads,2029-04-13,Ongoing,True
+4666f68f-68cd-4006-b2f7-f72639d93745,"Strengthening Expressway in Guwahati District, Haryana",699880000000,BMRCL,32.482661,77.504157,roads,2026-02-11,Ongoing,True
+47a42bfb-f749-4568-b3b1-2ee41496d15a,"Expansion Sewerage Network in Raipur District, Kerala",6230000000,Urban Local Body,32.488442,92.209831,sanitation,2028-04-20,Ongoing,True
+0f851bb3-8758-4c4e-a021-783794b1e673,"Upgradation Sports Complex in Patna District, Bihar",12080000000,HUDCO,26.21231,87.736155,public_works,2027-01-14,Completed,True
+f4f3c213-96ad-4df2-b4e8-d8b09ea33b62,"643 (South Central Railway [SCR] - II) (Andhra Pradesh, 3625.29 94",684630000000,RVNL,9.344764,70.882094,roads,2027-02-03,Ongoing,True
+7ae1d33e-e207-45a0-9292-01e9bf46a4ab,"Upgradation of Service Road between Bhubaneswar and Coimbatore, Andhra Pradesh",740080000000,NHAI,35.897524,85.275516,roads,2029-01-03,Completed,True
+8e206c08-c9f3-4a84-b959-7341dc871579,"Modernization Bus Terminal in Mumbai District, Tamil Nadu",4650000000,HUDCO,33.196628,69.452187,public_works,2025-10-19,Delayed,False
+e4a17179-59d0-46c0-9b03-a680af6210cf,"Rehabilitation of Government Office Complex System at Ahmedabad, Telangana",17770000000,AAI,20.738614,77.976489,public_works,2027-09-10,Completed,True
+6420bb1f-b59b-4eb5-93cc-267e53e556f3,"Construction Airport Terminal for Jaipur Municipal Area, Haryana",45420000000,NBCC,8.779896,91.999676,public_works,2027-08-30,Ongoing,True
+53015fe8-3826-47ed-b05a-a6d3a733de11,"Strengthening of Road Over Bridge Corridor at Thiruvananthapuram, Bihar",34850000000,NHAI,17.862134,87.016184,roads,2025-08-18,Ongoing,True
+4772e549-7e2c-4075-a311-8060f498e405,"Modernization of Expressway between Ghaziabad and Dhanbad, Jharkhand",852380000000,NHAI,36.400831,94.900345,roads,2029-10-07,Completed,True
+886feb38-292a-4d7a-87da-96b615b0ee3b,726 (North Western Railway [NWR]) Rajasthan 53 46,246060000000,BMRCL,14.673389,81.057168,roads,2029-01-14,Near Completion,True
+6bda6bf8-7cd5-455b-bd5b-5859780a65c8,"Construction Water Supply Scheme in Vadodara District, Tamil Nadu",4270000000,State Jal Nigam,23.055934,92.371737,sanitation,2026-01-20,Ongoing,True
+2f852529-9df7-4057-8520-84d34135eece,EXISTING ROAD TO 2-LANE WITH PAVED (Oct-2023) (N.A.),214340000000,RVNL,21.267067,94.212644,roads,2029-03-17,Near Completion,True
+0e172fd5-727c-4ed3-a9ad-8ca6a53f2435,"Construction of Fecal Sludge Treatment Plant between Lucknow and Pune, Maharashtra",5150000000,AMRUT Mission,21.908643,69.863392,sanitation,2027-09-14,Ongoing,True
+bc761dd1-8959-4fa7-b7d6-c9663587b690,"Modernization of Sports Complex Section at Thiruvananthapuram, Chhattisgarh",49570000000,AAI,31.718504,69.488724,public_works,2026-07-17,Ongoing,True
+facf853e-54aa-45d0-8e32-3b804adb03d1,"Strengthening of Bypass Road between Pune and Raipur, Kerala",863270000000,BMRCL,8.519961,68.360802,roads,2026-03-24,Ongoing,False
+b98f4649-27a2-45ae-b763-8857e112bb0a,"Upgradation University Campus for Nagpur Municipal Area, Madhya Pradesh",41060000000,AAI,8.028481,73.011509,public_works,2028-02-17,Near Completion,True
+824114c5-a747-4aec-bffe-cb1b6bd05de5,"Modernization of Urban Arterial Road Stretch at Ahmedabad, Odisha",114480000000,NHSRCL,20.770393,68.387711,roads,2028-09-25,Near Completion,True
+e95b47af-c828-4b01-8cfd-d5f2521b6f25,"Upgradation of Judicial Complex Section at Coimbatore, West Bengal",10010000000,State PWD,23.018937,84.543374,public_works,2027-04-12,Ongoing,True
+5e5af3cd-9934-4823-8eee-1d83e064b7d8,Aligarh -Daud Khan Flyover Construction & 3rd Railway Line Project,127030000000,State PWD,8.74797,75.252606,roads,2026-12-02,Ongoing,True
+6409b9d5-daf3-4b33-8812-476fddcfe42f,Construction Bangalore Metro Rail Project Phase-2A & 2B,673180000000,NHSRCL,21.815502,77.741187,roads,2025-07-18,Ongoing,True
+58591a03-52dd-4aa5-9ec6-df61fe123f9f,"Rehabilitation of Urban Arterial Road System at Jaipur, Jharkhand",641070000000,NHSRCL,31.14653,71.549758,roads,2027-02-27,Delayed,True
+22609e2c-9fed-455e-aa39-151e043e5e73,"Strengthening Convention Centre in Ranchi District, Rajasthan",48690000000,State PWD,31.36616,79.145481,public_works,2026-12-18,Completed,False
+00b1d3d4-b405-4134-93d7-869c52cfb0ba,CORRIDORFROM KM 38/660 TO KM {3/2026} {530.20},1156570000000,RVNL,24.154304,88.450545,roads,2028-03-12,Ongoing,True
+cd978125-ae02-44d9-a01e-409f03127b02,"Strengthening of Public Administrative Building Section at Vijayawada, Kerala",27780000000,NBCC,26.55637,70.379269,public_works,2029-08-15,Ongoing,True
+c31f3770-4224-4b7c-8b73-2058f30a2a19,"Strengthening Sports Complex in Bengaluru District, Madhya Pradesh",30600000000,State PWD,19.72502,96.67193,public_works,2025-09-01,Ongoing,False
+da0e4897-88b1-46db-838c-e2d2bc56bfee,"Construction Interchange in Kochi District, West Bengal",90990000000,DFCCIL,34.091433,75.836285,roads,2027-12-07,Ongoing,True
+c713c5f4-933a-48ba-afb1-1a5d7f224e1e,531 (East Central Railway [ECR] - I) Bihar 1471.11 99,168370000000,BMRCL,28.426305,70.709791,roads,2029-08-17,Near Completion,True
+47f185fa-0a93-46fc-aaee-48a4e958a7ba,47 (Central Organisation for Railway Electrification [CORE]) Assam 391.73 89,220610000000,DFCCIL,16.177084,71.069414,roads,2025-03-05,Completed,True
+b0b0b776-260f-48ef-bc2e-22f9fe888a91,528 (Indian Railway Construction International Limited [IRCON]) Bihar 367.54 86,144160000000,State PWD,8.914677,86.887635,roads,2026-03-25,Delayed,True
+4461d7a1-7534-404e-91e2-8ece839c1f5a,"Development of District Hospital Phase-II at Warangal, Haryana",36650000000,HUDCO,17.377041,70.263571,public_works,2028-11-17,Near Completion,False
+a22718e7-0580-4ad7-ad08-2f688da12b15,"Rehabilitation of Sewage Treatment Plant between Howrah and Pune, Uttar Pradesh",5810000000,AMRUT Mission,28.11792,70.558727,sanitation,2028-02-24,Delayed,True
+3ce902c0-107c-4774-8aba-3afa75bb498a,"Expansion Expressway in Nagpur District, Kerala",340250000000,BMRCL,24.995327,87.877203,roads,2028-05-26,Near Completion,True
+46fec64e-cdb3-4570-948a-039548538f71,"Strengthening District Hospital for Bengaluru Municipal Area, Karnataka",29550000000,HUDCO,32.061472,96.651229,public_works,2029-05-03,Near Completion,False
+fd48d279-2dce-4608-b65a-d92cf4902715,"Strengthening Storm Water Drainage System for Mysuru Municipal Area, Karnataka",3670000000,KUIDFC,25.316254,74.714832,sanitation,2026-10-16,Delayed,True
+f43fc9fc-4256-4199-9114-a996958aef6a,"Modernization Urban Arterial Road for Mysuru Municipal Area, Rajasthan",1060820000000,NCRTC,34.541062,68.11969,roads,2027-09-10,Near Completion,True
+f6bcbafe-b0da-4fad-b7ab-c6f4676e2e9b,"Renigunta, Wadi & Gooty Bypass Railway Project Multi-States",609450000000,CMRL,30.641581,95.942203,roads,2027-02-25,Ongoing,True
+d80aef90-9ffb-4a16-81a5-8b96bc4a44c3,"Development of Sports Complex between Mysuru and Lucknow, Kerala",29300000000,HUDCO,33.987521,69.909362,public_works,2029-04-25,Ongoing,True
+4e5ed372-78c3-41e9-9283-4a4adf9887a8,"Construction of District Hospital System at Jaipur, Maharashtra",26760000000,MoHUA,32.806878,77.193735,public_works,2025-03-17,Delayed,True
+dff29942-1d3a-454d-b157-3ca67c11fae3,"Upgradation Expressway in Kolkata District, Uttar Pradesh",940000000000,MRVC,18.209721,88.440174,roads,2029-06-14,Ongoing,True
+9a4479ab-0b64-4410-9a01-ecabbdf46cff,"Rehabilitation of Storm Water Drainage System Phase-I at Jodhpur, Jharkhand",3660000000,State Jal Nigam,36.799261,96.287253,sanitation,2029-03-30,Ongoing,True
+08b8a36b-fa51-4646-9f79-8025c230c9ab,Doubling of Hatia [Ranchi]-Bondamunda Rail Line - 159 km Multi-States,805300000000,NHAI,17.020124,78.21997,roads,2028-05-08,Ongoing,True
+6430df9c-c77c-4946-8b05-c7fda0b386b1,"Expansion of University Campus Section at Kolkata, Gujarat",33420000000,HUDCO,13.713309,93.500101,public_works,2025-12-03,Near Completion,True
+65118a2c-5053-4622-af0d-eaa51d72bcd4,"Upgradation of Government Office Complex between Gaya and Kanpur, Bihar",15600000000,NBCC,30.997537,70.782008,public_works,2025-07-16,Ongoing,True
+45ade2df-cb2c-4172-ac58-c7210ad6b8bd,(Airport Authority of India [AAI]) (10/2018) (11/2025) (1216.9),20850000000,HUDCO,10.680486,74.776637,public_works,2026-12-03,Near Completion,True
+6136402d-2939-4da1-8aac-2eb24dfe67fc,"Rehabilitation of Fecal Sludge Treatment Plant between Raipur and Surat, Gujarat",5430000000,MP Jal Nigam,27.954812,89.339701,sanitation,2028-11-01,Delayed,True
+190b08dd-2626-4f46-82c3-a87911b7a48a,"GANGA BRIDGE {12/2025} {1,600.00}",1149720000000,CMRL,10.571608,81.658825,roads,2027-12-26,Delayed,False
+2b35fdfd-77c3-49e6-9a9d-12cceb56a8b4,"Modernization Expressway for Gwalior Municipal Area, Assam",401010000000,NCRTC,32.923543,78.74785,roads,2028-08-31,Ongoing,True
+407377fd-cfa5-42cf-b190-66669563ce0a,"Construction Underground Drainage System in Warangal District, Uttar Pradesh",4220000000,CPHEEO,16.298978,91.727631,sanitation,2025-06-19,Delayed,True
+942d48d2-6197-4c6d-a420-03273a3e9868,"Construction of Sewage Treatment Plant between Vadodara and Delhi, Chhattisgarh",2690000000,AMRUT Mission,17.679136,72.818554,sanitation,2028-02-02,Ongoing,True
+a07f4aa0-a0ee-4bc8-9dd9-69b1fade01ce,"Expansion Bypass Road for Lucknow Municipal Area, Uttar Pradesh",620910000000,BMRCL,20.224211,90.923811,roads,2026-11-01,Ongoing,True
+87654447-8780-4d01-845b-47cb195cfa9f,"Rehabilitation of Bypass Road between Ranchi and Coimbatore, Kerala",494640000000,CMRL,27.503875,88.110536,roads,2026-02-06,Near Completion,True
+3cb3f9a0-8bc3-4e17-8a74-006783aca5fc,"Strengthening of Flyover Corridor at Ranchi, Rajasthan",175680000000,State PWD,14.739247,95.843995,roads,2026-07-27,Ongoing,True
+d4a84815-88ce-462d-9c79-3f0e5439ccc4,HIGHWAYS (N24001434),108100000000,MRVC,26.378696,78.303156,roads,2027-02-19,Near Completion,True
+f4773508-daec-41e6-b482-5d8a91b58ded,"Construction of National Highway between Delhi and Vadodara, Haryana",23240000000,State PWD,12.413497,89.432454,roads,2029-10-22,Near Completion,True
+153ee40b-eb2f-402f-ab9d-1845bf53fffe,BYPASS) GREENFIELD BYPASS FROM {9/2026} {992.43},1003420000000,NHAI,9.096372,88.885812,roads,2025-03-06,Ongoing,True
+f2c65cdd-fee2-4c65-80b1-6ae6feeb6b50,Airport. 05/2022 11/2024 480,10800000000,AAI,17.34991,72.957203,public_works,2029-09-22,Delayed,True
+ef939fff-197a-4d1a-ae59-c76d5b4541cb,"Modernization of Sewage Treatment Plant between Udaipur and Mysuru, Maharashtra",2890000000,AMRUT Mission,8.277729,91.105563,sanitation,2027-08-01,Ongoing,True
+4481bf03-1185-4dc4-bd3c-e44d1c2e994c,Jeypore-Navarangpur New Rail Line Project,840450000000,RVNL,28.465886,68.131154,roads,2028-07-10,Near Completion,True
+4a149c68-32d9-4bef-a2bb-6a3b53634dc4,"Strengthening Sports Complex for Indore Municipal Area, West Bengal",28370000000,NBCC,23.662887,80.446746,public_works,2025-02-13,Near Completion,True
+b91c235a-3469-48fe-b8bf-ab3b8e7004c7,Construction & Development of Infrastructural Facilities in the main campus of NIT,42460000000,MoHUA,26.344607,86.660039,public_works,2027-07-25,Delayed,True
+bd9c0af6-c6a7-4f4b-955e-017ccfc6f5f2,"Construction of Sewage Treatment Plant Package at Ranchi, Haryana",6980000000,KUIDFC,12.31399,78.074739,sanitation,2026-02-10,Near Completion,True
+81318775-b621-446d-a032-1159031c471a,"Expansion of Storm Water Drainage System between Warangal and Ludhiana, Karnataka",6570000000,AMRUT Mission,9.011029,78.046111,sanitation,2025-09-28,Ongoing,True
+a16cb9d3-1fc6-4c39-8b5e-209ef0040946,"Modernization of Road Over Bridge between Mysuru and Gaya, Kerala",863070000000,NHSRCL,25.642026,74.96991,roads,2026-10-07,Ongoing,True
+a4319dba-2f54-4002-84bf-77398995cce7,"Construction Bus Terminal for Surat Municipal Area, Assam",10450000000,MoHUA,8.393405,72.891029,public_works,2027-12-18,Ongoing,False
+91ec6fb6-53b2-4d78-9299-56c16b5d2419,"Construction of Flyover between Bhopal and Howrah, West Bengal",329500000000,CMRL,18.753029,70.43293,roads,2025-07-02,Ongoing,True
+356224b1-0afa-40b5-930a-8cbdca57715c,"Rehabilitation Water Supply Scheme in Cuttack District, Bihar",4360000000,Urban Local Body,32.962351,81.338677,sanitation,2025-03-07,Ongoing,True
+4f470ce3-c3e3-4120-b9e1-6c23bf4d25bd,"VUPS, SERVICE ROADS, PROVISION (N.A.) (N.A.)",40200000000,HUDCO,14.159412,70.377892,public_works,2028-07-20,Near Completion,True
+b3af68e4-9caa-4e54-bed4-e4c25d1b01c4,"Construction of Fecal Sludge Treatment Plant Phase-I at Delhi, Jharkhand",4750000000,UP Jal Nigam,13.924357,94.532438,sanitation,2029-03-14,Completed,True
+57a10ee4-9b8c-4773-8f06-cb658e7f4364,(KODINAR BYPASS) OF NH-8E (NH 51 {4/2025} {162.73},239630000000,NHAI,26.864067,90.94057,roads,2029-01-26,Near Completion,True
+062567ab-f5ff-475c-b3d9-5d857aebca2b,"Rehabilitation of Ring Road between Coimbatore and Guwahati, Assam",785910000000,State PWD,23.164165,86.313331,roads,2025-11-12,Delayed,True
+833634ea-51f6-4283-8a8e-e2b53ea2e5f9,"Expansion of Flyover between Mumbai and Coimbatore, Madhya Pradesh",756220000000,NCRTC,23.870819,88.4908,roads,2027-05-12,Ongoing,False
+9a1e0571-9ec9-4f85-bd17-add4aadcff39,"Rehabilitation Expressway in Indore District, Andhra Pradesh",1123410000000,RVNL,18.818824,83.558838,roads,2026-09-30,Ongoing,True
+22fdc7c1-a269-4605-9363-bdd52398bb11,"Development of Urban Arterial Road between Gwalior and Mumbai, Chhattisgarh",214910000000,MRVC,21.840418,69.466245,roads,2028-03-13,Near Completion,True
+0e203871-aaea-4a15-84a1-b2df6ed8c398,"Modernization Water Supply Scheme in Ranchi District, Assam",7330000000,KUIDFC,26.354767,78.384698,sanitation,2028-07-25,Delayed,True
+44f4067c-85de-43bb-81ed-c5bf6bf3abf9,"Upgradation Urban Arterial Road in Cuttack District, Odisha",1062900000000,NCRTC,19.858954,77.818182,roads,2029-08-28,Delayed,True
+bf917c83-306b-490f-b556-ea24311557d9,"Upgradation Fecal Sludge Treatment Plant for Dhanbad Municipal Area, Haryana",4650000000,CPHEEO,17.224881,94.607245,sanitation,2027-01-28,Near Completion,True
+bfcecbbd-569b-4417-a0fb-3375d21501d0,INCLUDING DOWN RAMP ON NH-23 {3/2025} {534.73},28000000000,HUDCO,15.166587,84.578489,public_works,2026-03-29,Near Completion,True
+af0b74c0-bc5f-4496-9c7a-500f0d00e7ee,"Strengthening of Public Administrative Building between Ghaziabad and Hyderabad, Telangana",32060000000,MoHUA,35.998799,82.863826,public_works,2029-03-04,Delayed,True
+506f61ee-6921-403c-bbb3-ea596293ac54,"Modernization of Storm Water Drainage System between Chennai and Thiruvananthapuram, Karnataka",6880000000,UP Jal Nigam,31.817997,75.532032,sanitation,2026-11-21,Ongoing,True
+4052aa72-506b-4e06-8bdf-7d84e877d23e,"Upgradation of Service Road between Gwalior and Mumbai, Rajasthan",550350000000,RVNL,13.778175,93.877835,roads,2029-02-22,Near Completion,True
+3079217f-56b5-4b14-82a8-d372198cb7be,"Strengthening Judicial Complex for Vijayawada Municipal Area, Bihar",4800000000,CPWD,31.454816,87.564352,public_works,2029-05-18,Delayed,True
+96bdfd5f-4964-4868-8b8b-8b77a33438a0,"Upgradation of Fecal Sludge Treatment Plant between Bengaluru and Noida, Punjab",2200000000,CPHEEO,15.422258,84.164253,sanitation,2027-12-20,Near Completion,True
+42d7da17-1181-43e8-94bb-27b78dd480aa,"Construction Expressway for Lucknow Municipal Area, Bihar",542420000000,NHSRCL,32.1122,77.116554,roads,2026-04-15,Completed,True
+964345c8-b010-459e-869d-f204d5d4c9dd,INTERMEDIATE LANE ROAD TO 2 LANE (Jun-2026) (N.A.),2760000000,KUIDFC,36.873992,70.941521,sanitation,2027-04-21,Completed,True
+24fb74a6-50cb-438f-9727-2616c6abe5b9,631 (Northeast Frontier Railway [NFR]) Manipur 15782.48 72,1089320000000,BMRCL,11.042169,81.899689,roads,2029-01-05,Near Completion,True
+402ecee9-22b3-4d0f-ab94-d0ced7e47fa1,NH-527C FROM MAJHAULI TO (Dec-2024) (470.18),5250000000,AMRUT Mission,19.044532,69.53619,sanitation,2029-02-08,Ongoing,True
+57ae2f76-1b6e-4549-bacf-a7a69c10859e,Nagpur- Nagbhir Railway Line Gauge Conversion Project,883300000000,BMRCL,21.915174,88.105295,roads,2029-01-20,Ongoing,True
+1ba68ac4-95f9-4a69-b4bd-576660302ff0,"Strengthening National Highway in Jaipur District, Gujarat",177650000000,NHAI,24.723336,69.831001,roads,2027-01-22,Near Completion,False
+0489d3b5-b20e-4aae-9a44-47b7d7101f41,"Construction of 200 Bedded ESIC Hospital at Butibori, Nagpur, Maharashtra.",45200000000,AAI,33.357185,96.978222,public_works,2027-12-30,Near Completion,True
+98885110-9dbe-48a4-9341-85cd5221f211,"Development Water Supply Scheme in Noida District, Haryana",6060000000,MP Jal Nigam,8.242388,90.058079,sanitation,2025-11-30,Ongoing,True
+b9b368b6-1e2e-4cb0-aaad-5c5c9dea4cc6,"Construction of Sewerage Network Project at Mumbai, Chhattisgarh",2350000000,KUIDFC,19.979449,72.252064,sanitation,2025-10-23,Ongoing,True
+36877cc8-2646-4b88-9f98-8de31599ec9c,610 (South East Central Railway) Maharashtra 0.29 0,1147300000000,State PWD,26.312367,74.368325,roads,2029-01-17,Ongoing,True
+b4d0cbb1-8d87-49f3-9758-0cc891d3414b,"Rehabilitation Service Road for Gaya Municipal Area, Telangana",544810000000,BMRCL,30.005745,90.669137,roads,2027-11-18,Delayed,True
+e5fcf587-3c31-45cb-b71c-334d0302a9fc,"Modernization of Storm Water Drainage System System at Ahmedabad, Uttar Pradesh",5020000000,UP Jal Nigam,13.5817,92.006355,sanitation,2026-12-13,Ongoing,False
+c5299312-b5ec-4ead-85dd-ae7db475f98d,"Rehabilitation of Urban Arterial Road between Jamshedpur and Kochi, Jharkhand",1167470000000,NHAI,29.154157,88.393981,roads,2025-07-27,Ongoing,True
+4f34c481-21dc-4227-98dd-c04b11060f6f,"Upgradation of Bypass Road Section at Warangal, Karnataka",414220000000,MRVC,28.759464,96.042883,roads,2026-03-21,Delayed,True
+2e6f719e-df44-4bf5-b7be-9da42ef94486,627 (Mumbai Rail Vikas Corporation Ltd.[MRVC]) Maharashtra 7364 87,154500000000,RVNL,29.169363,91.02572,roads,2029-09-04,Ongoing,True
+d67b3f98-a4a7-4d00-ae7f-2312c9ef5289,2 Airport. Andhra Pradesh 523.14 86,40200000000,CPWD,20.822588,95.777762,public_works,2025-04-05,Ongoing,True
+6124c901-5b42-4e84-989f-77e295e9931e,"Construction National Highway for Guwahati Municipal Area, Gujarat",595650000000,BMRCL,29.501321,80.11634,roads,2027-08-25,Near Completion,True
+9c9c595b-8f7a-40b7-9461-055c9b952059,"Strengthening of District Hospital between Guwahati and Udaipur, Jharkhand",3430000000,NBCC,11.998838,71.380363,public_works,2025-10-03,Ongoing,True
+a0369c3a-e4ff-4276-b43f-495e252196a3,"Upgradation of Fecal Sludge Treatment Plant Section at Pune, Maharashtra",4920000000,CPHEEO,32.78042,92.154049,sanitation,2029-09-01,Ongoing,True
+51fe230a-7d42-4051-9521-550a2b23a6a8,"Strengthening of Sewage Treatment Plant Corridor at Delhi, Punjab",6630000000,MP Jal Nigam,24.929331,69.414868,sanitation,2029-05-26,Delayed,True
+0be0b16d-4fa7-4e5d-82f5-4d2e9215a211,"Modernization Sewage Treatment Plant for Lucknow Municipal Area, Maharashtra",2370000000,Urban Local Body,26.001542,94.937208,sanitation,2026-01-18,Ongoing,True
+2c1cb84f-44f6-45bd-8960-3804213add9f,"Strengthening University Campus for Dhanbad Municipal Area, Tamil Nadu",13610000000,MoHUA,30.459464,83.341092,public_works,2027-09-24,Ongoing,False
+c610d815-cf98-4c90-94c8-d0313a40936d,"647 (Northeast Frontier Railway [NFR]) (Assam, 5634.59 81",270630000000,NCRTC,16.030378,68.689669,roads,2025-03-11,Ongoing,True
+7aa06219-c8ba-41c1-9b8d-b7b61ca91517,744 (North Central Railway) Uttar Pradesh 1688.13 65,609050000000,CMRL,32.740902,94.941301,roads,2027-03-06,Ongoing,True
+c98f9bf6-eddd-460a-96c1-cc0a951ef13b,"Strengthening National Highway for Coimbatore Municipal Area, Telangana",141300000000,MRVC,15.746549,89.821784,roads,2028-01-03,Completed,True
+c1175924-17eb-4b32-99f7-8703f65d6c8e,Sawai Madhopur-Jaipur Railway Line Project,650070000000,DFCCIL,20.291636,88.648667,roads,2028-06-20,Ongoing,True
+0a4c7ad0-6d7b-4841-b795-79f10be6ba2b,"Construction of Storm Water Drainage System between Patna and Ghaziabad, Telangana",2580000000,UP Jal Nigam,36.114441,90.680636,sanitation,2025-10-23,Near Completion,True
+c74e175f-f96a-4b1b-90df-b2edffa0ae1c,"Modernization of National Highway Project at Ghaziabad, Karnataka",331790000000,State PWD,20.757553,89.599446,roads,2025-06-01,Ongoing,True
+9e0a1180-6e4a-4929-b5bc-38de4813dbb1,"TANGDHAR-CHAMKOT (NH-701) ROAD {5/2027} {1,404.94}",578170000000,MRVC,16.441747,70.1776,roads,2027-10-11,Near Completion,True
+3678a945-e2f7-4ffa-8520-5ae61ca327da,"Construction Sewerage Network for Coimbatore Municipal Area, Chhattisgarh",3410000000,AMRUT Mission,19.033756,80.636969,sanitation,2029-04-17,Ongoing,True
+0e7c96d5-19b9-4857-a7d2-d26cb840b8f2,"Upgradation of Bypass Road Phase-II at Ghaziabad, Assam",415910000000,State PWD,32.377942,94.748815,roads,2026-11-30,Delayed,False
+4d089787-9973-4cf8-a4eb-e63864283f4d,"Development Government Office Complex in Kolkata District, Punjab",34900000000,HUDCO,18.879727,91.203694,public_works,2027-04-07,Ongoing,True
+f251ff33-e846-43ab-8b49-787d59a71e13,"Upgradation of Storm Water Drainage System between Jaipur and Patna, Madhya Pradesh",7880000000,MP Jal Nigam,31.06933,72.068789,sanitation,2025-12-04,Ongoing,True
+141c1897-df80-472a-8b01-e8bed64f45fb,Debottlenecking and Augmentation of Cryogenic facilities at Uran LPG Import,26100000000,CPWD,27.210184,94.053054,public_works,2028-05-14,Delayed,True
+13eb2fa3-caf9-4689-b542-16e006e94aec,Jarapada- Budhapank with flyover at Talcher road 3rd and 4th Line,47100000000,MoHUA,14.057369,74.394764,public_works,2029-09-04,Ongoing,True
+84ce3b31-5faa-42d2-8dbb-501aa19c19f4,"Expansion of Judicial Complex Project at Dhanbad, Rajasthan",36700000000,AAI,21.078987,85.215327,public_works,2029-02-28,Near Completion,True
+c906cf92-2c91-4c10-b32d-6342b5bf113c,"Sewer Network, SPS and STP at Begusarai",6570000000,AMRUT Mission,8.547646,69.873164,sanitation,2029-07-02,Delayed,True
+499acd55-c703-4655-bbb8-770734384185,"Strengthening of Interchange between Bhopal and Surat, Bihar",518830000000,NHAI,15.507173,95.369498,roads,2025-05-29,Ongoing,False
+12eec4ca-e484-4800-960e-e8c7750f3570,BRIDGE (PARALLEL TO EXISTING (N.A.) (N.A.),1028230000000,State PWD,20.182107,73.720027,roads,2029-11-29,Near Completion,False
+295964fe-820b-4818-994b-2ed3e29cc9b8,"Modernization Sports Complex in Vijayawada District, Telangana",33760000000,AAI,35.020127,87.651249,public_works,2029-10-11,Near Completion,True
+6e2a7096-f636-469d-be8d-7ae48f32b0c3,"Development Bus Terminal for Coimbatore Municipal Area, Odisha",32500000000,MoHUA,8.322275,80.171472,public_works,2028-09-15,Near Completion,True
+d8edbb8b-0b86-416c-b801-3183b4d11ea5,(Airport Authority of India [AAI]),20400000000,HUDCO,20.889267,84.601473,public_works,2028-02-21,Ongoing,False
+4e25eca6-ba4f-4aab-bc7c-5b705a4c3e17,"Rehabilitation of Sewage Treatment Plant between Delhi and Amritsar, Punjab",6180000000,MP Jal Nigam,8.789043,82.727643,sanitation,2026-09-19,Completed,True
+a6ab36ee-d6b2-4467-8503-ef6b07d8b9e8,EDUCATION PHASE-II FOR THE CAMPUS OF IIT {1/2024} {460.00},2940000000,AAI,26.247392,88.534421,public_works,2025-05-01,Ongoing,True
+3707285c-1b98-4f7e-9327-ff3ab2c0fa8a,"Rehabilitation University Campus for Nagpur Municipal Area, Madhya Pradesh",18710000000,HUDCO,25.466929,84.292702,public_works,2026-05-15,Delayed,True
+9e2b454a-8be9-4fc5-83c0-cb75fa86c1fd,"Expansion Judicial Complex for Delhi Municipal Area, Haryana",9490000000,NBCC,36.86446,80.317088,public_works,2026-06-22,Ongoing,True
+3dbc90f3-fba9-4220-8d2f-3309206979ef,"Construction Service Road for Gaya Municipal Area, Haryana",605440000000,RVNL,33.125959,83.100882,roads,2025-02-10,Ongoing,True
+1c4f4115-037e-401c-9adf-5b85ad65b670,Belgavi Improvement in Sewerage System Project,3240000000,CPHEEO,20.437731,69.673866,sanitation,2028-07-23,Delayed,True
+4f3538e4-b123-40b4-9986-91d3dea01ad8,Establishment of Permanent Campus of NIT SIkkim at Khamdong-Gangtok,30710000000,State PWD,35.548712,78.337326,public_works,2026-11-01,Delayed,True
+a94e2c91-43bc-4779-b4fc-241bdbcab950,"Construction Expressway for Pune Municipal Area, Gujarat",1000670000000,BMRCL,31.554035,68.960707,roads,2025-10-17,Delayed,False
+bd2a2783-2c06-4975-a470-5abf8c74a1a9,"Construction of Fecal Sludge Treatment Plant between Mysuru and Ludhiana, Tamil Nadu",2400000000,UP Jal Nigam,19.702392,75.215219,sanitation,2025-02-28,Near Completion,True
+1b46a66c-05af-4f2b-ac1d-4bc5b5536b00,Singrauli Sewerage Management and Treatment Infrastructure Project,6470000000,AMRUT Mission,9.578848,84.822357,sanitation,2025-07-31,Ongoing,True
+4c79210e-4003-429a-9df0-dd7d2d2e7e90,"Modernization Public Administrative Building in Mysuru District, Andhra Pradesh",20490000000,MoHUA,29.968124,71.900585,public_works,2027-06-07,Completed,True
+ec879801-8fd6-4d2e-9e39-1b7bf43322d6,"Strengthening National Highway for Surat Municipal Area, Kerala",275620000000,State PWD,10.054922,74.96821,roads,2028-04-21,Ongoing,True
+f3089532-cdf5-415a-bc29-f10804998a4e,(NH-15) STARTING AT CH 26+400 AND (N.A.) (N.A.),5000000000,UP Jal Nigam,22.310588,84.686465,sanitation,2028-02-26,Delayed,True
+43ee663d-2f80-43b1-87c1-641988018125,CONSTRUCTION OF 300 BEDDED HOSPITAL AT HARIDWAR,38620000000,HUDCO,9.150624,69.194514,public_works,2026-10-01,Ongoing,True
+ec677f9e-847b-470e-bfbe-6ef3ab9397ed,"BRIDGE INCLUDING (N.A.) (1,019.17)",658600000000,NHSRCL,13.281516,89.837211,roads,2029-03-30,Near Completion,True
+16d92a13-f3d1-452f-a0d9-2154a3dec640,"Modernization of Water Supply Scheme between Ranchi and Ghaziabad, Chhattisgarh",1800000000,AMRUT Mission,36.521258,89.900554,sanitation,2026-07-07,Ongoing,True
+40128560-5d96-4ec1-9d34-7d5b9c680a70,Indore - Budni New Railway Line [198 kms],735550000000,DFCCIL,11.691585,79.261035,roads,2027-07-26,Ongoing,True
+b77e4c03-bf75-438c-bf0e-31778dc46524,3 (Airport Authority of India [AAI]) Andhra Pradesh 109.62 64,3980000000,MoHUA,23.773697,81.668112,public_works,2026-11-05,Ongoing,True
+a9c9e776-9606-46aa-b985-b2ef4e5efdc1,"Construction of State Highway Package at Gaya, Madhya Pradesh",337440000000,NCRTC,17.544689,69.033247,roads,2028-02-01,Completed,True
+747bc471-a9b2-4f3a-bdeb-ba41bfc9bdaa,SECTION OF NH-8E FROM KM 139.915 (May-2024) (N.A.),706730000000,BMRCL,27.107152,85.287998,roads,2029-12-30,Ongoing,True
+5cb92b9c-def7-49e7-834f-c2f9040a7119,"Expansion of Expressway Phase-I at Bengaluru, Karnataka",1028630000000,RVNL,10.738855,82.667448,roads,2025-11-24,Ongoing,True
+913abea4-189d-40d1-8db8-e62b524a0977,"Development of Service Road between Vadodara and Coimbatore, Gujarat",428420000000,NHAI,16.994481,82.684032,roads,2029-03-22,Ongoing,True
+3284385a-09c5-4f52-b84b-3cf5cacac2ec,"Construction of Flyover between Guwahati and Mysuru, Karnataka",633080000000,MRVC,34.197324,86.21498,roads,2028-01-06,Ongoing,True
+68b4739c-2a2d-44d4-906b-b40ba933b718,"Upgradation of Water Supply Scheme Corridor at Kolkata, Gujarat",6470000000,State Jal Nigam,20.28906,72.994011,sanitation,2028-12-16,Ongoing,False
+81069124-3da7-457d-a4ae-5ded6ede6dcd,"Upgradation of Expressway between Surat and Visakhapatnam, Karnataka",668410000000,State PWD,25.960479,92.405749,roads,2029-03-31,Delayed,True
+e7a97058-b939-42f4-bb42-c2a798dbad5b,"Modernization of Water Supply Scheme Project at Noida, Maharashtra",3940000000,Urban Local Body,24.518031,77.79656,sanitation,2026-02-22,Completed,True
+47775605-2bca-4616-a165-445d69d409c1,719 (North Western Railway [NWR]) Rajasthan 128.6 52,617750000000,NCRTC,27.241564,77.259608,roads,2025-07-23,Delayed,True
+3ee269dd-03fa-45a7-997a-cea49b12a09e,"Strengthening of Bus Terminal Corridor at Ranchi, Assam",10190000000,CPWD,22.063671,68.598307,public_works,2025-06-12,Ongoing,True
+bc2fd74b-18bd-426c-b2c8-655ff32c4973,"Rehabilitation of Interchange between Bhopal and Pune, Rajasthan",1031680000000,DFCCIL,35.813869,87.892216,roads,2027-08-25,Ongoing,True
+0828e938-b5db-4922-b572-5396e261c9cc,579 (Railway) Gujarat 93.31 8,756340000000,BMRCL,16.59197,79.331674,roads,2025-10-08,Near Completion,True
+7006cde8-d948-430b-afe6-60f0e72d9408,"Rehabilitation Bypass Road in Dhanbad District, Karnataka",1077820000000,DFCCIL,8.005681,82.546748,roads,2026-04-26,Delayed,True
+ad66b020-e007-4be3-82a5-fdf4bba9f3ca,"Upgradation Sewage Treatment Plant in Indore District, Maharashtra",3080000000,AMRUT Mission,10.5096,83.20849,sanitation,2027-08-17,Ongoing,True
+5b576a55-6865-4670-8297-e750a4169719,"Construction Bypass Road in Bengaluru District, Maharashtra",1163810000000,DFCCIL,35.69482,76.39128,roads,2029-07-11,Delayed,True
+f9ff68ce-6461-465b-a774-bbed14ddea4a,"Construction Bus Terminal in Guwahati District, Maharashtra",35330000000,MoHUA,27.9758,94.243433,public_works,2026-07-11,Near Completion,True
+81643696-d8b0-411f-8e97-4aa402a4370c,"Rehabilitation of Airport Terminal Stretch at Jodhpur, Assam",25290000000,MoHUA,16.165196,78.239955,public_works,2025-05-09,Delayed,False
+40b3ae29-2f40-48fd-bdb2-3e0357248755,473 (Deendayal Port Trust [DPT]) Gujarat 137.51 71,12920000000,MoHUA,17.787395,69.320738,public_works,2025-12-11,Near Completion,True
+70948be4-0617-4f07-b63f-386a6c230afa,"Development University Campus in Ranchi District, Tamil Nadu",24570000000,AAI,10.78762,85.711952,public_works,2028-01-02,Completed,True
+f91ef7d8-dfd8-4a60-ad13-ccc5f2efce22,"Tourism, Hospitality & Wellness",17710000000,HUDCO,35.347745,71.748564,public_works,2027-11-21,Near Completion,True
+9d22fa85-c7d1-4f25-8300-4bb58a2be59c,"Development Service Road in Chennai District, Gujarat",70990000000,NHAI,34.769432,82.758778,roads,2025-06-30,Delayed,True
+74fd5408-3d83-4903-a10d-f289b9119f30,GUNTAKAL WEST-MALLAPPA GATE RAIL OVER RAIL - ROR TRACK,568780000000,CMRL,12.366975,87.167311,roads,2026-02-10,Ongoing,True
+0bcdb8f0-3a86-44b6-908f-c3659d75871f,"Upgradation Road Over Bridge in Mumbai District, West Bengal",658000000000,DFCCIL,20.174992,78.436167,roads,2025-05-19,Delayed,True
+ece286f5-ed2e-4c67-a8ed-e80319203951,"Modernization Water Supply Scheme in Dhanbad District, Haryana",3250000000,Urban Local Body,29.889658,94.433665,sanitation,2027-04-03,Ongoing,True
+2a353276-843f-40f9-ad07-810f10a940b5,23 (Airport Authority of India [AAI]) Uttar Pradesh 111.83 24,7740000000,NBCC,29.773684,93.639961,public_works,2027-06-04,Completed,True
+bbb76014-8e9c-441f-9505-54530e24bf33,"Strengthening Expressway in Dhanbad District, Odisha",275450000000,MRVC,13.408231,74.037681,roads,2027-06-26,Ongoing,True
+90ad041d-2801-4550-82ca-330bd65aed39,Rail Connectivity to Errupalem Amravati Namburu 57 Km Multi-States,326280000000,BMRCL,19.45937,87.563425,roads,2029-12-03,Near Completion,True
+77c2662e-88e9-4a5a-9002-5c6de2b4db20,271 (National Capital Region Transport Corporation [NCRTC]) 27060.65 96,32530000000,AAI,16.025802,70.726176,public_works,2025-05-29,Near Completion,False
+b08e9bb8-1e00-43d2-a50f-812417be57e7,"Expansion of Service Road Package at Cuttack, Madhya Pradesh",1073160000000,RVNL,8.671007,73.323731,roads,2028-05-15,Ongoing,True
+0988b4a3-fc96-44e2-b6fe-17b7fe2504d1,"Upgradation Flyover for Amritsar Municipal Area, Odisha",811980000000,RVNL,14.686076,86.349249,roads,2028-10-18,Ongoing,True
+350673b0-9999-4345-9c7c-216285b19dc6,"Modernization State Highway in Chennai District, Chhattisgarh",8200000000,State PWD,14.060149,75.727013,roads,2026-04-05,Ongoing,True
+8607cfc2-1606-4edc-b960-d5da52beb39e,TRANSPORT KALYANAPUR TO TAL DASHRAHA OF (N.A.) (N.A.),49060000000,AAI,28.430228,85.572757,public_works,2028-06-19,Ongoing,True
+be5d79ac-4a6f-42d5-8c23-99dfaac86867,TO KM 208 OF NH-52 {7/2025} {520.01},329700000000,DFCCIL,24.200441,91.483849,roads,2027-02-20,Delayed,True
+dc02b592-d5f8-4438-97e2-c2afadb000b9,"Strengthening of Sewage Treatment Plant Stretch at Lucknow, Odisha",4630000000,MP Jal Nigam,23.735865,78.123546,sanitation,2027-09-01,Ongoing,True
+73a54bf0-9ab6-4fef-961a-1e48bfe8f7ac,"Construction of Sewage Treatment Plant between Jodhpur and Bhopal, Kerala",5070000000,Urban Local Body,11.553826,92.347669,sanitation,2029-07-28,Near Completion,True
+f6810434-1c3e-432b-8555-99fa1e3a6e5a,"Modernization of Urban Arterial Road between Gwalior and Bhubaneswar, Andhra Pradesh",855090000000,State PWD,13.187735,92.128339,roads,2027-10-17,Completed,True
+bc271a70-17ff-45ab-8675-f405db42fbe5,(East Coast Railway [ECoR] - II) (03/2024) (-) (154.28),503500000000,NHAI,20.963489,92.213551,roads,2028-03-14,Ongoing,False
+c897b86d-576f-48a6-983b-7c457411e8c0,"Rehabilitation Fecal Sludge Treatment Plant in Kolkata District, Assam",7180000000,State Jal Nigam,8.328699,83.010612,sanitation,2026-11-29,Ongoing,True
+4a6a0f8d-9d5d-426a-ab78-b8da72e0e245,Sewage Treatment Plant 50MLD and Sewerage Network 150 km in Kankarbagh,5230000000,AMRUT Mission,26.611892,94.308508,sanitation,2028-05-13,Completed,False
+2abb9767-a0f9-47da-8ce9-7893b614e408,"Rehabilitation Interchange in Vadodara District, Odisha",287080000000,NHSRCL,24.42798,82.822616,roads,2025-04-16,Ongoing,True
+6be12d8a-4a28-4cbe-bb84-0bebd5c89cdd,616 (Central Railway) Maharashtra 850.75 51,309890000000,NHAI,27.688943,89.695405,roads,2028-05-25,Ongoing,True
+0e0aa81c-5334-4c8f-b685-03be1ba04c7c,"Modernization Judicial Complex in Bengaluru District, Karnataka",25760000000,HUDCO,15.910197,82.408322,public_works,2025-12-28,Completed,True
+a27a247b-9071-4068-bd3e-c13173fbde31,"Development of Storm Water Drainage System between Bhubaneswar and Mysuru, Karnataka",4500000000,AMRUT Mission,24.649422,83.958349,sanitation,2027-07-13,Ongoing,True
+c208a350-85cb-4862-b793-05475ba8ec2d,"Dallirajhara - Rowghat New Rail Line Project, Phase-I",1167520000000,NCRTC,15.339847,78.816096,roads,2027-11-13,Ongoing,True
+7562b794-b709-48f9-a861-65374ab85c3e,Airport 06/2023 01/2026,48210000000,MoHUA,36.423312,72.427235,public_works,2026-09-01,Ongoing,True
+12beebbc-b3a6-457a-aece-3a268b7f6fbc,"Construction Urban Arterial Road in Cuttack District, Madhya Pradesh",789490000000,CMRL,31.340042,75.529224,roads,2028-02-19,Ongoing,True
+c4f19209-c78f-4165-8511-349d2353ec0b,"Development Sports Complex for Coimbatore Municipal Area, Kerala",33450000000,CPWD,34.600946,68.397974,public_works,2026-12-13,Delayed,True
+923ce791-da09-48a2-83f2-c197d83d14cb,"Upgradation of Airport Terminal between Warangal and Kolkata, Chhattisgarh",7000000000,CPWD,33.268042,84.992606,public_works,2029-03-19,Near Completion,True
+f5e91b7f-7dee-4ad8-98cc-b2d99933678e,"Rehabilitation of Airport Terminal Corridor at Mysuru, Kerala",46810000000,HUDCO,32.356169,79.484835,public_works,2025-02-20,Delayed,False
+2b2adbb7-23e2-481c-8e05-db88734a0096,"Construction National Highway for Delhi Municipal Area, Bihar",1011740000000,State PWD,32.049584,68.183269,roads,2026-09-12,Completed,True
+5aaa900f-99fa-4ca6-a3d3-94cbfd6256cb,"Upgradation of State Highway between Lucknow and Kanpur, Gujarat",1069140000000,RVNL,27.76089,87.355795,roads,2029-11-29,Near Completion,False
+3da1a8aa-b99c-4f4d-bf17-a55fff95ee70,"Upgradation of National Highway between Nagpur and Patna, Uttar Pradesh",1114230000000,MRVC,12.794292,83.328396,roads,2029-09-07,Ongoing,True
+7e3cd0dd-9eec-41d0-aa19-075637aa919f,OFEXISTINGROAD TO 2-LANE WITH PAVED (N.A.) (N.A.),6360000000,KUIDFC,9.315252,96.39653,sanitation,2029-04-20,Near Completion,True
+a5c8cd3d-a323-4be1-bdc5-f7280c62fb30,Bhanupalli-Bilaspur-Beri New Railway Line Project Multi-States,67940000000,NHAI,17.210519,71.039916,roads,2028-08-06,Delayed,True
+c0849d4b-1f27-4f3a-b999-1d782825c86d,"Strengthening Sewerage Network for Kolkata Municipal Area, Assam",3800000000,Urban Local Body,10.197098,75.488849,sanitation,2027-04-17,Near Completion,True
+ba6bf085-def1-4fdc-9186-d55e259f11c6,TRANSPORT CREEK (N.A.) (207.99),16300000000,CPWD,8.113304,82.613281,public_works,2025-06-07,Ongoing,True
+c39d9972-e99e-479e-a15c-e423b7d6c574,"Expansion of Expressway between Chennai and Patna, Haryana",913130000000,NHSRCL,29.827176,74.887471,roads,2029-07-18,Ongoing,True
+bd901fa6-eae0-44cd-a1a0-9a7ee389fb4c,"Development District Hospital for Jodhpur Municipal Area, Karnataka",23720000000,State PWD,32.937044,75.518014,public_works,2029-03-02,Ongoing,False
+3f021993-049c-4465-a2a6-950ca6da6019,"Setting up of new rail fed POL facility at Kamardanga, Assam",495010000000,RVNL,9.057203,93.181671,roads,2025-03-18,Near Completion,True
+54954c80-4e08-45e7-b3e8-b65e12326b90,99.000- KM 130.073 OF NH-754K (AJ- (Dec-2024) (N.A.),901670000000,NHSRCL,24.930808,72.801564,roads,2026-01-01,Completed,True
+53c18e7a-d103-4516-bd7d-7b0e27da06b4,Western Railway Samakhiali Gandhidham Quadrupiling 53 Kms,848060000000,NHAI,21.317135,95.445023,roads,2029-10-30,Delayed,True
+6eba6842-fb85-40c9-8d02-09db765a04a2,"Construction National Highway for Mysuru Municipal Area, Maharashtra",216700000000,CMRL,20.566354,96.082259,roads,2026-02-06,Ongoing,True
+0287899c-fad7-46e2-b122-121658ca91da,"Expansion of Flyover between Visakhapatnam and Hyderabad, Haryana",313640000000,BMRCL,13.784094,80.883411,roads,2025-02-27,Delayed,True
+6ca4a891-108f-46da-9a63-14f40c55a65f,"Rehabilitation of Sewage Treatment Plant Phase-I at Delhi, Haryana",1940000000,MP Jal Nigam,25.742176,68.790501,sanitation,2026-10-31,Completed,True
+7b2ec9ab-54e8-40f7-8645-cd9f378c16d4,(Western Railway (WR) - II) (02/2023) (01/2026) (152.44),880750000000,RVNL,13.696077,86.358755,roads,2027-09-25,Delayed,False
+c91f74af-ae4a-419f-97d7-46451dcb2058,Doubling between Pradhankunta-Patherih-Bhojudih of East Central Railway,1112180000000,NHSRCL,22.999567,86.36483,roads,2025-12-29,Ongoing,True
+b454b047-85cf-4832-818c-008ce0fb5e8e,"Development Bypass Road for Bhubaneswar Municipal Area, Bihar",322130000000,NHSRCL,23.956435,76.836342,roads,2027-04-15,Delayed,True
+5a952475-c567-4a60-a097-00eee74e9953,"Modernization Ring Road for Ghaziabad Municipal Area, Jharkhand",394160000000,DFCCIL,15.659379,82.387271,roads,2027-06-27,Delayed,True
+6496186a-b209-4e6f-b5f8-334653b1e1a2,"Rehabilitation of Sewerage Network Corridor at Chennai, Jharkhand",3610000000,KUIDFC,17.068513,77.33168,sanitation,2027-08-23,Near Completion,True
+2304ec27-1765-4c2a-98e0-6d483361a2a2,"Upgradation Flyover in Delhi District, Madhya Pradesh",822570000000,DFCCIL,31.808887,82.682385,roads,2026-07-10,Completed,False
+bdecf91e-41b8-4315-ab24-c2e1fc8190a6,UNIDIRECTIONAL TWO LANE TUNNEL {12/2024} {280.00},19700000000,CMRL,24.372643,84.337947,roads,2029-10-29,Delayed,False
+83690b48-363b-455e-9c7b-e8d13a0547a4,"Modernization of Bypass Road Phase-I at Thiruvananthapuram, Karnataka",80130000000,State PWD,8.775539,84.063124,roads,2025-05-10,Ongoing,True
+f265f55e-0f4e-4d36-9574-afd952556555,TRANSPORT DELHI SAHARANPUR HIGHWAY FROM (N.A.) (N.A.),208460000000,RVNL,14.971771,69.855061,roads,2025-04-18,Ongoing,True
+9ce4876b-ecef-4f63-be7b-bf1b8784b027,TADUBI SECTION OF NH-102A FROM {8/2025} {315.56},1990000000,Urban Local Body,8.509451,82.725644,sanitation,2026-05-04,Ongoing,True
+5e8cf88c-424a-4d88-9bcb-901d13e302cb,"Rehabilitation Interchange for Ranchi Municipal Area, Odisha",673520000000,RVNL,35.84522,92.868573,roads,2029-06-01,Ongoing,True
+dd36e340-8563-4938-858a-040f920727a0,"Upgradation Judicial Complex for Howrah Municipal Area, Uttar Pradesh",35970000000,HUDCO,33.152797,95.060777,public_works,2027-03-04,Completed,True
+ac58d1ec-ae37-4998-b81c-6cc5b230385f,"Rehabilitation of Service Road Phase-II at Patna, Uttar Pradesh",563470000000,RVNL,9.080394,68.935923,roads,2028-09-09,Ongoing,True
+bd6f580d-b9bb-48a5-90e0-e5386c59031f,40 CENTRE FOR DISABILITY SPORTS 170.99 03/2024,23420000000,MoHUA,15.791181,95.043882,public_works,2028-02-03,Ongoing,True
+f6f311db-e46e-4958-ac96-45e6c9de5dd0,TRANSPORT CONTROLLED NEW GREENFIELD (Sep-2024) (N.A.),14400000000,AAI,13.598146,73.665031,public_works,2029-01-13,Ongoing,True
+c08de497-94da-467c-a4cc-b6b1667c618d,"Expansion Service Road for Surat Municipal Area, Madhya Pradesh",656550000000,BMRCL,31.316894,95.386568,roads,2025-10-01,Delayed,True
+d464079c-2267-4027-893d-53a70f30f432,Interception & Diversion with STP 05/2020 12/2024,7290000000,Urban Local Body,25.44093,80.623707,sanitation,2028-11-21,Completed,True
+cb92f5c1-81fd-411c-b4d9-6554b145728c,246 (Chennai Metro Rail Limited [CMRL]) Tamil Nadu 29336 47,536650000000,MRVC,23.070562,84.100879,roads,2025-07-16,Ongoing,True
+157cccc9-08be-4cd0-9392-fbe8e54808ee,Railways 258 542700,779310000000,CMRL,8.7037,88.229888,roads,2028-08-31,Delayed,True
+8732125e-c133-4ba4-8092-f1de54d06fc3,Chandigarh-Baddi New Rail Line- 36 km Multi-States,720330000000,NHSRCL,25.255926,81.579293,roads,2027-03-11,Near Completion,True
+59ccbfaa-b794-49b3-8118-b65d362d8160,"Development of Convention Centre Phase-II at Thiruvananthapuram, Haryana",30740000000,HUDCO,16.823082,76.94442,public_works,2028-03-16,Delayed,True
+2c8e5cfb-a504-4c04-8a33-bc1051d9cdc7,"Development of Flyover Package at Kolkata, Tamil Nadu",137250000000,NHAI,17.941317,75.217821,roads,2027-05-04,Delayed,True
+9ef8633a-7b18-4034-88ac-a34809452b6c,HANSDIHA SECTION OF NH-33 FROM (N.A.) (N.A.),17260000000,AAI,30.767776,88.761818,public_works,2026-03-12,Ongoing,True
+d976cac9-28c7-4230-9e28-8efb8c4d7afa,"Strengthening of National Highway between Delhi and Amritsar, Assam",545340000000,NHAI,24.580711,92.60723,roads,2026-04-11,Completed,True
+4d2396e1-f9ba-4d55-8e1d-83d3f8cd2d22,"Upgradation of Service Road between Raipur and Bhubaneswar, Maharashtra",461120000000,BMRCL,29.642117,84.937626,roads,2025-12-17,Ongoing,False
+154c909b-17a4-4ed6-ab1a-a185a6aca57a,"Strengthening of Water Supply Scheme Stretch at Dhanbad, Kerala",3700000000,AMRUT Mission,24.804741,79.376196,sanitation,2026-07-28,Ongoing,True
+8c8e567c-91e3-4a05-8546-34710f6ea437,721 (North Western Railway [NWR]) Rajasthan 83.34 2,1100370000000,NHSRCL,9.064924,68.020416,roads,2029-09-12,Near Completion,True
+3b3acfa2-6430-4e1c-9947-352b810a990f,Urban Public Transport 8 34398.02,23160000000,MoHUA,10.177414,73.050231,public_works,2028-08-11,Ongoing,True
+b9c49cb8-7f78-4798-ac7d-875906915412,"Modernization Underground Drainage System in Vadodara District, Andhra Pradesh",5850000000,State Jal Nigam,26.013476,90.909317,sanitation,2027-07-31,Ongoing,True
+865618eb-225d-463f-84e7-d581035d1bfa,"Upgradation of Public Administrative Building Stretch at Noida, Andhra Pradesh",2230000000,CPWD,28.633179,71.159953,public_works,2027-07-22,Near Completion,False
+0035f0f2-c845-4002-aaf3-74109c0a5f76,"Construction of Bypass Road between Ghaziabad and Lucknow, Karnataka",272400000000,NHAI,33.306726,93.912018,roads,2028-01-30,Ongoing,False
+cc645d0c-1af6-4f91-8759-188447a35634,C/o NITB Imphal Airport,4030000000,NBCC,11.40335,73.032391,public_works,2026-08-19,Near Completion,True
+7ca18a85-5cd7-4bc6-9679-3dad99be7ed5,"Expansion of Underground Drainage System Phase-II at Cuttack, Assam",5620000000,AMRUT Mission,8.545001,71.418378,sanitation,2026-06-19,Near Completion,True
+f416280b-d64b-433d-b984-38c84efb0d78,567 (Western Railway) Gujarat 13.59 17,928190000000,DFCCIL,8.563882,89.600057,roads,2026-12-18,Completed,True
+1113adb7-0514-4c9d-a555-71cd43d69d70,Tumakuru Node - Phase 1 - Roads and Services Development,5950000000,Urban Local Body,33.363017,74.724476,sanitation,2029-10-14,Near Completion,True
+43201be2-c084-42bb-b2fa-4c835d84207e,Guwahati Airport New Integrated Terminal Building Construction Project,33360000000,State PWD,19.54227,95.050527,public_works,2026-07-04,Ongoing,True
+dbabf000-abad-4061-a93a-db586905c022,"Upgradation of Flyover Corridor at Nagpur, Maharashtra",867830000000,MRVC,9.614657,86.316452,roads,2027-06-06,Ongoing,False
+144f42ab-4513-40c6-b15a-7421f54115b2,AND ALLIED WORKS AT GOA AIRPORT. {8/2025} {255.69},36140000000,NBCC,23.413416,87.393765,public_works,2025-07-07,Delayed,True
+feadadc7-b56e-40e6-96f9-a53e27ea32fb,Chennai Metro Rail Phase-II Development Project,134480000000,DFCCIL,22.861534,92.354382,roads,2029-06-17,Completed,False
+93a7d7de-7038-4357-9be0-e7cfad17a179,"Rehabilitation of Ring Road between Mumbai and Udaipur, West Bengal",653460000000,NHAI,23.162866,68.460559,roads,2026-10-09,Ongoing,False
+01dfcd14-be26-4c2e-a789-f79d9a2c7c98,JADCHARLA ROAD) FROM KM.62/700 {2/2026} {361.24},3860000000,KUIDFC,17.435033,80.094045,sanitation,2026-06-13,Near Completion,True
+64c792c8-301b-4ad0-b30e-9799c5e7a388,"Strengthening Bypass Road in Bengaluru District, Uttar Pradesh",753700000000,RVNL,27.677385,74.739024,roads,2026-02-09,Completed,True
+11ab841e-bc16-47c6-8e9d-8de5eddca648,PRIORITY CORRIDORS (N.A.) (N.A.),9560000000,MRVC,26.943903,71.910006,roads,2027-10-06,Near Completion,True
+685fad7a-67b4-46b8-ba70-2d9102592c9c,"Strengthening of Underground Drainage System Section at Patna, Tamil Nadu",5630000000,CPHEEO,25.273487,84.462278,sanitation,2025-05-05,Ongoing,True
+7a05de33-8708-448f-adf5-ae1eda0952c3,"Development Sewage Treatment Plant in Noida District, West Bengal",3770000000,Urban Local Body,21.556269,93.718752,sanitation,2027-10-18,Ongoing,True
+f316112f-fabd-41ce-953a-b3a278a39205,"Strengthening of Storm Water Drainage System between Noida and Warangal, Bihar",4040000000,KUIDFC,10.830404,89.15533,sanitation,2029-12-31,Near Completion,True
+24b758ca-cba3-4e1c-8c85-6d720839907a,"Rehabilitation of Sewerage Network Project at Jodhpur, Gujarat",2450000000,UP Jal Nigam,18.398768,90.223807,sanitation,2026-09-03,Ongoing,True
+0cff5757-f13b-4c2a-b382-8a336bfb9c80,"Strengthening National Highway in Chennai District, Jharkhand",762150000000,NHSRCL,27.7282,73.380805,roads,2028-07-07,Ongoing,True
+b5c9a827-fde7-41d4-a810-c2ca676e687b,"Expansion Fecal Sludge Treatment Plant for Mumbai Municipal Area, Tamil Nadu",3100000000,Urban Local Body,36.17924,85.081509,sanitation,2029-01-19,Near Completion,True
+3e840000-b5d5-4602-b671-a6fa78c4a5da,Augmentation and Strenghthning of Urban Water Supply Phase 1 - SAAP 3,4440000000,KUIDFC,35.130613,96.440136,sanitation,2025-06-24,Ongoing,False
+984fe015-ecd8-4a55-9c12-15d0de581d73,"Development of Government Office Complex Project at Patna, Uttar Pradesh",3570000000,State PWD,26.020938,81.401564,public_works,2026-02-26,Completed,True
+04c9e458-f383-4eac-a1c5-ac8ed0e43a6b,587 (South Western Railway [SWR] - II) Karnataka 0 0,486990000000,NHAI,9.436122,93.524576,roads,2025-07-27,Near Completion,True
+5b87c10c-004d-4479-a4d3-46b9ae2c0b63,"Expansion of Sports Complex Stretch at Patna, Kerala",47600000000,State PWD,35.716004,88.137149,public_works,2028-07-17,Ongoing,True
+128378ff-0453-4cf1-8c2f-95ea49d57992,"Construction of Sewage Treatment Plant Phase-I at Cuttack, Odisha",4550000000,KUIDFC,13.29167,93.142356,sanitation,2025-12-15,Delayed,True
+f56b4867-a594-49bd-98f3-f70beec4f59a,"Construction of Fecal Sludge Treatment Plant between Gaya and Ludhiana, Assam",4960000000,State Jal Nigam,19.416025,91.927011,sanitation,2027-10-23,Delayed,True
+b8490ff1-ab13-4589-a48a-07d3791f0fc6,"Modernization of Expressway Section at Kanpur, Chhattisgarh",457760000000,NCRTC,10.913276,72.989226,roads,2027-01-09,Near Completion,False
+1571f405-1b5b-4dd6-bc3c-963d921a2a67,"Modernization Water Supply Scheme in Guwahati District, Rajasthan",1640000000,KUIDFC,19.724669,83.058642,sanitation,2025-12-04,Ongoing,True
+ad675afe-12cf-4e79-9693-68a679c17bfe,"Rehabilitation Bypass Road for Gaya Municipal Area, Andhra Pradesh",86520000000,DFCCIL,28.425199,72.643502,roads,2027-06-17,Ongoing,True
+ded44d9d-6b35-4ba6-a85f-9ac82e3846c5,"Upgradation of Public Administrative Building Phase-I at Ludhiana, Gujarat",43850000000,State PWD,28.204733,90.973412,public_works,2028-10-25,Ongoing,True
+fd6728b4-7b79-4642-9d61-639830079298,BRIDGE PARALLEL TO EXISTING MG (N.A.) (N.A.),862740000000,MRVC,13.706125,82.831486,roads,2026-01-18,Delayed,True
+cf6f6e99-042b-4fbb-beed-1c66587cd194,"Modernization Convention Centre for Visakhapatnam Municipal Area, Gujarat",5010000000,AAI,9.863497,77.395776,public_works,2029-10-02,Completed,True
+9345cb8a-b5a4-4421-bbb0-f9b193e1e38a,"Construction Storm Water Drainage System in Raipur District, Andhra Pradesh",4820000000,Urban Local Body,15.526773,88.195979,sanitation,2026-12-13,Delayed,True
+741c5869-c3e8-4a44-8b29-04b084296629,Jhansi - Bina Third Railway Line [153 Km] Multi-States,79180000000,RVNL,18.729141,92.618814,roads,2028-10-02,Near Completion,True
+9956d358-28d8-43cc-ac5f-afb62daae208,"Strengthening of Convention Centre between Thiruvananthapuram and Howrah, Tamil Nadu",27140000000,HUDCO,9.775461,82.432259,public_works,2028-04-08,Near Completion,False
+9a1bcb7d-4f06-4f58-ab6b-fe1749db1c58,"Construction District Hospital for Kochi Municipal Area, West Bengal",38410000000,AAI,12.994946,69.348937,public_works,2025-06-23,Delayed,True
+2f7b5339-9a2b-47ac-b173-2e91af960f33,"NAGAR AND WEST ANSARI NAGAR CAMPUSES OF AIIMS, NEW DELHI",47040000000,State PWD,9.427623,70.328835,public_works,2027-11-17,Ongoing,True
+37eb1053-9737-435a-90ae-d6e181771d4a,"Strengthening Sports Complex in Cuttack District, Tamil Nadu",19820000000,State PWD,31.474897,86.537557,public_works,2028-04-13,Delayed,True
+89579c82-a187-4e48-941a-70ec858edc3f,Construction of 100 bedded ESIC Hospital & 32 nos. of Staff qtrs at OMPURA J&K.,15400000000,CPWD,18.449779,70.092687,public_works,2028-04-11,Near Completion,False
+ea59ab4f-4989-4a3a-abd2-a94efdc74efd,BYPASS (FROM KM. 534.800 TO KM. {7/2025} {294.17},33120000000,NHAI,15.26853,93.447912,roads,2029-02-09,Near Completion,True
+79e564a3-3406-4e7c-9eb9-44ff190d2846,"TERMINAL BUILDING, CONTROL TOWER (Dec-2025) (N.A.)",40520000000,CPWD,34.992806,91.865485,public_works,2025-05-12,Ongoing,True
+756887cb-d9b2-43ed-80f7-0aee794035ba,"Rehabilitation of Water Supply Scheme between Chennai and Thiruvananthapuram, Madhya Pradesh",7280000000,AMRUT Mission,20.069512,73.488573,sanitation,2026-06-01,Ongoing,True
+798e4c99-8c96-4c8b-b361-63d2748a83a5,Muzaffarpur Storm Water Drainage Phase-I Project,4760000000,AMRUT Mission,31.898224,86.641702,sanitation,2027-07-27,Delayed,True
+9d002d4e-f20e-4e7d-b11b-ef9d9c5f6a9a,"Modernization of Sewage Treatment Plant between Bhopal and Mysuru, Bihar",3250000000,AMRUT Mission,21.968676,86.829778,sanitation,2027-12-22,Completed,True
+3136223d-7555-4b9b-97e5-4d3fdc7e72dc,Urban Public Transport 4 45211.07,48560000000,AAI,15.615379,93.204556,public_works,2029-08-20,Ongoing,True
+d509a8c3-dba3-43e2-89e7-d3946d632ee4,Development of New Bijwasan Railway Terminal,164170000000,MRVC,26.10746,79.228043,roads,2029-04-13,Ongoing,True
+164e9172-4ecf-43e3-aaff-8c92770a98a2,"Rehabilitation of Water Supply Scheme between Ghaziabad and Delhi, Kerala",4970000000,State Jal Nigam,23.602856,89.990483,sanitation,2028-06-07,Delayed,True
+5a46bd6b-f040-4546-866e-6abfffaf5132,"Development of Bypass Road between Howrah and Gwalior, Punjab",670860000000,RVNL,15.177663,90.527217,roads,2027-05-30,Ongoing,True
+df964001-3ebb-47e9-8d97-ea36b4823758,"Development of Sewerage Network Package at Kolkata, Karnataka",7800000000,CPHEEO,25.468784,91.257683,sanitation,2027-09-21,Near Completion,False
+583647ed-fd55-44e1-980f-250700cbe3b9,"Strengthening of Sewerage Network between Delhi and Jaipur, Uttar Pradesh",6320000000,MP Jal Nigam,9.787985,75.176679,sanitation,2027-02-13,Ongoing,True
+56a2926b-35c2-4291-9ba5-eb259fc69713,"Upgradation of State Highway Section at Guwahati, Maharashtra",949940000000,State PWD,29.105546,72.421615,roads,2028-09-30,Ongoing,True
+9d9008a9-3767-4a00-be66-7765019d03c9,"Expansion Public Administrative Building in Visakhapatnam District, Assam",44070000000,NBCC,22.732105,68.408537,public_works,2027-06-17,Ongoing,True
+a6830716-06dc-4f8c-93c0-7e864c5db384,"Strengthening Fecal Sludge Treatment Plant for Thiruvananthapuram Municipal Area, Kerala",7550000000,Urban Local Body,16.630601,84.100654,sanitation,2028-05-15,Ongoing,True
+90776e43-ae22-497a-8dce-343da0326c05,OF NH-22 NEAR HAJIPUR TO {2/2026} {226.15},159330000000,State PWD,18.480359,70.821855,roads,2028-03-24,Ongoing,True
+62463a97-8787-467a-9edc-5c355ad05249,NH-71 AND CONNECTING LINK FROM K {7/2025} {510.97},7320000000,MP Jal Nigam,34.812875,95.863184,sanitation,2026-11-02,Ongoing,True
+7ed93ec9-1066-4a33-b02d-573e9eb12aab,"Upgradation of Government Office Complex Package at Hyderabad, Odisha",18420000000,AAI,29.457319,83.499745,public_works,2025-06-11,Ongoing,True
+8e055470-b2c1-4818-ab17-6186e2c41672,Khurda Road - Balangir Electrification of Railway Track Project,745720000000,NCRTC,34.774323,90.857262,roads,2028-10-27,Near Completion,True
+71419837-0f4e-4406-9c7c-0df895650902,"Upgradation of University Campus between Hyderabad and Nagpur, Andhra Pradesh",9910000000,AAI,8.98132,78.569031,public_works,2029-12-01,Ongoing,True
+cd957475-1369-4a35-a46d-0961bd22643c,"Construction Storm Water Drainage System for Gaya Municipal Area, Assam",3670000000,MP Jal Nigam,16.276737,95.327536,sanitation,2026-11-13,Ongoing,True
+291f16ee-ab06-4703-9e62-34fc647e687b,698 (East Coast Railway [ECoR] - II) Odisha 91.45 65,218290000000,MRVC,35.342412,73.596163,roads,2026-03-24,Delayed,True
+0b748b61-1413-4856-a94e-928d99fe4e97,"Upgradation of Bypass Road Section at Vadodara, Rajasthan",611610000000,NHAI,35.299438,78.605796,roads,2026-04-30,Ongoing,True
+07f4ab7a-31ae-4704-b66e-29562090b374,"RAIPUR ARANG BYPASS PKG 2 (N.A.) (1,959.00)",651890000000,NCRTC,36.571687,76.414375,roads,2029-03-21,Ongoing,True
+a6352f3d-fdd9-402f-bd01-6c83e5a30405,"Modernization of Judicial Complex between Ahmedabad and Amritsar, Jharkhand",2460000000,MoHUA,35.432932,82.877514,public_works,2026-06-24,Near Completion,True
+9489458c-e05e-48ab-8898-e8ab2b549091,GREENFIELD BYPASS FROM EXISTING {7/2026} {980.21},719670000000,RVNL,29.785809,74.2478,roads,2026-09-04,Ongoing,True
+d9aa959b-49f5-445d-a9de-113605b8686a,733 (South Central Railway [SCR] - II) Telangana 2116.77 71,1124450000000,RVNL,17.447636,85.337838,roads,2028-03-17,Near Completion,True
+363305d7-eeae-47bf-832c-7f21d3423e47,"Construction Flyover for Ghaziabad Municipal Area, Uttar Pradesh",271330000000,State PWD,31.825904,68.879067,roads,2028-06-18,Ongoing,True
+052e2f14-99b7-45b0-948a-9a32e9be57f9,273 (Uttar Pradesh metro rail corporation [UPMRC]) Uttar Pradesh 6059.58 64,630690000000,DFCCIL,26.829958,89.150784,roads,2029-07-15,Ongoing,True
+f0089932-6c75-470d-8fbc-499c14efeefb,"Expansion Bus Terminal in Dhanbad District, Bihar",9100000000,CPWD,33.082966,92.006052,public_works,2029-10-12,Ongoing,True
+23954f13-aa9e-4887-9053-3a94468f09b8,"Modernization of Urban Arterial Road between Patna and Kanpur, Andhra Pradesh",926370000000,NCRTC,11.413632,75.710889,roads,2025-02-12,Near Completion,True
+2a80343b-aff4-44dd-8caa-f413cc7b6d13,"Construction Ring Road for Lucknow Municipal Area, West Bengal",176450000000,NHSRCL,29.292665,69.796085,roads,2027-02-14,Ongoing,True
+3277944c-74d6-471d-a202-b66fa64cde4c,PRADESH OF HIGHER CAMPUS PHASE 1 OF IIM SIRMAUR (Dec-2024) (N.A.),34790000000,State PWD,15.150531,69.133718,public_works,2025-07-15,Ongoing,True
+b33b75b7-9441-46cb-9719-ecf3cdf9f5d0,"Upgradation Water Supply Scheme in Thiruvananthapuram District, Karnataka",1900000000,State Jal Nigam,17.190375,82.901367,sanitation,2026-06-23,Delayed,True
+803617a9-e3d7-4e95-933b-6657680973ad,Railways 1 1489.74,886050000000,NCRTC,14.736645,91.713491,roads,2029-08-29,Near Completion,False
+8434a092-973d-4fe2-be4d-2a8482135a50,586 (East Central Railway [ECR] - I) Jharkhand 108.89 62,1071390000000,CMRL,26.535408,74.461079,roads,2025-06-29,Ongoing,True
+9fb941d1-d7f4-40c6-8743-91ddf18a473a,"Expansion Sewerage Network in Patna District, Assam",6970000000,MP Jal Nigam,32.386144,76.000206,sanitation,2029-01-28,Completed,True
+dc8a45c7-fed3-4dd7-a27d-d089c496e684,"Modernization of Convention Centre Phase-II at Gwalior, Jharkhand",39770000000,AAI,34.810701,83.770378,public_works,2028-09-14,Ongoing,True
+434acdf1-d462-4303-bdfb-b49c745afd6c,"Strengthening Storm Water Drainage System for Udaipur Municipal Area, Rajasthan",7380000000,AMRUT Mission,20.16628,71.367693,sanitation,2029-01-03,Completed,True
+0a8163bb-8525-4c59-a03b-794f1525e11c,DEMOW TO END OF MORAN BYPASS (N.A.) (N.A.),92820000000,NHSRCL,35.337184,82.320008,roads,2026-08-28,Near Completion,False
+77479639-09d9-488c-b603-593001edf1c4,"Rehabilitation of Expressway between Ahmedabad and Gwalior, Jharkhand",632190000000,NHSRCL,36.37205,82.778244,roads,2027-05-09,Delayed,True
+be7e1277-90ce-4839-818a-3b9494a2b502,CORRIDOR FROM KM. 135.650 TO (Jun-2025) (N.A.),352810000000,DFCCIL,18.971788,95.047608,roads,2028-02-26,Ongoing,True
+2fc04758-f657-4fe2-ae51-c732328eac85,"Development of Bypass Road Section at Jaipur, Gujarat",115900000000,MRVC,32.137552,86.532945,roads,2026-02-26,Completed,True
+f052c7bb-9677-4570-b522-1c503db0873f,"Expansion Sports Complex in Ranchi District, Punjab",19220000000,CPWD,22.890456,94.918658,public_works,2028-03-23,Ongoing,True
+b12c88fd-eaf3-4f22-b7ed-e8d2bc2e4399,"Development National Highway in Bhubaneswar District, Rajasthan",1116840000000,DFCCIL,32.112312,89.45575,roads,2025-05-02,Near Completion,True
+a0cc059d-540c-4fcf-b7c2-a687b33cc4d4,"682 (Western Railway [WR] - II) (Madhya Pradesh, 4445.82 81",521440000000,DFCCIL,10.099119,84.516773,roads,2028-02-13,Ongoing,True
+0760f809-3a5e-43bb-ae06-63f3691119f6,"Upgradation Bypass Road in Mumbai District, Kerala",409100000000,CMRL,24.579612,69.350316,roads,2029-04-30,Near Completion,True
+31838d28-d135-4443-b313-c107c6514916,"Strengthening Interchange for Hyderabad Municipal Area, West Bengal",259030000000,RVNL,23.712627,92.489491,roads,2025-07-24,Ongoing,True
+c1a1f133-df00-43fb-aaf2-00c0eb64a6ff,"Rehabilitation of Interchange Phase-I at Guwahati, Odisha",73740000000,BMRCL,15.436017,94.762043,roads,2027-06-29,Near Completion,False
+e356b314-7bca-4595-bd72-bcee586b6a68,585 (South Eastern Railway [SER] - I) Jharkhand 288.72 5,885550000000,State PWD,25.900535,78.430801,roads,2027-07-14,Near Completion,False
+d4e6e1b2-4f06-4480-9dc9-ff8965a77187,Doubling between Motumari Vishnupuram - 88.81 Km and Rail over Rail - RoR at,152960000000,MRVC,17.82288,87.126638,roads,2027-05-27,Ongoing,True
+d3244f5d-7a8e-4c54-82ef-5f875f2c2535,"Development of Urban Arterial Road Project at Mumbai, Bihar",933980000000,CMRL,20.988101,87.947094,roads,2029-07-06,Delayed,True
+a3c8532e-808b-43f8-a022-f6b27013d8c2,"Upgradation of Flyover between Chennai and Nagpur, Andhra Pradesh",727880000000,BMRCL,28.148138,72.863856,roads,2027-02-09,Ongoing,True
+6de43419-38cf-421a-8439-fcd8ba0bcd98,"Upgradation District Hospital for Pune Municipal Area, Tamil Nadu",43350000000,AAI,15.41032,81.51095,public_works,2027-01-02,Completed,True
+112f6f44-def3-4beb-9a2a-69188febaf81,"Strengthening of Urban Arterial Road Phase-II at Chennai, Maharashtra",871020000000,CMRL,27.103241,73.667061,roads,2026-08-14,Ongoing,True
+ce98663b-324f-4571-966c-5af805c876e4,"Expansion District Hospital for Ludhiana Municipal Area, West Bengal",23610000000,AAI,27.166648,84.269322,public_works,2025-01-07,Delayed,True
+0ddc2ea3-b040-4de2-9e9e-2ed5e6ae857e,"Strengthening National Highway for Raipur Municipal Area, Jharkhand",230290000000,RVNL,29.443986,94.144525,roads,2028-06-29,Delayed,True
+46bc1aa8-142a-4da3-a4d2-803b2e6a1a0b,"Expansion of Public Administrative Building between Nagpur and Bengaluru, Tamil Nadu",5390000000,NBCC,23.478661,94.126804,public_works,2027-06-09,Ongoing,True
+6f642c07-050c-44c8-a230-d6259251f94e,"Development of Water Supply Scheme between Guwahati and Thiruvananthapuram, Jharkhand",6240000000,Urban Local Body,22.676064,75.447997,sanitation,2028-06-13,Delayed,True
+331fac8d-eeed-442a-97ac-d223415ce37d,"Expansion of Underground Drainage System between Bengaluru and Visakhapatnam, Punjab",4090000000,UP Jal Nigam,11.951011,70.709826,sanitation,2026-04-24,Delayed,False
+93f401c6-0eff-46da-b16b-0de723512e99,TRANSPORT SECTION FROM KM 23.284 TO KM (Dec-2024) (N.A.),27020000000,HUDCO,24.979702,90.538338,public_works,2029-07-10,Ongoing,False
+562651a7-aa8d-4029-bce8-2121c6ce9c36,"Upgradation of Service Road Package at Pune, Gujarat",183590000000,BMRCL,30.983258,68.686124,roads,2026-09-21,Ongoing,True
+5230b6b3-98b4-4960-abb6-ab98207e3c9a,"Modernization National Highway for Gaya Municipal Area, Madhya Pradesh",125700000000,NHAI,33.452577,78.470184,roads,2029-07-02,Near Completion,True
+72d648fc-fd2a-4f94-9c9f-95daa0a4a795,"location of old OPD block, at existing ESIC Hospital/ Medical college campus, 06/2025",20990000000,CPWD,24.180618,70.355608,public_works,2026-07-20,Ongoing,True
+f94e0d29-2e90-4f11-9c6c-62ca1ffb13ed,350 Bedded [Upgradable to 500 beds] ESI Hospital at Sanand,41110000000,State PWD,22.908946,90.728032,public_works,2026-11-04,Delayed,True
+21e61baa-6429-41fc-980a-ed2c6bc18472,611 (South Central Railway [SCR] - II) Maharashtra 25.4 0,779180000000,BMRCL,10.782236,71.128477,roads,2028-07-07,Ongoing,True
+a7ae1811-b8c0-46dc-952e-45a4b7ad9f14,"Development of Public Administrative Building between Nagpur and Amritsar, Uttar Pradesh",11840000000,AAI,23.032443,92.055131,public_works,2027-01-29,Delayed,True
+f7ce346c-91a5-40b8-866d-b45bc82f404b,"Development of Sewerage Network Section at Cuttack, West Bengal",2590000000,CPHEEO,26.155603,90.899826,sanitation,2025-07-12,Ongoing,True
+e524b716-5d02-4144-b7b6-1873df2b64ca,"Modernization of State Highway between Gaya and Chennai, Uttar Pradesh",603960000000,NHSRCL,19.126291,86.088549,roads,2027-07-21,Completed,True
+94378d64-058d-45cf-a2cf-44a3f4a900c1,"Construction of Flyover Phase-II at Nagpur, Madhya Pradesh",36600000000,NHSRCL,33.558048,74.756885,roads,2028-01-21,Ongoing,True
+ab14bbe8-0e75-48c0-9d6a-252c4fd7c69a,"Upgradation Sewerage Network in Hyderabad District, Maharashtra",1790000000,Urban Local Body,9.316825,96.281333,sanitation,2026-11-25,Near Completion,False
+300891c3-5af2-4ac0-b7c6-20283d6e72e1,"Expansion of Water Supply Scheme Stretch at Ludhiana, Andhra Pradesh",2480000000,State Jal Nigam,10.750837,76.41021,sanitation,2029-01-29,Ongoing,True
+0c3dea28-2176-48c7-bb75-31d0ca3056e1,"Strengthening of Storm Water Drainage System between Hyderabad and Thiruvananthapuram, West Bengal",6120000000,MP Jal Nigam,28.930532,78.675237,sanitation,2028-04-01,Near Completion,True
+82b8724a-243f-41e9-8f9d-252c1dc78862,(MUDIGUBBA TO PUTTAPARTHI) OF NH- (N.A.) (N.A.),1160830000000,NHSRCL,14.874764,68.467669,roads,2025-08-04,Ongoing,True
+b3ddd735-103c-490e-a49f-84bd25546d86,"Expansion of Bypass Road Phase-I at Udaipur, Andhra Pradesh",191840000000,NCRTC,31.367009,79.616194,roads,2026-02-20,Completed,True
+d52580f3-5f51-4232-8c06-79421fccfaf4,Babupeth - Sasti New Rail Line [13.114 KMs],542060000000,NHAI,19.457079,77.462686,roads,2027-07-26,Ongoing,True
+6da7feab-3eae-4ad8-a7f9-e5fad07fc36f,"Upgradation of Sports Complex Phase-II at Indore, Haryana",44920000000,CPWD,33.371452,77.235395,public_works,2027-03-23,Near Completion,True
+84c2b621-8ec3-486a-b971-01e4a1270fbe,"9 UP-GRADATION OF TIRORA-GONDIA, STATE HIGHWAY 288.14 04/2023",380490000000,State PWD,36.359026,68.094614,roads,2027-02-25,Completed,True
+0dff0300-2ef1-4633-b560-afc1a8ee6f35,"Strengthening of Road Over Bridge Phase-II at Visakhapatnam, Bihar",106650000000,RVNL,18.982159,81.694904,roads,2027-12-11,Ongoing,True
+282ab756-ba79-423b-baf8-6184056d487e,"Modernization of Urban Arterial Road between Bhubaneswar and Nagpur, West Bengal",306380000000,RVNL,32.709118,90.990991,roads,2029-09-08,Delayed,False
+4f3b9482-62ab-40cc-913e-e268fbf2161e,EXCAVATED ESCAPE TUNNEL TO (Dec-2024) (N.A.),671260000000,MRVC,36.260785,72.159234,roads,2027-03-26,Ongoing,True
+1370d360-34af-4e5c-b399-33ce01c53934,"Upgradation Sports Complex in Noida District, Haryana",38680000000,NBCC,9.560611,96.115342,public_works,2028-10-22,Completed,True
+1a5efe50-9ebb-4030-a9d0-fd40ed2f068e,"Modernization of Road Over Bridge System at Noida, Kerala",868940000000,BMRCL,8.944075,79.296319,roads,2028-11-22,Ongoing,True
+3dfa10a2-ce3b-42cb-b793-be1c28a7c5d5,"634 (South Central Railway [SCR] - I) (Andhra Pradesh, 381 50",584850000000,NHAI,11.600481,74.072654,roads,2029-02-09,Ongoing,True
+4a210aa8-81da-4ea9-82a8-4d99835ef44d,BANDARDEWA SECTION OF NH-415 (N.A.) (N.A.),34110000000,MoHUA,30.343525,72.112078,public_works,2025-06-02,Delayed,True
+47bde97b-2afa-4530-8a0f-a5a94c2db61b,"Rehabilitation of Service Road between Coimbatore and Jodhpur, Assam",469650000000,DFCCIL,26.022986,71.820554,roads,2029-06-11,Ongoing,True
+d94aed22-08db-4175-b5c9-0d651452f051,"Upgradation Sewage Treatment Plant for Noida Municipal Area, Karnataka",4520000000,CPHEEO,36.72475,87.115866,sanitation,2028-06-12,Near Completion,True
+75b1ae42-0875-409e-9c95-427f271337d9,"Strengthening of Sewerage Network Section at Warangal, Andhra Pradesh",5630000000,MP Jal Nigam,34.787364,77.89862,sanitation,2026-11-04,Ongoing,True
+ff1a85e9-d7ef-4cf7-98a6-def6f77c366e,"Modernization Sewerage Network for Vijayawada Municipal Area, Kerala",2520000000,Urban Local Body,20.473103,68.241837,sanitation,2026-11-28,Ongoing,True
+e327feee-d04a-4bb0-ad6c-4fe85924ff48,BYPASS (NH-15) STARTING AT CH (N.A.) (N.A.),1113980000000,NHSRCL,11.278011,86.295637,roads,2025-04-07,Ongoing,True
+09fca85f-5a77-44db-9142-72054482927b,"Upgradation Underground Drainage System for Cuttack Municipal Area, West Bengal",2900000000,KUIDFC,35.531835,77.503963,sanitation,2029-03-17,Ongoing,False
+5b03856c-cb89-43db-9e49-248844badcaf,GREENFIELD HIGHWAY FROM KODUR (N.A.) (N.A.),234130000000,MRVC,25.953126,68.659438,roads,2024-03-29,Completed,True
+8fd1bdbd-5372-494f-ac32-5f67e4463299,"Rehabilitation of Expressway Phase-II at Thiruvananthapuram, Rajasthan",370880000000,BMRCL,35.212162,93.065038,roads,2024-07-31,Completed,True
+76eb97db-1f0f-4ec0-907d-c8d751b5a007,"Upgradation Expressway in Lucknow District, Bihar",613190000000,NCRTC,22.769317,71.136826,roads,2020-11-23,Completed,True
+7d08f14b-c006-4d12-8853-3c8137b2039d,"Development Fecal Sludge Treatment Plant for Thiruvananthapuram Municipal Area, Haryana",2000000000,AMRUT Mission,24.535935,79.870749,sanitation,2024-06-27,Near Completion,False
+e0b547cd-fe6b-48cd-88bf-b50021142757,"Modernization of Sports Complex Stretch at Udaipur, Assam",40370000000,MoHUA,18.739435,85.427079,public_works,2022-12-12,Completed,True
+d5471977-6c67-4efc-b7a3-b05e9688253d,"Development of Bus Terminal between Indore and Patna, Jharkhand",49000000000,CPWD,23.418491,72.725986,public_works,2018-03-02,Near Completion,True
+b997c530-32f8-4dc1-8e3d-112e053a2e7e,Patna Metro Rail Project,704190000000,State PWD,17.482269,75.160007,roads,2024-09-05,Delayed,True
+54f1f1a5-96eb-49cd-aa1e-1e110c070e8b,"Construction of Ring Road Corridor at Kolkata, Uttar Pradesh",238170000000,NHAI,9.873376,96.754833,roads,2022-10-05,Near Completion,True
+b75ee9ec-2933-46ff-b8d1-c576923f0e77,SECTION OF NH-130CD ROAD FROM (N.A.) (N.A.),7810000000,NBCC,19.523409,77.780459,public_works,2018-05-14,Ongoing,True
+1bea03b9-0a8d-46a8-8d23-473ff39c62e6,SECTION OF NH-31 (Mar-2025) (567.00),32620000000,MoHUA,27.580995,96.273066,public_works,2018-10-03,Completed,False
+1df56a44-3c59-4755-820b-5ee53ca5c4bb,"Rehabilitation of Storm Water Drainage System Phase-I at Udaipur, Rajasthan",5320000000,Urban Local Body,14.679465,84.094199,sanitation,2022-06-04,Completed,True
+2ca712e0-2c75-4e38-bd24-2c560dbf6efd,"Strengthening National Highway in Bhopal District, West Bengal",1137840000000,BMRCL,11.910318,79.434942,roads,2021-06-06,Ongoing,True
+b9d1cdb6-55d6-48c6-8a08-789ed797f05e,"Modernization Urban Arterial Road in Dhanbad District, Tamil Nadu",949090000000,NHSRCL,30.67298,96.541899,roads,2023-10-17,Completed,False
+6c11ff64-77a3-480c-a1e9-c0aedc084c69,"Upgradation of Sewage Treatment Plant Phase-II at Kochi, Gujarat",1830000000,MP Jal Nigam,28.214937,82.027117,sanitation,2021-08-17,Completed,False
+dec3c5d1-be4e-46e9-909b-2c771edbcccc,"ROAD FROM BHEJA TO BAKAUR {4/2026} {1,101.99}",29120000000,MoHUA,12.327395,70.327676,public_works,2023-09-30,Delayed,True
+5b4e0ccd-700e-4d1b-8dba-901695975c0d,"Development of Water Supply Scheme between Dhanbad and Visakhapatnam, Andhra Pradesh",5660000000,MP Jal Nigam,14.618337,78.552861,sanitation,2023-06-28,Near Completion,False
+df40b295-6637-420b-ab14-630f0864e5c0,KM173.900 TO KM 179.600 OF NH-21 IN (N.A.) (N.A.),4550000000,UP Jal Nigam,24.099106,81.051312,sanitation,2019-06-12,Near Completion,True
+04c8a295-5e97-49f9-81e5-273fb3ad9218,"Construction of Road Over Bridge Stretch at Gwalior, Punjab",166540000000,RVNL,17.614406,94.55772,roads,2023-05-31,Completed,True
+3a57a289-131c-455e-b053-b0a64d332edb,"Construction of Underground Drainage System Phase-II at Ludhiana, Telangana",4330000000,CPHEEO,20.823133,74.951244,sanitation,2023-01-30,Completed,True
+d5bd731f-5434-4e22-b839-e0e5ae321f4d,"Development of Fecal Sludge Treatment Plant System at Raipur, Karnataka",5230000000,KUIDFC,35.183626,95.063433,sanitation,2024-03-06,Completed,False
+09b07cba-b67e-4b6f-b4b6-e908fce41bdc,"Construction of Interchange between Bengaluru and Indore, Jharkhand",392270000000,DFCCIL,21.451051,80.407186,roads,2021-07-16,Completed,True
+cd108d5a-eb89-4561-be25-bbe0b90c9827,"Construction of Judicial Complex Project at Surat, Punjab",49770000000,NBCC,23.941504,71.060605,public_works,2024-07-24,Completed,True
+3a36dbc1-0a45-4f73-931d-0052680a2065,"Expansion of Sewerage Network between Udaipur and Delhi, Punjab",1910000000,MP Jal Nigam,21.048154,89.300319,sanitation,2023-01-09,Near Completion,True
+f4001cea-e63e-43dd-bd81-01cfea046d6b,"Development of Bypass Road Project at Ranchi, Punjab",131660000000,RVNL,16.558102,77.876317,roads,2021-07-30,Completed,True
+2a221c2a-a32f-4b2c-8fab-9c86f4e13b49,"Development of Road Over Bridge between Ludhiana and Noida, Andhra Pradesh",577090000000,DFCCIL,13.014315,80.582818,roads,2022-07-07,Completed,False
+1196675f-d45e-4c2d-aac4-f3a8e3a1f6f8,"Strengthening of Bypass Road between Ludhiana and Kanpur, Gujarat",354940000000,NCRTC,21.197046,84.405619,roads,2022-08-13,Completed,True
+f3ef2f59-a84b-4731-83e1-90c811ffb16c,"Modernization Service Road in Delhi District, Madhya Pradesh",636540000000,NCRTC,15.422941,88.62071,roads,2020-10-09,Near Completion,True
+76d47659-c344-435a-a021-c1908d072b95,761 (National Highways & Infrastructure Development Corporation Ltd. [NHIDCL]) Karnataka 153.26 14,674280000000,BMRCL,10.726866,95.097695,roads,2023-11-28,Completed,False
+c849aafd-7d8d-4cb7-8ff2-693bc77bc374,"Construction of 350 beds + 50 Super Specialty beds ESIC Hospital Sheelanagar,",41680000000,HUDCO,24.344857,74.796519,public_works,2021-11-30,Completed,True
+53c82368-8db2-48e4-9a7b-5c684da8934e,"Expansion of Ring Road between Hyderabad and Bengaluru, Assam",85830000000,NCRTC,16.554312,87.72419,roads,2024-08-16,Completed,True
+7773237a-2ec5-46ee-8389-e5f28dceed7e,"Development of Sewage Treatment Plant Phase-II at Hyderabad, Chhattisgarh",5560000000,AMRUT Mission,36.6675,69.836351,sanitation,2021-10-25,Completed,True
+7fe0297f-c614-406a-8f5c-c696443c2d64,"Drainage System at Pakyong Airport, Sikkim on design & build basis [EPC] with 11/2023 02/2026",2060000000,UP Jal Nigam,36.844796,78.017095,sanitation,2020-04-01,Completed,True
+462ba1f6-1e5d-4ac4-a15f-e4527032ea89,KOHIMA ROAD FROM DESIGN KM 152.490 (Sep-2025) (794.74),835430000000,MRVC,28.938284,85.172955,roads,2019-12-09,Delayed,True
+e13cf191-371c-4563-a69b-a8b47312bb4b,"Construction Sports Complex for Thiruvananthapuram Municipal Area, Assam",39760000000,AAI,18.6491,73.143549,public_works,2024-03-24,Delayed,True
+5edd195d-9bf9-4f82-afe5-1fbf966edfb2,"Development Expressway for Kochi Municipal Area, Punjab",743480000000,State PWD,34.173551,96.708978,roads,2024-09-12,Near Completion,True
+00d54a94-8d52-441f-baeb-3dfe11e5a34a,JAMMALAMADUGU SECTION OF NH- (N.A.) (N.A.),6670000000,MP Jal Nigam,16.700619,88.344373,sanitation,2024-08-08,Delayed,True
+5ef7143c-0d05-4f71-ac53-dff66db0979b,"Construction of University Campus Phase-I at Gaya, Telangana",2990000000,State PWD,21.34626,95.011329,public_works,2022-03-29,Completed,True
+58c5a08f-3b73-4a69-9744-54ea987bea55,"Expansion Service Road in Kochi District, Assam",106040000000,BMRCL,15.778875,90.666865,roads,2022-11-01,Completed,True
+b7efbd7c-0ae0-4141-b0a6-2bbf7854d0d1,538 (South East Central Railway [SECR] - II) Chhattisgarh 1.34 5,135950000000,RVNL,20.877032,83.002906,roads,2018-11-10,Completed,True
+4339e263-fe1d-4eac-9241-937631bd3ede,"Upgradation Expressway for Gwalior Municipal Area, Madhya Pradesh",505990000000,BMRCL,29.881757,80.29215,roads,2021-06-26,Completed,True
+5412de32-098a-4a0e-b240-cd2128b8a3e7,"Development Urban Arterial Road for Nagpur Municipal Area, Bihar",106230000000,MRVC,35.066026,70.926287,roads,2018-02-24,Completed,True
+f7028dde-ee3b-4be9-b8a2-b65a5491e5d5,"Construction of Sewerage Network between Pune and Nagpur, Bihar",2870000000,KUIDFC,33.885608,71.073109,sanitation,2021-04-04,Completed,True
+da7ecf31-8463-482f-ac38-87c9a8186a7e,"Expansion Interchange in Thiruvananthapuram District, Madhya Pradesh",278070000000,MRVC,24.123167,72.071532,roads,2021-04-01,Completed,True
+36228b0f-a769-4571-9403-0555bbfadfb5,TRANSPORT (N.A.) (N.A.),12970000000,HUDCO,19.316903,74.818636,public_works,2018-07-18,Completed,True
+91c9462d-aaf9-4583-9d95-c514c7be9d9d,"Development National Highway in Jamshedpur District, Uttar Pradesh",1182640000000,NCRTC,16.964101,94.716447,roads,2022-06-18,Completed,True
+72f191cd-2a85-4e6b-bcec-85084e07e26c,END OF MORAN BYPASS TO BOGIBEEL (N.A.) (N.A.),84750000000,CMRL,13.184463,96.859702,roads,2018-01-20,Near Completion,True
+2b66e0eb-4dbe-4bce-ae92-0a07a392f625,731 (South Central Railway [SCR] - II) Telangana 420 58,486230000000,State PWD,29.81296,86.2342,roads,2021-02-28,Completed,True
+7bfc7526-99df-4670-8199-0f2d5e17e1d1,"Modernization of Expressway Package at Guwahati, Kerala",642680000000,NCRTC,18.776878,89.930821,roads,2024-05-19,Completed,False
+2ed8442c-7dd5-4ded-a282-89bacd96fd70,"Development of Convention Centre between Bengaluru and Mysuru, Tamil Nadu",39870000000,HUDCO,26.201012,84.452243,public_works,2022-05-03,Near Completion,False
+7d501453-37f1-4166-bd84-f602b25f0413,"Rehabilitation Sewage Treatment Plant in Jodhpur District, Assam",4550000000,State Jal Nigam,17.618881,78.683489,sanitation,2020-01-28,Completed,True
+6ccde995-20d5-4ddd-b402-26ddac05a826,"Modernization Expressway for Pune Municipal Area, Madhya Pradesh",986520000000,State PWD,26.363867,95.220544,roads,2021-01-07,Delayed,False
+278abde0-b0b8-4772-9b05-5555d1c50314,"Rehabilitation Bypass Road in Gwalior District, Maharashtra",543470000000,NHAI,21.536412,88.07524,roads,2023-05-03,Completed,True
+1afc6992-5bc3-48fa-a3ff-500d24e65d9b,704 (East Coast Railway [ECoR] - II) Odisha 1298 80,678050000000,CMRL,27.330513,71.899856,roads,2019-04-14,Ongoing,True
+29b81490-1f83-475c-942a-0580a6b72890,512 (South Central Railway [SCR] - II) Andhra Pradesh 1320.81 29,606810000000,DFCCIL,27.367169,90.729515,roads,2024-04-24,Ongoing,True
+3992326e-2f70-48fb-b6d1-3084e5c82033,"Construction Fecal Sludge Treatment Plant in Kolkata District, Bihar",7360000000,Urban Local Body,15.514616,74.92438,sanitation,2022-09-08,Delayed,True
+89271c05-a326-4960-959a-61d105606021,"Strengthening of Service Road between Nagpur and Ahmedabad, Gujarat",302460000000,NHAI,18.504116,82.752235,roads,2019-12-26,Completed,True
+e12cae8e-6bf4-46fe-85b7-2fbf586179e7,SECTION OF NH-102B (PKG- IB) (Jun-2025) (241.52),240900000000,NCRTC,32.325175,70.570867,roads,2021-03-05,Near Completion,False
+16c91d54-d430-4185-9d81-a5293b1f3f39,"3 701658 KRISHNAPATNAM NODE - PHASE 1 - ROADS AND SERVICES 2,139 503 24",422830000000,BMRCL,27.870357,79.901065,roads,2018-12-08,Completed,False
+ebb8c593-84cb-4be8-b048-661303369c06,"Modernization Interchange in Thiruvananthapuram District, Haryana",916330000000,NHAI,28.133231,69.178403,roads,2022-07-09,Completed,True
+4c828e5c-8211-476b-ba99-fd34cc0d0f2e,590 (South Western Railway [SWR] - II) Karnataka 1419.19 30,696910000000,MRVC,19.294307,87.611827,roads,2018-06-29,Completed,True
+9de65ff7-eb4b-4120-94e3-222dbadde5f5,"679 (South Western Railway [SWR] - II) (Karnataka, 2684.67 92",887080000000,NCRTC,10.667052,72.428822,roads,2018-04-30,Completed,True
+59f1d6f4-1c56-45f5-aa32-e6edeb29cffc,"Development of Sewage Treatment Plant Phase-I at Indore, Maharashtra",4240000000,AMRUT Mission,16.394738,94.591313,sanitation,2021-11-27,Completed,True
+a3283f7a-2269-43fc-955a-76be4f24ce83,NATIONAL HIGHWAY 127B FROM KM 31.500 {5/2027} {504.00},136520000000,NHAI,17.939931,92.204674,roads,2022-11-03,Completed,True
+77831aeb-cb02-4a65-9906-d084ea1a14ec,3rd & 4th Railway Line Project from Salegaon to Budhapank via Rajathgarh.,1185140000000,NHSRCL,31.539799,68.35532,roads,2019-12-23,Completed,True
+5aa5efac-bd92-4476-afa8-907aaa43b8a1,"Construction of Permanent Campus of Indian Institute of Management [IIM] Amritsar,",8360000000,State PWD,11.228445,74.154188,public_works,2018-02-04,Near Completion,True
+02372231-c49f-4460-8f55-01be514eed05,"Expansion Road Over Bridge for Howrah Municipal Area, West Bengal",714510000000,DFCCIL,8.446144,76.928983,roads,2024-06-28,Ongoing,True
+840e2aa0-3191-400d-b652-1e44a99d8cb1,Establishment of Permanent campus Phase 1 of IIM Sirmaur,42340000000,State PWD,24.524716,80.149438,public_works,2022-06-12,Near Completion,True
+1d4d7531-98aa-463a-93dd-74d667049aa5,"Strengthening Road Over Bridge in Guwahati District, Jharkhand",791380000000,CMRL,25.930305,89.905937,roads,2022-09-17,Completed,True
+e7ee561d-d0f6-46cd-909a-78ddb2ce9429,"Strengthening of Flyover Corridor at Dhanbad, Chhattisgarh",430580000000,CMRL,13.561907,72.58518,roads,2019-03-21,Completed,True
+cd778143-f1da-4828-aefc-88ff42db9de3,"Expansion Underground Drainage System for Mumbai Municipal Area, West Bengal",6110000000,AMRUT Mission,34.502362,79.184413,sanitation,2021-02-23,Completed,True
+cb980e0c-f964-4042-a0ab-45b55184fb6c,621 (Central Railway) Maharashtra 4969.74 100,502960000000,BMRCL,12.782167,86.332243,roads,2022-10-23,Completed,True
+978443f7-e6c9-4970-889b-faab8d4b060c,"Strengthening Interchange for Noida Municipal Area, Assam",60000000000,DFCCIL,12.932349,83.031432,roads,2019-11-14,Completed,True
+f8ed4ced-8dd9-4760-877a-198f29f5ad0d,"HIGHER CAMPUS PHASE-I, PACKAGE -II AT (N.A.) (N.A.)",33260000000,NBCC,12.373197,85.958307,public_works,2020-02-29,Completed,True
+b3ed361b-663b-496b-b01a-75c22f806f01,"RING ROAD/ BYPASS AROUND JAMMU (Jul-2025) (1,471.75)",383940000000,NHAI,27.104762,91.838609,roads,2018-09-09,Near Completion,True
+2d1a2fef-da40-433f-b1e8-3cf2fc7b1c7c,"Development of Fecal Sludge Treatment Plant Section at Chennai, Rajasthan",6690000000,AMRUT Mission,8.554144,84.834942,sanitation,2019-06-23,Completed,True
+d394f0a6-9ea8-449e-8ef1-dde3d6dd1ea6,"Upgradation Bypass Road for Patna Municipal Area, Tamil Nadu",542690000000,CMRL,12.283356,76.681548,roads,2020-05-22,Completed,False
+f90ab369-099a-4a82-8bb6-c4f3c2660556,"Upgradation National Highway for Hyderabad Municipal Area, Rajasthan",946170000000,NHSRCL,19.061898,88.140636,roads,2023-04-12,Delayed,True
+c9d98c31-9772-4a9b-9e86-c62333e6a019,760 (National Industrial Corridor Development Corporation) Andhra Pradesh 503.39 24,566750000000,NHSRCL,13.038348,73.068011,roads,2022-04-30,Completed,False
+41cf1087-ee4f-4953-9abd-c8f1d7468320,"Construction District Hospital in Patna District, Rajasthan",19800000000,AAI,20.641072,95.997359,public_works,2024-05-23,Delayed,False
+5703491d-65fe-4532-92a0-06e30344efe0,"Restoration of Gas Terminal, Phase-I [Part-A], Hazira",27670000000,NBCC,10.698338,72.60685,public_works,2023-10-15,Near Completion,True
+0c77b5cf-27e2-4610-bc8b-c409bb58fe55,"Strengthening Fecal Sludge Treatment Plant for Pune Municipal Area, Haryana",4730000000,UP Jal Nigam,31.132499,84.263392,sanitation,2022-11-12,Completed,True
+c185287e-e504-4ff6-b669-56c1ee8a248d,"Construction of Bus Terminal between Ahmedabad and Gwalior, Maharashtra",7380000000,MoHUA,33.372565,88.908905,public_works,2022-10-03,Completed,True
+1f63129a-d898-43c5-ab98-ded6eb5b7953,"Upgradation Sewage Treatment Plant in Amritsar District, West Bengal",5040000000,Urban Local Body,31.365288,84.084498,sanitation,2022-05-19,Completed,True
+cbd7f660-5193-4e8a-8e20-013b157e6da9,"Rehabilitation of State Highway Stretch at Noida, Uttar Pradesh",213940000000,BMRCL,16.402393,93.553145,roads,2018-08-28,Ongoing,True
+d6c407a9-d811-472a-9f2a-6857b181e6af,"Construction of Interchange Section at Delhi, Andhra Pradesh",1127010000000,NCRTC,25.267784,89.512784,roads,2021-12-30,Completed,True
+dfd28493-27f9-42ae-ae38-bdcecbf734dc,"Modernization of Service Road between Jodhpur and Bhubaneswar, Karnataka",769880000000,DFCCIL,20.040275,87.031481,roads,2024-11-23,Completed,True
+20505a62-f630-4486-ba12-213966983219,"Rehabilitation National Highway in Kochi District, Gujarat",574800000000,RVNL,29.832233,82.591639,roads,2023-11-23,Delayed,True
+edc34b14-359d-4ae6-aa4e-cd026fb3f21c,"Modernization National Highway for Bhubaneswar Municipal Area, Rajasthan",646880000000,NHSRCL,29.326603,69.868488,roads,2018-04-12,Completed,True
+95f1ed3d-4af1-4836-a786-2de2a8f1d124,"Development of Sports Complex between Bhubaneswar and Noida, Telangana",32270000000,MoHUA,31.763228,76.201657,public_works,2021-11-28,Completed,True
+c1113b50-41d2-4a80-b7f2-9899d261c498,Proposed 6 nos Road Over Bridge [ROB] at different locations under MCL Talcher,409970000000,CMRL,35.584277,89.779943,roads,2020-03-17,Completed,True
+91174c48-3273-43fb-8186-6945efc98410,"Construction of Permanent Campus for IIM Jammu Phase-1 at Jagti, Nagrota,",4350000000,HUDCO,36.846474,72.34644,public_works,2024-07-02,Completed,True
+8142333c-2d73-4120-8591-2a25c4c12248,"Development Bypass Road in Kochi District, Punjab",616940000000,NCRTC,24.004798,73.919398,roads,2023-11-17,Near Completion,True
+6884431a-2aed-456b-8b72-7ced5380fdc0,SECTION OF NH-202K FOR PACKAGE-II {2/2026} {442.54},2090000000,AMRUT Mission,11.294695,94.067355,sanitation,2021-08-22,Completed,False
+7387b05a-19d4-4818-9a23-1bffbd8a4fdb,"Development Fecal Sludge Treatment Plant for Vadodara Municipal Area, Assam",3900000000,UP Jal Nigam,19.346763,87.789674,sanitation,2018-01-13,Near Completion,True
+4d7e8539-35e3-4113-aeeb-8fffabeb8e4a,BYPASS (PACKAGE IVA) OF NH-88 {10/2025} {739.39},359240000000,State PWD,8.937971,73.09284,roads,2019-07-19,Completed,True
+c31dfef6-c847-42be-af95-09c260921398,"Upgradation of Water Supply Scheme between Lucknow and Thiruvananthapuram, Uttar Pradesh",7310000000,State Jal Nigam,17.218554,73.706496,sanitation,2023-07-12,Ongoing,True
+44210be5-933b-4883-8c8d-8fe2746b19dd,"Strengthening Ring Road in Udaipur District, Maharashtra",1034510000000,BMRCL,24.43905,71.82499,roads,2024-11-09,Completed,True
+45b95e54-c420-4857-8377-89233346d777,CONTROLLED HIGHWAY FROM (N.A.) (N.A.),199310000000,MRVC,23.77419,95.932501,roads,2018-02-23,Completed,True
+020ce7d1-ac0c-4998-8d02-b62156fe4015,OFEXISTINGROAD TO 2-LANE WITH PAVED (Aug-2024) (395.59),27910000000,HUDCO,14.211279,87.322854,public_works,2023-09-07,Near Completion,False
+d02521e8-de62-46df-b322-db5d4a2e6ff8,"Modernization Storm Water Drainage System for Raipur Municipal Area, Tamil Nadu",1830000000,MP Jal Nigam,11.010889,92.591764,sanitation,2021-08-30,Completed,True
+ef5fb8d4-855a-49b4-8095-0d68509424ba,"Modernization National Highway for Bengaluru Municipal Area, Jharkhand",452210000000,NHSRCL,18.850535,88.215093,roads,2022-11-05,Completed,True
+f9554ead-9541-4cdf-831f-20d1cfabf7a2,"Construction Urban Arterial Road in Amritsar District, Assam",943400000000,State PWD,24.367703,77.778157,roads,2024-04-05,Completed,True
+1abd39b6-87b6-4da2-91c1-488be0e70096,"Rehabilitation of Road Over Bridge System at Jaipur, Jharkhand",727650000000,MRVC,27.17869,70.520316,roads,2023-09-08,Completed,True
+10cb2d14-9f73-4bd2-88be-f24cc43edb7f,503 (South Western Railway [SWR] - II) Andhra Pradesh 0 0,292340000000,MRVC,32.119148,72.908001,roads,2019-11-27,Near Completion,False
+7b809564-e71f-4d61-a1e9-2703e32d1b7b,"Rehabilitation of District Hospital Phase-II at Kochi, Tamil Nadu",32370000000,State PWD,11.151564,75.276531,public_works,2018-12-25,Completed,True
+3a4022fe-7406-483c-a317-0b5d1724701b,"OF NH-167A (PACKAGE-I) {2/2026} {1,064.24}",184470000000,BMRCL,32.462267,86.885702,roads,2024-08-11,Delayed,True
+a1340931-792b-4a99-87ec-2da026785ecf,Pune Metro Phase-1 Extension line towards south from Swargate to Katraj,1044620000000,BMRCL,10.508753,84.134389,roads,2019-05-25,Completed,True
+c27d3f80-7595-4653-abd3-53382d2a8dd6,"Development Flyover in Howrah District, Assam",274730000000,NHSRCL,21.307734,68.511619,roads,2018-09-29,Completed,True
+3ec93aa2-398e-4479-9035-b889c3cddf3a,"Rehabilitation Flyover for Ludhiana Municipal Area, Uttar Pradesh",106660000000,State PWD,27.023847,77.425566,roads,2018-12-13,Near Completion,True
+53e8781d-ae2e-44b4-b14f-b3dd934a0986,"Rehabilitation of Bypass Road between Visakhapatnam and Bhopal, Haryana",915530000000,DFCCIL,35.667091,82.787469,roads,2021-06-07,Completed,True
+b61b6880-92c8-4516-b9a9-07d59af42b1b,"Strengthening Government Office Complex in Kanpur District, Punjab",26640000000,NBCC,24.018088,73.746403,public_works,2023-12-09,Delayed,False
+dcb84fdd-a620-443e-8aba-90ed2976d7e7,GURDASPUR ROAD (NH-5,6930000000,CPHEEO,9.87975,88.88924,sanitation,2023-04-13,Ongoing,True
+dc92c7e0-8cf8-4862-b6c1-6203f4b028f3,"Construction of 200 bed ESI Hospital at Bommasandra, Karnataka",2010000000,NBCC,22.543771,96.617087,public_works,2024-01-30,Delayed,True
+5eb9ac6d-b537-4360-bf65-96b605775c1f,SPUR LINE EAST CORRIDOR-PHASE I (N.A.) (N.A.),626110000000,BMRCL,15.488154,83.820287,roads,2019-03-18,Completed,False
+c7f32641-ee3c-46db-93a7-c88979be70fb,SAAP-3 Water Supply Infrastructure SAAP-3 Project,5220000000,AMRUT Mission,35.719778,82.401471,sanitation,2022-08-28,Completed,True
+8b85396c-25c4-449c-a1f6-f7d9f167d624,24x7 Water Supply Scheme under AMRUT – Davanagere,4010000000,UP Jal Nigam,8.6572,84.003907,sanitation,2020-06-17,Completed,False
+fac9fb46-23fb-4eb9-bae2-5f1f609485a4,4_LANE REVELGUNJ BYPASS NH-19 IN (N.A.) (N.A.),1077570000000,NHAI,25.099914,71.846424,roads,2024-04-29,Completed,True
+58032ff6-f91d-4879-8c8e-9c9da1ebe24d,TRANSPORTATION OF ADDIT,40070000000,MoHUA,17.337175,93.889211,public_works,2022-01-16,Near Completion,True
+bbdc2e6a-14e0-4df5-8920-d360f98854b9,Gudha-Thatha Mithri Construction of Railway Track Project,482610000000,CMRL,36.588715,78.44758,roads,2020-05-10,Completed,True
+c5dd556e-3e26-4b1b-93a6-97f5d3a85653,Construction of Permanent Campus of National Institute of Technology Arunachal,46490000000,MoHUA,33.821726,81.794946,public_works,2018-10-21,Delayed,True
+6f0db7fc-c45a-407e-a73f-dad52910a761,"Rehabilitation of Convention Centre Phase-I at Thiruvananthapuram, Jharkhand",17310000000,AAI,17.271903,95.850093,public_works,2024-03-14,Near Completion,True
+4f703d87-8f52-42bc-b142-234a87efc312,"Expansion Service Road for Warangal Municipal Area, Gujarat",905700000000,DFCCIL,29.758632,69.683811,roads,2021-12-25,Completed,False
+4fba816c-cc6b-403b-8623-40cfb8e3891b,"Construction Road Over Bridge for Ranchi Municipal Area, Gujarat",268630000000,BMRCL,31.977762,82.498712,roads,2018-10-25,Completed,True
+c2e0facc-d1d8-4be0-985e-3d69e6350567,"Note: Cumulative Expenditure is as per last reporting by Central Line Ministries/ Departments on the IPM portal, this may not be the actual",10830000000,NBCC,35.511402,95.570836,public_works,2019-07-31,Completed,True
+46b0e180-1e99-42e3-807a-9aeacbca25f0,"Rehabilitation Airport Terminal for Ghaziabad Municipal Area, Chhattisgarh",10790000000,MoHUA,32.094807,75.901434,public_works,2019-10-03,Completed,True
+8d845df4-3c17-4513-a189-e907e0a9b19e,SARDAR PATEL RING ROAD TO {7/2025} {929.95},771590000000,NHAI,26.503431,91.055354,roads,2018-10-06,Near Completion,True
+2bf7cadb-28b5-4f86-a532-89f2b4f78315,"Upgradation of Bypass Road between Mumbai and Gwalior, Odisha",855930000000,NHAI,8.035337,96.374864,roads,2021-08-05,Delayed,False
+78127045-5805-43bc-b712-3ad5a76f1030,"Expansion Interchange for Howrah Municipal Area, Kerala",269500000000,RVNL,20.906444,69.800856,roads,2021-10-05,Delayed,True
+bdfa1850-b163-4ce5-9f5c-8b2f72a61063,"Upgradation Bypass Road in Surat District, Kerala",33290000000,CMRL,10.99515,76.424085,roads,2020-01-29,Completed,True
+761064fe-30e9-4cbd-be24-28284d19bc4f,"Construction of Sewage Treatment Plant Phase-II at Thiruvananthapuram, Tamil Nadu",4630000000,MP Jal Nigam,10.642773,80.70768,sanitation,2024-10-19,Completed,True
+e527dff7-6355-43b0-ad31-a8c7edccad4a,"Development Sewerage Network for Ranchi Municipal Area, Madhya Pradesh",5800000000,Urban Local Body,34.553801,75.720575,sanitation,2019-08-20,Delayed,True
+30ff3f10-7728-4422-953e-48234f053b70,"Development Judicial Complex for Cuttack Municipal Area, Madhya Pradesh",2610000000,CPWD,32.479944,73.100456,public_works,2018-08-02,Delayed,True
+c508bb8a-2df3-40f5-b57e-82fa934482f6,"Development Judicial Complex for Vijayawada Municipal Area, Gujarat",31930000000,HUDCO,16.906781,94.879274,public_works,2018-04-19,Ongoing,False
+282e7286-683e-408e-b88c-537a07ae2190,OF NH-19 (OLD NH-2) FROM KM. {12/2024} {553.00},5920000000,State Jal Nigam,8.654567,76.251716,sanitation,2024-07-13,Delayed,True
+97d3280d-9c06-4e13-8665-edc5a555d95d,"Upgradation of Sewerage Network Package at Raipur, Odisha",3080000000,Urban Local Body,32.838445,89.169094,sanitation,2020-10-25,Completed,True
+2d87939d-cdd6-4d4a-a640-d7639e16c5fa,"Upgradation of Interchange Package at Noida, Rajasthan",1027240000000,BMRCL,8.054158,72.448456,roads,2023-04-12,Completed,True
+277d22c9-44eb-41fa-a015-d5f3b3c82e6d,"Modernization of Underground Drainage System between Pune and Udaipur, Assam",3150000000,MP Jal Nigam,10.037532,75.708643,sanitation,2023-02-06,Delayed,True
+945b76f5-a089-4d42-a05b-47914fb12557,"Rehabilitation Government Office Complex in Pune District, Tamil Nadu",12280000000,AAI,15.494721,76.69131,public_works,2018-03-04,Delayed,True
+a0a49e64-101c-44a3-a8f5-423480760580,processing & transportation of natural Gas to be produced from Baghjan Field 12/2020 03/2024,6740000000,NBCC,19.050333,80.396012,public_works,2022-12-31,Completed,False
+052f768c-33d9-4f4d-833b-18ceaae4200d,"Rehabilitation National Highway for Thiruvananthapuram Municipal Area, Bihar",1024670000000,NCRTC,14.966649,79.537074,roads,2022-11-30,Completed,False
+b71d1a53-0fb5-4c0d-968a-8a81bdd78c07,"Expansion of Urban Arterial Road between Bhubaneswar and Jodhpur, Odisha",17570000000,NCRTC,33.400572,83.705115,roads,2022-09-10,Near Completion,True
+079b63d3-8888-425a-b196-e8b11ea06fa2,TERMINAL BUILDING AT LGBI AIRPORT (Sep-2025) (N.A.),4250000000,MoHUA,16.641625,92.065331,public_works,2018-12-24,Near Completion,False
+7fc4fca0-baa1-45b7-81ab-2f3aa2606e07,"Upgradation of Interchange between Cuttack and Bhopal, Assam",1003290000000,DFCCIL,33.736989,87.093942,roads,2019-05-17,Completed,True
+07f02253-9809-49d5-a22e-16d6f3bacdda,"Development Public Administrative Building in Guwahati District, Andhra Pradesh",6610000000,HUDCO,20.443994,95.631782,public_works,2023-05-28,Completed,False
+391d6097-03ce-4f42-9cda-a2098e8e5369,21 (East Central Railway [ECR] - I) Jharkhand,924540000000,MRVC,25.274421,74.439277,roads,2022-06-07,Delayed,True
+eec9f9fd-e398-43f3-a2b2-eddcf71844fb,ROAD IMPROVEMENT OF NH165 IN (N.A.) (N.A.),7300000000,MP Jal Nigam,20.706864,84.494021,sanitation,2024-04-22,Completed,True
+9657d197-9094-48a1-9035-08266c0fb6fe,"Development of Sports Complex Stretch at Delhi, Chhattisgarh",6840000000,HUDCO,30.929493,88.538076,public_works,2024-09-28,Near Completion,True
+c60eac5d-453c-4ffd-8cf7-cfbf2644a7ff,ROAD FROM TAMENGLONG TO MAHUR {8/2025} {860.37},3910000000,CPHEEO,30.582849,94.659117,sanitation,2021-02-11,Delayed,True
+8396baa5-ee35-4811-a0e7-6d03aa51198f,"Development Bus Terminal for Vijayawada Municipal Area, Telangana",45970000000,State PWD,8.265279,85.153585,public_works,2023-04-12,Ongoing,True
+417edd5a-5d7d-4584-a5b3-5589fded9cdf,219.6 (KHAJURI) ON NH-75 [REHLA / (Dec-2024) (N.A.),296930000000,CMRL,31.216768,92.466224,roads,2022-05-02,Completed,True
+e3158775-aa13-4e20-aecc-0c52fa344ce8,"Expansion Public Administrative Building in Noida District, Madhya Pradesh",11410000000,CPWD,21.548232,90.111157,public_works,2018-11-20,Ongoing,True
+c1764677-bacc-4fbc-b637-f13831bdb981,"Upgradation District Hospital in Ranchi District, Telangana",25990000000,NBCC,13.12633,71.483775,public_works,2021-08-31,Completed,True
+8fce1a20-a3d1-4d93-be4b-a5b00efc8849,Strengthening of C Taxiway at NSCBI Airport Kolkata. 04/2023 02/2025,7460000000,AAI,33.034187,95.027518,public_works,2018-06-14,Ongoing,True
+38f8be95-cd9a-4ac0-9053-a506bd2f55a0,Pune Metro Rail Project Phase-2 Corridor 2A Vanaz to Chandani Chowk and Corridor,1180030000000,NHAI,26.579044,69.034795,roads,2021-08-02,Completed,True
+da5aaef3-fad6-4f8c-9a71-836d06ee1d25,AIRPORT {3/2026} {240.00},31090000000,State PWD,35.21965,91.632276,public_works,2021-09-25,Completed,False
+9a334123-6588-4137-96c5-ea59c7dcde83,"Modernization Judicial Complex for Howrah Municipal Area, Karnataka",7240000000,NBCC,19.013078,69.706765,public_works,2024-04-11,Completed,True
+0f4495f7-5be4-460c-8dd9-7ab0c1839c6f,HIGHWAY FROM TAPHOU KUKI TO DAILI {12/2025} {379.39},591500000000,DFCCIL,19.517738,75.44251,roads,2023-02-20,Completed,True
+a75dd39a-cf98-449a-beae-11fa275f2293,"Development of State Highway System at Howrah, Punjab",23710000000,MRVC,17.742238,87.183114,roads,2023-03-04,Near Completion,True
+308da3a4-ed6f-4f37-ab5f-823e8d0bcd6f,"Modernization Water Supply Scheme in Chennai District, West Bengal",6780000000,CPHEEO,28.210611,77.217742,sanitation,2018-08-11,Completed,True
+50f658c7-56d1-4113-86f2-46804fd58008,"Modernization Fecal Sludge Treatment Plant for Mysuru Municipal Area, Gujarat",2110000000,CPHEEO,33.747704,96.857118,sanitation,2022-12-21,Ongoing,False
+88769792-f345-4b14-adea-8a1fe719662f,"Development of Water Supply Scheme System at Cuttack, Uttar Pradesh",3550000000,UP Jal Nigam,16.012313,82.13029,sanitation,2018-12-28,Completed,True
+a9db404a-fe66-4e91-a002-33ec4f3df190,"Development Sewage Treatment Plant in Bengaluru District, Haryana",3090000000,State Jal Nigam,9.365246,86.006036,sanitation,2018-07-24,Completed,True
+5fd450a0-9b76-466b-90b6-f8f1a428907b,"Development of Bus Terminal Stretch at Vadodara, Kerala",41240000000,AAI,33.119177,89.400825,public_works,2023-04-08,Completed,True
+c400028d-9ca4-40a6-a66d-a263264cfc36,"655 (North Eastern Railway [NER]) (Bihar, Uttar 912.16 95",125520000000,DFCCIL,17.690975,81.808967,roads,2019-07-23,Delayed,True
+040927dd-071a-486c-9e51-155f82c9ff57,"Development Sewerage Network in Raipur District, Gujarat",3460000000,MP Jal Nigam,24.511049,76.092079,sanitation,2020-09-17,Ongoing,True
+c726dfef-9e60-4a3e-9b19-612baa9fbc7e,"Strengthening of Sports Complex between Ahmedabad and Warangal, Jharkhand",5840000000,NBCC,15.11767,93.65599,public_works,2018-12-08,Completed,False
+3f682bf2-fe8e-40eb-a1fa-de32b2bc84ab,Hospet - Tinaighat - Vasco Rail Doubling Project,289600000000,MRVC,9.281826,74.065703,roads,2020-04-23,Completed,True
+f8b6bea2-755e-47d7-8a06-d2442e6adeef,24 (Airport Authority of India [AAI]) West Bengal 340.78 15,21360000000,CPWD,27.123777,87.513787,public_works,2023-10-20,Completed,True
+f0592d1b-1cd8-486b-9dda-18406d450ec7,"Construction Bus Terminal in Dhanbad District, Madhya Pradesh",3510000000,State PWD,25.180024,75.321939,public_works,2018-08-20,Completed,True
+8190f51f-fb29-4266-95eb-9cd9fb7aa34c,"Strengthening Bypass Road for Amritsar Municipal Area, Tamil Nadu",779630000000,CMRL,23.0834,85.605786,roads,2022-11-28,Completed,True
+640a4921-8508-487c-9a37-171c0f4eac19,"Construction of Judicial Complex between Nagpur and Coimbatore, Maharashtra",33600000000,State PWD,25.588884,80.515685,public_works,2023-12-01,Completed,True
+2787d031-5a76-484f-83a7-1da81a24b501,"Rehabilitation of State Highway between Hyderabad and Mysuru, Gujarat",242280000000,NHSRCL,19.894531,76.161244,roads,2020-01-13,Delayed,True
+93313250-5af4-411a-9486-c8b65797ba2c,"Expansion of Fecal Sludge Treatment Plant Corridor at Lucknow, Jharkhand",7070000000,MP Jal Nigam,29.558141,94.597668,sanitation,2018-11-09,Completed,True
+0832fd92-6089-42ba-a3bc-77551c36bd29,"Expansion Water Supply Scheme for Jamshedpur Municipal Area, Punjab",5000000000,CPHEEO,30.68202,88.661651,sanitation,2019-11-09,Completed,True
+7af65c36-ae78-4fc7-a24a-236fc29f59b3,"Modernization Convention Centre for Gwalior Municipal Area, Andhra Pradesh",48490000000,AAI,34.947518,73.89869,public_works,2018-03-20,Completed,False
+f61547be-34bc-4402-94f6-791995f712c2,Delhi University Eastern Campus at Surajmal Vihar,30600000000,MoHUA,26.379805,74.125249,public_works,2024-08-24,Near Completion,True
+c63082ba-8f27-43ea-ab05-3743873d7604,"Development of Interchange between Surat and Dhanbad, Bihar",277780000000,BMRCL,19.475026,70.344894,roads,2022-11-20,Completed,True
+1f20d1c9-6160-4b7b-b72d-00cf8165434a,"Rehabilitation Convention Centre for Patna Municipal Area, West Bengal",13060000000,MoHUA,27.459204,68.193733,public_works,2019-12-04,Completed,True
+eea95ca4-8006-45e9-968b-4391a3a5367f,"Construction State Highway in Thiruvananthapuram District, Kerala",905170000000,State PWD,8.40675,95.076498,roads,2019-04-27,Completed,True
+db58e627-50a5-44f6-9d17-fe720618d324,515 (South Western Railway [SWR] - II) Andhra Pradesh 276.34 85,57150000000,MRVC,23.2183,68.16059,roads,2022-04-26,Near Completion,True
+e5735139-5520-4313-aa3c-4369d1f3a78a,"Construction Service Road in Gaya District, Odisha",493060000000,NHSRCL,13.037508,85.101418,roads,2018-09-14,Near Completion,True
+03a530f4-0001-4db1-8dd8-50376c415d7b,FROM TAMENGLONG TO MAHUR (NH-137) IN {8/2025} {890.33},3860000000,State Jal Nigam,17.842319,79.849951,sanitation,2020-02-29,Completed,True
+f5e07563-8669-4275-89d1-51487eaa6673,"Strengthening Interchange for Coimbatore Municipal Area, Chhattisgarh",783570000000,MRVC,21.284097,88.19815,roads,2024-09-06,Completed,True
+bb9172ef-43a7-47aa-b6e7-5be41fae78f4,"Rehabilitation Expressway in Ludhiana District, Chhattisgarh",114250000000,NHAI,13.94484,87.25091,roads,2018-12-10,Ongoing,True
+9508f73c-1a16-45b8-9763-d9d4b525c92e,"Upgradation of Road Over Bridge Phase-II at Nagpur, Assam",800110000000,NHAI,21.239513,96.385031,roads,2019-11-11,Completed,True
+aab48b5b-795c-448e-a5b7-72bc9b92667f,"Expansion Interchange for Ghaziabad Municipal Area, Odisha",287390000000,State PWD,14.097096,91.019885,roads,2020-08-24,Delayed,True
+6f08eb67-69ef-42b5-9864-2d099c0a9e26,"Upgradation State Highway for Thiruvananthapuram Municipal Area, Punjab",960990000000,NHSRCL,33.659973,81.824626,roads,2023-01-10,Completed,True
+5d282fef-2b9b-4c6f-a42f-46aafda25b0f,573 (Western Railway (WR) - II) Gujarat 103.21 60,804620000000,RVNL,28.846555,83.599205,roads,2024-09-06,Near Completion,True
+40f9be9c-d3ca-438c-a1ba-8d4eca57ec46,"Modernization Convention Centre in Vadodara District, Jharkhand",22330000000,NBCC,32.111673,89.913657,public_works,2019-02-08,Completed,True
+be03b335-7ff5-4062-a12e-bf051c56635f,Highways of Meghalaya 09/2019 03/2022,620640000000,DFCCIL,25.815282,70.776504,roads,2018-08-12,Near Completion,True
+271f5f19-256d-4fac-9c4b-251302e6fef8,Rampur Dumra-Tal-Rajendrapul Additional Bridge and Railway Line Doubling,1063630000000,MRVC,35.971815,91.758306,roads,2022-09-06,Completed,False
+47e23fbe-ce41-424a-a206-f06ccc8c5e43,"Upgradation Urban Arterial Road for Mumbai Municipal Area, Madhya Pradesh",946420000000,RVNL,33.764701,72.964001,roads,2021-02-04,Delayed,False
+2a6d3325-0a6c-47f2-b246-bbd9085a4706,523 (East Central Railway (ECR) - II) Bihar 0 0,635140000000,MRVC,29.045254,70.456202,roads,2018-07-29,Completed,True
+858442e1-bcc5-4c59-92f5-88b6eed5163a,"(South Central Railway [SCR] - II) (Andhra Pradesh, 08/2023 03/2029 4686.09",99800000000,BMRCL,28.295275,77.160796,roads,2024-07-03,Delayed,True
+7b50d1e2-94b6-4285-9380-aea05cb5dfaf,722 (North Central Railway) Rajasthan 431.82 44,159610000000,RVNL,19.926382,81.654156,roads,2022-10-06,Completed,True
+efc81683-4af5-4ed3-b722-5809cb39b247,Barabanki-Malhaur 3rd & 4th Railway Line Project,1169930000000,RVNL,11.813378,76.508731,roads,2019-09-08,Completed,True
+d9b94d2f-c1bc-42b7-b844-4cc7debdd3cc,"Upgradation of Bus Terminal between Kolkata and Jodhpur, Punjab",39120000000,CPWD,36.697095,96.047013,public_works,2024-07-23,Completed,True
+28715c3d-634c-40fc-96d5-ba2f7c1802e7,OF HIGHER CAMPUS OF IIM JAMMU (PHASE 1) (Jan-2025) (N.A.),46770000000,HUDCO,13.351905,94.749091,public_works,2023-10-09,Delayed,True
+c2d1960a-b009-4a6e-973a-1dd2426b56e5,SECTION OF NH-06 (PKG-III) {10/2024} {331.17},25210000000,State PWD,29.70559,90.789674,public_works,2022-07-15,Delayed,True
+050f82e6-429a-4e83-b996-fec60b7514d2,"Development of Bypass Road Phase-I at Ahmedabad, Maharashtra",1031310000000,NHSRCL,34.936779,81.253961,roads,2018-12-24,Delayed,True
+190efd29-f86e-45e0-89c9-7d081bf6d1b2,"Development Fecal Sludge Treatment Plant for Bhopal Municipal Area, Punjab",3300000000,MP Jal Nigam,11.734323,80.368968,sanitation,2018-05-16,Ongoing,False
+48cbadf0-f439-45f9-9f50-98396648fee9,"Upgradation Public Administrative Building for Bhopal Municipal Area, Assam",9840000000,HUDCO,27.854661,68.848178,public_works,2018-02-24,Delayed,True
+2acd5213-617b-47ef-8e4e-2ab46de24a67,260 (Madhya Pradesh Metro Rail Co Limited [MPMRCL]) Madhya Pradesh 3715.92 49,984850000000,CMRL,12.765109,68.554147,roads,2019-01-11,Completed,False
+c544e06f-0edd-4bce-b2e0-3003430d9924,"Development of Sewerage Network between Vadodara and Visakhapatnam, Madhya Pradesh",1710000000,State Jal Nigam,25.823732,89.609433,sanitation,2024-01-01,Completed,True
+a17dd493-b4e6-4455-ab83-96052599a24e,(Rail Land Development Authority) (06/2024) (-) (4744),580330000000,NHAI,25.108398,96.579629,roads,2021-04-19,Completed,True
+03878f09-f726-4b65-9391-2850d7f8c387,Samlaya Timba Road 54 km,136800000000,State PWD,28.714412,82.716113,roads,2021-07-24,Delayed,True
+4b34b1e4-394d-44de-8327-301093e9d6ea,"Development of Sewerage Network System at Ludhiana, Madhya Pradesh",7570000000,MP Jal Nigam,26.750138,81.984978,sanitation,2024-09-02,Completed,True
+1330015a-31fb-4f84-aa0d-7d1d30c3c0cc,"Rehabilitation of Convention Centre between Gwalior and Bengaluru, Madhya Pradesh",23170000000,HUDCO,33.161987,85.249512,public_works,2020-12-26,Completed,True
+97627b93-c1d6-4b48-8f04-2064b7a4f7fe,"Construction Urban Arterial Road in Indore District, Uttar Pradesh",442790000000,NHAI,28.103374,93.940145,roads,2018-08-08,Delayed,True
+c2ef4d56-a384-4f6d-b0ff-2970f7782536,"internal water supply, sanitary installation and all development and bulk services,",3250000000,CPHEEO,29.965124,88.131695,sanitation,2024-03-28,Completed,True
+a61c7106-2819-4e37-85d3-c2d26b28e83f,"Development of Convention Centre between Ranchi and Dhanbad, Maharashtra",35050000000,State PWD,16.411598,75.861585,public_works,2023-06-25,Delayed,True
+5d9b470f-8c94-46ca-b909-68141c934424,"Strengthening of Interchange Phase-II at Delhi, Bihar",849500000000,MRVC,15.999606,69.287385,roads,2018-06-02,Completed,True
+eba1c813-70a5-493b-8679-0778199da174,Ahmedabad Metro Rail Project [Phase-I],399590000000,BMRCL,32.059317,78.784663,roads,2023-11-26,Ongoing,False
+b5e896f6-7c6e-439b-ba15-31971b0afc93,"Development Expressway for Vadodara Municipal Area, Maharashtra",1046520000000,BMRCL,21.875222,72.185393,roads,2020-12-23,Completed,True
+fa4f4c74-e16f-47d5-8f62-9383c62c4382,Provision of Work-site Tampers [WST] Railway Project,1083310000000,BMRCL,23.849667,73.487361,roads,2022-06-30,Delayed,False
+535746d1-6ce1-4785-bcac-46c029ce2b0d,"Rehabilitation of Bus Terminal between Kanpur and Kolkata, Odisha",29630000000,HUDCO,27.172865,84.922062,public_works,2020-08-09,Completed,True
+29ddfc39-d6b9-4323-ad7f-c56bfdff4ba5,"Development of Storm Water Drainage System between Vadodara and Nagpur, Haryana",3490000000,CPHEEO,28.153214,87.523825,sanitation,2022-08-07,Completed,True
+9e5ef53e-b682-4253-9f8e-5180cfdbfe0e,"Construction of State Highway between Patna and Jaipur, Odisha",664790000000,NHAI,16.953099,81.817527,roads,2022-12-27,Delayed,True
+af909845-764d-452c-91dc-2910574d9590,INTEGRATED TERMINAL BUILDING (Aug-2025) (255.69),23500000000,NBCC,23.414801,86.649419,public_works,2018-01-09,Completed,True
+66fec56a-3b7c-4d89-be88-dba9c6578a38,"Rehabilitation Sports Complex for Gwalior Municipal Area, Maharashtra",37570000000,State PWD,27.542461,87.12664,public_works,2023-08-15,Completed,True
+b25ed5da-1458-4413-ba1c-b4f4fb452c53,"Upgradation Government Office Complex for Cuttack Municipal Area, Haryana",23050000000,AAI,24.562282,82.731041,public_works,2020-10-07,Completed,True
+740760c6-e1a5-48ae-b1de-d5c872d3f8ff,"Development of Airport Terminal between Coimbatore and Nagpur, Gujarat",33170000000,State PWD,22.314827,80.460024,public_works,2024-12-25,Completed,True
+19b77244-98ea-4437-8c97-db393847d806,"Expansion of Sports Complex Phase-II at Dhanbad, Kerala",13590000000,State PWD,36.177018,70.387795,public_works,2022-05-18,Completed,True
+5b171db8-7dd1-41c0-8a9c-e2bfdb258e97,"Upgradation of Storm Water Drainage System Phase-I at Dhanbad, Jharkhand",5980000000,UP Jal Nigam,21.829958,96.818702,sanitation,2018-01-23,Ongoing,True
+bed28014-2e8c-4b19-8002-d5fdf50298ec,Siliguri Marketing Terminal [SMT] Capacity Augmentation Project,26720000000,MoHUA,32.650255,95.230265,public_works,2020-12-24,Completed,True
+0d9b2de6-a16a-4cef-b161-543bdd8bea4e,532 (Indian Railway Construction International Limited [IRCON]) Bihar 1427.78 97,648640000000,NCRTC,15.841,92.920494,roads,2018-09-09,Delayed,True
+ebf9504c-d4cd-4666-a6b2-85751bb1b29a,"Construction National Highway in Coimbatore District, Andhra Pradesh",550230000000,State PWD,11.553836,73.750505,roads,2024-08-26,Completed,True
+61923327-abb6-482d-a727-bbf72fccd772,"Construction Convention Centre in Udaipur District, Jharkhand",35110000000,CPWD,20.895926,73.525166,public_works,2024-03-18,Delayed,False
+d06a976a-2a4b-40b6-bd1d-51860c7cbd99,"Expansion of Airport Terminal between Vijayawada and Thiruvananthapuram, Tamil Nadu",34010000000,CPWD,10.142359,82.216662,public_works,2020-11-04,Completed,True
+f067af2b-8798-43b4-8218-e793b36bb26e,18 (Airport Authority of India [AAI]) Rajasthan 416.67 55,19150000000,CPWD,10.867932,86.477335,public_works,2023-11-04,Completed,True
+a209fab1-7423-4fae-8bc4-4ffff6ecfca1,Allahabad-Bamhrauli Flyover Construction & 4th Railway Line Project,732680000000,NCRTC,23.840841,96.372735,roads,2021-07-04,Completed,False
+f998aa85-3625-47b4-be87-6e56990b4f0b,753 (Eastern Railway [ER] - I) West Bengal 1330.49 91,893820000000,NCRTC,14.754804,81.905597,roads,2023-01-29,Near Completion,True
+a966d954-fcba-439a-90e8-8eb4a4790f9f,IIT Dharwad Permanent Campus Development Phase-1A,37010000000,HUDCO,13.873087,90.166738,public_works,2023-05-10,Completed,True
+1a066e7e-a633-44f5-9b27-30bfd3c02f41,Construction of New Domestic Terminal Building [Phase-I and II] and other allied,16810000000,AAI,36.223539,69.714222,public_works,2024-01-14,Near Completion,True
+a3e0a12f-a868-4de8-8e4f-fd0f252afe38,"EXPRESSWAY FROM START OF (Jul-2025) (1,229.37)",646720000000,BMRCL,29.652191,82.248419,roads,2024-01-04,Ongoing,False
+33c83296-4269-416f-a62e-06518e8ac591,KHARAGPUR-ADITYAPUR THIRD RAIL LINE- 132 KM Multi-States,553790000000,BMRCL,31.454772,90.595158,roads,2018-11-07,Delayed,False
+1c99e2bd-bcf6-4a24-aabe-e27dc3830cb0,SIMLAGURI CHOWK AND BAIHATA BYPASS {5/2025} {457.72},1069510000000,BMRCL,16.279446,91.576088,roads,2022-04-12,Completed,False
+8f283352-b034-45d1-9be3-ec6c5317df58,HIGHWAYS RAILWAY STAT,1039110000000,CMRL,35.86088,81.937056,roads,2022-01-11,Completed,True
+1aa289c5-4802-480a-9e53-a2a82f05379e,CONSTRUCTION OF PERMANENT CAMPUS FOR IIT PALAKKAD UNDER PHASE,34260000000,State PWD,34.55962,80.028517,public_works,2020-04-08,Ongoing,False
+8ddeebf1-983d-4b6f-a1d1-819936f8551e,"Rehabilitation of District Hospital Stretch at Ludhiana, Chhattisgarh",26380000000,HUDCO,34.004819,91.753768,public_works,2022-12-10,Completed,True
+b0924c32-2c78-4681-96ca-124155e726b9,"Modernization of Ring Road between Warangal and Noida, Telangana",324010000000,MRVC,23.772269,74.697313,roads,2022-07-02,Delayed,True
+83b5188a-c5a5-412d-b568-b1429283d88f,"Modernization of Fecal Sludge Treatment Plant between Bhopal and Gwalior, Rajasthan",6220000000,Urban Local Body,31.744111,78.287359,sanitation,2018-10-28,Completed,True
+09601503-fa15-4fa8-adc8-a8fd198512f0,Construction of Bangalore Metro Rail Project Phase 2.,1071950000000,MRVC,25.044633,94.398738,roads,2024-02-29,Ongoing,True
+ea6b5897-bde4-4286-8f22-1fb51801bfa1,"Strengthening of Fecal Sludge Treatment Plant Package at Lucknow, Chhattisgarh",3350000000,State Jal Nigam,21.428631,90.644686,sanitation,2022-01-15,Near Completion,True
+d101f7d5-8902-4905-9d16-c36bd69e3cbc,"Rehabilitation Service Road for Udaipur Municipal Area, Bihar",364780000000,NCRTC,25.338503,81.995772,roads,2024-07-20,Delayed,True
+6e3491d5-e641-404a-b9da-506e43626021,"685 (North Central Railway) (Madhya Pradesh, 2120.66 85",994800000000,RVNL,26.405629,92.863924,roads,2023-09-22,Near Completion,True
+9428f786-3932-4f4b-91ea-44d635c77a76,"Strengthening Bypass Road for Udaipur Municipal Area, Bihar",755350000000,MRVC,24.966647,69.418758,roads,2024-12-06,Completed,True
+b0138f7b-8a11-4e3b-8869-56abcf170d10,"Strengthening Airport Terminal for Ludhiana Municipal Area, Jharkhand",19530000000,AAI,23.552766,72.39125,public_works,2022-02-09,Ongoing,False
+1f0ee518-0625-40e7-8b1b-a8f2c4bf7c4f,"Strengthening Storm Water Drainage System for Bhubaneswar Municipal Area, Chhattisgarh",7170000000,AMRUT Mission,35.642147,91.884827,sanitation,2019-02-16,Ongoing,False
+23c166b6-af3a-4a4f-83fb-84ff248f74b2,510 (South Central Railway [SCR] - II) Andhra Pradesh 29.04 0,680410000000,NHSRCL,22.686393,76.207419,roads,2024-02-14,Completed,True
+af381ae0-be7a-4260-9ef4-006e8443a475,"Construction Service Road in Nagpur District, Uttar Pradesh",98130000000,NHAI,36.769716,76.501873,roads,2020-05-17,Completed,True
+7ffa2829-d982-49c8-b601-47c58e1c7b3a,"Construction of Fecal Sludge Treatment Plant Stretch at Surat, West Bengal",4540000000,Urban Local Body,16.826905,75.835618,sanitation,2022-07-30,Completed,True
+9117125b-4b8f-44a0-b837-7e7bc589eeed,"Expansion Bypass Road in Vadodara District, Chhattisgarh",1096190000000,CMRL,10.726619,72.501025,roads,2021-12-31,Completed,True
+5478795f-d865-4a8c-b312-9a5a7c1c9157,"Construction Bus Terminal for Ranchi Municipal Area, Punjab",8630000000,State PWD,21.016926,81.856,public_works,2022-12-07,Completed,True
+905bfd43-7b97-48d8-957e-4c690cc3d40a,"Development Sewerage Network for Vadodara Municipal Area, Uttar Pradesh",7820000000,UP Jal Nigam,19.63951,88.934987,sanitation,2022-11-29,Completed,True
+e5695ffd-82ed-49d3-a99e-efef269e325f,"Modernization Ring Road in Kolkata District, Jharkhand",231990000000,CMRL,15.389691,93.71564,roads,2020-05-18,Completed,True
+57a9fd60-fc1d-43dc-b12b-c4561c8925d7,"Strengthening of Bypass Road between Nagpur and Ahmedabad, Telangana",1180430000000,RVNL,14.023984,90.227257,roads,2021-12-07,Completed,True
+a77c0237-7028-4f9f-bd5e-41d46a2e7565,NAGAPATTINAM - THANJAVUR SECTION OF NH-67 (NEW,6550000000,State PWD,32.738328,72.02473,public_works,2023-09-21,Completed,True
+b9b5def7-c3d1-44cf-8765-f83b4f07c809,272 (Uttar Pradesh metro rail corporation [UPMRC]) Uttar Pradesh 9084.56 76,1036770000000,NHAI,23.605336,69.09304,roads,2019-10-24,Completed,True
+66d23d6a-2255-49c3-b340-fb7ba5b2d9bd,"Construction Expressway in Thiruvananthapuram District, Telangana",580920000000,CMRL,14.394482,87.277686,roads,2022-02-21,Delayed,False
+36843962-c861-4dc1-a3d1-3b0ab828e18c,(National High Speed Rail Corporation [NHSRC]) (Dadra & Nagar,428190000000,CMRL,10.436255,80.09862,roads,2024-04-13,Near Completion,True
+da6759c3-d549-4cc4-9cf0-042c996d7894,"Expansion Expressway in Vadodara District, Punjab",62650000000,RVNL,12.221401,84.202596,roads,2024-08-12,Completed,True
+8724f30e-763c-4344-a050-e04e2ce72539,"Strengthening of Interchange between Indore and Jaipur, Tamil Nadu",701520000000,MRVC,34.003554,81.757788,roads,2022-05-14,Completed,True
+021b0f7a-0ca2-48d2-bef7-c2b69cdc9df7,"Strengthening Judicial Complex in Gwalior District, Chhattisgarh",44600000000,HUDCO,27.026485,88.428714,public_works,2018-08-26,Ongoing,True
+0853abc0-bedf-420a-acd1-210c8f5b5db4,734 (North Eastern Railway [NER]) Uttar Pradesh 1253.71 8,393800000000,NHSRCL,35.806077,83.20139,roads,2024-04-05,Completed,True
+d3b09380-0bdd-4985-931d-a896bc76ab42,"Modernization Urban Arterial Road for Surat Municipal Area, Uttar Pradesh",1144260000000,RVNL,20.81301,73.084206,roads,2020-03-30,Completed,True
+d7412527-bfb8-4027-815c-e98c6d5fcd32,"Strengthening Fecal Sludge Treatment Plant in Coimbatore District, Maharashtra",6950000000,Urban Local Body,8.868425,91.318778,sanitation,2019-05-09,Completed,True
+e8592068-8573-472c-8c64-92a9b05caedc,"Construction of Airport Terminal Stretch at Udaipur, Odisha",40370000000,CPWD,28.902065,84.440769,public_works,2022-10-25,Completed,True
+d1657bf8-1761-48cb-9eae-4df161cca861,"Terminal Building, Apron Extension, Runway Extension, PTT and allied works. 07/2024 07/2027 2869.65",3380000000,CPWD,24.559879,77.128628,public_works,2020-10-02,Completed,True
+747b705b-62ea-434d-823b-44cde4e80f15,599 (North Central Railway) Madhya Pradesh 6447.32 73,309020000000,RVNL,33.830967,93.129612,roads,2021-08-21,Completed,False
+9f92e45f-2d69-4c37-9e30-2f1e6f3beb2c,536 (East Coast Railway [ECoR] - II) Chhattisgarh 1576.81 94,552320000000,RVNL,31.005963,80.315888,roads,2023-10-22,Ongoing,True
+b7b12502-f8c0-4f16-8e3a-e89d22e5f27f,(North Western Railway [NWR]) (01/2023) (06/2028) (968.92),570220000000,State PWD,29.772626,88.580318,roads,2023-02-17,Ongoing,True
+20a82177-41d4-4adc-a192-a4819024a71f,JAKHAU PORT (Dec-2026) (410.46),5960000000,AAI,15.936019,76.50706,public_works,2018-07-21,Completed,True
+1cfb7d8b-8965-4574-83cc-4ced7e92137c,TADUBI SECTION OF NH-102A FROM {7/2025} {310.76},5720000000,MP Jal Nigam,11.338752,94.029409,sanitation,2022-03-26,Delayed,True
+43df4b4a-1ea7-44ea-b352-f7bab70339e9,"Revamping of SV Stations, Gas Terminal & Kribhco Terminal",46560000000,AAI,17.509989,79.083709,public_works,2024-08-26,Completed,True
+55d1f350-d0ca-4606-8e49-a08877a1c929,& transportation of natural Gas to be produced from Baghjan Field 12/2020 03/2024,3210000000,HUDCO,30.055998,90.973311,public_works,2022-01-29,Delayed,True
+76452100-a151-44ee-8903-dd9f763f2c45,"Strengthening Urban Arterial Road in Cuttack District, Odisha",809450000000,NHAI,19.199855,91.703593,roads,2019-08-23,Near Completion,True
+33bb2e9d-0942-4760-825c-b39edaeb30cb,"Development of Bypass Road between Lucknow and Cuttack, Tamil Nadu",501260000000,MRVC,10.591657,89.834217,roads,2019-12-14,Ongoing,False
+fecca1d2-1bcc-4f3c-9a7b-0f28c1c06582,"686 (West Central Railway [WCR] - II) (Madhya Pradesh, 3764.11 70",818830000000,NHAI,30.071951,84.697636,roads,2022-08-18,Ongoing,True
+db964b65-2a09-4a94-a003-1a66a93eb0a7,"Modernization of Sewerage Network Corridor at Vadodara, Assam",7080000000,Urban Local Body,20.343969,86.686949,sanitation,2021-04-19,Completed,False
+50992c6f-ac37-4b0d-9579-924b1e3bd8c5,(South Eastern Railway - JH) (12/2024) (-) (226.87),857570000000,DFCCIL,32.449961,85.562631,roads,2020-11-09,Delayed,False
+22a9b8aa-fffb-4bef-b60e-05f65b5afd09,"Expansion Convention Centre in Kanpur District, Assam",38440000000,NBCC,11.495478,81.302696,public_works,2024-06-22,Completed,True
+b7d831ba-c99a-4403-950d-a888fefd91a8,"Expansion of Storm Water Drainage System between Vijayawada and Kolkata, Maharashtra",3940000000,Urban Local Body,8.640325,82.75652,sanitation,2019-02-08,Delayed,True
+07f63065-ebac-4ca5-8870-689ac161cc2d,"Construction of Water Supply Scheme between Visakhapatnam and Noida, Kerala",1560000000,State Jal Nigam,15.572386,83.035277,sanitation,2022-11-17,Ongoing,True
+9dd46e21-b5b3-4bdb-8500-06dc826d1d0c,"5 701657 TUMAKURU NODE - PHASE 1 - ROADS AND SERVICES DEVELOPMENT 1,702 153 14",346230000000,CMRL,12.108822,79.406666,roads,2019-06-08,Delayed,True
+53d8bc85-c192-4e7c-b041-1ef4a33fb417,"Strengthening National Highway in Surat District, Rajasthan",704130000000,NHSRCL,23.513608,89.381153,roads,2024-01-08,Ongoing,True
+0caa12f1-d1e0-4213-8be9-5cecf8d544e5,509 (South Central Railway [SCR] - II) Andhra Pradesh 0.1 0,889360000000,BMRCL,20.661573,89.459478,roads,2023-04-22,Completed,True
+1ff30d64-de8c-4121-b858-5ded8073879a,Patiala Water Supply Infrastructure Part-2 Project,2280000000,KUIDFC,24.382557,92.344686,sanitation,2018-11-11,Completed,True
+37ae9722-0088-46b0-ad05-d4763810011e,"Construction of Ring Road Phase-II at Thiruvananthapuram, Gujarat",1197740000000,MRVC,34.804515,77.307731,roads,2024-08-18,Completed,False
+82794432-33f1-416c-93c7-a2dd7dd13a41,"Rehabilitation of Storm Water Drainage System Project at Vadodara, Jharkhand",7120000000,State Jal Nigam,32.560533,96.998262,sanitation,2019-09-19,Completed,True
+bcc55593-65c4-4948-8727-1fc538d9657c,"Strengthening of Public Administrative Building between Hyderabad and Ranchi, Telangana",8950000000,NBCC,8.659573,93.38866,public_works,2023-07-07,Delayed,True
+f5da0e53-b2a3-4163-af17-46fd48c0e348,"Rehabilitation of Expressway between Kochi and Surat, Haryana",1046480000000,NCRTC,11.35699,68.853994,roads,2022-06-01,Completed,True
+4c4cf20b-d495-4e4c-9b49-2cdbfefcca62,"Rehabilitation of Sports Complex Phase-II at Bhopal, Andhra Pradesh",15450000000,NBCC,20.922672,91.642931,public_works,2018-08-23,Completed,True
+c7733667-9f08-433a-9aa1-ab21a2c683ea,"Water Drainage System at Pakyong Airport, Sikkim on design & build basis [EPC] 11/2023 02/2026",5150000000,Urban Local Body,11.208921,71.817172,sanitation,2024-11-06,Completed,True
+f101e247-845d-45db-a8a6-1bb6e7cd1d2f,"Development of Underground Drainage System Package at Bhubaneswar, Gujarat",7930000000,KUIDFC,20.968721,80.71862,sanitation,2018-04-13,Ongoing,True
+a320312c-a610-4fe4-ab5c-87e5fea96f2f,"Expansion Government Office Complex for Kolkata Municipal Area, West Bengal",9100000000,State PWD,21.288036,95.552157,public_works,2018-06-29,Ongoing,True
+9e100bde-e7a7-41a8-8bd7-c80f8ff89297,"Development of Road Over Bridge Phase-I at Howrah, Bihar",1173320000000,BMRCL,11.345291,76.623212,roads,2023-03-13,Completed,True
+a1c8433c-743a-461b-aca4-56e480365e89,"Construction Expressway for Guwahati Municipal Area, Karnataka",699380000000,BMRCL,15.402071,96.121101,roads,2019-11-08,Near Completion,True
+4308309d-1a87-4e83-adcb-8fd0df4ea536,"Rehabilitation Ring Road for Jamshedpur Municipal Area, Andhra Pradesh",383620000000,BMRCL,19.868425,86.879908,roads,2018-09-23,Delayed,False
+098c7bb3-6e68-43d1-9f73-300661761a7a,"Modernization of Sports Complex System at Bengaluru, Madhya Pradesh",47930000000,MoHUA,19.463949,72.446727,public_works,2018-08-22,Completed,True

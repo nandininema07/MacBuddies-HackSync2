@@ -3,13 +3,13 @@ import { createClient } from '@supabase/supabase-js';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // 1. Initialize Clients
+// Note: We use the SERVICE_ROLE_KEY to ensure we can write to verification columns
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY! // Use Service Role Key for backend updates
+  process.env.SUPABASE_SERVICE_ROLE_KEY! 
 );
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
-// Using 'gemini-1.5-flash' for speed and cost-efficiency
 const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
 export async function POST(req: NextRequest) {
@@ -19,6 +19,8 @@ export async function POST(req: NextRequest) {
     if (!report_id) {
       return NextResponse.json({ error: 'report_id is required' }, { status: 400 });
     }
+
+    console.log(`🚀 Starting Audit for Report: ${report_id}`);
 
     // --- STEP 1: Fetch Report Data ---
     const { data: report, error: reportError } = await supabase
@@ -31,12 +33,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Report not found' }, { status: 404 });
     }
 
-    // --- STEP 2: Analyze Image (Vision) ---
-    // Fetch image data as arrayBuffer
+    // --- STEP 2: Vision Analysis (Gemini) ---
+    // We assume report.image_url is a public URL. 
+    // If it's private, we'd need to download it via Supabase Storage API first.
     const imageResponse = await fetch(report.image_url);
     const imageBuffer = await imageResponse.arrayBuffer();
     
-    // Prepare prompt for Computer Vision & Authenticity
     const visionPrompt = `
       You are an infrastructure auditor. Analyze this image and the GPS coordinates provided.
       GPS: ${report.latitude}, ${report.longitude}
@@ -55,7 +57,7 @@ export async function POST(req: NextRequest) {
       {
         inlineData: {
           data: Buffer.from(imageBuffer).toString('base64'),
-          mimeType: 'image/jpeg', // Assuming JPEG, adjust if needed
+          mimeType: 'image/jpeg',
         },
       },
     ]);
@@ -70,13 +72,12 @@ export async function POST(req: NextRequest) {
         is_authentic: false,
         fake_detection_reasoning: visionData.reasoning
       }).eq('id', report_id);
-
       return NextResponse.json({ status: 'rejected', reason: visionData.reasoning });
     }
 
-    // --- STEP 3: Find Nearest Govt Project (Retrieval) ---
-    // Using a simplified distance calculation for MVP (fetch all & filter).
-    // In production, use Supabase .rpc() with PostGIS.
+    // --- STEP 3: Find Nearest Govt Project ---
+    // Fetch all projects and filter in JS (Simple MVP approach)
+    // Production Upgrade: Use Supabase .rpc() for PostGIS 'ST_DWithin'
     const { data: projects } = await supabase.from('government_projects').select('*');
     
     let nearestProject = null;
@@ -84,12 +85,12 @@ export async function POST(req: NextRequest) {
 
     if (projects) {
       projects.forEach((p: any) => {
-        // Simple Euclidean distance approximation
+        // Simple distance (Euclidean). 0.001 degrees is roughly 100m.
         const dist = Math.sqrt(
           Math.pow(p.latitude - report.latitude, 2) + 
           Math.pow(p.longitude - report.longitude, 2)
         );
-        // Approx 0.005 degrees is roughly 500m
+        // Look for projects within ~500m (0.005 degrees)
         if (dist < 0.005 && dist < minDist) {
           minDist = dist;
           nearestProject = p;
@@ -98,19 +99,32 @@ export async function POST(req: NextRequest) {
     }
 
     // --- STEP 4: Agentic Audit (Compare Evidence vs Record) ---
-    let auditVerdict = { risk_level: 'Medium', audit_reasoning: 'No matching government project found.' };
+    let auditVerdict = { risk_level: 'Medium', audit_reasoning: 'Verified infrastructure issue, but no specific government project found nearby to compare against.' };
 
     if (nearestProject) {
+      const today = new Date().toISOString().split('T')[0];
+      
       const auditPrompt = `
         Compare User Evidence vs Official Record.
         
-        Evidence: ${JSON.stringify(visionData)}
-        Record: ${JSON.stringify(nearestProject)}
+        TODAY'S DATE: ${today}
         
-        Rules:
-        1. If Record status is 'Completed' but Evidence shows 'Damage', Risk = High.
-        2. If Record status is 'In Progress' and Evidence shows 'Construction', Risk = Low.
-        3. If Record status is 'Delayed' and Evidence shows 'No Work', Risk = High.
+        USER EVIDENCE:
+        - Issue: ${visionData.category}
+        - Severity: ${visionData.severity}
+        - Description: ${visionData.description}
+        
+        OFFICIAL RECORD:
+        - Project: ${nearestProject.name}
+        - Type: ${nearestProject.project_type}
+        - Budget: ${nearestProject.budget}
+        - Expected Completion: ${nearestProject.expected_completion}
+        - Status in DB: ${nearestProject.status} (Note: 'verified' means valid record, not necessarily completed work)
+        
+        AUDIT LOGIC:
+        1. TIMELINE CHECK: If Today > Expected Completion AND evidence shows "Incomplete/Damage", Risk is HIGH.
+        2. STATUS CHECK: If project should be active (dates valid) and evidence shows "Construction work", Risk is LOW (Compliance).
+        3. BUDGET CHECK: If budget is high but evidence shows "Severe Potholes/Damage", Risk is HIGH.
         
         Return JSON: { "risk_level": "Low"|"Medium"|"High", "audit_reasoning": "..." }
       `;
@@ -122,7 +136,7 @@ export async function POST(req: NextRequest) {
 
     // --- STEP 5: Update Database ---
     const updatePayload = {
-      ai_classification: visionData, // Stores full JSON in jsonb column
+      ai_classification: visionData, 
       ai_confidence: visionData.confidence_score,
       severity: visionData.severity,
       status: 'Verified',
@@ -133,7 +147,12 @@ export async function POST(req: NextRequest) {
       matched_project_id: nearestProject ? nearestProject.id : null
     };
 
-    await supabase.from('reports').update(updatePayload).eq('id', report_id);
+    const { error: updateError } = await supabase
+      .from('reports')
+      .update(updatePayload)
+      .eq('id', report_id);
+
+    if (updateError) throw updateError;
 
     return NextResponse.json({ success: true, data: updatePayload });
 
