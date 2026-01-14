@@ -12,10 +12,20 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useI18n } from "@/lib/i18n/context"
 import { createClient } from "@/lib/supabase/client"
-import { Camera, Upload, MapPin, Loader2, CheckCircle, X, ImageIcon, AlertTriangle } from "lucide-react"
+import { 
+  Camera, 
+  Upload, 
+  MapPin, 
+  Loader2, 
+  CheckCircle, 
+  X, 
+  ImageIcon, 
+  AlertTriangle, 
+  Search 
+} from "lucide-react"
 import type { User } from "@supabase/supabase-js"
 import { triggerAiAudit } from "@/lib/api"
-import exifr from "exifr" // <--- NEW LIBRARY
+import exifr from "exifr"
 
 interface Location {
   latitude: number
@@ -24,6 +34,13 @@ interface Location {
   city?: string
   state?: string
   pincode?: string
+}
+
+interface SearchResult {
+  place_id: number
+  display_name: string
+  lat: string
+  lon: string
 }
 
 export default function CapturePage() {
@@ -46,13 +63,17 @@ export default function CapturePage() {
   const [location, setLocation] = useState<Location | null>(null)
   const [isLoadingLocation, setIsLoadingLocation] = useState(false)
   const [locationSource, setLocationSource] = useState<"gps" | "image" | "manual">("gps")
+  
+  // Search State
+  const [searchQuery, setSearchQuery] = useState("")
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([])
+  const [isSearching, setIsSearching] = useState(false)
 
   // Form state
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [category, setCategory] = useState("other")
   const [severity, setSeverity] = useState("medium")
-  const [manualAddress, setManualAddress] = useState("")
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -62,8 +83,9 @@ export default function CapturePage() {
     getCurrentLocation()
   }, [])
 
-  // --- HELPER: Reverse Geocoding ---
-  const fetchLocationDetails = async (lat: number, lon: number, source: "gps" | "image") => {
+  // --- HELPER: Reverse Geocoding (Coords -> Address) ---
+  const fetchLocationDetails = async (lat: number, lon: number, source: "gps" | "image" | "manual") => {
+    setIsLoadingLocation(true)
     try {
       const response = await fetch(
         `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`,
@@ -73,19 +95,61 @@ export default function CapturePage() {
       setLocation({
         latitude: lat,
         longitude: lon,
-        address: data.display_name,
-        city: data.address?.city || data.address?.town || data.address?.village,
+        address: data.display_name || "Unknown Location",
+        city: data.address?.city || data.address?.town || data.address?.village || data.address?.county,
         state: data.address?.state,
         pincode: data.address?.postcode,
       })
       setLocationSource(source)
+      // Auto-fill the search box with the detected address for clarity
+      setSearchQuery(data.display_name || "")
     } catch (error) {
       console.error("Error fetching address:", error)
-      setLocation({ latitude: lat, longitude: lon })
+      // Even if address lookup fails, we MUST keep the coordinates
+      setLocation({ latitude: lat, longitude: lon, address: "Unknown Location" })
       setLocationSource(source)
     } finally {
       setIsLoadingLocation(false)
     }
+  }
+
+  // --- HELPER: Forward Geocoding (Address -> Coords) ---
+  const handleAddressSearch = async () => {
+    if (!searchQuery.trim()) return
+    setIsSearching(true)
+    setSearchResults([])
+
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&countrycodes=in`
+      )
+      const data = await response.json()
+      setSearchResults(data)
+    } catch (error) {
+      console.error("Search error:", error)
+    } finally {
+      setIsSearching(false)
+    }
+  }
+
+  const selectSearchResult = (result: SearchResult) => {
+    const lat = parseFloat(result.lat)
+    const lon = parseFloat(result.lon)
+    
+    // Update location state directly
+    setLocation({
+      latitude: lat,
+      longitude: lon,
+      address: result.display_name,
+      // We could parse city/state here if needed, but Nominatim search results are simple
+      city: "Selected Location", 
+    })
+    setLocationSource("manual")
+    setSearchQuery(result.display_name) // Set input to full name
+    setSearchResults([]) // Clear dropdown
+    
+    // Optionally fetch full details to get City/State specifically
+    fetchLocationDetails(lat, lon, "manual")
   }
 
   // --- HELPER: Get Current Device Location ---
@@ -141,8 +205,6 @@ export default function CapturePage() {
       }, "image/jpeg", 0.8)
 
       stopCamera()
-      
-      // For CAMERA captures, we trust the device location at that moment
       getCurrentLocation()
     }
   }
@@ -156,7 +218,7 @@ export default function CapturePage() {
     setIsCapturing(false)
   }
 
-  // 2. File Upload Logic (USING EXIFR)
+  // 2. File Upload Logic (Updated for WebP & Auto-Address)
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
@@ -172,19 +234,17 @@ export default function CapturePage() {
     setIsLoadingLocation(true)
     
     try {
-        // exifr.gps() returns { latitude, longitude } or null if not found
-        // It handles the complex math (DMS to Decimal) automatically.
         const gps = await exifr.gps(file)
 
         if (gps && gps.latitude && gps.longitude) {
             console.log("📍 EXIF GPS Found:", gps)
-            // Use the extracted coordinates
+            // Automatically fetch readable address for these coordinates
             await fetchLocationDetails(gps.latitude, gps.longitude, "image")
         } else {
             console.warn("⚠️ No GPS found in image.")
             setIsLoadingLocation(false)
-            alert("This image does not have location data inside it. Using your current location instead.")
-            // We do NOT overwrite location here, we keep the previous "device" location
+            alert("Image has no location data. Using your current location. You can also search for the location below.")
+            // Keep existing device location
         }
     } catch (error) {
         console.error("Error extracting EXIF:", error)
@@ -201,10 +261,14 @@ export default function CapturePage() {
     setStatusMessage("Uploading evidence...")
 
     try {
-      const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.jpg`
+      const fileExt = imageFile.name.split('.').pop() || 'jpg';
+      const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+
       const { error: uploadError } = await supabase.storage
         .from('evidence')
-        .upload(fileName, imageFile)
+        .upload(fileName, imageFile, {
+            contentType: imageFile.type
+        })
 
       if (uploadError) throw uploadError
 
@@ -221,7 +285,8 @@ export default function CapturePage() {
         severity,
         latitude: location.latitude,
         longitude: location.longitude,
-        address: manualAddress || location.address,
+        // Use the fetched address, or fallback to the search query if coordinates matched
+        address: location.address || searchQuery, 
         city: location.city,
         state: location.state,
         pincode: location.pincode,
@@ -253,6 +318,7 @@ export default function CapturePage() {
   const clearImage = () => {
     setImageData(null)
     setImageFile(null)
+    setSearchQuery("")
   }
 
   if (isSuccess) {
@@ -331,13 +397,19 @@ export default function CapturePage() {
                   {locationSource === "image" && (
                     <div className="flex items-center gap-2 text-sm text-green-600 bg-green-50 p-2 rounded border border-green-200">
                       <MapPin className="h-4 w-4" />
-                      Using exact location from image GPS
+                      Location auto-detected from image
+                    </div>
+                  )}
+                  {locationSource === "manual" && (
+                    <div className="flex items-center gap-2 text-sm text-blue-600 bg-blue-50 p-2 rounded border border-blue-200">
+                      <MapPin className="h-4 w-4" />
+                      Location selected manually
                     </div>
                   )}
                   {locationSource === "gps" && imageData && (
                      <div className="flex items-center gap-2 text-sm text-yellow-600 bg-yellow-50 p-2 rounded border border-yellow-200">
                        <AlertTriangle className="h-4 w-4" />
-                       Image has no GPS. Using your current location.
+                       No GPS in image. Using device location.
                      </div>
                   )}
                 </div>
@@ -355,14 +427,50 @@ export default function CapturePage() {
             </CardHeader>
             <CardContent>
               {isLoadingLocation && (
-                <div className="flex items-center gap-2 text-muted-foreground">
+                <div className="flex items-center gap-2 text-muted-foreground mb-4">
                   <Loader2 className="h-4 w-4 animate-spin" />
                   Acquiring location...
                 </div>
               )}
 
-              {location && (
-                <div className="space-y-4">
+              <div className="space-y-4">
+                {/* 1. Address Search (The new feature) */}
+                <div className="relative">
+                    <Label htmlFor="address-search">Search Location (if auto-detect is wrong)</Label>
+                    <div className="flex gap-2 mt-1.5">
+                        <Input 
+                            id="address-search"
+                            placeholder="Type a place (e.g., Dadar, Mumbai)" 
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                        <Button 
+                            variant="secondary" 
+                            onClick={handleAddressSearch}
+                            disabled={isSearching || !searchQuery}
+                        >
+                            {isSearching ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
+                        </Button>
+                    </div>
+
+                    {/* Search Results Dropdown */}
+                    {searchResults.length > 0 && (
+                        <div className="absolute z-10 w-full bg-white mt-1 border rounded-md shadow-lg max-h-60 overflow-y-auto">
+                            {searchResults.map((result) => (
+                                <div 
+                                    key={result.place_id}
+                                    className="p-3 hover:bg-slate-50 cursor-pointer text-sm border-b last:border-0"
+                                    onClick={() => selectSearchResult(result)}
+                                >
+                                    {result.display_name}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+
+                {/* 2. Detected/Selected Coordinates Display */}
+                {location && (
                   <div className="bg-muted/50 rounded-lg p-4 text-sm">
                     <div>
                       <span className="text-muted-foreground">Coordinates:</span> {location.latitude.toFixed(6)},{" "}
@@ -370,28 +478,20 @@ export default function CapturePage() {
                     </div>
                     {location.address && (
                       <div className="mt-1">
-                        <span className="text-muted-foreground">Address:</span> {location.address}
+                        <span className="text-muted-foreground">Detected:</span> {location.address}
                       </div>
                     )}
                   </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="manual-address">Override Address (optional)</Label>
-                    <Input
-                      id="manual-address"
-                      placeholder="Enter a more specific address"
-                      value={manualAddress}
-                      onChange={(e) => setManualAddress(e.target.value)}
-                    />
-                  </div>
-                </div>
-              )}
+                )}
 
-              {!location && !isLoadingLocation && (
-                <Button variant="outline" onClick={getCurrentLocation} className="gap-2 bg-transparent">
-                  <MapPin className="h-4 w-4" />
-                  Get Current Location
-                </Button>
-              )}
+                {/* 3. Fallback Button */}
+                {!location && !isLoadingLocation && (
+                  <Button variant="outline" onClick={getCurrentLocation} className="gap-2 bg-transparent">
+                    <MapPin className="h-4 w-4" />
+                    Reset to Current Device Location
+                  </Button>
+                )}
+              </div>
             </CardContent>
           </Card>
 
