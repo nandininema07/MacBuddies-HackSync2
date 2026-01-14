@@ -1,10 +1,11 @@
 "use client"
 
-import { useEffect, useState, useMemo, useCallback } from "react" // Added useCallback
+import { useEffect, useState, useMemo, useCallback } from "react"
 import L from "leaflet"
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet"
 import MarkerClusterGroup from "react-leaflet-cluster"
 import "leaflet/dist/leaflet.css"
+import type { Report } from "@/lib/types"
 
 const SEVERITY_COLORS = {
   low: "#22c55e",
@@ -14,10 +15,11 @@ const SEVERITY_COLORS = {
   default: "#3b82f6"
 }
 
-// Custom Icons
-const createMarkerIcon = (risk: string | undefined) => {
-  const riskKey = risk?.toLowerCase() as keyof typeof SEVERITY_COLORS;
-  const color = SEVERITY_COLORS[riskKey] || SEVERITY_COLORS.default;
+// 1. Fixed: Directly use the severity string
+const createMarkerIcon = (severity: string | undefined) => {
+  const severityKey = (severity?.toLowerCase() || 'default') as keyof typeof SEVERITY_COLORS;
+  const color = SEVERITY_COLORS[severityKey] || SEVERITY_COLORS.default;
+  
   return L.divIcon({
     className: "custom-pin",
     html: `<div style="background-color: ${color}; width: 24px; height: 24px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>`,
@@ -30,18 +32,23 @@ const createMarkerIcon = (risk: string | undefined) => {
 const createClusterCustomIcon = function (cluster: any) {
   const markers = cluster.getAllChildMarkers();
   let hasCritical = false, hasHigh = false, hasMedium = false;
+  
   markers.forEach((marker: any) => {
-    const risk = marker.options.risk_level?.toLowerCase(); 
-    if (risk === 'critical') hasCritical = true;
-    else if (risk === 'high') hasHigh = true;
-    else if (risk === 'medium') hasMedium = true;
+    // 2. Fixed: Read 'severity' instead of 'risk_level'
+    const s = marker.options.severity?.toLowerCase(); 
+    if (s === 'critical') hasCritical = true;
+    else if (s === 'high') hasHigh = true;
+    else if (s === 'medium') hasMedium = true;
   });
+
   let color = SEVERITY_COLORS.low; 
   if (hasCritical) color = SEVERITY_COLORS.critical;
   else if (hasHigh) color = SEVERITY_COLORS.high;
   else if (hasMedium) color = SEVERITY_COLORS.medium;
+  
   const count = cluster.getChildCount();
   let size = count > 50 ? 50 : count > 10 ? 40 : 30;
+  
   return L.divIcon({
     html: `<div style="background-color: ${color}; width: ${size}px; height: ${size}px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border: 3px solid rgba(255,255,255,0.5); box-shadow: 0 4px 6px rgba(0,0,0,0.2);">${count}</div>`,
     className: 'custom-cluster-icon',
@@ -49,30 +56,19 @@ const createClusterCustomIcon = function (cluster: any) {
   });
 }
 
-// MapEvents Helper: Now safer and lighter
 function MapEvents({ onViewChange }: { onViewChange: (bounds: any, zoom: number) => void }) {
   const map = useMapEvents({
-    moveend: () => {
-      onViewChange(map.getBounds(), map.getZoom())
-    },
-    load: () => {
-      onViewChange(map.getBounds(), map.getZoom())
-    }
+    moveend: () => onViewChange(map.getBounds(), map.getZoom()),
+    load: () => onViewChange(map.getBounds(), map.getZoom())
   })
   
-  // Only fire once on mount to initialize data
   useEffect(() => {
-    if (map) {
-      onViewChange(map.getBounds(), map.getZoom())
-    }
-    // Dependency array is purposely restricted to just 'map' to prevent loop
+    if (map) onViewChange(map.getBounds(), map.getZoom())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [map]) 
 
   return null
 }
-
-import type { Report } from "@/lib/types"
 
 interface LeafletMapProps {
   reports: Report[]
@@ -86,7 +82,6 @@ export default function LeafletMap({ reports, onViewChange }: LeafletMapProps) {
     return reports.filter(r => r.latitude != null && r.longitude != null);
   }, [reports]);
 
-  // STABLE HANDLER
   const handleMapChange = useCallback((bounds: any, zoom: number) => {
     const visible = validReports.filter(r => 
       bounds.contains([r.latitude, r.longitude])
@@ -105,14 +100,14 @@ export default function LeafletMap({ reports, onViewChange }: LeafletMapProps) {
         showCoverageOnHover={false}
         chunkedLoading={false} 
       >
-        {reports.map((report) => (
+        {validReports.map((report) => (
           <Marker
             key={report.id}
             position={[report.latitude, report.longitude]}
-            icon={createMarkerIcon(getPinColor(report.risk_level))}
-            // We pass this prop so the cluster function can read it!
-            // @ts-ignore - Leaflet allows custom options but TS complains
-            risk_level={report.risk_level} 
+            // 3. Fixed: Removed getPinColor, used report.severity
+            icon={createMarkerIcon(report.severity)}
+            // @ts-ignore - Passing prop for cluster function to read
+            severity={report.severity} 
           >
             <Popup>
               <div className="p-1">
