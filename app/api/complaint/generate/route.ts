@@ -1,6 +1,18 @@
-import { generateText } from "ai"
-import { createClient } from "@/lib/supabase/server"
 import { NextResponse } from "next/server"
+import { GoogleGenAI } from "@google/genai"
+import { createClient } from "@/lib/supabase/server"
+
+/* ------------------------------------------------------------------ */
+/* Gemini Client                                                       */
+/* ------------------------------------------------------------------ */
+
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY!,
+})
+
+/* ------------------------------------------------------------------ */
+/* POST Handler                                                        */
+/* ------------------------------------------------------------------ */
 
 export async function POST(request: Request) {
   try {
@@ -17,13 +29,18 @@ export async function POST(request: Request) {
 
     const supabase = await createClient()
 
-    // Fetch report details
-    let reportData = null
+    /* ---------------- Fetch report ---------------- */
+    let reportData: any = null
     if (reportId) {
-      const { data } = await supabase.from("reports").select("*").eq("id", reportId).single()
+      const { data } = await supabase
+        .from("reports")
+        .select("*")
+        .eq("id", reportId)
+        .single()
       reportData = data
     }
 
+    /* ---------------- Build prompt ---------------- */
     const prompt = buildComplaintPrompt({
       report: reportData,
       department,
@@ -34,22 +51,36 @@ export async function POST(request: Request) {
       language,
     })
 
-    const { text } = await generateText({
-      model: "google/gemini-2.0-flash-001",
-      prompt,
-      temperature: 0.3,
+    /* ---------------- Gemini call ---------------- */
+    const response = await ai.models.generateContent({
+      model: "gemini-3-flash-preview",
+      contents: [
+        {
+          parts: [{ text: prompt }],
+        },
+      ],
     })
+
+    const generatedText =
+      response.candidates?.[0]?.content?.parts?.[0]?.text || ""
 
     return NextResponse.json({
       success: true,
-      generatedText: text,
+      generatedText,
       reportData,
     })
   } catch (error) {
     console.error("Complaint generation error:", error)
-    return NextResponse.json({ success: false, error: "Failed to generate complaint letter" }, { status: 500 })
+    return NextResponse.json(
+      { success: false, error: "Failed to generate complaint letter" },
+      { status: 500 }
+    )
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Prompt Builder                                                      */
+/* ------------------------------------------------------------------ */
 
 interface ComplaintPromptParams {
   report: any
@@ -62,7 +93,15 @@ interface ComplaintPromptParams {
 }
 
 function buildComplaintPrompt(params: ComplaintPromptParams): string {
-  const { report, department, applicantName, applicantAddress, applicantPhone, additionalDetails, language } = params
+  const {
+    report,
+    department,
+    applicantName,
+    applicantAddress,
+    applicantPhone,
+    additionalDetails,
+    language,
+  } = params
 
   const langInstruction =
     language === "hi"
@@ -88,35 +127,35 @@ ISSUE DETAILS:
 - Description: ${report.description || "Infrastructure defect requiring immediate attention"}
 - First Reported: ${new Date(report.created_at).toLocaleDateString("en-IN")}
 ${report.ai_classification ? `- Technical Issues: ${report.ai_classification.issues_detected?.join(", ")}` : ""}
-${report.estimated_cost ? `- Estimated Damage/Repair Cost: ₹${report.estimated_cost.toLocaleString("en-IN")}` : ""}
+${report.estimated_cost ? `- Estimated Repair Cost: ₹${report.estimated_cost.toLocaleString("en-IN")}` : ""}
 `
   }
 
-  return `You are an expert at writing formal complaint letters to government authorities in India.
+  return `
+You are an expert at drafting formal complaint letters addressed to government authorities in India.
 
 ${langInstruction}
 
-Generate a formal complaint letter based on the following:
+COMPLAINANT DETAILS:
+Name: ${applicantName}
+Address: ${applicantAddress}
+Phone: ${applicantPhone}
 
-COMPLAINANT:
-- Name: ${applicantName}
-- Address: ${applicantAddress}
-- Phone: ${applicantPhone}
-
-ADDRESSED TO: ${departmentNames[department] || department}
+ADDRESSED TO:
+${departmentNames[department] || department}
 
 ${issueDetails}
 
-${additionalDetails ? `ADDITIONAL CONCERNS: ${additionalDetails}` : ""}
+${additionalDetails ? `ADDITIONAL CONCERNS:\n${additionalDetails}` : ""}
 
 REQUIREMENTS:
-1. Use formal government complaint letter format
-2. Clearly state the problem and its impact on citizens
-3. Request specific action with reasonable timeline
-4. Mention that further escalation may be necessary if not addressed
-5. Include reference to relevant government schemes/policies if applicable
-6. Request acknowledgment and action taken report
-7. Maintain firm but respectful tone
-
-Generate a complete, professional complaint letter ready for submission.`
+1. Follow formal government complaint letter format
+2. Clearly explain the issue and public impact
+3. Request specific corrective action with reasonable timeline
+4. Mention escalation if the issue remains unresolved
+5. Request acknowledgment and action taken report
+6. Maintain firm, respectful, and professional tone
+7. no bold text 
+Generate a complete, ready-to-submit complaint letter.
+`
 }

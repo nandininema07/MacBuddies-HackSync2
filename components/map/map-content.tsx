@@ -81,7 +81,7 @@ export function MapContent({ reports: initialReports }: MapContentProps) {
       stats[city].votes += (r.upvotes || 0)
 
       // Count High/Critical risks
-      const risk = r.risk_level?.toLowerCase() || ""
+      const risk = r.severity?.toLowerCase() || ""
       if (risk === "high" || risk === "critical") {
         stats[city].highRisk += 1
       }
@@ -183,8 +183,8 @@ export function MapContent({ reports: initialReports }: MapContentProps) {
                   <Card key={report.id} className="overflow-hidden group hover:shadow-md transition-all duration-200 border-l-4"
                     style={{ 
                       borderLeftColor: 
-                        report.risk_level === 'High' ? '#ef4444' : 
-                        report.risk_level === 'Medium' ? '#eab308' : '#22c55e' 
+                        report.severity === 'high' ? '#ef4444' : 
+                        report.severity === 'medium' ? '#eab308' : '#22c55e' 
                     }}
                   >
                     {/* Image Section */}
@@ -204,12 +204,12 @@ export function MapContent({ reports: initialReports }: MapContentProps) {
                       <div className="absolute top-2 right-2">
                         <Badge 
                           className={
-                            report.risk_level === 'High' ? 'bg-red-500 hover:bg-red-600' :
-                            report.risk_level === 'Medium' ? 'bg-yellow-500 hover:bg-yellow-600' : 
+                            report.severity === 'high' ? 'bg-red-500 hover:bg-red-600' :
+                            report.severity === 'medium' ? 'bg-yellow-500 hover:bg-yellow-600' : 
                             'bg-green-500 hover:bg-green-600'
                           }
                         >
-                          {report.risk_level || 'Pending'}
+                          {report.severity || 'Pending'}
                         </Badge>
                       </div>
                     </div>
@@ -229,7 +229,7 @@ export function MapContent({ reports: initialReports }: MapContentProps) {
                       <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-xs text-muted-foreground mb-4">
                         <div className="flex items-center gap-1.5 truncate">
                           <MapPin className="h-3.5 w-3.5 text-slate-400" />
-                          <span className="truncate" title={report.address || report.city}>
+                          <span className="truncate" title={(report.address || report.city) || ""}>
                             {report.address || report.city || "No Address"}
                           </span>
                         </div>
@@ -263,7 +263,7 @@ export function MapContent({ reports: initialReports }: MapContentProps) {
                           onClick={() => handleVote(report.id)}
                         >
                           <ThumbsUp className="h-4 w-4" />
-                          Support Petition
+                          Confirm Issue
                         </Button>
                       </div>
                     </CardContent>

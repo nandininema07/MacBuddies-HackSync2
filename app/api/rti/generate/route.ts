@@ -1,6 +1,18 @@
-import { generateText } from "ai"
-import { createClient } from "@/lib/supabase/server"
 import { NextResponse } from "next/server"
+import { createClient } from "@/lib/supabase/server"
+import { GoogleGenAI } from "@google/genai"
+
+/* ------------------------------------------------------------------ */
+/* Gemini Client                                                       */
+/* ------------------------------------------------------------------ */
+
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY!,
+})
+
+/* ------------------------------------------------------------------ */
+/* Route Handler                                                       */
+/* ------------------------------------------------------------------ */
 
 export async function POST(request: Request) {
   try {
@@ -19,21 +31,29 @@ export async function POST(request: Request) {
 
     const supabase = await createClient()
 
-    // Fetch report details if provided
-    let reportData = null
+    /* ---------------- Fetch report ---------------- */
+    let reportData: any = null
     if (reportId) {
-      const { data } = await supabase.from("reports").select("*").eq("id", reportId).single()
+      const { data } = await supabase
+        .from("reports")
+        .select("*")
+        .eq("id", reportId)
+        .single()
       reportData = data
     }
 
-    // Fetch project details if provided
-    let projectData = null
+    /* ---------------- Fetch project ---------------- */
+    let projectData: any = null
     if (projectId) {
-      const { data } = await supabase.from("government_projects").select("*").eq("id", projectId).single()
+      const { data } = await supabase
+        .from("government_projects")
+        .select("*")
+        .eq("id", projectId)
+        .single()
       projectData = data
     }
 
-    // Build the prompt for Gemini
+    /* ---------------- Build prompt ---------------- */
     const prompt = buildRTIPrompt({
       report: reportData,
       project: projectData,
@@ -46,24 +66,34 @@ export async function POST(request: Request) {
       language,
     })
 
-    // Generate RTI using Gemini via Vercel AI Gateway
-    const { text } = await generateText({
-      model: "google/gemini-2.0-flash-001",
-      prompt,
-      temperature: 0.3, // Lower temperature for formal documents
+    /* ---------------- Gemini call (CORRECT) ---------------- */
+    const response = await ai.models.generateContent({
+      model: "gemini-3-flash-preview",
+      contents: [
+        {
+          parts: [{ text: prompt }],
+        },
+      ],
     })
 
     return NextResponse.json({
       success: true,
-      generatedText: text,
+      generatedText: response.text,
       reportData,
       projectData,
     })
   } catch (error) {
     console.error("RTI generation error:", error)
-    return NextResponse.json({ success: false, error: "Failed to generate RTI application" }, { status: 500 })
+    return NextResponse.json(
+      { success: false, error: "Failed to generate RTI application" },
+      { status: 500 }
+    )
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Prompt Builder                                                      */
+/* ------------------------------------------------------------------ */
 
 interface RTIPromptParams {
   report: any
@@ -82,7 +112,6 @@ function buildRTIPrompt(params: RTIPromptParams): string {
     report,
     project,
     department,
-    templateType,
     applicantName,
     applicantAddress,
     applicantPhone,
@@ -108,15 +137,10 @@ function buildRTIPrompt(params: RTIPromptParams): string {
   if (report) {
     contextSection += `
 INFRASTRUCTURE ISSUE REPORTED:
-- Type: ${report.category?.toUpperCase() || "Infrastructure Issue"}
+- Type: ${report.category?.toUpperCase()}
 - Location: ${report.address || `Lat: ${report.latitude}, Long: ${report.longitude}`}
-- City/State: ${report.city || "Unknown"}, ${report.state || "Unknown"}
-- Severity: ${report.severity?.toUpperCase() || "Unknown"}
-- Description: ${report.description || "Infrastructure defect observed"}
-- Date Reported: ${new Date(report.created_at).toLocaleDateString("en-IN")}
-- Current Status: ${report.status?.toUpperCase() || "Pending"}
-${report.ai_classification ? `- AI Analysis: Issues detected - ${report.ai_classification.issues_detected?.join(", ") || "Quality concerns identified"}` : ""}
-${report.estimated_cost ? `- Estimated Repair Cost: ₹${report.estimated_cost.toLocaleString("en-IN")}` : ""}
+- Description: ${report.description}
+- Status: ${report.status}
 `
   }
 
@@ -124,55 +148,54 @@ ${report.estimated_cost ? `- Estimated Repair Cost: ₹${report.estimated_cost.t
     contextSection += `
 RELATED GOVERNMENT PROJECT:
 - Project Name: ${project.name}
-- Budget: ₹${project.budget?.toLocaleString("en-IN") || "Not disclosed"}
-- Department: ${project.department || "Not specified"}
-- Contractor: ${project.contractor_name || "Not disclosed"}
-- Expected Completion: ${project.expected_completion ? new Date(project.expected_completion).toLocaleDateString("en-IN") : "Not specified"}
-- Current Status: ${project.status?.toUpperCase() || "Unknown"}
-- Location: ${project.city || "Unknown"}, ${project.state || "Unknown"}
+- Budget: ₹${project.budget}
+- Contractor: ${project.contractor_name}
 `
   }
 
-  const defaultInformationRequests = `
-1. Certified copies of project approval documents and administrative sanction orders
-2. Complete budget allocation details including fund source and expenditure breakdown
-3. Contractor selection process documentation including tender notices, bid comparisons, and award criteria
-4. Quality inspection reports and material testing certificates
-5. Current project completion status with photographic evidence
-6. Details of supervising officers responsible for quality monitoring
-7. Any complaints received regarding this project and action taken
+  const defaultRequests = `
+1. Certified copies of administrative and technical sanction orders
+2. Budget allocation and expenditure details
+3. Tender and contractor selection documents
+4. Quality inspection reports
+5. Current status and delay reasons
 `
 
-  const customRequestsText = customRequests?.length ? customRequests.map((r, i) => `${i + 8}. ${r}`).join("\n") : ""
+  const customRequestsText = customRequests?.length
+    ? customRequests.map((r, i) => `${i + 6}. ${r}`).join("\n")
+    : ""
 
-  return `You are an expert legal assistant specializing in Right to Information (RTI) applications under the RTI Act, 2005 of India.
+  return `
+You are an expert legal assistant specializing in drafting RTI applications under the RTI Act, 2005 (India).
 
 ${langInstruction}
 
-Generate a formal, legally appropriate RTI application based on the following details:
-
 APPLICANT DETAILS:
-- Name: ${applicantName}
-- Address: ${applicantAddress}
-- Phone: ${applicantPhone}
+Name: ${applicantName}
+Address: ${applicantAddress}
+Phone: ${applicantPhone}
 
-DEPARTMENT: ${departmentNames[department] || department}
+DEPARTMENT:
+${departmentNames[department] || department}
 
 ${contextSection}
 
-INFORMATION TO BE REQUESTED:
-${defaultInformationRequests}
+INFORMATION SOUGHT:
+${defaultRequests}
 ${customRequestsText}
 
-REQUIREMENTS:
-1. Use proper formal government correspondence format
-2. Include all mandatory elements as per RTI Act, 2005
-3. Reference specific sections of the RTI Act where applicable
-4. Include a statement about willingness to pay prescribed fees
-5. Request information within the 30-day statutory period
-6. Be specific and detailed in information requests
-7. Maintain respectful and professional tone throughout
-8. Format with proper spacing and structure for official use
+Include:
+- Proper RTI format
+- Reference to RTI Act, 2005
+- 30-day response clause
+- Willingness to pay fees
+- Formal tone
+FORMAT STRICTLY AS A GOVERNMENT DOCUMENT:
+- no bold text
+- Align numbered lists cleanly
+- Keep professional spacing
+- Ensure print-ready formatting (A4)
 
-Generate a complete, ready-to-submit RTI application that the citizen can use directly. Include appropriate salutation, subject line, body, and closing.`
+Generate a complete, submission-ready RTI application.
+`
 }

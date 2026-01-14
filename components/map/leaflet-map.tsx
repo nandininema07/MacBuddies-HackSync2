@@ -144,10 +144,10 @@ export default function LeafletMap({ reports, onViewChange }: LeafletMapProps) {
           <Marker
             key={report.id}
             position={[report.latitude, report.longitude]}
-            icon={createMarkerIcon(getPinColor(report.risk_level))}
+            icon={createMarkerIcon(getPinColor(report.severity))}
             // We pass this prop so the cluster function can read it!
             // @ts-ignore - Leaflet allows custom options but TS complains
-            risk_level={report.risk_level} 
+            risk_level={report.severity} 
           >
             <Popup>
               <div className="p-1">
