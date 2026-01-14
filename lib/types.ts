@@ -52,8 +52,18 @@ export interface DashboardStats {
   resolvedReports: number
   estimatedLoss: number
   categoryCounts: Record<string, number>
-  cityCounts: Array<{ city: string; count: number }>
+  cityCounts: { city: string; count: number }[]
   recentReports: Report[]
+  // Add this new field:
+  topRisks?: Array<{
+    id: string
+    title: string
+    city: string
+    upvotes: number
+    department: string | null
+    category: string
+    risk_level: string | null
+  }>
 }
 
 export interface Petition {
