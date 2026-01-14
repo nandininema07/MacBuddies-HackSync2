@@ -39,6 +39,8 @@ export function Header() {
     return () => subscription.unsubscribe()
   }, [])
 
+  
+
   const handleLogout = async () => {
     const supabase = createClient()
     await supabase.auth.signOut()
@@ -46,13 +48,13 @@ export function Header() {
   }
 
   const navLinks = [
-    { href: "/", label: t.nav.home },
-    { href: "/dashboard", label: t.nav.dashboard },
+    ...(!user ? [{ href: "/", label: t.nav.home }] : []),
+    ...(user? [{ href: "/dashboard", label: t.nav.dashboard },
     { href: "/capture", label: t.nav.capture },
     { href: "/map", label: t.nav.map },
     { href: "/community", label: t.nav.community, icon: Users },
-    { href: "/rti", label: t.rti.title, icon: FileText },
-  ]
+    { href: "/rti", label: t.rti.title, icon: FileText }] : [])
+  ].filter(Boolean)
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

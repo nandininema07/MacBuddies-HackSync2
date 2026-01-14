@@ -2,7 +2,7 @@ export const translations = {
   en: {
     // Navigation
     nav: {
-      home: "Home",
+      home: "",
       dashboard: "Dashboard",
       capture: "Report Issue",
       map: "Corruption Map",
