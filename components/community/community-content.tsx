@@ -6,17 +6,23 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useI18n } from "@/lib/i18n/context"
 import { createClient } from "@/lib/supabase/client"
-import type { Petition, GovernmentProject } from "@/lib/types"
+// 1. Import Report type
+import type { Petition, GovernmentProject, Report } from "@/lib/types"
 import { PetitionCard } from "./petition-card"
 import { ProjectCard } from "./project-card"
+// 2. Import existing ReportCard component
+import { ReportCard } from "@/components/report-card"
 import { CreatePetitionDialog } from "./create-petition-dialog"
 import { SubmitProjectDialog } from "./submit-project-dialog"
-import { FileText, Building2, TrendingUp, Users, Plus } from "lucide-react"
+// 3. Add AlertTriangle icon for the new tab
+import { FileText, Building2, TrendingUp, Users, Plus, AlertTriangle } from "lucide-react"
 
 export function CommunityContent() {
   const { t } = useI18n()
   const [petitions, setPetitions] = useState<Petition[]>([])
   const [projects, setProjects] = useState<GovernmentProject[]>([])
+  // 4. Add state for reports
+  const [reports, setReports] = useState<Report[]>([])
   const [loading, setLoading] = useState(true)
   const [showCreatePetition, setShowCreatePetition] = useState(false)
   const [showSubmitProject, setShowSubmitProject] = useState(false)
@@ -28,13 +34,16 @@ export function CommunityContent() {
   const fetchData = async () => {
     const supabase = createClient()
 
-    const [petitionsResult, projectsResult] = await Promise.all([
+    // 5. Fetch reports in the Promise.all array (limit to 20 recent)
+    const [petitionsResult, projectsResult, reportsResult] = await Promise.all([
       supabase.from("petitions").select("*").order("total_score", { ascending: false }),
       supabase.from("government_projects").select("*").order("created_at", { ascending: false }),
+      supabase.from("reports").select("*").order("created_at", { ascending: false }).limit(20),
     ])
 
     if (petitionsResult.data) setPetitions(petitionsResult.data)
     if (projectsResult.data) setProjects(projectsResult.data)
+    if (reportsResult.data) setReports(reportsResult.data)
     setLoading(false)
   }
 
@@ -116,7 +125,14 @@ export function CommunityContent() {
               <Building2 className="h-4 w-4" />
               {t.community.projects}
             </TabsTrigger>
+            {/* 6. New Tab Trigger for Reports */}
+            <TabsTrigger value="reports" className="gap-2">
+              <AlertTriangle className="h-4 w-4" />
+              {/* Fallback to hardcoded string if translation key is missing */}
+              {t.dashboard?.recentReports || "Recent Reports"}
+            </TabsTrigger>
           </TabsList>
+          
           <div className="flex gap-2">
             <Button onClick={() => setShowCreatePetition(true)} className="gap-2">
               <Plus className="h-4 w-4" />
@@ -174,6 +190,32 @@ export function CommunityContent() {
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {projects.map((project) => (
                 <ProjectCard key={project.id} project={project} onUpdate={fetchData} />
+              ))}
+            </div>
+          )}
+        </TabsContent>
+
+        {/* 7. New Tab Content for Reports */}
+        <TabsContent value="reports" className="space-y-4">
+          {loading ? (
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {[1, 2, 3].map((i) => (
+                <Card key={i} className="animate-pulse">
+                  <CardContent className="pt-6 h-48" />
+                </Card>
+              ))}
+            </div>
+          ) : reports.length === 0 ? (
+            <Card>
+              <CardContent className="pt-6 text-center py-12">
+                <AlertTriangle className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+                <p className="text-muted-foreground">No recent reports found.</p>
+              </CardContent>
+            </Card>
+          ) : (
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {reports.map((report) => (
+                <ReportCard key={report.id} report={report} />
               ))}
             </div>
           )}
