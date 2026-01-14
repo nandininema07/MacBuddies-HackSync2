@@ -10,7 +10,8 @@ const supabase = createClient(
 );
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
-const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+// Using 'gemini-2.5-flash' for speed and cost-efficiency
+const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
 export async function POST(req: NextRequest) {
   try {
@@ -30,22 +31,38 @@ export async function POST(req: NextRequest) {
       .single();
 
     if (reportError || !report) {
+      console.error("Report lookup error:", reportError);
       return NextResponse.json({ error: 'Report not found' }, { status: 404 });
     }
 
+    // CRITICAL: Check if image_url exists to prevent "toString of null" error
+    if (!report.image_url) {
+        console.error("❌ Error: Report has no image_url in the database.");
+        return NextResponse.json({ error: 'Report is missing image_url. Please add an image to the report row.' }, { status: 400 });
+    }
+
+    console.log(`📸 Fetching image from: ${report.image_url}`);
+
     // --- STEP 2: Vision Analysis (Gemini) ---
-    // We assume report.image_url is a public URL. 
-    // If it's private, we'd need to download it via Supabase Storage API first.
-    const imageResponse = await fetch(report.image_url);
-    const imageBuffer = await imageResponse.arrayBuffer();
-    
+    let imageBuffer: ArrayBuffer;
+    try {
+        const imageResponse = await fetch(report.image_url);
+        if (!imageResponse.ok) {
+            throw new Error(`Failed to fetch image: ${imageResponse.statusText} (${imageResponse.status})`);
+        }
+        imageBuffer = await imageResponse.arrayBuffer();
+    } catch (err: any) {
+        console.error("❌ Image Download Error:", err.message);
+        return NextResponse.json({ error: `Failed to download image: ${err.message}` }, { status: 400 });
+    }
+
     const visionPrompt = `
       You are an infrastructure auditor. Analyze this image and the GPS coordinates provided.
       GPS: ${report.latitude}, ${report.longitude}
       
       Return a valid JSON object with these fields:
-      - "category": (String) e.g., 'Pothole', 'Garbage', 'Broken Light', 'Construction'.
-      - "severity": (String) 'Low', 'Medium', 'Critical'.
+      - "category": (String) e.g., 'road', 'bridge', 'building', 'drainage', 'electrical', 'water', 'other'. (Pick closest match)
+      - "severity": (String) 'low', 'medium', 'high', 'critical'.
       - "is_authentic": (Boolean) Does this look like a real, natural photo taken by a citizen? 
       - "reasoning": (String) Why is it authentic or fake?
       - "description": (String) Technical description of the visual issue.
@@ -63,12 +80,19 @@ export async function POST(req: NextRequest) {
     ]);
 
     const visionText = visionResult.response.text().replace(/```json|```/g, '').trim();
-    const visionData = JSON.parse(visionText);
+    
+    let visionData;
+    try {
+        visionData = JSON.parse(visionText);
+    } catch (e) {
+        console.error("JSON Parse Error (Vision):", visionText);
+        return NextResponse.json({ error: "Failed to parse AI response" }, { status: 500 });
+    }
 
     // STOP if fake
     if (!visionData.is_authentic) {
       await supabase.from('reports').update({
-        status: 'Rejected',
+        status: 'rejected', // Lowercase to match DB constraint
         is_authentic: false,
         fake_detection_reasoning: visionData.reasoning
       }).eq('id', report_id);
@@ -76,8 +100,7 @@ export async function POST(req: NextRequest) {
     }
 
     // --- STEP 3: Find Nearest Govt Project ---
-    // Fetch all projects and filter in JS (Simple MVP approach)
-    // Production Upgrade: Use Supabase .rpc() for PostGIS 'ST_DWithin'
+    // Fetch all projects and filter (MVP Approach)
     const { data: projects } = await supabase.from('government_projects').select('*');
     
     let nearestProject = null;
@@ -85,12 +108,12 @@ export async function POST(req: NextRequest) {
 
     if (projects) {
       projects.forEach((p: any) => {
-        // Simple distance (Euclidean). 0.001 degrees is roughly 100m.
+        // Simple Euclidean Distance
         const dist = Math.sqrt(
           Math.pow(p.latitude - report.latitude, 2) + 
           Math.pow(p.longitude - report.longitude, 2)
         );
-        // Look for projects within ~500m (0.005 degrees)
+        // Approx 0.005 degrees is ~500m
         if (dist < 0.005 && dist < minDist) {
           minDist = dist;
           nearestProject = p;
@@ -107,42 +130,59 @@ export async function POST(req: NextRequest) {
       const auditPrompt = `
         Compare User Evidence vs Official Record.
         
-        TODAY'S DATE: ${today}
+        TODAY: ${today}
+        USER EVIDENCE: ${JSON.stringify(visionData)}
+        OFFICIAL RECORD: ${JSON.stringify(nearestProject)}
         
-        USER EVIDENCE:
-        - Issue: ${visionData.category}
-        - Severity: ${visionData.severity}
-        - Description: ${visionData.description}
-        
-        OFFICIAL RECORD:
-        - Project: ${nearestProject.name}
-        - Type: ${nearestProject.project_type}
-        - Budget: ${nearestProject.budget}
-        - Expected Completion: ${nearestProject.expected_completion}
-        - Status in DB: ${nearestProject.status} (Note: 'verified' means valid record, not necessarily completed work)
-        
-        AUDIT LOGIC:
-        1. TIMELINE CHECK: If Today > Expected Completion AND evidence shows "Incomplete/Damage", Risk is HIGH.
-        2. STATUS CHECK: If project should be active (dates valid) and evidence shows "Construction work", Risk is LOW (Compliance).
-        3. BUDGET CHECK: If budget is high but evidence shows "Severe Potholes/Damage", Risk is HIGH.
+        Logic:
+        1. If Record='Completed' & Evidence='Damage', Risk=High.
+        2. If Record='In Progress' & Evidence='Construction', Risk=Low.
+        3. If Record='Delayed' & Evidence='No Work', Risk=High.
         
         Return JSON: { "risk_level": "Low"|"Medium"|"High", "audit_reasoning": "..." }
       `;
 
       const auditResult = await model.generateContent(auditPrompt);
       const auditText = auditResult.response.text().replace(/```json|```/g, '').trim();
-      auditVerdict = JSON.parse(auditText);
+      
+      try {
+        auditVerdict = JSON.parse(auditText);
+      } catch (e) {
+         console.error("JSON Parse Error (Audit):", auditText);
+         // Keep default verdict if parsing fails
+      }
     }
+
+    // --- DATA NORMALIZATION FOR DB CONSTRAINTS ---
+    
+    // 1. Fix Severity (Must be lowercase: low, medium, high, critical)
+    const validSeverities = ['low', 'medium', 'high', 'critical'];
+    let normalizedSeverity = (visionData.severity || 'medium').toLowerCase();
+    if (!validSeverities.includes(normalizedSeverity)) normalizedSeverity = 'medium';
+
+    // 2. Fix Category (Must be one of the allowed DB types)
+    const validCategories = ['road', 'bridge', 'building', 'drainage', 'electrical', 'water', 'other'];
+    let normalizedCategory = (visionData.category || 'other').toLowerCase();
+    if (!validCategories.includes(normalizedCategory)) normalizedCategory = 'other';
+
+    // 3. Fix Risk Level (Must be Capitalized: Low, Medium, High)
+    const validRisks = ['Low', 'Medium', 'High'];
+    let normalizedRisk = auditVerdict.risk_level || 'Medium';
+    // Ensure first letter is uppercase, rest lowercase
+    normalizedRisk = normalizedRisk.charAt(0).toUpperCase() + normalizedRisk.slice(1).toLowerCase();
+    if (!validRisks.includes(normalizedRisk)) normalizedRisk = 'Medium';
+
 
     // --- STEP 5: Update Database ---
     const updatePayload = {
       ai_classification: visionData, 
       ai_confidence: visionData.confidence_score,
-      severity: visionData.severity,
-      status: 'Verified',
+      severity: normalizedSeverity,     // FIXED: lowercase
+      category: normalizedCategory,     // FIXED: lowercase valid category
+      status: 'verified',               // FIXED: lowercase 'verified'
       is_authentic: true,
       fake_detection_reasoning: 'Passed AI checks',
-      risk_level: auditVerdict.risk_level,
+      risk_level: normalizedRisk,       // FIXED: Capitalized
       audit_reasoning: auditVerdict.audit_reasoning,
       matched_project_id: nearestProject ? nearestProject.id : null
     };
@@ -152,12 +192,15 @@ export async function POST(req: NextRequest) {
       .update(updatePayload)
       .eq('id', report_id);
 
-    if (updateError) throw updateError;
+    if (updateError) {
+        console.error("DB Update Error:", updateError);
+        throw updateError;
+    }
 
     return NextResponse.json({ success: true, data: updatePayload });
 
   } catch (error: any) {
-    console.error('Audit Error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error('Audit Error Details:', error);
+    return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
   }
 }
