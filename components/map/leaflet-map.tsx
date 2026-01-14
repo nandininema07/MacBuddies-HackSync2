@@ -1,153 +1,118 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo, useCallback } from "react" // Added useCallback
 import L from "leaflet"
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet"
 import MarkerClusterGroup from "react-leaflet-cluster"
 import "leaflet/dist/leaflet.css"
-// Note: MarkerCluster styles are handled via creating custom divIcons below
-import type { Report } from "@/lib/types"
 
-// --- ICONS ---
+const SEVERITY_COLORS = {
+  low: "#22c55e",
+  medium: "#eab308",
+  high: "#f97316",
+  critical: "#ef4444",
+  default: "#3b82f6"
+}
 
-// 1. Single Marker Icon (Color coded)
-const createMarkerIcon = (color: string) => {
+// Custom Icons
+const createMarkerIcon = (risk: string | undefined) => {
+  const riskKey = risk?.toLowerCase() as keyof typeof SEVERITY_COLORS;
+  const color = SEVERITY_COLORS[riskKey] || SEVERITY_COLORS.default;
   return L.divIcon({
     className: "custom-pin",
-    html: `
-      <div style="
-        background-color: ${color};
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        border: 2px solid white;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      "></div>
-    `,
+    html: `<div style="background-color: ${color}; width: 24px; height: 24px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>`,
     iconSize: [24, 24],
     iconAnchor: [12, 12],
+    popupAnchor: [0, -12]
   })
 }
 
-// 2. Cluster Icon (Smart Coloring)
 const createClusterCustomIcon = function (cluster: any) {
-  // Get all markers in this cluster
   const markers = cluster.getAllChildMarkers();
-  
-  // Logic: Find the worst severity in this cluster
-  let hasCritical = false;
-  let hasHigh = false;
-  let hasMedium = false;
-
-  // We stored the risk level in the marker options (see Marker below)
+  let hasCritical = false, hasHigh = false, hasMedium = false;
   markers.forEach((marker: any) => {
-     const risk = marker.options.risk_level; 
-     if (risk === 'critical' || risk === 'High') hasCritical = true;
-     else if (risk === 'high' || risk === 'Medium') hasHigh = true;
-     else if (risk === 'medium' || risk === 'Low') hasMedium = true;
+    const risk = marker.options.risk_level?.toLowerCase(); 
+    if (risk === 'critical') hasCritical = true;
+    else if (risk === 'high') hasHigh = true;
+    else if (risk === 'medium') hasMedium = true;
   });
-
-  // Determine Color
-  let color = '#22c55e'; // Default Green (Low)
-  if (hasCritical) color = '#ef4444'; // Red
-  else if (hasHigh) color = '#f97316'; // Orange
-  else if (hasMedium) color = '#eab308'; // Yellow
-
-  // Determine Size (Bigger cluster = Bigger circle)
+  let color = SEVERITY_COLORS.low; 
+  if (hasCritical) color = SEVERITY_COLORS.critical;
+  else if (hasHigh) color = SEVERITY_COLORS.high;
+  else if (hasMedium) color = SEVERITY_COLORS.medium;
   const count = cluster.getChildCount();
-  let size = 30;
-  if (count > 10) size = 40;
-  if (count > 50) size = 50;
-
+  let size = count > 50 ? 50 : count > 10 ? 40 : 30;
   return L.divIcon({
-    html: `
-      <div style="
-        background-color: ${color};
-        width: ${size}px;
-        height: ${size}px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: bold;
-        border: 3px solid rgba(255,255,255,0.5);
-        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      ">
-        ${count}
-      </div>
-    `,
+    html: `<div style="background-color: ${color}; width: ${size}px; height: ${size}px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border: 3px solid rgba(255,255,255,0.5); box-shadow: 0 4px 6px rgba(0,0,0,0.2);">${count}</div>`,
     className: 'custom-cluster-icon',
     iconSize: L.point(size, size, true),
   });
 }
 
-const getPinColor = (risk: string | undefined) => {
-  switch (risk?.toLowerCase()) {
-    case 'high': return '#ef4444';
-    case 'medium': return '#eab308';
-    case 'low': return '#22c55e';
-    default: return '#3b82f6';
-  }
+// MapEvents Helper: Now safer and lighter
+function MapEvents({ onViewChange }: { onViewChange: (bounds: any, zoom: number) => void }) {
+  const map = useMapEvents({
+    moveend: () => {
+      onViewChange(map.getBounds(), map.getZoom())
+    },
+    load: () => {
+      onViewChange(map.getBounds(), map.getZoom())
+    }
+  })
+  
+  // Only fire once on mount to initialize data
+  useEffect(() => {
+    if (map) {
+      onViewChange(map.getBounds(), map.getZoom())
+    }
+    // Dependency array is purposely restricted to just 'map' to prevent loop
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [map]) 
+
+  return null
 }
+
+import type { Report } from "@/lib/types"
 
 interface LeafletMapProps {
   reports: Report[]
   onViewChange: (visibleReports: Report[], zoom: number) => void
 }
 
-function MapEvents({ reports, onViewChange }: LeafletMapProps) {
-  const map = useMapEvents({
-    moveend: () => {
-      const bounds = map.getBounds()
-      const zoom = map.getZoom()
-      const visible = reports.filter(r => bounds.contains([r.latitude, r.longitude]))
-      onViewChange(visible, zoom)
-    },
-    load: () => {
-      onViewChange(reports, map.getZoom())
-    }
-  })
-  
-  useEffect(() => {
-    map.fire('moveend');
-  }, [map])
-
-  return null
-}
-
 export default function LeafletMap({ reports, onViewChange }: LeafletMapProps) {
   const defaultCenter: [number, number] = [20.5937, 78.9629]
 
-  return (
-    <MapContainer 
-      center={defaultCenter} 
-      zoom={5} 
-      className="h-full w-full"
-      maxZoom={18} // Allow zooming close enough to break clusters
-    >
-      <TileLayer
-        attribution='&copy; OpenStreetMap contributors'
-        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-      />
-      
-      <MapEvents reports={reports} onViewChange={onViewChange} />
+  const validReports = useMemo(() => {
+    return reports.filter(r => r.latitude != null && r.longitude != null);
+  }, [reports]);
 
-      {/* CLUSTER GROUP */}
+  // STABLE HANDLER
+  const handleMapChange = useCallback((bounds: any, zoom: number) => {
+    const visible = validReports.filter(r => 
+      bounds.contains([r.latitude, r.longitude])
+    )
+    onViewChange(visible, zoom)
+  }, [validReports, onViewChange])
+
+  return (
+    <MapContainer center={defaultCenter} zoom={5} className="h-full w-full z-0" maxZoom={18} scrollWheelZoom={true}>
+      <TileLayer attribution='&copy; OpenStreetMap contributors' url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" />
+      
       <MarkerClusterGroup
-        chunkedLoading
+        key={`cluster-${validReports.length}`} 
         iconCreateFunction={createClusterCustomIcon}
         spiderfyOnMaxZoom={true}
-        showCoverageOnHover={false} // Cleaner look
+        showCoverageOnHover={false}
+        chunkedLoading={false} 
       >
         {reports.map((report) => (
           <Marker
             key={report.id}
             position={[report.latitude, report.longitude]}
-            icon={createMarkerIcon(getPinColor(report.severity))}
+            icon={createMarkerIcon(getPinColor(report.risk_level))}
             // We pass this prop so the cluster function can read it!
             // @ts-ignore - Leaflet allows custom options but TS complains
-            risk_level={report.severity} 
+            risk_level={report.risk_level} 
           >
             <Popup>
               <div className="p-1">
@@ -161,6 +126,8 @@ export default function LeafletMap({ reports, onViewChange }: LeafletMapProps) {
           </Marker>
         ))}
       </MarkerClusterGroup>
+      
+      <MapEvents onViewChange={handleMapChange} />
     </MapContainer>
   )
 }

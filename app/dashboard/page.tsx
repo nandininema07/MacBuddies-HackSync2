@@ -1,11 +1,9 @@
-// app/dashboard/page.tsx
 import { createClient } from "@/lib/supabase/server"
 import { DashboardContent } from "@/components/dashboard/dashboard-content"
 import { Header } from "@/components/header"
 import type { DashboardStats, Report } from "@/lib/types"
 
-// This interface extends your existing DashboardStats to include the new ranking data
-// You should ideally move this to your @/lib/types file
+// Extended interface to include the specific ranking data
 interface ExtendedDashboardStats extends DashboardStats {
   topRisks: Array<{
     id: string
@@ -21,11 +19,13 @@ interface ExtendedDashboardStats extends DashboardStats {
 async function getDashboardStats(): Promise<ExtendedDashboardStats> {
   const supabase = await createClient()
 
-  // Fetch all reports, ordered by upvotes (Highest priority first)
+  // Fetch all reports
+  // 1. Order by upvotes descending for the "Ranking List"
+  // 2. Order by creation date for "Recent Reports"
   const { data: reportsData, error } = await supabase
     .from("reports")
     .select("*")
-    .order("upvotes", { ascending: false }) // Sort by votes for Ranking List
+    .order("upvotes", { ascending: false })
     .order("created_at", { ascending: false })
 
   if (error || !reportsData) {
@@ -38,27 +38,27 @@ async function getDashboardStats(): Promise<ExtendedDashboardStats> {
       categoryCounts: {},
       cityCounts: [],
       recentReports: [],
-      topRisks: [] // Return empty if error
+      topRisks: []
     }
   }
 
   const reports = reportsData as Report[]
 
-  // 1. Calculate Basic Stats
+  // --- 1. Basic Stats ---
   const totalReports = reports.length
   const verifiedReports = reports.filter((r) => r.status === "verified" || r.status === "in_progress").length
   const resolvedReports = reports.filter((r) => r.status === "resolved").length
-  // Summing up estimated cost (assuming column exists, else 0)
+  // Sum estimated cost if it exists, otherwise 0
   const estimatedLoss = reports.reduce((sum, r) => sum + (Number(r.estimated_cost) || 0), 0)
 
-  // 2. Category Breakdown
+  // --- 2. Category Breakdown ---
   const categoryCounts: Record<string, number> = {}
   reports.forEach((r) => {
     const cat = r.category || 'other'
     categoryCounts[cat] = (categoryCounts[cat] || 0) + 1
   })
 
-  // 3. City Breakdown (Top 5 Affected Cities)
+  // --- 3. City Breakdown (Top 5) ---
   const cityMap: Record<string, number> = {}
   reports.forEach((r) => {
     if (r.city) {
@@ -70,22 +70,22 @@ async function getDashboardStats(): Promise<ExtendedDashboardStats> {
     .sort((a, b) => b.count - a.count)
     .slice(0, 5)
 
-  // 4. Recent Reports (For the feed)
-  // Re-sort by date for the "Recent Activity" feed since our main query was by votes
+  // --- 4. Recent Reports Feed ---
+  // Re-sort strictly by date for the feed
   const recentReports = [...reports]
     .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
     .slice(0, 5)
 
-  // 5. Ranking List (Top Priority Zones based on Votes)
-  // This satisfies your requirement: "Rank max voted place and authority"
+  // --- 5. Ranking List (Top Priority Zones) ---
+  // Top 10 issues ranked by community upvotes
   const topRisks = reports
-    .slice(0, 10) // Top 10 most upvoted issues
+    .slice(0, 10)
     .map(r => ({
       id: r.id,
       title: r.title,
       city: r.city || "Unknown Location",
       upvotes: r.upvotes || 0,
-      department: r.department || "Municipal Corporation", // Default to Municipal if null
+      department: r.department || "Municipal Corporation",
       category: r.category || "General",
       risk_level: r.risk_level
     }))
@@ -108,8 +108,8 @@ export default async function DashboardPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      {/* We pass the extended stats to DashboardContent. 
-        You will need to update DashboardContent to accept and render 'topRisks'.
+      {/* Ensure your DashboardContent component is updated to accept 'topRisks' 
+        or pass it to a specific sub-component 
       */}
       <DashboardContent stats={stats} />
     </div>
