@@ -25,7 +25,10 @@ import {
   Building2 
 } from "lucide-react"
 import type { User } from "@supabase/supabase-js"
-import exifr from "exifr"
+
+// --- FIX 1: DISABLE STATIC PRERENDERING ---
+// This prevents the build failure by skipping static generation for this page
+export const dynamic = 'force-dynamic';
 
 interface Location {
   latitude: number
@@ -83,7 +86,7 @@ export default function CapturePage() {
     getCurrentLocation()
   }, [])
 
-  // --- 1. SMART SEARCH (DB + NOMINATIM) ---
+  // --- SMART SEARCH (DB + NOMINATIM) ---
   const handleSearch = async () => {
     if (!searchQuery.trim()) return
     setIsSearching(true)
@@ -136,7 +139,7 @@ export default function CapturePage() {
     }
   }
 
-  // --- 2. SELECT & RESOLVE COORDINATES ---
+  // --- SELECT & RESOLVE COORDINATES ---
   const selectResult = async (result: SearchResult) => {
       setSearchQuery(result.display_name)
       setSearchResults([]) 
@@ -289,6 +292,10 @@ export default function CapturePage() {
     
     setIsLoadingLocation(true)
     try {
+        // --- FIX 2: DYNAMIC IMPORT FOR EXIFR ---
+        // Prevents "Couldn't load fs" error during build
+        const exifr = (await import("exifr")).default
+        
         const gps = await exifr.gps(file)
         if (gps && gps.latitude && gps.longitude) {
             await fetchLocationDetails(gps.latitude, gps.longitude, "image")
@@ -380,6 +387,7 @@ export default function CapturePage() {
         <div className="max-w-2xl mx-auto">
           <h1 className="text-3xl font-bold tracking-tight mb-6">{t.capture.title}</h1>
 
+          {/* PHOTO CARD */}
           <Card className="mb-6">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -435,6 +443,7 @@ export default function CapturePage() {
             </CardContent>
           </Card>
 
+          {/* LOCATION CARD */}
           <Card className="mb-6">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -451,6 +460,7 @@ export default function CapturePage() {
               )}
 
               <div className="space-y-4">
+                {/* Search Bar */}
                 <div className="relative">
                     <Label htmlFor="address-search">Search Road (Govt Projects)</Label>
                     <div className="flex gap-2 mt-1.5">
@@ -469,8 +479,9 @@ export default function CapturePage() {
                         </Button>
                     </div>
 
+                    {/* Autocomplete Dropdown */}
                     {searchResults.length > 0 && (
-                        <div className="absolute z-10 w-full bg-white mt-1 border rounded-md shadow-lg max-h-60 overflow-y-auto">
+                        <div className="absolute z-10 w-full mt-1 border rounded-md shadow-lg max-h-60 overflow-y-auto bg-white dark:bg-slate-950 dark:border-slate-800">
                             {searchResults.map((result) => (
                                 <div 
                                     key={result.place_id}
@@ -507,7 +518,7 @@ export default function CapturePage() {
                     )}
                   </div>
                 )}
-
+                
                 {!location && !isLoadingLocation && (
                   <Button variant="outline" onClick={getCurrentLocation} className="gap-2 bg-transparent">
                     <MapPin className="h-4 w-4" />
@@ -518,6 +529,7 @@ export default function CapturePage() {
             </CardContent>
           </Card>
 
+          {/* DETAILS FORM */}
           <Card>
             <CardHeader><CardTitle>Report Details</CardTitle></CardHeader>
             <CardContent>
