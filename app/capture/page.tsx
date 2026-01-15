@@ -24,7 +24,6 @@ import {
   Search 
 } from "lucide-react"
 import type { User } from "@supabase/supabase-js"
-import { triggerAiAudit } from "@/lib/api"
 import exifr from "exifr"
 
 interface Location {
@@ -101,11 +100,9 @@ export default function CapturePage() {
         pincode: data.address?.postcode,
       })
       setLocationSource(source)
-      // Auto-fill the search box with the detected address for clarity
       setSearchQuery(data.display_name || "")
     } catch (error) {
       console.error("Error fetching address:", error)
-      // Even if address lookup fails, we MUST keep the coordinates
       setLocation({ latitude: lat, longitude: lon, address: "Unknown Location" })
       setLocationSource(source)
     } finally {
@@ -136,19 +133,16 @@ export default function CapturePage() {
     const lat = parseFloat(result.lat)
     const lon = parseFloat(result.lon)
     
-    // Update location state directly
     setLocation({
       latitude: lat,
       longitude: lon,
       address: result.display_name,
-      // We could parse city/state here if needed, but Nominatim search results are simple
       city: "Selected Location", 
     })
     setLocationSource("manual")
-    setSearchQuery(result.display_name) // Set input to full name
-    setSearchResults([]) // Clear dropdown
+    setSearchQuery(result.display_name)
+    setSearchResults([])
     
-    // Optionally fetch full details to get City/State specifically
     fetchLocationDetails(lat, lon, "manual")
   }
 
@@ -218,7 +212,7 @@ export default function CapturePage() {
     setIsCapturing(false)
   }
 
-  // 2. File Upload Logic (Updated for WebP & Auto-Address)
+  // 2. File Upload Logic
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
@@ -238,13 +232,11 @@ export default function CapturePage() {
 
         if (gps && gps.latitude && gps.longitude) {
             console.log("📍 EXIF GPS Found:", gps)
-            // Automatically fetch readable address for these coordinates
             await fetchLocationDetails(gps.latitude, gps.longitude, "image")
         } else {
             console.warn("⚠️ No GPS found in image.")
             setIsLoadingLocation(false)
             alert("Image has no location data. Using your current location. You can also search for the location below.")
-            // Keep existing device location
         }
     } catch (error) {
         console.error("Error extracting EXIF:", error)
@@ -252,59 +244,58 @@ export default function CapturePage() {
     }
   }
 
-  // 3. Submit Logic
+  // 3. Submit Logic (UPDATED: Uses the new Verdict API)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!location || !imageFile) return
 
     setIsSubmitting(true)
-    setStatusMessage("Uploading evidence...")
+    setStatusMessage("Uploading and Analyzing Evidence...")
 
     try {
-      const fileExt = imageFile.name.split('.').pop() || 'jpg';
-      const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+      // Create FormData to send to the Verdict Engine
+      const formData = new FormData()
+      formData.append('image', imageFile)
+      formData.append('latitude', location.latitude.toString())
+      formData.append('longitude', location.longitude.toString())
+      formData.append('description', description)
+      formData.append('title', title) // Passing title for context if needed
 
-      const { error: uploadError } = await supabase.storage
-        .from('evidence')
-        .upload(fileName, imageFile, {
-            contentType: imageFile.type
-        })
-
-      if (uploadError) throw uploadError
-
-      const { data: { publicUrl } } = supabase.storage
-        .from('evidence')
-        .getPublicUrl(fileName)
-
-      setStatusMessage("Saving report...")
-      const { data: report, error: insertError } = await supabase.from("reports").insert({
-        user_id: user?.id || null,
-        title,
-        description,
-        category,
-        severity,
-        latitude: location.latitude,
-        longitude: location.longitude,
-        // Use the fetched address, or fallback to the search query if coordinates matched
-        address: location.address || searchQuery, 
-        city: location.city,
-        state: location.state,
-        pincode: location.pincode,
-        image_url: publicUrl,
-        status: 'pending'
+      // Call the API
+      const response = await fetch('/api/analyze-report', {
+        method: 'POST',
+        body: formData
       })
-      .select()
-      .single()
 
-      if (insertError) throw insertError
+      const result = await response.json()
 
-      setStatusMessage("AI is analyzing evidence...")
-      await triggerAiAudit(report.id)
+      if (!response.ok) {
+        throw new Error(result.error || "Analysis failed")
+      }
 
       setIsSuccess(true)
+      
+      // SHOW VERDICT TO USER
+      if (result.verdict) {
+        const { verdict, reasoning } = result.verdict
+        
+        let alertMessage = ""
+        if (verdict === "High Risk" || verdict === "High Risk / Discrepancy") {
+            alertMessage = `⚠️ INTEGRITY ALERT: DISCREPANCY DETECTED\n\nReasoning: ${reasoning}\n\nMatched Project: ${result.matched_project?.title || 'None'}\nOfficial Status: ${result.matched_project?.status || 'Unknown'}`
+        } else if (verdict === "Suspicious" || verdict === "Negligence") {
+            alertMessage = `⚠️ WARNING: ${verdict.toUpperCase()}\n\n${reasoning}`
+        } else {
+            alertMessage = `✅ VERIFICATION COMPLETE: ${verdict}\n\n${reasoning}`
+        }
+        
+        // Show the alert (System Alert for simplicity, or a custom modal could be used)
+        alert(alertMessage)
+      }
+
+      // Redirect
       setTimeout(() => {
         router.push("/dashboard")
-      }, 2000)
+      }, 500) // Small delay to let the alert close
 
     } catch (error: any) {
       console.error("Error submitting report:", error)
@@ -407,10 +398,10 @@ export default function CapturePage() {
                     </div>
                   )}
                   {locationSource === "gps" && imageData && (
-                     <div className="flex items-center gap-2 text-sm text-yellow-600 bg-yellow-50 p-2 rounded border border-yellow-200">
-                       <AlertTriangle className="h-4 w-4" />
-                       No GPS in image. Using device location.
-                     </div>
+                      <div className="flex items-center gap-2 text-sm text-yellow-600 bg-yellow-50 p-2 rounded border border-yellow-200">
+                        <AlertTriangle className="h-4 w-4" />
+                        No GPS in image. Using device location.
+                      </div>
                   )}
                 </div>
               )}
@@ -434,7 +425,7 @@ export default function CapturePage() {
               )}
 
               <div className="space-y-4">
-                {/* 1. Address Search (The new feature) */}
+                {/* Address Search */}
                 <div className="relative">
                     <Label htmlFor="address-search">Search Location (if auto-detect is wrong)</Label>
                     <div className="flex gap-2 mt-1.5">
@@ -453,7 +444,6 @@ export default function CapturePage() {
                         </Button>
                     </div>
 
-                    {/* Search Results Dropdown */}
                     {searchResults.length > 0 && (
                         <div className="absolute z-10 w-full bg-white mt-1 border rounded-md shadow-lg max-h-60 overflow-y-auto">
                             {searchResults.map((result) => (
@@ -469,7 +459,7 @@ export default function CapturePage() {
                     )}
                 </div>
 
-                {/* 2. Detected/Selected Coordinates Display */}
+                {/* Detected/Selected Coordinates Display */}
                 {location && (
                   <div className="bg-muted/50 rounded-lg p-4 text-sm">
                     <div>
@@ -484,7 +474,7 @@ export default function CapturePage() {
                   </div>
                 )}
 
-                {/* 3. Fallback Button */}
+                {/* Fallback Button */}
                 {!location && !isLoadingLocation && (
                   <Button variant="outline" onClick={getCurrentLocation} className="gap-2 bg-transparent">
                     <MapPin className="h-4 w-4" />
