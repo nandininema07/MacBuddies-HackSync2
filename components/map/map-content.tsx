@@ -27,7 +27,8 @@ import {
   Wrench,
   AlertTriangle,
   Gavel,
-  Info // Added Info Icon
+  Info,// Added Info Icon
+  Map as MapIcon
 } from "lucide-react"
 import type { Report } from "@/lib/types"
 
