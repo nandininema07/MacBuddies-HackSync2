@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import { Separator } from "@/components/ui/separator" // ✅ FIXED: Added missing import
+import { Separator } from "@/components/ui/separator"
 import { createClient } from "@/lib/supabase/client"
 import { 
   MapPin, 
@@ -16,11 +16,12 @@ import {
   Loader2,
   List,
   Map as MapIcon,
-  X
+  X,
+  BrainCircuit, // New icon for AI
+  AlertTriangle
 } from "lucide-react"
 import type { Report } from "@/lib/types"
 
-// Dynamic import for Leaflet map
 const LeafletMap = dynamic(() => import("./leaflet-map"), { 
   ssr: false,
   loading: () => (
@@ -33,58 +34,56 @@ const LeafletMap = dynamic(() => import("./leaflet-map"), {
 
 interface MapContentProps {
   reports: Report[]
+  predictions?: any[] // New Prop
 }
 
-export function MapContent({ reports: initialReports }: MapContentProps) {
+export function MapContent({ reports: initialReports, predictions = [] }: MapContentProps) {
   const [reports, setReports] = useState<Report[]>(initialReports)
+  const [showForecast, setShowForecast] = useState(false) // Toggle State
   const [visibleReports, setVisibleReports] = useState<Report[]>(initialReports)
   const [currentZoom, setCurrentZoom] = useState(5)
   const [showMobileList, setShowMobileList] = useState(false)
   
   const supabase = createClient()
 
-  // --- 1. HANDLE VOTING ---
   const handleVote = async (reportId: string) => {
     const { data, error } = await supabase.rpc('toggle_vote', { report_id_input: reportId })
-
-    if (error) {
-      console.error("Vote failed:", error.message)
-      alert("Please log in to vote on petitions.")
-      return
-    }
-
+    if (error) return alert("Please log in to vote.")
     if (data && typeof data.count === 'number') {
       const updateReport = (list: Report[]) => 
         list.map(r => r.id === reportId ? { ...r, upvotes: data.count } : r)
-
       setReports(prev => updateReport(prev))
       setVisibleReports(prev => updateReport(prev))
     }
   }
 
-  // --- 2. AGGREGATE STATS ---
+  // --- LOGIC: SWITCH BETWEEN REAL DATA AND AI DATA ---
+  const displaySource = useMemo(() => {
+    return showForecast ? predictions : visibleReports
+  }, [showForecast, predictions, visibleReports])
+
   const cityStats = useMemo(() => {
     const stats: Record<string, { count: number; highRisk: number; votes: number }> = {}
 
-    visibleReports.forEach((r) => {
+    displaySource.forEach((r) => {
       const city = r.city || "Unknown Region"
-      if (!stats[city]) {
-        stats[city] = { count: 0, highRisk: 0, votes: 0 }
-      }
+      if (!stats[city]) stats[city] = { count: 0, highRisk: 0, votes: 0 }
+      
       stats[city].count += 1
-      stats[city].votes += (r.upvotes || 0)
+      stats[city].votes += showForecast ? (r.prediction?.score || 0) : (r.upvotes || 0)
 
-      // ✅ FIXED: Changed 'risk_level' to 'severity'
-      const severity = r.severity?.toLowerCase() || ""
+      const severity = showForecast 
+        ? r.prediction?.label?.toLowerCase() 
+        : r.severity?.toLowerCase() || ""
+
       if (severity === "high" || severity === "critical") {
         stats[city].highRisk += 1
       }
     })
 
     return Object.entries(stats).sort((a, b) => b[1].count - a[1].count)
-  }, [visibleReports])
+  }, [displaySource, showForecast])
 
-  // --- 3. STABLE HANDLER ---
   const handleViewChange = useCallback((visible: Report[], zoom: number) => {
     setVisibleReports(visible)
     setCurrentZoom(zoom)
@@ -93,176 +92,83 @@ export function MapContent({ reports: initialReports }: MapContentProps) {
   return (
     <div className="relative flex h-[calc(100vh-64px)] w-full overflow-hidden bg-background">
       
-      {/* SIDEBAR */}
       <div className={`
           absolute inset-0 z-40 flex flex-col bg-background transition-transform duration-300 ease-in-out
           md:static md:w-[400px] md:flex-shrink-0 md:translate-x-0 md:border-r md:shadow-xl md:z-auto
           ${showMobileList ? "translate-x-0" : "-translate-x-full"}
       `}>
         {/* Sidebar Header */}
-        <div className="p-4 border-b bg-card flex justify-between items-center sticky top-0 z-10 shadow-sm">
+        <div className="p-4 border-b bg-card flex justify-between items-center">
             <div>
                 <h2 className="font-bold text-xl flex items-center gap-2">
-                    <Users className="h-5 w-5 text-blue-600" />
-                    Community Voice
+                    {showForecast ? <BrainCircuit className="h-5 w-5 text-purple-600" /> : <Users className="h-5 w-5 text-blue-600" />}
+                    {showForecast ? "AI Risk Forecast" : "Community Voice"}
                 </h2>
-                <p className="text-sm text-muted-foreground mt-1">
-                    {currentZoom < 8 
-                    ? `${cityStats.length} regions affected` 
-                    : `${visibleReports.length} petitions nearby`
-                    }
+                <p className="text-xs text-muted-foreground mt-1">
+                    {showForecast ? "Predicting infrastructure decay" : "Real-time citizen reports"}
                 </p>
             </div>
+            <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setShowMobileList(false)}><X /></Button>
+        </div>
+
+        {/* --- AI TOGGLE BUTTON --- */}
+        <div className="p-3 px-4 bg-slate-100 border-b flex items-center justify-between">
+            <span className="text-[10px] font-bold text-slate-500 uppercase">Analysis Mode</span>
             <Button 
-                variant="ghost" 
-                size="icon" 
-                className="md:hidden" 
-                onClick={() => setShowMobileList(false)}
+                size="sm" 
+                variant={showForecast ? "destructive" : "default"}
+                className={`h-8 px-4 rounded-full text-xs transition-all ${showForecast ? 'bg-purple-600 hover:bg-purple-700' : ''}`}
+                onClick={() => setShowForecast(!showForecast)}
             >
-                <X className="h-5 w-5" />
+                {showForecast ? "Exit Forecast" : "View Future Forecast"}
             </Button>
         </div>
 
-        {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50/50 pb-24 md:pb-4">
-          {currentZoom < 8 ? (
-            <div className="space-y-3">
-              <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Most Affected Regions</div>
-              {cityStats.length === 0 ? <div className="text-center p-8 text-muted-foreground">No data available.</div> : (
-                cityStats.map(([city, stat]) => (
-                  <Card key={city} className="hover:border-blue-400 transition cursor-pointer group">
-                    <CardContent className="p-4">
-                      <div className="flex justify-between items-start mb-2">
-                        <div>
-                          <h3 className="font-bold text-lg group-hover:text-blue-700 transition-colors">{city}</h3>
-                          <div className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
-                             <Users className="h-3 w-3" />{stat.votes} people affected
-                          </div>
-                        </div>
-                        <Badge variant="secondary" className="font-mono">{stat.count} Reports</Badge>
-                      </div>
-                      <div className="space-y-1.5 mt-3">
-                        <div className="flex justify-between text-xs">
-                           <span>Critical Issues</span>
-                           <span className={stat.highRisk > 0 ? "text-red-600 font-bold" : "text-muted-foreground"}>{stat.highRisk}</span>
-                        </div>
-                        <Progress value={stat.count > 0 ? (stat.highRisk / stat.count) * 100 : 0} className="h-1.5" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))
-              )}
-            </div>
-          ) : (
-            <div className="space-y-4">
-              <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 flex justify-between items-center">
-                <span>Active Petitions</span>
-                <Badge variant="outline" className="text-xs font-normal">Sorted by Severity</Badge>
-              </div>
-              {visibleReports.length === 0 ? <div className="flex flex-col items-center justify-center p-10 text-muted-foreground border-2 border-dashed rounded-lg"><MapPin className="h-8 w-8 mb-2 opacity-50" /><p>No reports in view.</p></div> : (
-                visibleReports.map((report) => (
-                  <Card key={report.id} className="overflow-hidden group hover:shadow-md transition-all duration-200 border-l-4"
-                    style={{ 
-                      // ✅ FIXED: Using severity instead of risk_level
-                      borderLeftColor: 
-                        report.severity === 'critical' ? '#ef4444' : 
-                        report.severity === 'high' ? '#f97316' : 
-                        report.severity === 'medium' ? '#eab308' : '#22c55e' 
-                    }}
-                  >
-                    <div className="relative h-40 w-full bg-slate-100">
-                      {report.image_url ? <img src={report.image_url} alt="Evidence" className="w-full h-full object-cover" /> : <div className="flex items-center justify-center h-full text-slate-400 text-sm">No Evidence</div>}
-                      <div className="absolute top-2 right-2">
-                        <Badge 
-                          className={
-                            // ✅ FIXED: Using severity instead of risk_level
-                            report.severity === 'critical' ? 'bg-red-600 hover:bg-red-700' :
-                            report.severity === 'high' ? 'bg-orange-500 hover:bg-orange-600' :
-                            report.severity === 'medium' ? 'bg-yellow-500 hover:bg-yellow-600' : 
-                            'bg-green-500 hover:bg-green-600'
-                          }
-                        >
-                          {report.severity || 'Pending'}
-                        </Badge>
-                      </div>
+          {displaySource.length === 0 ? <div className="text-center p-8 text-muted-foreground">No data in this view.</div> : (
+            displaySource.map((item) => (
+              <Card key={item.id} className={`overflow-hidden border-l-4 transition-all ${showForecast ? 'border-purple-500 shadow-purple-100' : ''}`}
+                style={{ borderLeftColor: showForecast ? (item.prediction.score > 70 ? '#a855f7' : '#d8b4fe') : (item.severity === 'critical' ? '#ef4444' : '#22c55e') }}
+              >
+                <CardContent className="p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="font-bold text-base">{showForecast ? `[FORECAST] ${item.title}` : item.title}</h4>
+                    <Badge className={showForecast ? "bg-purple-600" : ""}>
+                        {showForecast ? item.prediction.label : item.severity}
+                    </Badge>
+                  </div>
+                  
+                  {showForecast && (
+                    <div className="mb-3 p-2 bg-purple-50 rounded border border-purple-100 text-[11px] text-purple-800 flex items-start gap-2">
+                        <AlertTriangle className="h-3 w-3 mt-0.5" />
+                        <span>AI Prediction: High failure probability due to <b>{item.prediction.contractor}</b> history and monsoon decay.</span>
                     </div>
-                    <CardContent className="p-4">
-                      <div className="mb-3">
-                        <h4 className="font-bold text-base leading-tight mb-1">{report.title}</h4>
-                        <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">{report.category || 'General'}</span>
-                      </div>
+                  )}
 
-                      {/* ✅ FIXED: Separator is now imported */}
-                      <Separator className="my-3" />
-
-                      {/* Technical Details Grid */}
-                      <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-xs text-muted-foreground mb-4">
-                        <div className="flex items-center gap-1.5 truncate">
-                          <MapPin className="h-3.5 w-3.5 text-slate-400" />
-                          <span className="truncate" title={(report.address || report.city)||""}>
-                            {report.address || report.city || "No Address"}
-                          </span>
-                        </div>
-                        {/* ✅ FIXED: Removed 'audit_reasoning', used safe AI access or fallback */}
-                        <p className="text-slate-500 leading-tight italic truncate col-span-2">
-                           {/* @ts-ignore - Temporary ignore if type definition is outdated */}
-                           {report.ai_classification?.reasoning || report.description || "Analysis pending..."}
-                        </p>
-                      </div>
-                      
-                      <div className="flex items-center justify-between bg-slate-50 p-2 rounded-lg border">
-                        <div className="flex flex-col">
-                           <span className="text-[10px] text-muted-foreground font-medium uppercase">
-                             Community Impact
-                           </span>
-                           <div className="flex items-center gap-1">
-                             <Users className="h-3.5 w-3.5 text-blue-600" />
-                             <span className="font-bold text-sm text-slate-700">
-                               {report.upvotes || 0} Affected
-                             </span>
-                           </div>
-                        </div>
-                        
-                        <Button 
-                          size="sm" 
-                          className="h-9 px-4 gap-2 bg-white text-slate-700 border hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all shadow-sm"
-                          onClick={() => handleVote(report.id)}
-                        >
-                          <ThumbsUp className="h-4 w-4" />
-                          Support Petition
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))
-              )}
-            </div>
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <MapPin className="h-3 w-3" /> {item.city}
+                  </div>
+                  
+                  {!showForecast && (
+                    <Button size="sm" variant="outline" className="w-full mt-3 h-8 text-xs" onClick={() => handleVote(item.id)}>
+                        <ThumbsUp className="h-3 w-3 mr-2" /> Support Petition
+                    </Button>
+                  )}
+                </CardContent>
+              </Card>
+            ))
           )}
         </div>
       </div>
 
-      {/* MAP AREA */}
       <div className="flex-1 relative h-full w-full z-0">
         <LeafletMap 
           reports={reports} 
+          predictions={predictions} 
+          isForecastMode={showForecast} 
           onViewChange={handleViewChange} 
         />
-        
-        <div className="hidden md:flex absolute top-4 left-1/2 -translate-x-1/2 z-[400] bg-white/90 backdrop-blur px-4 py-2 rounded-full shadow-lg border border-slate-200 text-xs font-medium text-slate-600 pointer-events-none items-center gap-2">
-           {currentZoom < 8 ? "Zoom in to see details" : "Viewing street level data"}
-        </div>
       </div>
-
-      {/* MOBILE TOGGLE */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[50] md:hidden">
-        <Button 
-          onClick={() => setShowMobileList(!showMobileList)} 
-          className="rounded-full shadow-xl px-6 h-12 bg-slate-900 text-white hover:bg-slate-800 transition-transform active:scale-95 border border-slate-700"
-        >
-          {showMobileList ? <><MapIcon className="mr-2 h-4 w-4" /> Show Map</> : <><List className="mr-2 h-4 w-4" /> Show List</>}
-        </Button>
-      </div>
-
     </div>
   )
 }
