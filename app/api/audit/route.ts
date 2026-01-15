@@ -2,18 +2,17 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-// 1. Initialize Clients
-// Note: We use the SERVICE_ROLE_KEY to ensure we can write to verification columns
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY! 
-);
-
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
 // Using 'gemini-2.5-flash' for speed and cost-efficiency
-const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+const model = genAI.getGenerativeModel({ model: 'gemini-3-flash-preview' });
 
 export async function POST(req: NextRequest) {
+  // 1. Initialize Clients
+  // Note: We use the SERVICE_ROLE_KEY to ensure we can write to verification columns
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY! 
+  );
   try {
     const { report_id } = await req.json();
 
@@ -103,13 +102,13 @@ export async function POST(req: NextRequest) {
     // Fetch all projects and filter (MVP Approach)
     const { data: projects } = await supabase.from('government_projects').select('*');
     
-    let nearestProject = null;
+    let nearestProject: any = null;
     let minDist = Infinity;
 
     if (projects) {
       projects.forEach((p: any) => {
         // Simple Euclidean Distance
-        const dist = Math.sqrt(
+        const dist = Math.sqrt( 
           Math.pow(p.latitude - report.latitude, 2) + 
           Math.pow(p.longitude - report.longitude, 2)
         );
