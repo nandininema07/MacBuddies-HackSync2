@@ -59,16 +59,17 @@ export default function CapturePage() {
   const [isSuccess, setIsSuccess] = useState(false)
   const [statusMessage, setStatusMessage] = useState("")
 
+  // --- NEW: Custom Inline Feedback State ---
+  const [feedback, setFeedback] = useState<{ type: 'error' | 'success', message: string, details?: string } | null>(null)
+
   const [location, setLocation] = useState<Location | null>(null)
   const [isLoadingLocation, setIsLoadingLocation] = useState(false)
   const [locationSource, setLocationSource] = useState<"gps" | "image" | "manual">("gps")
   
-  // Search State
   const [searchQuery, setSearchQuery] = useState("")
   const [searchResults, setSearchResults] = useState<SearchResult[]>([])
   const [isSearching, setIsSearching] = useState(false)
 
-  // Form state
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [category, setCategory] = useState("other")
@@ -78,11 +79,9 @@ export default function CapturePage() {
     supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user)
     })
-    // Initial location fetch on mount (Device GPS)
     getCurrentLocation()
   }, [])
 
-  // --- HELPER: Reverse Geocoding (Coords -> Address) ---
   const fetchLocationDetails = async (lat: number, lon: number, source: "gps" | "image" | "manual") => {
     setIsLoadingLocation(true)
     try {
@@ -110,7 +109,6 @@ export default function CapturePage() {
     }
   }
 
-  // --- HELPER: Forward Geocoding (Address -> Coords) ---
   const handleAddressSearch = async () => {
     if (!searchQuery.trim()) return
     setIsSearching(true)
@@ -146,7 +144,6 @@ export default function CapturePage() {
     fetchLocationDetails(lat, lon, "manual")
   }
 
-  // --- HELPER: Get Current Device Location ---
   const getCurrentLocation = useCallback(async () => {
     setIsLoadingLocation(true)
     try {
@@ -163,7 +160,6 @@ export default function CapturePage() {
     }
   }, [])
 
-  // 1. Camera Logic
   const startCamera = async () => {
     setIsCapturing(true)
     try {
@@ -212,7 +208,6 @@ export default function CapturePage() {
     setIsCapturing(false)
   }
 
-  // 2. File Upload Logic
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
@@ -234,9 +229,7 @@ export default function CapturePage() {
             console.log("📍 EXIF GPS Found:", gps)
             await fetchLocationDetails(gps.latitude, gps.longitude, "image")
         } else {
-            console.warn("⚠️ No GPS found in image.")
             setIsLoadingLocation(false)
-            alert("Image has no location data. Using your current location. You can also search for the location below.")
         }
     } catch (error) {
         console.error("Error extracting EXIF:", error)
@@ -244,24 +237,23 @@ export default function CapturePage() {
     }
   }
 
-  // 3. Submit Logic (UPDATED: Uses the new Verdict API)
+  // 3. Submit Logic with Custom Inline Feedback (No Toast/Alert)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!location || !imageFile) return
 
     setIsSubmitting(true)
+    setFeedback(null) // Reset feedback
     setStatusMessage("Uploading and Analyzing Evidence...")
 
     try {
-      // Create FormData to send to the Verdict Engine
       const formData = new FormData()
       formData.append('image', imageFile)
       formData.append('latitude', location.latitude.toString())
       formData.append('longitude', location.longitude.toString())
       formData.append('description', description)
-      formData.append('title', title) // Passing title for context if needed
+      formData.append('title', title)
 
-      // Call the API
       const response = await fetch('/api/analyze-report', {
         method: 'POST',
         body: formData
@@ -273,33 +265,39 @@ export default function CapturePage() {
         throw new Error(result.error || "Analysis failed")
       }
 
-      setIsSuccess(true)
+      // Check verdict to set feedback message
+      const { verdict, reasoning } = result.verdict || {}
       
-      // SHOW VERDICT TO USER
-      if (result.verdict) {
-        const { verdict, reasoning } = result.verdict
-        
-        let alertMessage = ""
-        if (verdict === "High Risk" || verdict === "High Risk / Discrepancy") {
-            alertMessage = `⚠️ INTEGRITY ALERT: DISCREPANCY DETECTED\n\nReasoning: ${reasoning}\n\nMatched Project: ${result.matched_project?.title || 'None'}\nOfficial Status: ${result.matched_project?.status || 'Unknown'}`
-        } else if (verdict === "Suspicious" || verdict === "Negligence") {
-            alertMessage = `⚠️ WARNING: ${verdict.toUpperCase()}\n\n${reasoning}`
-        } else {
-            alertMessage = `✅ VERIFICATION COMPLETE: ${verdict}\n\n${reasoning}`
-        }
-        
-        // Show the alert (System Alert for simplicity, or a custom modal could be used)
-        alert(alertMessage)
+      if (verdict === "High Risk" || verdict === "Negligence" || verdict === "Suspicious") {
+          setFeedback({
+              type: 'error',
+              message: `⚠️ Issue Detected: ${verdict}`,
+              details: reasoning
+          })
+      } else {
+          setFeedback({
+              type: 'success',
+              message: "✅ Verified Compliant",
+              details: "Redirecting to dashboard..."
+          })
       }
 
-      // Redirect
+      setIsSuccess(true)
+      
+      const reportId = result.report_id || result.data?.[0]?.id
+
+      // Delay redirect slightly so user can see the feedback
       setTimeout(() => {
-        router.push("/dashboard")
-      }, 500) // Small delay to let the alert close
+        router.push(reportId ? `/dashboard?focus=${reportId}` : "/dashboard")
+      }, 2000)
 
     } catch (error: any) {
       console.error("Error submitting report:", error)
-      alert(`Error: ${error.message || "Failed to submit report"}`)
+      setFeedback({
+          type: 'error',
+          message: "Submission Failed",
+          details: error.message
+      })
     } finally {
       setIsSubmitting(false)
       setStatusMessage("")
@@ -310,6 +308,7 @@ export default function CapturePage() {
     setImageData(null)
     setImageFile(null)
     setSearchQuery("")
+    setFeedback(null)
   }
 
   if (isSuccess) {
@@ -319,7 +318,18 @@ export default function CapturePage() {
         <div className="container px-4 py-20 flex flex-col items-center justify-center">
           <CheckCircle className="h-16 w-16 text-green-600 mb-4" />
           <h1 className="text-2xl font-bold text-center">Report Verified & Submitted!</h1>
-          <p className="text-muted-foreground mt-2">Redirecting to dashboard...</p>
+          
+          {/* Show the specific AI verdict on the success screen too */}
+          {feedback && (
+             <div className={`mt-4 p-4 rounded-lg border max-w-md text-center ${
+                 feedback.type === 'error' ? 'bg-red-50 border-red-200 text-red-800' : 'bg-green-50 border-green-200 text-green-800'
+             }`}>
+                 <p className="font-bold">{feedback.message}</p>
+                 <p className="text-sm mt-1">{feedback.details}</p>
+             </div>
+          )}
+          
+          <p className="text-muted-foreground mt-6 animate-pulse">Redirecting to map...</p>
         </div>
       </div>
     )
@@ -332,6 +342,8 @@ export default function CapturePage() {
         <div className="max-w-2xl mx-auto">
           <h1 className="text-3xl font-bold tracking-tight mb-6">{t.capture.title}</h1>
 
+          {/* ... (Existing Image & Location Cards - Same as before) ... */}
+          
           {/* Image Capture Section */}
           <Card className="mb-6">
             <CardHeader>
@@ -384,7 +396,6 @@ export default function CapturePage() {
                     </Button>
                   </div>
                   
-                  {/* Location Source Indicator */}
                   {locationSource === "image" && (
                     <div className="flex items-center gap-2 text-sm text-green-600 bg-green-50 p-2 rounded border border-green-200">
                       <MapPin className="h-4 w-4" />
@@ -425,7 +436,6 @@ export default function CapturePage() {
               )}
 
               <div className="space-y-4">
-                {/* Address Search */}
                 <div className="relative">
                     <Label htmlFor="address-search">Search Location (if auto-detect is wrong)</Label>
                     <div className="flex gap-2 mt-1.5">
@@ -459,7 +469,6 @@ export default function CapturePage() {
                     )}
                 </div>
 
-                {/* Detected/Selected Coordinates Display */}
                 {location && (
                   <div className="bg-muted/50 rounded-lg p-4 text-sm">
                     <div>
@@ -474,7 +483,6 @@ export default function CapturePage() {
                   </div>
                 )}
 
-                {/* Fallback Button */}
                 {!location && !isLoadingLocation && (
                   <Button variant="outline" onClick={getCurrentLocation} className="gap-2 bg-transparent">
                     <MapPin className="h-4 w-4" />
@@ -548,6 +556,19 @@ export default function CapturePage() {
                     </Select>
                   </div>
                 </div>
+
+                {/* --- CUSTOM INLINE FEEDBACK (Replaces Toast/Alert) --- */}
+                {feedback && (
+                    <div className={`p-3 rounded-md text-sm border ${
+                        feedback.type === 'error' ? 'bg-red-50 text-red-900 border-red-200' : 'bg-green-50 text-green-900 border-green-200'
+                    }`}>
+                        <div className="font-bold flex items-center gap-2">
+                            {feedback.type === 'error' ? <AlertTriangle className="h-4 w-4"/> : <CheckCircle className="h-4 w-4"/>}
+                            {feedback.message}
+                        </div>
+                        <div className="mt-1 pl-6 opacity-90">{feedback.details}</div>
+                    </div>
+                )}
 
                 <Button
                   type="submit"
