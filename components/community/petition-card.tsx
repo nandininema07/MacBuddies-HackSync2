@@ -8,7 +8,7 @@ import { Progress } from "@/components/ui/progress"
 import { useI18n } from "@/lib/i18n/context"
 import { createClient } from "@/lib/supabase/client"
 import type { Petition } from "@/lib/types"
-import { Users, TrendingUp, MapPin, CheckCircle, AlertTriangle } from "lucide-react"
+import { Users, TrendingUp, MapPin, CheckCircle, AlertTriangle, Send } from "lucide-react"
 
 interface PetitionCardProps {
   petition: Petition
@@ -18,6 +18,7 @@ interface PetitionCardProps {
 export function PetitionCard({ petition, onUpdate }: PetitionCardProps) {
   const { t } = useI18n()
   const [signing, setSigning] = useState(false)
+  const [isEscalating, setIsEscalating] = useState(false) // State for escalation loading
   const [hasSigned, setHasSigned] = useState(false)
   const [user, setUser] = useState<string | null>(null)
 
@@ -57,7 +58,7 @@ export function PetitionCard({ petition, onUpdate }: PetitionCardProps) {
     })
 
     if (!error) {
-      // Update signature count
+      // Update signature count locally for immediate feedback (optional, ideally rely on onUpdate)
       await supabase
         .from("petitions")
         .update({ signature_count: petition.signature_count + 1 })
@@ -70,9 +71,44 @@ export function PetitionCard({ petition, onUpdate }: PetitionCardProps) {
     setSigning(false)
   }
 
+  const handleEscalate = async () => {
+    // Optional: Confirm before sending
+    if (!confirm("Are you sure you want to escalate this petition to local NGOs?")) return
+  
+    setIsEscalating(true)
+    try {
+      const response = await fetch("/api/escalate-petition", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          petitionId: petition.id,
+          title: petition.title,
+          description: petition.description,
+          location: "Mumbai",
+          signatureCount: petition.signature_count
+        }),
+      })
+  
+      const data = await response.json()
+      
+      if (data.success) {
+        alert(`Success! Alert sent to ${data.contactedCount} NGOs including ${data.ngos[0]} and others.`)
+        if (onUpdate) onUpdate()
+      } else {
+        alert(`Escalation Failed: ${data.message || "Unknown error occurred"}`)
+      }
+    } catch (error) {
+      console.error(error)
+      alert("An error occurred while connecting to the server.")
+    } finally {
+      setIsEscalating(false)
+    }
+  }
+
   const progress = (petition.signature_count / petition.target_signatures) * 100
-  const isEscalated = petition.status === "escalated"
+  const isEscalated = petition.status === "escalated" 
   const isAchieved = petition.status === "achieved"
+  const canEscalate = petition.signature_count > 2000 && !isEscalated
 
   return (
     <Card className={`transition-all ${isEscalated ? "border-chart-1 border-2" : ""}`}>
@@ -131,21 +167,36 @@ export function PetitionCard({ petition, onUpdate }: PetitionCardProps) {
           </p>
         )}
 
-        <Button
-          onClick={handleSign}
-          disabled={!user || hasSigned || signing || isAchieved}
-          className="w-full"
-          variant={hasSigned ? "secondary" : "default"}
-        >
-          {hasSigned ? (
-            <>
-              <CheckCircle className="h-4 w-4 mr-2" />
-              {t.community.signed}
-            </>
-          ) : (
-            t.community.signPetition
-          )}
-        </Button>
+        <div className="space-y-2">
+            <Button
+              onClick={handleSign}
+              disabled={!user || hasSigned || signing || isAchieved}
+              className="w-full"
+              variant={hasSigned ? "secondary" : "default"}
+            >
+              {hasSigned ? (
+                <>
+                  <CheckCircle className="h-4 w-4 mr-2" />
+                  {t.community.signed}
+                </>
+              ) : (
+                t.community.signPetition
+              )}
+            </Button>
+
+            {/* Conditionally render Escalate Button */}
+            {canEscalate && (
+                <Button 
+                    onClick={handleEscalate} 
+                    disabled={isEscalating}
+                    variant="destructive" 
+                    className="w-full"
+                >
+                    <Send className="h-4 w-4 mr-2" />
+                    {isEscalating ? "Escalating..." : "Escalate to NGOs"}
+                </Button>
+            )}
+        </div>
 
         {!user && <p className="text-xs text-center text-muted-foreground">Login to sign this petition</p>}
       </CardContent>
