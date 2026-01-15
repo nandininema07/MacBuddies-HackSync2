@@ -2,11 +2,6 @@ import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
 import https from 'https'
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
-
 // The specific endpoint for detailed Phase 1 & 2 data
 const MCGM_API_URL = 'https://roads.mcgm.gov.in:3000/api/publicdashboardlocation/getallroadsdetailscrustphase1phase2wardwisestatuswise'
 
@@ -20,6 +15,10 @@ const MUMBAI_WARDS = [
 const sslAgent = new https.Agent({ rejectUnauthorized: false });
 
 export async function GET(request: Request) {
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  )
   try {
     let totalSynced = 0
     
