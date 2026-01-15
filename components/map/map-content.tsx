@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useMemo, useCallback, useEffect, useRef } from "react"
-import { useSearchParams } from "next/navigation"
+import { useSearchParams } from "next/navigation" // Import this
 import dynamic from "next/dynamic"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -16,8 +16,11 @@ import {
   Calendar, 
   Users,
   Loader2,
-  BrainCircuit,
+  ShieldCheck,
   X,
+  BrainCircuit,
+  TrendingUp,
+  Map as MapIcon,
   List,
   Filter,
   Droplets,
@@ -26,7 +29,7 @@ import {
   Building,
   Wrench,
   AlertTriangle,
-  Gavel
+  Gavel // Icon for Verdict
 } from "lucide-react"
 import type { Report } from "@/lib/types"
 
@@ -57,19 +60,21 @@ const CATEGORIES = [
 export function MapContent({ reports: initialReports, predictions = [] }: MapContentProps) {
   const [reports, setReports] = useState<Report[]>(initialReports)
   const [visibleReports, setVisibleReports] = useState<Report[]>(initialReports)
-  const [currentZoom, setCurrentZoom] = useState(12)
+  const [currentZoom, setCurrentZoom] = useState(12) // Default closer zoom
   const [showMobileList, setShowMobileList] = useState(false)
   const [showForecast, setShowForecast] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState("all")
   
   const [userInteractions, setUserInteractions] = useState<Map<string, string>>(new Map())
   
+  // NEW: Search params to detect if we just came from Capture page
   const searchParams = useSearchParams()
   const focusedReportId = searchParams.get('focus')
   const itemRefs = useRef<Record<string, HTMLDivElement | null>>({})
 
   const supabase = createClient()
 
+  // --- 1. FETCH USER INTERACTIONS ---
   useEffect(() => {
     const fetchInteractions = async () => {
       const { data: { user } } = await supabase.auth.getUser()
@@ -85,19 +90,25 @@ export function MapContent({ reports: initialReports, predictions = [] }: MapCon
     fetchInteractions()
   }, [])
 
+  // --- NEW: SCROLL TO FOCUSED REPORT ---
   useEffect(() => {
     if (focusedReportId && itemRefs.current[focusedReportId]) {
+      // 1. Ensure list is visible on mobile
       setShowMobileList(true)
+      
+      // 2. Scroll the specific card into view
       itemRefs.current[focusedReportId]?.scrollIntoView({ 
         behavior: 'smooth', 
         block: 'center' 
       })
     }
-  }, [focusedReportId, visibleReports])
+  }, [focusedReportId, visibleReports]) // Run when ID exists or list updates
 
+  // --- 2. HANDLE COMMUNITY ACTIONS ---
   const handleInteraction = async (reportId: string, actionType: 'up' | 'down' | 'resolved') => {
     const previousType = userInteractions.get(reportId);
     
+    // Optimistic Update
     setUserInteractions(prev => {
         const next = new Map(prev);
         if (previousType === actionType) next.delete(reportId); 
@@ -129,6 +140,7 @@ export function MapContent({ reports: initialReports, predictions = [] }: MapCon
     await supabase.rpc('toggle_interaction', { report_id_input: reportId, action_type: actionType });
   }
 
+  // --- 3. DISPLAY LOGIC ---
   const displayData = useMemo(() => {
     let data = showForecast ? predictions : visibleReports;
     
@@ -136,6 +148,7 @@ export function MapContent({ reports: initialReports, predictions = [] }: MapCon
       data = data.filter(r => (r.category || 'other').toLowerCase() === selectedCategory);
     }
     
+    // If we have a focused report, make sure it's at the top of the list so it's easy to find
     if (focusedReportId) {
         const focused = data.find(r => r.id === focusedReportId)
         const others = data.filter(r => r.id !== focusedReportId)
@@ -223,6 +236,7 @@ export function MapContent({ reports: initialReports, predictions = [] }: MapCon
         {/* List Content */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50/50 pb-24 md:pb-4">
           
+          {/* VIEW A: AGGREGATE (Only when zoomed out AND not focusing on a report) */}
           {currentZoom < 8 && !focusedReportId ? (
             <div className="space-y-3">
               <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Most Affected Regions</div>
@@ -246,6 +260,8 @@ export function MapContent({ reports: initialReports, predictions = [] }: MapCon
               )}
             </div>
           ) : (
+            
+            /* VIEW B: DETAILED LIST */
             <div className="space-y-4">
               <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 flex justify-between items-center">
                 <span>{showForecast ? "Predictions" : "Active Issues"}</span>
@@ -260,7 +276,7 @@ export function MapContent({ reports: initialReports, predictions = [] }: MapCon
               ) : (
                 displayData.map((item) => {
                     const isPrediction = showForecast;
-                    const isFocused = item.id === focusedReportId;
+                    const isFocused = item.id === focusedReportId; // Check if this is the new report
                     const isLowPriority = !isPrediction && !isFocused && (item.downvotes || 0) > (item.upvotes || 0);
                     
                     const title = item.title || "Infrastructure Issue";
@@ -295,6 +311,7 @@ export function MapContent({ reports: initialReports, predictions = [] }: MapCon
                             </div>
 
                             <CardContent className="p-4">
+                                {/* --- TITLE & CATEGORY --- */}
                                 <div className="mb-3">
                                     <h4 className="font-bold text-base leading-tight mb-1">
                                         {isPrediction ? <span className="text-purple-600">[AI] </span> : ""}
@@ -327,6 +344,7 @@ export function MapContent({ reports: initialReports, predictions = [] }: MapCon
                                     </div>
                                 </div>
 
+                                {/* --- DETAILS GRID --- */}
                                 <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground mb-4">
                                     <div className="flex items-center gap-1.5 truncate">
                                         <MapPin className="h-3.5 w-3.5 text-slate-400" />
@@ -386,6 +404,7 @@ export function MapContent({ reports: initialReports, predictions = [] }: MapCon
         </div>
       </div>
 
+      {/* MAP AREA */}
       <div className="flex-1 relative h-full w-full z-0">
         <LeafletMap 
           reports={reports}

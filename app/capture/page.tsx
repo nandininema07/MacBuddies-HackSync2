@@ -40,7 +40,7 @@ interface SearchResult {
   place_id: string | number
   display_name: string
   source: 'db' | 'api'
-  ward?: string // Added ward prop
+  ward?: string
   lat?: string
   lon?: string
 }
@@ -83,7 +83,7 @@ export default function CapturePage() {
     getCurrentLocation()
   }, [])
 
-  // --- SMART SEARCH (DB + NOMINATIM) ---
+  // --- 1. SMART SEARCH (DB + NOMINATIM) ---
   const handleSearch = async () => {
     if (!searchQuery.trim()) return
     setIsSearching(true)
@@ -92,7 +92,7 @@ export default function CapturePage() {
     try {
         const results: SearchResult[] = []
 
-        // 1. Search DB Projects (Exact Names)
+        // A. Search Supabase (Govt Projects) - Exact Match
         const { data: dbData } = await supabase
             .from('government_projects')
             .select('id, title, ward')
@@ -105,12 +105,12 @@ export default function CapturePage() {
                     place_id: item.id,
                     display_name: item.title,
                     source: 'db',
-                    ward: item.ward // Capture ward for fallback
+                    ward: item.ward 
                 })
             })
         }
 
-        // 2. Search OpenStreetMap (General Names)
+        // B. Search OpenStreetMap (Free API) - General Match
         const osmUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery + ", Mumbai")}&limit=5`
         const osmRes = await fetch(osmUrl)
         const osmData = await osmRes.json()
@@ -136,7 +136,7 @@ export default function CapturePage() {
     }
   }
 
-  // --- SMART GEO-RESOLUTION (The Logic Fix) ---
+  // --- 2. SELECT & RESOLVE COORDINATES ---
   const selectResult = async (result: SearchResult) => {
       setSearchQuery(result.display_name)
       setSearchResults([]) 
@@ -149,18 +149,16 @@ export default function CapturePage() {
       if (result.source === 'db' && lat === 0) {
           try {
               // Strategy 1: Search Exact Name + Mumbai
-              // "Patelwadi Road from Patelwadi Gate... , Mumbai"
               let attempt1 = await searchNominatim(result.display_name + ", Mumbai")
               
               if (attempt1) {
                   lat = parseFloat(attempt1.lat)
                   lon = parseFloat(attempt1.lon)
               } else {
-                  // Strategy 2: Clean Name (Remove "from", "to", brackets)
-                  // "Patelwadi Road"
+                  // Strategy 2: Clean Name
                   const cleanName = result.display_name
-                    .split('(')[0] // Remove brackets
-                    .split('from')[0] // Remove detailed descriptions
+                    .split('(')[0]
+                    .split('from')[0]
                     .split('-')[0]
                     .trim()
                   
@@ -174,13 +172,12 @@ export default function CapturePage() {
               }
 
               // Strategy 3: Ward Fallback
-              // If road not found, drop pin in the center of the Ward
               if (lat === 0 && result.ward) {
                   let attempt3 = await searchNominatim(`Mumbai Ward ${result.ward}`)
                   if (attempt3) {
                       lat = parseFloat(attempt3.lat)
                       lon = parseFloat(attempt3.lon)
-                      alert(`Specific road location not found on maps. Pin placed in Ward ${result.ward} center. You can adjust if needed.`)
+                      alert(`Specific road coordinates not found. Pin placed in Ward ${result.ward} center.`)
                   }
               }
           } catch (e) {
@@ -190,23 +187,21 @@ export default function CapturePage() {
 
       if (lat !== 0 && lon !== 0) {
           await fetchLocationDetails(lat, lon, "manual")
-          setTitle(result.display_name) // Use the official DB name as title
+          setTitle(result.display_name)
       } else {
           alert("Could not automatically locate this road. Please try searching for a nearby landmark or use GPS.")
           setIsLoadingLocation(false)
       }
   }
 
-  // Helper to query Nominatim
+  // Helper
   const searchNominatim = async (query: string) => {
       try {
         const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`
         const res = await fetch(url)
         const data = await res.json()
         return data && data.length > 0 ? data[0] : null
-      } catch (e) {
-          return null
-      }
+      } catch (e) { return null }
   }
 
   const fetchLocationDetails = async (lat: number, lon: number, source: "gps" | "image" | "manual") => {
@@ -385,7 +380,6 @@ export default function CapturePage() {
         <div className="max-w-2xl mx-auto">
           <h1 className="text-3xl font-bold tracking-tight mb-6">{t.capture.title}</h1>
 
-          {/* PHOTO CARD */}
           <Card className="mb-6">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -441,7 +435,6 @@ export default function CapturePage() {
             </CardContent>
           </Card>
 
-          {/* LOCATION CARD */}
           <Card className="mb-6">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -458,7 +451,6 @@ export default function CapturePage() {
               )}
 
               <div className="space-y-4">
-                {/* Search Bar */}
                 <div className="relative">
                     <Label htmlFor="address-search">Search Road (Govt Projects)</Label>
                     <div className="flex gap-2 mt-1.5">
@@ -477,14 +469,13 @@ export default function CapturePage() {
                         </Button>
                     </div>
 
-                    {/* Autocomplete Dropdown */}
                     {searchResults.length > 0 && (
-                        <div className="absolute z-10 w-full mt-1 border rounded-md shadow-lg max-h-60 overflow-y-auto bg-white dark:bg-slate-950 dark:border-slate-800">
+                        <div className="absolute z-10 w-full bg-white mt-1 border rounded-md shadow-lg max-h-60 overflow-y-auto">
                             {searchResults.map((result) => (
                                 <div 
                                     key={result.place_id}
                                     className="p-3 hover:bg-slate-50 cursor-pointer text-sm border-b last:border-0"
-                                    onClick={() => selectSearchResult(result)}
+                                    onClick={() => selectResult(result)} 
                                 >
                                     <div className="font-medium flex items-center gap-2 text-slate-800">
                                         {result.source === 'db' ? (
@@ -516,11 +507,17 @@ export default function CapturePage() {
                     )}
                   </div>
                 )}
+
+                {!location && !isLoadingLocation && (
+                  <Button variant="outline" onClick={getCurrentLocation} className="gap-2 bg-transparent">
+                    <MapPin className="h-4 w-4" />
+                    Reset to Current Device Location
+                  </Button>
+                )}
               </div>
             </CardContent>
           </Card>
 
-          {/* DETAILS FORM */}
           <Card>
             <CardHeader><CardTitle>Report Details</CardTitle></CardHeader>
             <CardContent>
@@ -529,7 +526,7 @@ export default function CapturePage() {
                   <Label htmlFor="title">Title *</Label>
                   <Input
                     id="title"
-                    placeholder="Brief description"
+                    placeholder="Brief description of the issue"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     required
@@ -537,10 +534,10 @@ export default function CapturePage() {
                 </div>
 
                 <div className="grid gap-2">
-                  <Label htmlFor="description">Description</Label>
+                  <Label htmlFor="description">{t.capture.description}</Label>
                   <Textarea
                     id="description"
-                    placeholder="Provide details..."
+                    placeholder="Provide additional details..."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     rows={4}
@@ -549,9 +546,9 @@ export default function CapturePage() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="grid gap-2">
-                    <Label>Category</Label>
+                    <Label htmlFor="category">Category (User Estimate)</Label>
                     <Select value={category} onValueChange={setCategory}>
-                      <SelectTrigger><SelectValue /></SelectTrigger>
+                      <SelectTrigger><SelectValue placeholder="Select category" /></SelectTrigger>
                       <SelectContent>
                         <SelectItem value="road">{t.categories.road}</SelectItem>
                         <SelectItem value="bridge">{t.categories.bridge}</SelectItem>
@@ -563,21 +560,21 @@ export default function CapturePage() {
                       </SelectContent>
                     </Select>
                   </div>
+
                   <div className="grid gap-2">
-                    <Label>Severity</Label>
+                    <Label htmlFor="severity">Severity (User Estimate)</Label>
                     <Select value={severity} onValueChange={setSeverity}>
-                      <SelectTrigger><SelectValue /></SelectTrigger>
+                      <SelectTrigger><SelectValue placeholder="Select severity" /></SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="low">Low</SelectItem>
-                        <SelectItem value="medium">Medium</SelectItem>
-                        <SelectItem value="high">High</SelectItem>
-                        <SelectItem value="critical">Critical</SelectItem>
+                        <SelectItem value="low">{t.severity.low}</SelectItem>
+                        <SelectItem value="medium">{t.severity.medium}</SelectItem>
+                        <SelectItem value="high">{t.severity.high}</SelectItem>
+                        <SelectItem value="critical">{t.severity.critical}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
 
-                {/* Inline Feedback */}
                 {feedback && (
                     <div className={`p-3 rounded-md text-sm border ${
                         feedback.type === 'error' ? 'bg-red-50 text-red-900 border-red-200' : 'bg-green-50 text-green-900 border-green-200'
