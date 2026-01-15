@@ -95,7 +95,7 @@ export function CommunityContent() {
               <div className="sticky top-6"> {/* Adjusted top offset since we are in a scroll container */}
                 
                 <Card className="overflow-hidden border-none shadow-lg mb-6">
-                   <div className="h-12 bg-primary/90"></div>
+                   <div className="h-12 bg-primary/80"></div>
                    <CardContent className="pt-0 relative">
                       <div className="h-16 w-16 bg-background rounded-full absolute -top-8 p-1">
                          <div className="h-full w-full bg-slate-100 rounded-full flex items-center justify-center">

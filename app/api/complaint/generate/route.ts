@@ -1,21 +1,12 @@
 import { NextResponse } from "next/server"
 import { GoogleGenAI } from "@google/genai"
 import { createClient } from "@/lib/supabase/server"
-import nodemailer from "nodemailer" // 1. IMPORT NODEMAILER
-
-/* ------------------------------------------------------------------ */
-/* Gemini Client                                                       */
-/* ------------------------------------------------------------------ */
+import nodemailer from "nodemailer" 
 
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY!,
 })
 
-/* ------------------------------------------------------------------ */
-/* Mock Government Emails (Fake Mapping)                               */
-/* ------------------------------------------------------------------ */
-
-// 2. DEFINE DEPARTMENT EMAILS
 const DEPARTMENT_EMAILS: Record<string, string> = {
   pwd: "chief.engineer@pwd.mumbai.gov.fake",
   municipal: "ward.officer.kwest@mcgm.gov.fake",
@@ -23,10 +14,6 @@ const DEPARTMENT_EMAILS: Record<string, string> = {
   electrical: "consumer.grievance@best.mumbai.fake",
   general: "public.info.officer@maharashtra.gov.fake",
 }
-
-/* ------------------------------------------------------------------ */
-/* POST Handler                                                        */
-/* ------------------------------------------------------------------ */
 
 export async function POST(request: Request) {
   try {
@@ -37,14 +24,13 @@ export async function POST(request: Request) {
       applicantName,
       applicantAddress,
       applicantPhone,
-      applicantEmail, // 3. GET APPLICANT EMAIL
+      applicantEmail, 
       additionalDetails,
       language = "en",
     } = body
 
     const supabase = await createClient()
 
-    /* ---------------- Fetch report ---------------- */
     let reportData: any = null
     if (reportId) {
       const { data } = await supabase
@@ -55,7 +41,6 @@ export async function POST(request: Request) {
       reportData = data
     }
 
-    /* ---------------- Build prompt ---------------- */
     const prompt = buildComplaintPrompt({
       report: reportData,
       department,
@@ -66,7 +51,6 @@ export async function POST(request: Request) {
       language,
     })
 
-    /* ---------------- Gemini call (ORIGINAL LOGIC) ---------------- */
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: [
@@ -76,18 +60,12 @@ export async function POST(request: Request) {
       ],
     })
 
-    // ORIGINAL SYNTAX KEPT AS REQUESTED
     const generatedText =
       response.candidates?.[0]?.content?.parts?.[0]?.text || ""
 
-    /* ------------------------------------------------------------------ */
-    /* 4. INSERTED MAILER LOGIC                                            */
-    /* ------------------------------------------------------------------ */
-    
     let emailStatus = "skipped"
     let recipientEmail = DEPARTMENT_EMAILS[department] || "admin@gov.fake"
 
-    // Only attempt to send if we have generated text and an applicant email
     if (generatedText && applicantEmail) {
       try {
         const transporter = nodemailer.createTransport({
@@ -99,13 +77,9 @@ export async function POST(request: Request) {
         })
 
         const mailOptions = {
-          // Send from YOUR auth account to avoid spam blocks
           from: `"Civic Complaint Portal (on behalf of ${applicantName})" <${process.env.EMAIL_USER}>`, 
-          // Send TO the government official
           to: recipientEmail, 
-          // CRITICAL: Replies go to the User
           replyTo: applicantEmail, 
-          // CC the user
           cc: applicantEmail, 
           
           subject: `Formal Complaint: ${reportData?.category || "Infrastructure Issue"} - ${applicantName}`,
@@ -151,11 +125,6 @@ export async function POST(request: Request) {
     )
   }
 }
-
-/* ------------------------------------------------------------------ */
-/* Prompt Builder (EXACTLY SAME AS ORIGINAL)                           */
-/* ------------------------------------------------------------------ */
-
 interface ComplaintPromptParams {
   report: any
   department: string

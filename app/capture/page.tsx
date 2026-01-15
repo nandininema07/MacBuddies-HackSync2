@@ -445,11 +445,11 @@ export default function CapturePage() {
                     </div>
 
                     {searchResults.length > 0 && (
-                        <div className="absolute z-10 w-full bg-white mt-1 border rounded-md shadow-lg max-h-60 overflow-y-auto">
+                        <div className="absolute z-10 w-full mt-1 border rounded-md shadow-lg max-h-60 overflow-y-auto bg-white dark:bg-slate-950 dark:border-slate-800">
                             {searchResults.map((result) => (
                                 <div 
                                     key={result.place_id}
-                                    className="p-3 hover:bg-slate-50 cursor-pointer text-sm border-b last:border-0"
+                                    className="p-3 cursor-pointer text-sm border-b last:border-0 hover:bg-slate-50 dark:hover:bg-slate-900 dark:border-slate-800 dark:text-slate-100 transition-colors"
                                     onClick={() => selectSearchResult(result)}
                                 >
                                     {result.display_name}
