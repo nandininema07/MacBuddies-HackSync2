@@ -5,27 +5,23 @@ import L from "leaflet"
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet"
 import MarkerClusterGroup from "react-leaflet-cluster"
 import "leaflet/dist/leaflet.css"
-import type { Report } from "@/lib/types"
 
+// --- CONFIGURATION ---
 const SEVERITY_COLORS = {
   low: "#22c55e",
   medium: "#eab308",
   high: "#f97316",
   critical: "#ef4444",
-  forecast: "#9333ea", // Purple for AI Forecast
   default: "#3b82f6"
 }
 
-// Updated to handle Forecast mode coloring
-const createMarkerIcon = (severity: string | undefined, isForecast: boolean) => {
-  const severityKey = (severity?.toLowerCase() || 'default') as keyof typeof SEVERITY_COLORS;
-  
-  // If in forecast mode, we use Purple. For extra polish, we use darker purple for higher scores.
-  const color = isForecast ? SEVERITY_COLORS.forecast : (SEVERITY_COLORS[severityKey] || SEVERITY_COLORS.default);
-  
+// --- ICONS (Defined Outside Component to prevent re-renders) ---
+const createMarkerIcon = (risk: string | undefined) => {
+  const riskKey = risk?.toLowerCase() as keyof typeof SEVERITY_COLORS;
+  const color = SEVERITY_COLORS[riskKey] || SEVERITY_COLORS.default;
   return L.divIcon({
     className: "custom-pin",
-    html: `<div style="background-color: ${color}; width: 24px; height: 24px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 8px ${color}66; ${isForecast ? 'animation: pulse 2s infinite;' : ''}"></div>`,
+    html: `<div style="background-color: ${color}; width: 24px; height: 24px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>`,
     iconSize: [24, 24],
     iconAnchor: [12, 12],
     popupAnchor: [0, -12]
@@ -34,12 +30,24 @@ const createMarkerIcon = (severity: string | undefined, isForecast: boolean) => 
 
 const createClusterCustomIcon = function (cluster: any) {
   const markers = cluster.getAllChildMarkers();
-  const isForecast = markers[0]?.options?.isForecast; // Check if this is a forecast cluster
+  let hasCritical = false, hasHigh = false, hasMedium = false;
   
+  // Analyze children to determine cluster color
+  markers.forEach((marker: any) => {
+    const risk = marker.options.risk_level?.toLowerCase(); 
+    if (risk === 'critical') hasCritical = true;
+    else if (risk === 'high') hasHigh = true;
+    else if (risk === 'medium') hasMedium = true;
+  });
+
+  let color = SEVERITY_COLORS.low; 
+  if (hasCritical) color = SEVERITY_COLORS.critical;
+  else if (hasHigh) color = SEVERITY_COLORS.high;
+  else if (hasMedium) color = SEVERITY_COLORS.medium;
+
   const count = cluster.getChildCount();
-  const color = isForecast ? SEVERITY_COLORS.forecast : SEVERITY_COLORS.default;
   let size = count > 50 ? 50 : count > 10 ? 40 : 30;
-  
+
   return L.divIcon({
     html: `<div style="background-color: ${color}; width: ${size}px; height: ${size}px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border: 3px solid rgba(255,255,255,0.5); box-shadow: 0 4px 6px rgba(0,0,0,0.2);">${count}</div>`,
     className: 'custom-cluster-icon',
@@ -47,96 +55,103 @@ const createClusterCustomIcon = function (cluster: any) {
   });
 }
 
+// --- MAP EVENTS COMPONENT (CRITICAL FIX HERE) ---
 function MapEvents({ onViewChange }: { onViewChange: (bounds: any, zoom: number) => void }) {
   const map = useMapEvents({
-    moveend: () => onViewChange(map.getBounds(), map.getZoom()),
-    load: () => onViewChange(map.getBounds(), map.getZoom())
+    moveend: () => {
+      onViewChange(map.getBounds(), map.getZoom())
+    },
+    // We only listen to move events. 
+    // We do NOT attach a generic 'load' listener that depends on onViewChange changing.
   })
   
+  // Initial Load: Fire ONLY once when map is ready.
+  // We explicitly exclude 'onViewChange' from dependencies to prevent loops.
   useEffect(() => {
-    if (map) onViewChange(map.getBounds(), map.getZoom())
-  }, [map, onViewChange]) 
+    if (map) {
+      onViewChange(map.getBounds(), map.getZoom())
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [map]) 
 
   return null
 }
 
+// --- MAIN COMPONENT ---
+import type { Report } from "@/lib/types"
+
 interface LeafletMapProps {
   reports: Report[]
-  predictions?: any[] // Prop from Python backend
-  isForecastMode: boolean // Toggle state from parent
-  onViewChange: (visibleItems: any[], zoom: number) => void
+  onViewChange: (visibleReports: Report[], zoom: number) => void
 }
 
-export default function LeafletMap({ reports, predictions = [], isForecastMode, onViewChange }: LeafletMapProps) {
+export default function LeafletMap({ reports, onViewChange }: LeafletMapProps) {
   const defaultCenter: [number, number] = [20.5937, 78.9629]
 
-  // Decide which dataset to filter and display
-  const activeData = useMemo(() => {
-    const data = isForecastMode ? predictions : reports;
-    return data.filter(r => r.latitude != null && r.longitude != null);
-  }, [reports, predictions, isForecastMode]);
+  // Memoize valid reports to prevent unnecessary processing
+  const validReports = useMemo(() => {
+    return reports.filter(r => r.latitude != null && r.longitude != null);
+  }, [reports]);
 
+  // Handler to filter visible reports
   const handleMapChange = useCallback((bounds: any, zoom: number) => {
-    const visible = activeData.filter(r => 
+    const visible = validReports.filter(r => 
       bounds.contains([r.latitude, r.longitude])
     )
     onViewChange(visible, zoom)
-  }, [activeData, onViewChange])
+  }, [validReports, onViewChange])
 
   return (
-    <>
-      <style jsx global>{`
-        @keyframes pulse {
-          0% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.2); opacity: 0.7; }
-          100% { transform: scale(1); opacity: 1; }
-        }
-      `}</style>
+    <MapContainer 
+      center={defaultCenter} 
+      zoom={5} 
+      className="h-full w-full z-0" 
+      maxZoom={18} 
+      scrollWheelZoom={true}
+    >
+      <TileLayer 
+        attribution='&copy; OpenStreetMap contributors' 
+        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" 
+      />
       
-      <MapContainer center={defaultCenter} zoom={5} className="h-full w-full z-0" maxZoom={18} scrollWheelZoom={true}>
-        <TileLayer 
-          attribution='&copy; OpenStreetMap' 
-          url={isForecastMode 
-            ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" // Dark map for Forecast (looks more "Techy")
-            : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-          } 
-        />
-        
-        <MarkerClusterGroup
-          key={`cluster-${activeData.length}-${isForecastMode}`} 
-          iconCreateFunction={createClusterCustomIcon}
-          spiderfyOnMaxZoom={true}
-          showCoverageOnHover={false}
-        >
-          {activeData.map((item) => (
+      {/* KEY PROP: Forces re-mount only if length changes significantly.
+          CHUNKED LOADING: Disabled to prevent React 18 strict mode crashes.
+      */}
+      <MarkerClusterGroup
+        key={`cluster-${validReports.length}`} 
+        iconCreateFunction={createClusterCustomIcon}
+        spiderfyOnMaxZoom={true}
+        showCoverageOnHover={false}
+        chunkedLoading={false} 
+      >
+        {validReports.map((report) => (
             <Marker
-              key={item.id}
-              position={[item.latitude, item.longitude]}
-              icon={createMarkerIcon(isForecastMode ? item.prediction.label : item.severity, isForecastMode)}
-              // @ts-ignore
-              isForecast={isForecastMode}
-              severity={isForecastMode ? item.prediction.label : item.severity} 
+              key={report.id}
+              position={[report.latitude, report.longitude]}
+              icon={createMarkerIcon(report.risk_level)}
+              // @ts-ignore - Passing prop for cluster icon function to read
+              risk_level={report.risk_level}
             >
               <Popup>
-                <div className="p-1">
-                  <h3 className="font-bold text-sm">
-                    {isForecastMode ? `AI Forecast: ${item.title}` : item.title}
-                  </h3>
-                  <p className="text-xs text-gray-500">{item.city}</p>
-                  <div className={`mt-1 text-xs font-bold ${isForecastMode ? 'text-purple-600' : 'text-blue-600'}`}>
-                    {isForecastMode 
-                      ? `Risk Score: ${item.prediction.score}%` 
-                      : `${item.upvotes || 0} Votes`
-                    }
+                <div className="p-1 min-w-[150px]">
+                  <h3 className="font-bold text-sm mb-1">{report.title}</h3>
+                  <p className="text-xs text-gray-500 mb-2">{report.city || "Unknown City"}</p>
+                  <div className="flex justify-between items-center">
+                      <span className="text-[10px] px-2 py-0.5 rounded-full text-white" 
+                            style={{ backgroundColor: SEVERITY_COLORS[report.risk_level?.toLowerCase() as keyof typeof SEVERITY_COLORS] || SEVERITY_COLORS.default }}>
+                          {report.risk_level || 'Pending'}
+                      </span>
+                      <span className="text-xs font-bold text-blue-600">
+                         {report.upvotes || 0} Votes
+                      </span>
                   </div>
                 </div>
               </Popup>
             </Marker>
-          ))}
-        </MarkerClusterGroup>
-        
-        <MapEvents onViewChange={handleMapChange} />
-      </MapContainer>
-    </>
+        ))}
+      </MarkerClusterGroup>
+      
+      <MapEvents onViewChange={handleMapChange} />
+    </MapContainer>
   )
 }
