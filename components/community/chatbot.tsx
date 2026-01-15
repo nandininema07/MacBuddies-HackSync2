@@ -1,0 +1,226 @@
+"use client"
+
+import { useState, useRef, useEffect } from "react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Bot, Send, X, Minimize2, Maximize2 } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+interface Message {
+  role: "user" | "assistant"
+  content: string
+}
+
+export function Chatbot() {
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: "assistant",
+      content: "Hello! I'm your civic engagement assistant. How can I help you today?",
+    },
+  ])
+  const [input, setInput] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [isMinimized, setIsMinimized] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages])
+
+  const handleSend = async () => {
+    if (!input.trim() || loading) return
+
+    const userMessage = input.trim()
+    setInput("")
+    setLoading(true)
+
+    // Add user message to UI immediately
+    const newMessages: Message[] = [...messages, { role: "user", content: userMessage }]
+    setMessages(newMessages)
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: userMessage,
+          conversationHistory: newMessages.slice(0, -1).map((msg) => ({
+            role: msg.role,
+            content: msg.content,
+          })),
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        const errorMsg = data.error || data.details || "Failed to get response"
+        throw new Error(errorMsg)
+      }
+
+      if (!data.message) {
+        throw new Error("No response message received")
+      }
+
+      setMessages([...newMessages, { role: "assistant", content: data.message }])
+    } catch (error) {
+      console.error("Chat error:", error)
+      const errorMessage = error instanceof Error ? error.message : "Unknown error occurred"
+      
+      // Show more helpful error messages
+      let userFriendlyMessage = "Sorry, I encountered an error. Please try again later."
+      if (errorMessage.includes("API key")) {
+        userFriendlyMessage = "Chatbot is not configured. Please contact support."
+      } else if (errorMessage.includes("Failed to get response")) {
+        userFriendlyMessage = "Unable to connect to the chatbot service. Please check your connection and try again."
+      }
+      
+      setMessages([
+        ...newMessages,
+        {
+          role: "assistant",
+          content: userFriendlyMessage,
+        },
+      ])
+    } finally {
+      setLoading(false)
+      inputRef.current?.focus()
+    }
+  }
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault()
+      handleSend()
+    }
+  }
+
+  if (!isOpen) {
+    return (
+      <div className="fixed bottom-6 right-6 z-50">
+        <Button
+          onClick={() => setIsOpen(true)}
+          size="lg"
+          className="rounded-full h-14 w-14 shadow-lg"
+        >
+          <Bot className="h-6 w-6" />
+        </Button>
+      </div>
+    )
+  }
+
+  return (
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[400px] max-w-[400px]">
+      <Card className="flex flex-col h-[500px] sm:h-[600px] shadow-xl border-2">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 border-b">
+          <div className="flex items-center gap-2">
+            <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
+              <Bot className="h-5 w-5 text-primary" />
+            </div>
+            <CardTitle className="text-lg">Chat Assistant</CardTitle>
+          </div>
+          <div className="flex items-center gap-1">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8"
+              onClick={() => setIsMinimized(!isMinimized)}
+            >
+              {isMinimized ? (
+                <Maximize2 className="h-4 w-4" />
+              ) : (
+                <Minimize2 className="h-4 w-4" />
+              )}
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8"
+              onClick={() => {
+                setIsOpen(false)
+                setIsMinimized(false)
+              }}
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+        </CardHeader>
+
+        {!isMinimized && (
+          <>
+            <CardContent className="flex-1 overflow-y-auto p-4 space-y-4">
+              {messages.map((message, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    "flex",
+                    message.role === "user" ? "justify-end" : "justify-start"
+                  )}
+                >
+                  <div
+                    className={cn(
+                      "max-w-[80%] rounded-lg px-4 py-2",
+                      message.role === "user"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-foreground"
+                    )}
+                  >
+                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  </div>
+                </div>
+              ))}
+              {loading && (
+                <div className="flex justify-start">
+                  <div className="bg-muted rounded-lg px-4 py-2">
+                    <div className="flex gap-1">
+                      <div className="h-2 w-2 bg-muted-foreground/50 rounded-full animate-bounce" />
+                      <div
+                        className="h-2 w-2 bg-muted-foreground/50 rounded-full animate-bounce"
+                        style={{ animationDelay: "0.2s" }}
+                      />
+                      <div
+                        className="h-2 w-2 bg-muted-foreground/50 rounded-full animate-bounce"
+                        style={{ animationDelay: "0.4s" }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </CardContent>
+
+            <div className="border-t p-4">
+              <div className="flex gap-2">
+                <Input
+                  ref={inputRef}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Type your message..."
+                  disabled={loading}
+                  className="flex-1"
+                />
+                <Button
+                  onClick={handleSend}
+                  disabled={loading || !input.trim()}
+                  size="icon"
+                >
+                  <Send className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          </>
+        )}
+      </Card>
+    </div>
+  )
+}

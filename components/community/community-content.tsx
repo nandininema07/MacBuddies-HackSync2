@@ -25,6 +25,7 @@ import {
   ArrowLeft
 } from "lucide-react"
 import { SocialReportCard } from "./SocialReportCard"
+import { Chatbot } from "./chatbot"
 
 export function CommunityContent() {
   const { t } = useI18n()
@@ -316,6 +317,7 @@ export function CommunityContent() {
           <SubmitProjectDialog open={showSubmitProject} onOpenChange={setShowSubmitProject} onSuccess={fetchData} />
         </main>
       </div>
+      <Chatbot />
     </div>
   )
 }
