@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useI18n } from "@/lib/i18n/context"
 import { createClient } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
@@ -13,6 +13,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
+import { Checkbox } from "@/components/ui/checkbox"
 import type { Report, GovernmentProject, RTIApplication } from "@/lib/types"
 import type { User } from "@supabase/supabase-js"
 import {
@@ -28,6 +29,7 @@ import {
   MapPin,
   Calendar,
   IndianRupee,
+  Mail,
 } from "lucide-react"
 
 interface RTIGeneratorProps {
@@ -49,14 +51,19 @@ const departments = [
 
 export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RTIGeneratorProps) {
   const { t, language } = useI18n()
+
   const [documentType, setDocumentType] = useState<DocumentType>("rti")
   const [selectedReportId, setSelectedReportId] = useState<string>("")
   const [selectedProjectId, setSelectedProjectId] = useState<string>("")
-  const [department, setDepartment] = useState<string>("pwd") // Updated default value
+  const [department, setDepartment] = useState<string>("pwd")
   const [applicantName, setApplicantName] = useState("")
   const [applicantAddress, setApplicantAddress] = useState("")
   const [applicantPhone, setApplicantPhone] = useState("")
   const [additionalDetails, setAdditionalDetails] = useState("")
+
+  const [sendEmail, setSendEmail] = useState(true)
+  const [userEmail, setUserEmail] = useState("")
+
   const [generatedText, setGeneratedText] = useState("")
   const [editedText, setEditedText] = useState("")
   const [isGenerating, setIsGenerating] = useState(false)
@@ -66,6 +73,12 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
 
   const selectedReport = reports.find((r) => r.id === selectedReportId)
   const selectedProject = projects.find((p) => p.id === selectedProjectId)
+
+  useEffect(() => {
+    if (user?.email) {
+      setUserEmail(user.email)
+    }
+  }, [user])
 
   const handleGenerate = async () => {
     if (!selectedReportId || !department || !applicantName || !applicantAddress) {
@@ -92,6 +105,7 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
           applicantPhone,
           additionalDetails,
           language,
+          applicantEmail: sendEmail ? userEmail : undefined,
         }),
       })
 
@@ -100,10 +114,14 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
       if (data.success) {
         setGeneratedText(data.generatedText)
         setEditedText(data.generatedText)
+
+        if (data.emailStatus === "sent") {
+          setError(`Email sent successfully and CC'd to ${userEmail}.`)
+        }
       } else {
         setError(data.error || "Failed to generate document")
       }
-    } catch (err) {
+    } catch {
       setError("An error occurred while generating the document")
     } finally {
       setIsGenerating(false)
@@ -141,13 +159,13 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
 
       if (data) {
         onApplicationSaved(data as RTIApplication)
-        // Reset form
         setGeneratedText("")
         setEditedText("")
         setSelectedReportId("")
         setSelectedProjectId("")
+        setError(status === "submitted" ? "Application submitted successfully." : "Draft saved successfully.")
       }
-    } catch (err) {
+    } catch {
       setError("Failed to save application")
     } finally {
       setIsSaving(false)
@@ -186,7 +204,6 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
             <CardDescription>Select the type of document and fill in the required details</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            {/* Document Type Toggle */}
             <Tabs value={documentType} onValueChange={(v) => setDocumentType(v as DocumentType)}>
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="rti">{t.rti.generateRTI}</TabsTrigger>
@@ -236,17 +253,14 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
                       Est. Cost: ₹{selectedReport.estimated_cost.toLocaleString("en-IN")}
                     </div>
                   )}
-                  <Badge
-                    variant={selectedReport.severity === "critical" ? "destructive" : "secondary"}
-                    className="mt-2"
-                  >
+                  <Badge variant={selectedReport.severity === "critical" ? "destructive" : "secondary"} className="mt-2">
                     {selectedReport.severity}
                   </Badge>
                 </CardContent>
               </Card>
             )}
 
-            {/* Project Selection (Optional for RTI) */}
+            {/* Project Selection */}
             {documentType === "rti" && (
               <div className="space-y-2">
                 <Label>{t.rti.selectProject}</Label>
@@ -298,7 +312,6 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
             {/* Applicant Details */}
             <div className="space-y-4">
               <Label className="text-base font-medium">{t.rti.applicantDetails}</Label>
-
               <div className="space-y-2">
                 <Label htmlFor="name">{t.rti.applicantName} *</Label>
                 <Input
@@ -308,7 +321,6 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
                   placeholder="Enter your full name"
                 />
               </div>
-
               <div className="space-y-2">
                 <Label htmlFor="address">{t.rti.applicantAddress} *</Label>
                 <Textarea
@@ -319,7 +331,6 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
                   rows={2}
                 />
               </div>
-
               <div className="space-y-2">
                 <Label htmlFor="phone">{t.rti.applicantPhone}</Label>
                 <Input
@@ -343,6 +354,28 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
               />
             </div>
 
+            {/* --- EMAIL TOGGLE SECTION (NEW) --- */}
+            <div className="flex items-start space-x-3 space-y-0 rounded-md border p-4 shadow-sm bg-slate-50 dark:bg-slate-900/50">
+              <Checkbox
+                id="sendEmail"
+                checked={sendEmail}
+                onCheckedChange={(checked) => setSendEmail(checked as boolean)}
+              />
+              <div className="space-y-1 leading-none">
+                <Label
+                  htmlFor="sendEmail"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                >
+                  <Mail className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                  Email to Department & CC Me
+                </Label>
+                <p className="text-xs text-muted-foreground">
+                  If checked, we will auto-email this to the department official and send a copy to <strong>{userEmail || "your registered email"}</strong>.
+                </p>
+              </div>
+            </div>
+            {/* ---------------------------------- */}
+
             {error && (
               <Alert variant="destructive">
                 <AlertTriangle className="h-4 w-4" />
@@ -350,7 +383,6 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
               </Alert>
             )}
 
-            {/* Generate Button */}
             <Button onClick={handleGenerate} disabled={isGenerating} className="w-full" size="lg">
               {isGenerating ? (
                 <>
@@ -368,7 +400,7 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
         </Card>
       </div>
 
-      {/* Preview Section */}
+      {/* Preview Section (Unchanged logic) */}
       <div className="space-y-4">
         <Card className="h-full">
           <CardHeader>
@@ -397,13 +429,11 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
                   className="min-h-[400px] font-mono text-sm"
                   placeholder="Generated document will appear here..."
                 />
-
                 <div className="flex flex-wrap gap-2">
                   <Button variant="outline" onClick={handleDownload}>
                     <Download className="h-4 w-4 mr-2" />
                     {t.rti.download}
                   </Button>
-
                   {user && (
                     <>
                       <Button variant="secondary" onClick={() => handleSave("draft")} disabled={isSaving}>
@@ -414,7 +444,6 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
                         )}
                         {t.rti.save}
                       </Button>
-
                       <Button onClick={() => handleSave("submitted")} disabled={isSaving}>
                         {isSaving ? (
                           <Loader2 className="h-4 w-4 mr-2 animate-spin" />
@@ -426,7 +455,6 @@ export function RTIGenerator({ user, reports, projects, onApplicationSaved }: RT
                     </>
                   )}
                 </div>
-
                 {!user && (
                   <Alert>
                     <AlertDescription>Login to save your applications and track their status.</AlertDescription>

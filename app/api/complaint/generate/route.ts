@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { GoogleGenAI } from "@google/genai"
 import { createClient } from "@/lib/supabase/server"
+import nodemailer from "nodemailer" // 1. IMPORT NODEMAILER
 
 /* ------------------------------------------------------------------ */
 /* Gemini Client                                                       */
@@ -9,6 +10,19 @@ import { createClient } from "@/lib/supabase/server"
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY!,
 })
+
+/* ------------------------------------------------------------------ */
+/* Mock Government Emails (Fake Mapping)                               */
+/* ------------------------------------------------------------------ */
+
+// 2. DEFINE DEPARTMENT EMAILS
+const DEPARTMENT_EMAILS: Record<string, string> = {
+  pwd: "chief.engineer@pwd.mumbai.gov.fake",
+  municipal: "ward.officer.kwest@mcgm.gov.fake",
+  water: "hydraulics.dept@jal.maharashtra.gov.fake",
+  electrical: "consumer.grievance@best.mumbai.fake",
+  general: "public.info.officer@maharashtra.gov.fake",
+}
 
 /* ------------------------------------------------------------------ */
 /* POST Handler                                                        */
@@ -23,6 +37,7 @@ export async function POST(request: Request) {
       applicantName,
       applicantAddress,
       applicantPhone,
+      applicantEmail, // 3. GET APPLICANT EMAIL
       additionalDetails,
       language = "en",
     } = body
@@ -51,7 +66,7 @@ export async function POST(request: Request) {
       language,
     })
 
-    /* ---------------- Gemini call ---------------- */
+    /* ---------------- Gemini call (ORIGINAL LOGIC) ---------------- */
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: [
@@ -61,12 +76,71 @@ export async function POST(request: Request) {
       ],
     })
 
+    // ORIGINAL SYNTAX KEPT AS REQUESTED
     const generatedText =
       response.candidates?.[0]?.content?.parts?.[0]?.text || ""
+
+    /* ------------------------------------------------------------------ */
+    /* 4. INSERTED MAILER LOGIC                                            */
+    /* ------------------------------------------------------------------ */
+    
+    let emailStatus = "skipped"
+    let recipientEmail = DEPARTMENT_EMAILS[department] || "admin@gov.fake"
+
+    // Only attempt to send if we have generated text and an applicant email
+    if (generatedText && applicantEmail) {
+      try {
+        const transporter = nodemailer.createTransport({
+          service: "gmail", 
+          auth: {
+            user: process.env.EMAIL_USER, 
+            pass: process.env.EMAIL_PASS, 
+          },
+        })
+
+        const mailOptions = {
+          // Send from YOUR auth account to avoid spam blocks
+          from: `"Civic Complaint Portal (on behalf of ${applicantName})" <${process.env.EMAIL_USER}>`, 
+          // Send TO the government official
+          to: recipientEmail, 
+          // CRITICAL: Replies go to the User
+          replyTo: applicantEmail, 
+          // CC the user
+          cc: applicantEmail, 
+          
+          subject: `Formal Complaint: ${reportData?.category || "Infrastructure Issue"} - ${applicantName}`,
+          
+          html: `
+            <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+              <p><strong>To: The Concerned Authority</strong></p>
+              <p><strong>Department: ${department.toUpperCase()}</strong></p>
+              <hr />
+              <p style="background-color: #f3f4f6; padding: 10px; border-left: 4px solid #ef4444;">
+                <strong>System Note:</strong> This formal complaint is submitted via the Citizen Grievance Portal on behalf of <strong>${applicantName}</strong>. 
+                <br/>
+                Please click <strong>Reply</strong> to respond directly to the complainant at <a href="mailto:${applicantEmail}">${applicantEmail}</a>.
+              </p>
+              <br/>
+              <pre style="font-family: inherit; white-space: pre-wrap;">${generatedText}</pre>
+              <hr />
+            </div>
+          `,
+        }
+
+        await transporter.sendMail(mailOptions)
+        emailStatus = "sent"
+        
+      } catch (emailError) {
+        console.error("Mailer failed:", emailError)
+        emailStatus = "failed"
+      }
+    }
 
     return NextResponse.json({
       success: true,
       generatedText,
+      emailStatus,
+      sentTo: recipientEmail,
       reportData,
     })
   } catch (error) {
@@ -79,7 +153,7 @@ export async function POST(request: Request) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Prompt Builder                                                      */
+/* Prompt Builder (EXACTLY SAME AS ORIGINAL)                           */
 /* ------------------------------------------------------------------ */
 
 interface ComplaintPromptParams {
