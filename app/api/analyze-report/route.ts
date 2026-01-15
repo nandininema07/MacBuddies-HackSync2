@@ -22,13 +22,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing image or location data" }, { status: 400 })
     }
 
-    // --- STEP 1: REVERSE GEOCODING ---
+    console.log("1. Starting Analysis for:", latitude, longitude)
+
+    // --- STEP 1: GEOCODING (Nominatim for server-side) ---
     const geoUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`
     const geoRes = await fetch(geoUrl, { headers: { 'User-Agent': 'IntegrityApp/1.0' } })
     const geoData = await geoRes.json()
     const detectedRoad = geoData.address?.road || geoData.address?.suburb || "Unknown Road"
+    
+    console.log(`2. User is likely at: ${detectedRoad}`)
 
-    // --- STEP 2: FIND GOVT PROJECT ---
+    // --- STEP 2: CHECK GOVERNMENT RECORDS ---
     const { data: matchedProjects } = await supabase
       .from('government_projects')
       .select('*')
@@ -36,8 +40,9 @@ export async function POST(request: Request) {
       .limit(1)
 
     const project = matchedProjects?.[0] || null
+    console.log("3. Matched Govt Project:", project ? project.title : "None Found")
 
-    // --- STEP 3: PREPARE AI PROMPT ---
+    // --- STEP 3: AI ANALYSIS ---
     let promptContext = project 
       ? `OFFICIAL RECORDS: Project "${project.title}", Contractor: ${project.contractor}, Status: ${project.status}, End Date: ${project.end_date}`
       : `NO OFFICIAL RECORDS found for this location.`
@@ -63,7 +68,6 @@ export async function POST(request: Request) {
     }
     `
 
-    // --- STEP 4: RUN GEMINI AI ---
     const arrayBuffer = await imageFile.arrayBuffer()
     const base64Image = Buffer.from(arrayBuffer).toString('base64')
     const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" })
@@ -75,16 +79,17 @@ export async function POST(request: Request) {
     
     const text = result.response.text()
     const cleanJson = text.replace(/```json|```/g, '').trim()
-    let aiData;
     
+    let aiData;
     try {
         aiData = JSON.parse(cleanJson)
     } catch (e) {
+        // Fallback if AI fails to return JSON
         aiData = { verdict: "Suspicious", reasoning: text, severity: "medium" }
     }
 
-    // --- FIX: STRICT MAPPING TO DB CONSTRAINT ---
-    // Allowed values: 'High', 'Medium', 'Low'
+    // --- CRITICAL FIX: MAP VERDICT TO DB CONSTRAINT ---
+    // Allowed DB Values: 'High', 'Medium', 'Low' (Case Sensitive)
     const riskMap: Record<string, string> = {
         "High Risk": "High",
         "Negligence": "High",
@@ -93,16 +98,17 @@ export async function POST(request: Request) {
         
         "Suspicious": "Medium",
         "Medium": "Medium",
+        "Pending Review": "Medium", // Fix for the crash you saw
         
         "Compliant": "Low",
         "Low Risk": "Low",
         "Low": "Low"
     };
     
-    // Default to 'Medium' if the AI returns something unexpected (Safe Fallback)
+    // Safety check: Default to 'Medium' if the key is missing
     const dbRiskLevel = riskMap[aiData.verdict] || "Medium";
 
-    // --- STEP 5: SAVE TO DB ---
+    // --- STEP 4: SAVE TO DB ---
     const fileName = `${Date.now()}.jpg`
     await supabase.storage.from('evidence').upload(fileName, arrayBuffer, { contentType: imageFile.type })
     const { data: { publicUrl } } = supabase.storage.from('evidence').getPublicUrl(fileName)
@@ -119,10 +125,10 @@ export async function POST(request: Request) {
             status: 'verified',
             category: 'road',
             
-            // USE THE MAPPED VALUE (Guaranteed to be High, Medium, or Low)
+            // STRICTLY VALIDATED VALUES
             risk_level: dbRiskLevel, 
+            severity: (aiData.severity || 'medium').toLowerCase(), 
             
-            severity: aiData.severity || 'medium', 
             audit_reasoning: `Verdict: ${aiData.verdict}. ${aiData.reasoning}`, 
             matched_project_id: project ? project.id : null,
         })
@@ -135,7 +141,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
         success: true,
-        report_id: insertData[0].id, // <--- ADD THIS
+        report_id: insertData[0].id,
         verdict: aiData,
         matched_project: project ? { title: project.title } : null
     })

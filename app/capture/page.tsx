@@ -21,7 +21,8 @@ import {
   X, 
   ImageIcon, 
   AlertTriangle, 
-  Search 
+  Search,
+  Building2 
 } from "lucide-react"
 import type { User } from "@supabase/supabase-js"
 import exifr from "exifr"
@@ -36,10 +37,12 @@ interface Location {
 }
 
 interface SearchResult {
-  place_id: number
+  place_id: string | number
   display_name: string
-  lat: string
-  lon: string
+  source: 'db' | 'api'
+  ward?: string // Added ward prop
+  lat?: string
+  lon?: string
 }
 
 export default function CapturePage() {
@@ -58,8 +61,6 @@ export default function CapturePage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [statusMessage, setStatusMessage] = useState("")
-
-  // --- NEW: Custom Inline Feedback State ---
   const [feedback, setFeedback] = useState<{ type: 'error' | 'success', message: string, details?: string } | null>(null)
 
   const [location, setLocation] = useState<Location | null>(null)
@@ -82,11 +83,136 @@ export default function CapturePage() {
     getCurrentLocation()
   }, [])
 
+  // --- SMART SEARCH (DB + NOMINATIM) ---
+  const handleSearch = async () => {
+    if (!searchQuery.trim()) return
+    setIsSearching(true)
+    setSearchResults([])
+
+    try {
+        const results: SearchResult[] = []
+
+        // 1. Search DB Projects (Exact Names)
+        const { data: dbData } = await supabase
+            .from('government_projects')
+            .select('id, title, ward')
+            .ilike('title', `%${searchQuery}%`)
+            .limit(5)
+        
+        if (dbData) {
+            dbData.forEach((item: any) => {
+                results.push({
+                    place_id: item.id,
+                    display_name: item.title,
+                    source: 'db',
+                    ward: item.ward // Capture ward for fallback
+                })
+            })
+        }
+
+        // 2. Search OpenStreetMap (General Names)
+        const osmUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery + ", Mumbai")}&limit=5`
+        const osmRes = await fetch(osmUrl)
+        const osmData = await osmRes.json()
+
+        if (osmData) {
+            osmData.forEach((item: any) => {
+                if (!results.find(r => r.display_name === item.display_name)) {
+                    results.push({
+                        place_id: item.place_id,
+                        display_name: item.display_name,
+                        lat: item.lat,
+                        lon: item.lon,
+                        source: 'api'
+                    })
+                }
+            })
+        }
+        setSearchResults(results)
+    } catch (e) {
+        console.error("Search failed", e)
+    } finally {
+        setIsSearching(false)
+    }
+  }
+
+  // --- SMART GEO-RESOLUTION (The Logic Fix) ---
+  const selectResult = async (result: SearchResult) => {
+      setSearchQuery(result.display_name)
+      setSearchResults([]) 
+      setIsLoadingLocation(true)
+
+      let lat = result.lat ? parseFloat(result.lat) : 0
+      let lon = result.lon ? parseFloat(result.lon) : 0
+
+      // If DB result has no coords, we must find them
+      if (result.source === 'db' && lat === 0) {
+          try {
+              // Strategy 1: Search Exact Name + Mumbai
+              // "Patelwadi Road from Patelwadi Gate... , Mumbai"
+              let attempt1 = await searchNominatim(result.display_name + ", Mumbai")
+              
+              if (attempt1) {
+                  lat = parseFloat(attempt1.lat)
+                  lon = parseFloat(attempt1.lon)
+              } else {
+                  // Strategy 2: Clean Name (Remove "from", "to", brackets)
+                  // "Patelwadi Road"
+                  const cleanName = result.display_name
+                    .split('(')[0] // Remove brackets
+                    .split('from')[0] // Remove detailed descriptions
+                    .split('-')[0]
+                    .trim()
+                  
+                  if (cleanName.length > 3) {
+                      let attempt2 = await searchNominatim(cleanName + ", Mumbai")
+                      if (attempt2) {
+                          lat = parseFloat(attempt2.lat)
+                          lon = parseFloat(attempt2.lon)
+                      }
+                  }
+              }
+
+              // Strategy 3: Ward Fallback
+              // If road not found, drop pin in the center of the Ward
+              if (lat === 0 && result.ward) {
+                  let attempt3 = await searchNominatim(`Mumbai Ward ${result.ward}`)
+                  if (attempt3) {
+                      lat = parseFloat(attempt3.lat)
+                      lon = parseFloat(attempt3.lon)
+                      alert(`Specific road location not found on maps. Pin placed in Ward ${result.ward} center. You can adjust if needed.`)
+                  }
+              }
+          } catch (e) {
+              console.error("Geo-resolution failed", e)
+          }
+      }
+
+      if (lat !== 0 && lon !== 0) {
+          await fetchLocationDetails(lat, lon, "manual")
+          setTitle(result.display_name) // Use the official DB name as title
+      } else {
+          alert("Could not automatically locate this road. Please try searching for a nearby landmark or use GPS.")
+          setIsLoadingLocation(false)
+      }
+  }
+
+  // Helper to query Nominatim
+  const searchNominatim = async (query: string) => {
+      try {
+        const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`
+        const res = await fetch(url)
+        const data = await res.json()
+        return data && data.length > 0 ? data[0] : null
+      } catch (e) {
+          return null
+      }
+  }
+
   const fetchLocationDetails = async (lat: number, lon: number, source: "gps" | "image" | "manual") => {
-    setIsLoadingLocation(true)
     try {
       const response = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`,
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&addressdetails=1`,
       )
       const data = await response.json()
 
@@ -94,12 +220,11 @@ export default function CapturePage() {
         latitude: lat,
         longitude: lon,
         address: data.display_name || "Unknown Location",
-        city: data.address?.city || data.address?.town || data.address?.village || data.address?.county,
+        city: data.address?.city || "Mumbai",
         state: data.address?.state,
         pincode: data.address?.postcode,
       })
       setLocationSource(source)
-      setSearchQuery(data.display_name || "")
     } catch (error) {
       console.error("Error fetching address:", error)
       setLocation({ latitude: lat, longitude: lon, address: "Unknown Location" })
@@ -107,41 +232,6 @@ export default function CapturePage() {
     } finally {
       setIsLoadingLocation(false)
     }
-  }
-
-  const handleAddressSearch = async () => {
-    if (!searchQuery.trim()) return
-    setIsSearching(true)
-    setSearchResults([])
-
-    try {
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&countrycodes=in`
-      )
-      const data = await response.json()
-      setSearchResults(data)
-    } catch (error) {
-      console.error("Search error:", error)
-    } finally {
-      setIsSearching(false)
-    }
-  }
-
-  const selectSearchResult = (result: SearchResult) => {
-    const lat = parseFloat(result.lat)
-    const lon = parseFloat(result.lon)
-    
-    setLocation({
-      latitude: lat,
-      longitude: lon,
-      address: result.display_name,
-      city: "Selected Location", 
-    })
-    setLocationSource("manual")
-    setSearchQuery(result.display_name)
-    setSearchResults([])
-    
-    fetchLocationDetails(lat, lon, "manual")
   }
 
   const getCurrentLocation = useCallback(async () => {
@@ -163,16 +253,9 @@ export default function CapturePage() {
   const startCamera = async () => {
     setIsCapturing(true)
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "environment" },
-      })
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream
-      }
-    } catch (error) {
-      console.error("Error accessing camera:", error)
-      setIsCapturing(false)
-    }
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+      if (videoRef.current) videoRef.current.srcObject = stream
+    } catch (error) { setIsCapturing(false) }
   }
 
   const capturePhoto = () => {
@@ -183,17 +266,11 @@ export default function CapturePage() {
       canvas.height = video.videoHeight
       const ctx = canvas.getContext("2d")
       ctx?.drawImage(video, 0, 0)
-      
       const dataUrl = canvas.toDataURL("image/jpeg", 0.8)
       setImageData(dataUrl)
-      
       canvas.toBlob((blob) => {
-        if (blob) {
-          const file = new File([blob], `capture-${Date.now()}.jpg`, { type: "image/jpeg" })
-          setImageFile(file)
-        }
+        if (blob) setImageFile(new File([blob], `capture-${Date.now()}.jpg`, { type: "image/jpeg" }))
       }, "image/jpeg", 0.8)
-
       stopCamera()
       getCurrentLocation()
     }
@@ -201,8 +278,7 @@ export default function CapturePage() {
 
   const stopCamera = () => {
     if (videoRef.current?.srcObject) {
-      const stream = videoRef.current.srcObject as MediaStream
-      stream.getTracks().forEach((track) => track.stop())
+      (videoRef.current.srcObject as MediaStream).getTracks().forEach((track) => track.stop())
       videoRef.current.srcObject = null
     }
     setIsCapturing(false)
@@ -211,39 +287,28 @@ export default function CapturePage() {
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
-
     setImageFile(file)
-    
     const reader = new FileReader()
-    reader.onloadend = () => {
-      setImageData(reader.result as string)
-    }
+    reader.onloadend = () => setImageData(reader.result as string)
     reader.readAsDataURL(file)
-
-    setIsLoadingLocation(true)
     
+    setIsLoadingLocation(true)
     try {
         const gps = await exifr.gps(file)
-
         if (gps && gps.latitude && gps.longitude) {
-            console.log("📍 EXIF GPS Found:", gps)
             await fetchLocationDetails(gps.latitude, gps.longitude, "image")
         } else {
             setIsLoadingLocation(false)
         }
-    } catch (error) {
-        console.error("Error extracting EXIF:", error)
-        setIsLoadingLocation(false)
-    }
+    } catch (error) { setIsLoadingLocation(false) }
   }
 
-  // 3. Submit Logic with Custom Inline Feedback (No Toast/Alert)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!location || !imageFile) return
 
     setIsSubmitting(true)
-    setFeedback(null) // Reset feedback
+    setFeedback(null)
     setStatusMessage("Uploading and Analyzing Evidence...")
 
     try {
@@ -254,18 +319,11 @@ export default function CapturePage() {
       formData.append('description', description)
       formData.append('title', title)
 
-      const response = await fetch('/api/analyze-report', {
-        method: 'POST',
-        body: formData
-      })
-
+      const response = await fetch('/api/analyze-report', { method: 'POST', body: formData })
       const result = await response.json()
 
-      if (!response.ok) {
-        throw new Error(result.error || "Analysis failed")
-      }
+      if (!response.ok) throw new Error(result.error || "Analysis failed")
 
-      // Check verdict to set feedback message
       const { verdict, reasoning } = result.verdict || {}
       
       if (verdict === "High Risk" || verdict === "Negligence" || verdict === "Suspicious") {
@@ -283,33 +341,21 @@ export default function CapturePage() {
       }
 
       setIsSuccess(true)
-      
       const reportId = result.report_id || result.data?.[0]?.id
 
-      // Delay redirect slightly so user can see the feedback
       setTimeout(() => {
         router.push(reportId ? `/dashboard?focus=${reportId}` : "/dashboard")
       }, 2000)
 
     } catch (error: any) {
-      console.error("Error submitting report:", error)
-      setFeedback({
-          type: 'error',
-          message: "Submission Failed",
-          details: error.message
-      })
+      setFeedback({ type: 'error', message: "Submission Failed", details: error.message })
     } finally {
       setIsSubmitting(false)
       setStatusMessage("")
     }
   }
 
-  const clearImage = () => {
-    setImageData(null)
-    setImageFile(null)
-    setSearchQuery("")
-    setFeedback(null)
-  }
+  const clearImage = () => { setImageData(null); setImageFile(null); setFeedback(null); }
 
   if (isSuccess) {
     return (
@@ -318,8 +364,6 @@ export default function CapturePage() {
         <div className="container px-4 py-20 flex flex-col items-center justify-center">
           <CheckCircle className="h-16 w-16 text-green-600 mb-4" />
           <h1 className="text-2xl font-bold text-center">Report Verified & Submitted!</h1>
-          
-          {/* Show the specific AI verdict on the success screen too */}
           {feedback && (
              <div className={`mt-4 p-4 rounded-lg border max-w-md text-center ${
                  feedback.type === 'error' ? 'bg-red-50 border-red-200 text-red-800' : 'bg-green-50 border-green-200 text-green-800'
@@ -328,7 +372,6 @@ export default function CapturePage() {
                  <p className="text-sm mt-1">{feedback.details}</p>
              </div>
           )}
-          
           <p className="text-muted-foreground mt-6 animate-pulse">Redirecting to map...</p>
         </div>
       </div>
@@ -342,9 +385,7 @@ export default function CapturePage() {
         <div className="max-w-2xl mx-auto">
           <h1 className="text-3xl font-bold tracking-tight mb-6">{t.capture.title}</h1>
 
-          {/* ... (Existing Image & Location Cards - Same as before) ... */}
-          
-          {/* Image Capture Section */}
+          {/* PHOTO CARD */}
           <Card className="mb-6">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -363,13 +404,7 @@ export default function CapturePage() {
                     <Upload className="h-5 w-5" />
                     {t.capture.uploadPhoto}
                   </Button>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileUpload}
-                    className="hidden"
-                  />
+                  <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
                 </div>
               )}
 
@@ -386,40 +421,27 @@ export default function CapturePage() {
               {imageData && (
                 <div className="space-y-4">
                   <div className="relative">
-                    <img
-                      src={imageData || "/placeholder.svg"}
-                      alt="Captured evidence"
-                      className="w-full rounded-lg"
-                    />
+                    <img src={imageData || "/placeholder.svg"} alt="Captured evidence" className="w-full rounded-lg" />
                     <Button variant="destructive" size="icon" className="absolute top-2 right-2" onClick={clearImage}>
                       <X className="h-4 w-4" />
                     </Button>
                   </div>
                   
-                  {locationSource === "image" && (
-                    <div className="flex items-center gap-2 text-sm text-green-600 bg-green-50 p-2 rounded border border-green-200">
-                      <MapPin className="h-4 w-4" />
-                      Location auto-detected from image
-                    </div>
-                  )}
-                  {locationSource === "manual" && (
-                    <div className="flex items-center gap-2 text-sm text-blue-600 bg-blue-50 p-2 rounded border border-blue-200">
-                      <MapPin className="h-4 w-4" />
-                      Location selected manually
-                    </div>
-                  )}
-                  {locationSource === "gps" && imageData && (
-                      <div className="flex items-center gap-2 text-sm text-yellow-600 bg-yellow-50 p-2 rounded border border-yellow-200">
-                        <AlertTriangle className="h-4 w-4" />
-                        No GPS in image. Using device location.
-                      </div>
-                  )}
+                  <div className={`flex items-center gap-2 text-sm p-2 rounded border
+                    ${locationSource === 'image' ? 'text-green-600 bg-green-50 border-green-200' : 
+                      locationSource === 'manual' ? 'text-blue-600 bg-blue-50 border-blue-200' :
+                      'text-yellow-600 bg-yellow-50 border-yellow-200'}`}
+                  >
+                      {locationSource === 'image' && <><MapPin className="h-4 w-4" /> Location from Photo EXIF</>}
+                      {locationSource === 'manual' && <><MapPin className="h-4 w-4" /> Location Manually Selected</>}
+                      {locationSource === 'gps' && <><AlertTriangle className="h-4 w-4" /> Using Device GPS</>}
+                  </div>
                 </div>
               )}
             </CardContent>
           </Card>
 
-          {/* Location Section */}
+          {/* LOCATION CARD */}
           <Card className="mb-6">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -436,33 +458,46 @@ export default function CapturePage() {
               )}
 
               <div className="space-y-4">
+                {/* Search Bar */}
                 <div className="relative">
-                    <Label htmlFor="address-search">Search Location (if auto-detect is wrong)</Label>
+                    <Label htmlFor="address-search">Search Road (Govt Projects)</Label>
                     <div className="flex gap-2 mt-1.5">
                         <Input 
                             id="address-search"
-                            placeholder="Type a place (e.g., Dadar, Mumbai)" 
+                            placeholder="Enter road name (e.g. Patelwadi Road)" 
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                         <Button 
                             variant="secondary" 
-                            onClick={handleAddressSearch}
+                            onClick={handleSearch}
                             disabled={isSearching || !searchQuery}
                         >
                             {isSearching ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
                         </Button>
                     </div>
 
+                    {/* Autocomplete Dropdown */}
                     {searchResults.length > 0 && (
                         <div className="absolute z-10 w-full bg-white mt-1 border rounded-md shadow-lg max-h-60 overflow-y-auto">
                             {searchResults.map((result) => (
                                 <div 
                                     key={result.place_id}
                                     className="p-3 hover:bg-slate-50 cursor-pointer text-sm border-b last:border-0"
-                                    onClick={() => selectSearchResult(result)}
+                                    onClick={() => selectResult(result)}
                                 >
-                                    {result.display_name}
+                                    <div className="font-medium flex items-center gap-2 text-slate-800">
+                                        {result.source === 'db' ? (
+                                            <span className="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-bold border border-blue-200 flex items-center gap-1">
+                                                <Building2 className="h-3 w-3" /> OFFICIAL
+                                            </span>
+                                        ) : (
+                                            <span className="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-bold border border-slate-200">
+                                                MAP
+                                            </span>
+                                        )}
+                                        {result.display_name}
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -472,39 +507,29 @@ export default function CapturePage() {
                 {location && (
                   <div className="bg-muted/50 rounded-lg p-4 text-sm">
                     <div>
-                      <span className="text-muted-foreground">Coordinates:</span> {location.latitude.toFixed(6)},{" "}
-                      {location.longitude.toFixed(6)}
+                      <span className="text-muted-foreground">Coordinates:</span> {location.latitude.toFixed(6)}, {location.longitude.toFixed(6)}
                     </div>
                     {location.address && (
                       <div className="mt-1">
-                        <span className="text-muted-foreground">Detected:</span> {location.address}
+                        <span className="text-muted-foreground">Address:</span> {location.address}
                       </div>
                     )}
                   </div>
-                )}
-
-                {!location && !isLoadingLocation && (
-                  <Button variant="outline" onClick={getCurrentLocation} className="gap-2 bg-transparent">
-                    <MapPin className="h-4 w-4" />
-                    Reset to Current Device Location
-                  </Button>
                 )}
               </div>
             </CardContent>
           </Card>
 
-          {/* Report Details Form */}
+          {/* DETAILS FORM */}
           <Card>
-            <CardHeader>
-              <CardTitle>Report Details</CardTitle>
-            </CardHeader>
+            <CardHeader><CardTitle>Report Details</CardTitle></CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid gap-2">
                   <Label htmlFor="title">Title *</Label>
                   <Input
                     id="title"
-                    placeholder="Brief description of the issue"
+                    placeholder="Brief description"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     required
@@ -512,10 +537,10 @@ export default function CapturePage() {
                 </div>
 
                 <div className="grid gap-2">
-                  <Label htmlFor="description">{t.capture.description}</Label>
+                  <Label htmlFor="description">Description</Label>
                   <Textarea
                     id="description"
-                    placeholder="Provide additional details..."
+                    placeholder="Provide details..."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     rows={4}
@@ -524,11 +549,9 @@ export default function CapturePage() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="grid gap-2">
-                    <Label htmlFor="category">Category (User Estimate)</Label>
+                    <Label>Category</Label>
                     <Select value={category} onValueChange={setCategory}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select category" />
-                      </SelectTrigger>
+                      <SelectTrigger><SelectValue /></SelectTrigger>
                       <SelectContent>
                         <SelectItem value="road">{t.categories.road}</SelectItem>
                         <SelectItem value="bridge">{t.categories.bridge}</SelectItem>
@@ -540,24 +563,21 @@ export default function CapturePage() {
                       </SelectContent>
                     </Select>
                   </div>
-
                   <div className="grid gap-2">
-                    <Label htmlFor="severity">Severity (User Estimate)</Label>
+                    <Label>Severity</Label>
                     <Select value={severity} onValueChange={setSeverity}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select severity" />
-                      </SelectTrigger>
+                      <SelectTrigger><SelectValue /></SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="low">{t.severity.low}</SelectItem>
-                        <SelectItem value="medium">{t.severity.medium}</SelectItem>
-                        <SelectItem value="high">{t.severity.high}</SelectItem>
-                        <SelectItem value="critical">{t.severity.critical}</SelectItem>
+                        <SelectItem value="low">Low</SelectItem>
+                        <SelectItem value="medium">Medium</SelectItem>
+                        <SelectItem value="high">High</SelectItem>
+                        <SelectItem value="critical">Critical</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
 
-                {/* --- CUSTOM INLINE FEEDBACK (Replaces Toast/Alert) --- */}
+                {/* Inline Feedback */}
                 {feedback && (
                     <div className={`p-3 rounded-md text-sm border ${
                         feedback.type === 'error' ? 'bg-red-50 text-red-900 border-red-200' : 'bg-green-50 text-green-900 border-green-200'
@@ -570,19 +590,8 @@ export default function CapturePage() {
                     </div>
                 )}
 
-                <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={!imageData || !location || !title || isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      {statusMessage}
-                    </>
-                  ) : (
-                    t.capture.submit
-                  )}
+                <Button type="submit" className="w-full" disabled={!imageData || !location || !title || isSubmitting}>
+                  {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> {statusMessage}</> : t.capture.submit}
                 </Button>
               </form>
             </CardContent>
