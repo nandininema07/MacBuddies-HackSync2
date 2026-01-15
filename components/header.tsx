@@ -9,7 +9,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useI18n } from "@/lib/i18n/context"
 import { createClient } from "@/lib/supabase/client"
-// ADDED CheckCircle to imports
 import { Menu, Globe, Shield, LogOut, User, Moon, Sun, Users, FileText, Fingerprint, CheckCircle } from "lucide-react"
 import type { User as SupabaseUser } from "@supabase/supabase-js"
 
@@ -50,11 +49,11 @@ export function Header() {
   const navLinks = [
     ...(!user ? [{ href: "/", label: t.nav.home }] : []),
     ...(user? [{ href: "/dashboard", label: t.nav.dashboard },
+      { href: "/map", label: t.nav.map },
     { href: "/capture", label: t.nav.capture },
-    { href: "/map", label: t.nav.map },
-    { href: "/wards", label: "Wards" },
+    { href: "/rti", label: t.rti.title, icon: FileText },
     { href: "/community", label: t.nav.community, icon: Users },
-    { href: "/rti", label: t.rti.title, icon: FileText }] : [])
+    { href: "/wards", label: "Wards" }] : [])
   ].filter(Boolean)
 
   // Helper to mask Aadhaar (Show only last 4 digits)
