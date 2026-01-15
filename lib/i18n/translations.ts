@@ -5,7 +5,7 @@ export const translations = {
       home: "",
       dashboard: "Dashboard",
       capture: "Report Issue",
-      map: "Corruption Map",
+      map: "Map",
       community: "Community",
       login: "Login",
       signup: "Sign Up",
