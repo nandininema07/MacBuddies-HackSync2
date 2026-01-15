@@ -479,12 +479,12 @@ export default function CapturePage() {
 
                     {/* Autocomplete Dropdown */}
                     {searchResults.length > 0 && (
-                        <div className="absolute z-10 w-full bg-white mt-1 border rounded-md shadow-lg max-h-60 overflow-y-auto">
+                        <div className="absolute z-10 w-full mt-1 border rounded-md shadow-lg max-h-60 overflow-y-auto bg-white dark:bg-slate-950 dark:border-slate-800">
                             {searchResults.map((result) => (
                                 <div 
                                     key={result.place_id}
                                     className="p-3 hover:bg-slate-50 cursor-pointer text-sm border-b last:border-0"
-                                    onClick={() => selectResult(result)}
+                                    onClick={() => selectSearchResult(result)}
                                 >
                                     <div className="font-medium flex items-center gap-2 text-slate-800">
                                         {result.source === 'db' ? (

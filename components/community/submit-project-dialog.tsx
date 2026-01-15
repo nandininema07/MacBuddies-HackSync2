@@ -77,7 +77,7 @@ export function SubmitProjectDialog({ open, onOpenChange, onSuccess }: SubmitPro
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[500px]">
+      <DialogContent className="sm:max-w-[500px] z-[150]">
         <DialogHeader>
           <DialogTitle>{t.community.submitProject}</DialogTitle>
           <DialogDescription>Submit a government project to help build the infrastructure database</DialogDescription>
