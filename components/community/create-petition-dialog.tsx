@@ -70,7 +70,7 @@ export function CreatePetitionDialog({ open, onOpenChange, onSuccess }: CreatePe
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[500px]">
+      <DialogContent className="sm:max-w-[500px] z-[150]">
         <DialogHeader>
           <DialogTitle>{t.community.createPetition}</DialogTitle>
           <DialogDescription>

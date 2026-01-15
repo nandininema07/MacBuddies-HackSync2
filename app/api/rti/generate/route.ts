@@ -1,21 +1,11 @@
 import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 import { GoogleGenAI } from "@google/genai"
-import nodemailer from "nodemailer" // 1. IMPORT NODEMAILER
-
-/* ------------------------------------------------------------------ */
-/* Gemini Client                                                       */
-/* ------------------------------------------------------------------ */
-
+import nodemailer from "nodemailer" 
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY!,
 })
 
-/* ------------------------------------------------------------------ */
-/* Mock Government Emails (Fake Mapping)                               */
-/* ------------------------------------------------------------------ */
-
-// 2. DEFINE DEPARTMENT EMAILS
 const DEPARTMENT_EMAILS: Record<string, string> = {
   pwd: "chief.engineer@pwd.mumbai.gov.fake",
   municipal: "ward.officer.kwest@mcgm.gov.fake",
@@ -23,10 +13,6 @@ const DEPARTMENT_EMAILS: Record<string, string> = {
   electrical: "consumer.grievance@best.mumbai.fake",
   general: "public.info.officer@maharashtra.gov.fake",
 }
-
-/* ------------------------------------------------------------------ */
-/* Route Handler                                                       */
-/* ------------------------------------------------------------------ */
 
 export async function POST(request: Request) {
   try {
@@ -39,14 +25,13 @@ export async function POST(request: Request) {
       applicantName,
       applicantAddress,
       applicantPhone,
-      applicantEmail, // 3. GET APPLICANT EMAIL (Needed for Reply-To)
+      applicantEmail, 
       customRequests,
       language = "en",
     } = body
 
     const supabase = await createClient()
 
-    /* ---------------- Fetch report ---------------- */
     let reportData: any = null
     if (reportId) {
       const { data } = await supabase
@@ -57,7 +42,6 @@ export async function POST(request: Request) {
       reportData = data
     }
 
-    /* ---------------- Fetch project ---------------- */
     let projectData: any = null
     if (projectId) {
       const { data } = await supabase
@@ -68,7 +52,6 @@ export async function POST(request: Request) {
       projectData = data
     }
 
-    /* ---------------- Build prompt ---------------- */
     const prompt = buildRTIPrompt({
       report: reportData,
       project: projectData,
@@ -81,7 +64,6 @@ export async function POST(request: Request) {
       language,
     })
 
-    /* ---------------- Gemini call (ORIGINAL LOGIC) ---------------- */
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: [
@@ -91,18 +73,12 @@ export async function POST(request: Request) {
       ],
     })
 
-    // Helper to get text safely for the email body 
-    // (Depending on your SDK version, response.text might be a function or property)
     const finalText = typeof response.text === 'function' ? response.text : response.text;
 
-    /* ------------------------------------------------------------------ */
-    /* 4. INSERTED MAILER LOGIC                                            */
-    /* ------------------------------------------------------------------ */
     
     let emailStatus = "skipped"
     let recipientEmail = DEPARTMENT_EMAILS[department] || "admin@gov.fake"
 
-    // Only attempt to send if we have generated text and an applicant email
     if (finalText && applicantEmail) {
       try {
         const transporter = nodemailer.createTransport({
@@ -114,13 +90,9 @@ export async function POST(request: Request) {
         })
 
         const mailOptions = {
-          // Send from YOUR auth account to avoid spam blocks
           from: `"RTI Portal (on behalf of ${applicantName})" <${process.env.EMAIL_USER}>`, 
-          // Send TO the government official
           to: recipientEmail, 
-          // CRITICAL: Replies go to the User
           replyTo: applicantEmail, 
-          // CC the user
           cc: applicantEmail, 
           
           subject: `RTI Application: ${reportData?.category || "Infrastructure Issue"} - ${applicantName}`,
@@ -153,8 +125,8 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      generatedText: finalText, // Return the text we extracted
-      emailStatus: emailStatus, // Return email status
+      generatedText: finalText, 
+      emailStatus: emailStatus, 
       sentTo: recipientEmail,
       reportData,
       projectData,
@@ -168,10 +140,6 @@ export async function POST(request: Request) {
     )
   }
 }
-
-/* ------------------------------------------------------------------ */
-/* Prompt Builder (EXACTLY SAME AS ORIGINAL)                           */
-/* ------------------------------------------------------------------ */
 
 interface RTIPromptParams {
   report: any
